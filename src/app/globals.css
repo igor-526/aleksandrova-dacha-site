@@ -1,8 +1,13 @@
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-color1: #384000;
+  --color-color2: #fae8c4;
+  --color-color3: #ab6736;
 }
 
 @theme inline {
