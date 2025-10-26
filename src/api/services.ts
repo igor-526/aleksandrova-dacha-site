@@ -1,10 +1,10 @@
 import { Services } from "@/types/Services";
-import services_bd from "./services_bd";
+import { get, MOCK_BASE_URL } from "./config";
 
 const services = {
-  getServices: (): Services => {
-    const data = services_bd;
-    return data;
+  getServices: async (): Promise<Services> => {
+    const url = `${MOCK_BASE_URL}/mock_services.json`;
+    return get<Services>(url);
   },
 };
 

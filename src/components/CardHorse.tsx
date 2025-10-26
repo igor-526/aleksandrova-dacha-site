@@ -23,7 +23,7 @@ const CardHorse: FC<Prors> = async ({
   description,
   pathImage,
 }: Prors) => {
-  const pathCard = `/breeding/ponies/${id}`;
+  const pathCard = `/archive/breeding/ponies/${id}`;
 
   return (
     <Card href={pathCard} className="max-w-sm">
