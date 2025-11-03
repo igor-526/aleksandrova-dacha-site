@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Button } from "../button/Button";
 import { Modal } from "../overlays/Modal";
@@ -49,8 +49,8 @@ export const Interactive: Story = {
           }
         >
           <p>
-            В модальном окне можно разместить форму или подтверждение действия. Компонент поддерживает разные размеры и
-            настраиваемый футер.
+            В модальном окне можно разместить форму или подтверждение действия.
+            Компонент поддерживает разные размеры и настраиваемый футер.
           </p>
         </Modal>
 

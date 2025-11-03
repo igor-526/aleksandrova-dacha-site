@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Card } from "./Card";
 
 const meta: Meta<typeof Card> = {
@@ -8,7 +8,8 @@ const meta: Meta<typeof Card> = {
   component: Card,
   args: {
     title: "Карточка",
-    content: "Описание карточки в несколько предложений, подчеркивающее основную мысль блока.",
+    content:
+      "Описание карточки в несколько предложений, подчеркивающее основную мысль блока.",
   },
 };
 
@@ -21,7 +22,10 @@ export const Default: Story = {};
 export const WithMedia: Story = {
   args: {
     media: (
-      <div className="h-40 rounded-2xl bg-cover bg-center" style={{ backgroundImage: "url(/images/home-img.jpg)" }} />
+      <div
+        className="h-40 rounded-2xl bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/home-img.jpg)" }}
+      />
     ),
     actions: <button className="text-[#384000] underline">Подробнее</button>,
   },

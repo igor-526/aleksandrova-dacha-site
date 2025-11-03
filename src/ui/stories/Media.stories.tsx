@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { MediaImage } from "../media/MediaImage";
 import { MediaVideo } from "../media/MediaVideo";
 import { MapEmbed } from "../media/MapEmbed";
@@ -21,7 +21,13 @@ export const ImageVideoMap: Story = {
     <div className="space-y-6 text-[#2f3600]">
       <div className="w-[480px] space-y-3 rounded-3xl bg-[#fdfaf4] p-4">
         <h3 className="font-serif text-xl">MediaImage (fill)</h3>
-        <MediaImage src="/images/home-img.jpg" alt="Главный экран" fill ratio="landscape" className="rounded-3xl" />
+        <MediaImage
+          src="/images/home-img.jpg"
+          alt="Главный экран"
+          fill
+          ratio="landscape"
+          className="rounded-3xl"
+        />
       </div>
       <div className="w-[480px] space-y-3 rounded-3xl bg-[#fdfaf4] p-4">
         <h3 className="font-serif text-xl">MediaVideo</h3>
@@ -33,7 +39,12 @@ export const ImageVideoMap: Story = {
       </div>
       <div className="w-[480px] space-y-3 rounded-3xl bg-[#fdfaf4] p-4">
         <h3 className="font-serif text-xl">MapEmbed</h3>
-        <MapEmbed lat={59.727} lng={30.411} zoom={13} markerLabel="Александрова Дача" />
+        <MapEmbed
+          lat={59.727}
+          lng={30.411}
+          zoom={13}
+          markerLabel="Александрова Дача"
+        />
       </div>
     </div>
   ),

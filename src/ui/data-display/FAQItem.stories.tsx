@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { FAQItem } from "./FAQItem";
 
 const meta: Meta<typeof FAQItem> = {
@@ -7,7 +7,8 @@ const meta: Meta<typeof FAQItem> = {
   component: FAQItem,
   args: {
     question: "Нужно ли брать экипировку?",
-    answer: "На первые занятия достаточно удобной одежды и обуви на ровной подошве. Шлем выдаем на месте.",
+    answer:
+      "На первые занятия достаточно удобной одежды и обуви на ровной подошве. Шлем выдаем на месте.",
   },
 };
 

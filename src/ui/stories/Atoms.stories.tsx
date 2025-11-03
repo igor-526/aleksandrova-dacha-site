@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Badge } from "../atoms/Badge";
 import { Avatar } from "../atoms/Avatar";
 import { Icon } from "../atoms/Icon";
@@ -40,18 +40,31 @@ export const AllAtoms: Story = {
         <div className="flex items-center gap-4">
           <Avatar src="/images/Logo.jpg" alt="Лого" size="lg" />
           <Avatar fallback="AD" size="lg" />
-          <Avatar src="/images/Logo1.jpg" alt="Лошадь" size="md" shape="rounded" />
+          <Avatar
+            src="/images/Logo1.jpg"
+            alt="Лошадь"
+            size="md"
+            shape="rounded"
+          />
         </div>
       </section>
 
       <section className="space-y-3">
         <h3 className="text-lg font-semibold">Icons & Separator</h3>
         <div className="flex items-center gap-4">
-          {(["horse", "leaf", "phone", "location", "calendar", "arrow-right", "quote"] as const).map(
-            (name) => (
-              <Icon key={name} name={name} width={28} height={28} />
-            ),
-          )}
+          {(
+            [
+              "horse",
+              "leaf",
+              "phone",
+              "location",
+              "calendar",
+              "arrow-right",
+              "quote",
+            ] as const
+          ).map((name) => (
+            <Icon key={name} name={name} width={28} height={28} />
+          ))}
         </div>
         <Separator />
       </section>
@@ -60,10 +73,14 @@ export const AllAtoms: Story = {
         <h3 className="text-lg font-semibold">Tooltip</h3>
         <div className="flex gap-4">
           <Tooltip content="Наведи, чтобы увидеть подсказку">
-            <span className="cursor-pointer rounded-full bg-[#f0e7cf] px-4 py-2">Наведи</span>
+            <span className="cursor-pointer rounded-full bg-[#f0e7cf] px-4 py-2">
+              Наведи
+            </span>
           </Tooltip>
           <Tooltip content="Влево" side="left">
-            <span className="cursor-pointer rounded-full bg-[#f0e7cf] px-4 py-2">←</span>
+            <span className="cursor-pointer rounded-full bg-[#f0e7cf] px-4 py-2">
+              ←
+            </span>
           </Tooltip>
         </div>
       </section>

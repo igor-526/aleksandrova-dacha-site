@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Container } from "../foundations/Container";
 import { Hero } from "../hero/Hero";
 import { QuickServices } from "../quick-services/QuickServices";
@@ -39,7 +39,10 @@ export const Landing: Story = {
           title="Конные прогулки и зоопарк"
           subtitle="Александрова дача"
           description="Проведите незабываемый день на нашей конюшне: прокатитесь верхом по живописным тропам, познакомьтесь с пони и другими питомцами, насладитесь свежим воздухом."
-          backgroundImage={{ src: "/images/home-img.jpg", alt: "Лошадь на поле" }}
+          backgroundImage={{
+            src: "/images/home-img.jpg",
+            alt: "Лошадь на поле",
+          }}
           cta={<Button>Записаться на прогулку</Button>}
         />
       </Container>
@@ -49,13 +52,15 @@ export const Landing: Story = {
             {
               id: "riding",
               title: "Конные прогулки",
-              description: "Маршруты для новичков и опытных всадников с инструкторами.",
+              description:
+                "Маршруты для новичков и опытных всадников с инструкторами.",
               href: "/horse_riding",
             },
             {
               id: "zoo",
               title: "Мини-зоопарк",
-              description: "Пони, козочки, верблюды и другие дружелюбные животные.",
+              description:
+                "Пони, козочки, верблюды и другие дружелюбные животные.",
               href: "/about/zoo",
             },
             {
@@ -71,20 +76,23 @@ export const Landing: Story = {
         <section className="space-y-6">
           <h2 className="font-serif text-3xl text-[#2f3600]">О нас</h2>
           <p className="text-base text-[#4b4d2f]">
-            Александрова Дача — одно из самых уютных мест в Ленинградской области. Мы собрали лучших тренеров
-            и самых дружелюбных животных, чтобы вы могли провести время с пользой и удовольствием.
+            Александрова Дача — одно из самых уютных мест в Ленинградской
+            области. Мы собрали лучших тренеров и самых дружелюбных животных,
+            чтобы вы могли провести время с пользой и удовольствием.
           </p>
         </section>
         <Highlights
           items={[
             {
               title: "150+ животных",
-              description: "Мини-зоопарк с пони, козочками, ламами и даже верблюдами.",
+              description:
+                "Мини-зоопарк с пони, козочками, ламами и даже верблюдами.",
               icon: "leaf",
             },
             {
               title: "Опытные тренеры",
-              description: "Индивидуальные и групповые занятия для всадников любого уровня.",
+              description:
+                "Индивидуальные и групповые занятия для всадников любого уровня.",
               icon: "horse",
             },
             {
@@ -102,13 +110,21 @@ export const Landing: Story = {
               title: "Прогулка верхом",
               price: "от 1 500 ₽",
               description: "Индивидуальный маршрут на лошади с инструктором.",
-              features: ["60 минут", "Маршрут по парку", "Фотосессия в подарок"],
+              features: [
+                "60 минут",
+                "Маршрут по парку",
+                "Фотосессия в подарок",
+              ],
             },
             {
               title: "Посещение мини-зоопарка",
               price: "от 800 ₽",
               description: "Знакомство, кормление и фотосессия с животными.",
-              features: ["Сопровождение сотрудника", "Корм для животных", "Фото зона"],
+              features: [
+                "Сопровождение сотрудника",
+                "Корм для животных",
+                "Фото зона",
+              ],
             },
             {
               title: "Семейная фотосессия",
@@ -163,7 +179,13 @@ export const Landing: Story = {
         <ContactFarm
           address="Санкт-Петербург, посёлок Александрова Дача"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
-          map={{ lat: 59.727, lng: 30.411, zoom: 13, provider: "yandex", markerLabel: "Александрова Дача" }}
+          map={{
+            lat: 59.727,
+            lng: 30.411,
+            zoom: 13,
+            provider: "yandex",
+            markerLabel: "Александрова Дача",
+          }}
         />
       </Container>
       <Footer

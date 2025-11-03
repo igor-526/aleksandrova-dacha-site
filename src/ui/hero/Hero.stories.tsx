@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Button } from "../button/Button";
 import { Hero, type HeroProps } from "./Hero";
 
@@ -25,7 +25,9 @@ export default meta;
 type Story = StoryObj<typeof Hero>;
 
 export const CenterAligned: Story = {
-  render: (args) => <Hero {...args} cta={<Button variant="primary">Записаться</Button>} />,
+  render: (args) => (
+    <Hero {...args} cta={<Button variant="primary">Записаться</Button>} />
+  ),
 };
 
 export const LeftAligned: Story = {

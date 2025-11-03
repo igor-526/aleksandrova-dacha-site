@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Container } from "../foundations/Container";
 import { ThemeTokens } from "../foundations/ThemeTokens";
 
@@ -20,7 +20,8 @@ export const TokensAndContainer: Story = {
     <ThemeTokens>
       <div className="space-y-6 rounded-3xl border border-dashed border-[#c9b585] bg-[#fdfaf4] p-6">
         <p className="text-sm text-[#4b4d2f]">
-          ThemeTokens устанавливает CSS-переменные бренда. Ниже — пример разных размеров контейнера.
+          ThemeTokens устанавливает CSS-переменные бренда. Ниже — пример разных
+          размеров контейнера.
         </p>
         <div className="space-y-4">
           {(["sm", "md", "lg", "xl"] as const).map((size) => (

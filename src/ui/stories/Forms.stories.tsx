@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Input } from "../forms/Input";
 import { Textarea } from "../forms/Textarea";
@@ -83,7 +83,10 @@ export const Controls: Story = {
           <DatePicker label="Дата" />
           <TimePicker label="Время" />
         </div>
-        <FileUpload label="Прикрепите фото" helperText="до 10МБ, форматы JPG/PNG" />
+        <FileUpload
+          label="Прикрепите фото"
+          helperText="до 10МБ, форматы JPG/PNG"
+        />
       </div>
     );
   },

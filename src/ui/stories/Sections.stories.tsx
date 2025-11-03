@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Container } from "../foundations/Container";
 import { Highlights } from "../sections/Highlights";
 import { PopularOffers } from "../sections/PopularOffers";
@@ -91,30 +91,60 @@ export const AllSections: Story = {
       <Container className="space-y-12">
         <Highlights
           items={[
-            { title: "150+ животных", description: "Мини-зоопарк с пони, ламами, козочками.", icon: "leaf" },
-            { title: "Опытные тренеры", description: "Индивидуальные занятия для взрослых и детей.", icon: "horse" },
-            { title: "Природа рядом", description: "Маршруты по паркам Царского Села.", icon: "location" },
+            {
+              title: "150+ животных",
+              description: "Мини-зоопарк с пони, ламами, козочками.",
+              icon: "leaf",
+            },
+            {
+              title: "Опытные тренеры",
+              description: "Индивидуальные занятия для взрослых и детей.",
+              icon: "horse",
+            },
+            {
+              title: "Природа рядом",
+              description: "Маршруты по паркам Царского Села.",
+              icon: "location",
+            },
           ]}
         />
 
         <PopularOffers
           offers={[
-            { title: "Прогулка 60 мин", price: "1 500 ₽", description: "Маршрут по парку с инструктором." },
+            {
+              title: "Прогулка 60 мин",
+              price: "1 500 ₽",
+              description: "Маршрут по парку с инструктором.",
+            },
             {
               title: "Мини-зоопарк",
               price: "800 ₽",
               description: "Кормление и фотосессия с животными.",
               features: ["Сопровождение сотрудника"],
             },
-            { title: "Фотосессия", price: "3 500 ₽", description: "Съемка с профессиональным фотографом." },
+            {
+              title: "Фотосессия",
+              price: "3 500 ₽",
+              description: "Съемка с профессиональным фотографом.",
+            },
           ]}
         />
 
         <Testimonials
           asCarousel={false}
           items={[
-            { author: "Анна", text: "Дети в восторге от пони-клуба!", rating: 5, source: "Google" },
-            { author: "Иван", text: "Спокойные лошади и опытные тренеры.", rating: 4, source: "Яндекс" },
+            {
+              author: "Анна",
+              text: "Дети в восторге от пони-клуба!",
+              rating: 5,
+              source: "Google",
+            },
+            {
+              author: "Иван",
+              text: "Спокойные лошади и опытные тренеры.",
+              rating: 4,
+              source: "Яндекс",
+            },
           ]}
         />
 
@@ -126,9 +156,15 @@ export const AllSections: Story = {
         <Mission
           title="Наша миссия"
           points={[
-            { heading: "Забота", text: "Комфортные условия содержания животных." },
+            {
+              heading: "Забота",
+              text: "Комфортные условия содержания животных.",
+            },
             { heading: "Обучение", text: "Помогаем всадникам развиваться." },
-            { heading: "Отдых", text: "Создаём пространство для семейного досуга." },
+            {
+              heading: "Отдых",
+              text: "Создаём пространство для семейного досуга.",
+            },
           ]}
         />
 
@@ -138,7 +174,13 @@ export const AllSections: Story = {
         <ContactFarm
           address="Санкт-Петербург, пос. Александрова Дача"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
-          map={{ lat: 59.727, lng: 30.411, zoom: 13, provider: "yandex", markerLabel: "КСК Александрова дача" }}
+          map={{
+            lat: 59.727,
+            lng: 30.411,
+            zoom: 13,
+            provider: "yandex",
+            markerLabel: "КСК Александрова дача",
+          }}
         />
 
         <GallerySection
@@ -187,9 +229,21 @@ export const AllSections: Story = {
             { key: "weekend", title: "Выходные", align: "right" },
           ]}
           rows={[
-            { service: "Прогулка 30 мин", weekday: "1 000 ₽", weekend: "1 200 ₽" },
-            { service: "Прогулка 60 мин", weekday: "1 500 ₽", weekend: "1 800 ₽" },
-            { service: "Индив. занятие", weekday: "2 000 ₽", weekend: "2 300 ₽" },
+            {
+              service: "Прогулка 30 мин",
+              weekday: "1 000 ₽",
+              weekend: "1 200 ₽",
+            },
+            {
+              service: "Прогулка 60 мин",
+              weekday: "1 500 ₽",
+              weekend: "1 800 ₽",
+            },
+            {
+              service: "Индив. занятие",
+              weekday: "2 000 ₽",
+              weekend: "2 300 ₽",
+            },
           ]}
         />
 
@@ -219,14 +273,27 @@ export const AllSections: Story = {
 
         <RouteTypes
           routes={[
-            { title: "Лесной", duration: "60 мин", distance: "4 км", description: "Тропа вдоль озера и леса." },
-            { title: "Парковый", duration: "45 мин", distance: "3 км", description: "Исторические дорожки Царского Села." },
+            {
+              title: "Лесной",
+              duration: "60 мин",
+              distance: "4 км",
+              description: "Тропа вдоль озера и леса.",
+            },
+            {
+              title: "Парковый",
+              duration: "45 мин",
+              distance: "3 км",
+              description: "Исторические дорожки Царского Села.",
+            },
           ]}
         />
 
         <RoutesMap
           description="Отправная точка находится у главного манежа. В маршрут включены остановки для фото."
-          tips={["В дождливую погоду выбираем альтернативные пути.", "Пожалуйста, предупреждайте об опозданиях."]}
+          tips={[
+            "В дождливую погоду выбираем альтернативные пути.",
+            "Пожалуйста, предупреждайте об опозданиях.",
+          ]}
           map={{ lat: 59.727, lng: 30.411, zoom: 13, markerLabel: "Маршрут" }}
         />
 
@@ -242,7 +309,10 @@ export const AllSections: Story = {
 
         <WeatherNotice
           message="Следите за погодой"
-          details={["При сильном ветре прогулки могут переноситься.", "Зимой возможны изменения маршрутов."]}
+          details={[
+            "При сильном ветре прогулки могут переноситься.",
+            "Зимой возможны изменения маршрутов.",
+          ]}
         />
 
         <PhotoHero
@@ -264,9 +334,18 @@ export const AllSections: Story = {
         <PreparationTips
           title="Как подготовиться"
           tips={[
-            { heading: "Одежда", text: "Возьмите удобные брюки и обувь без каблуков." },
-            { heading: "Время", text: "Приезжайте на 15 минут раньше, чтобы подготовиться." },
-            { heading: "Настрой", text: "Хорошее настроение и желание общаться с лошадьми!" },
+            {
+              heading: "Одежда",
+              text: "Возьмите удобные брюки и обувь без каблуков.",
+            },
+            {
+              heading: "Время",
+              text: "Приезжайте на 15 минут раньше, чтобы подготовиться.",
+            },
+            {
+              heading: "Настрой",
+              text: "Хорошее настроение и желание общаться с лошадьми!",
+            },
           ]}
         />
 
@@ -288,12 +367,23 @@ export const AllSections: Story = {
 
         <Boarding
           options={[
-            { title: "Постоялые услуги", price: "25 000 ₽/мес", description: "Уход, кормление, выгул." },
-            { title: "Спортивный пакет", price: "32 000 ₽/мес", description: "Тренировки и подготовка к стартам." },
+            {
+              title: "Постоялые услуги",
+              price: "25 000 ₽/мес",
+              description: "Уход, кормление, выгул.",
+            },
+            {
+              title: "Спортивный пакет",
+              price: "32 000 ₽/мес",
+              description: "Тренировки и подготовка к стартам.",
+            },
           ]}
         />
 
-        <BreedingSale animals={animals} description="Питомцы доступны для аренды или покупки." />
+        <BreedingSale
+          animals={animals}
+          description="Питомцы доступны для аренды или покупки."
+        />
 
         <VisitStableCTA
           title="Приезжайте в гости"
@@ -305,14 +395,16 @@ export const AllSections: Story = {
           posts={[
             {
               title: "Как подготовиться к первой прогулке",
-              excerpt: "Советы по экипировке, поведению в седле и технике безопасности.",
+              excerpt:
+                "Советы по экипировке, поведению в седле и технике безопасности.",
               date: "12 марта 2025",
               href: "/blog/preparation",
               image: "/images/home-img.jpg",
             },
             {
               title: "Знакомство с мини-зоопарком",
-              excerpt: "Рассказываем о наших животных и правилах общения с ними.",
+              excerpt:
+                "Рассказываем о наших животных и правилах общения с ними.",
               date: "3 февраля 2025",
               href: "/blog/zoo",
               image: "/images/services/3.jpg",
@@ -333,12 +425,14 @@ export const AllSections: Story = {
           content={
             <>
               <p>
-                Клуб основан энтузиастами верховой езды в начале 2000-х. С тех пор мы превратились в крупнейший центр
-                отдыха с лошадьми в Ленинградской области.
+                Клуб основан энтузиастами верховой езды в начале 2000-х. С тех
+                пор мы превратились в крупнейший центр отдыха с лошадьми в
+                Ленинградской области.
               </p>
               <p>
-                Мы развиваем направления прогулок, обучения, спортивной подготовки и взаимодействия с животными.
-                Уютная атмосфера и природа делают отдых незабываемым.
+                Мы развиваем направления прогулок, обучения, спортивной
+                подготовки и взаимодействия с животными. Уютная атмосфера и
+                природа делают отдых незабываемым.
               </p>
             </>
           }
@@ -346,8 +440,16 @@ export const AllSections: Story = {
 
         <RelatedPosts
           posts={[
-            { title: "10 фактов о наших лошадях", date: "20 января 2025", href: "/blog/horses" },
-            { title: "Как проходят занятия в пони-клубе", date: "5 января 2025", href: "/blog/pony-club" },
+            {
+              title: "10 фактов о наших лошадях",
+              date: "20 января 2025",
+              href: "/blog/horses",
+            },
+            {
+              title: "Как проходят занятия в пони-клубе",
+              date: "5 января 2025",
+              href: "/blog/pony-club",
+            },
           ]}
         />
       </Container>

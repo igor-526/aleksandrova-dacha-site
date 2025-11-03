@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { AnimalCard } from "./AnimalCard";
 
 const meta: Meta<typeof AnimalCard> = {
@@ -8,7 +8,8 @@ const meta: Meta<typeof AnimalCard> = {
     name: "Пони Бонни",
     photo: "/images/services/3.jpg",
     tags: ["пони", "доброжелательная"],
-    description: "Любит яблоки и прогулки с детьми. Подходит для первых занятий.",
+    description:
+      "Любит яблоки и прогулки с детьми. Подходит для первых занятий.",
     ctaLabel: "Подробнее",
   },
 };

@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { PedigreeTree } from "./PedigreeTree";
 import type { HorseType } from "@/types/horse";
 
 const createHorse = (
   id: number,
   name: string,
-  overrides: Partial<HorseType> = {},
+  overrides: Partial<HorseType> = {}
 ): HorseType => ({
   id,
   name,
@@ -24,7 +24,7 @@ const createHorse = (
 
 const buildMockHorse = (): HorseType => {
   const greatGrandParents = Array.from({ length: 8 }).map((_, index) =>
-    createHorse(100 + index, `ГП ${index + 1}`, { description: "Предок" }),
+    createHorse(100 + index, `ГП ${index + 1}`, { description: "Предок" })
   );
 
   const grandparents = [
@@ -53,7 +53,11 @@ const buildMockHorse = (): HorseType => {
 
   return createHorse(1, "Глория", {
     pedigree: parents,
-    children: [createHorse(2, "Грация"), createHorse(3, "Грейс"), createHorse(4, "Грета")],
+    children: [
+      createHorse(2, "Грация"),
+      createHorse(3, "Грейс"),
+      createHorse(4, "Грета"),
+    ],
   });
 };
 

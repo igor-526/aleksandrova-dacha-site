@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Card } from "../data-display/Card";
 import { PriceCard } from "../data-display/PriceCard";
 import { PersonCard } from "../data-display/PersonCard";
@@ -26,7 +26,10 @@ export const Overview: Story = {
   render: () => (
     <div className="space-y-8 text-[#2f3600]">
       <section className="grid gap-6 md:grid-cols-2">
-        <Card title="Базовая карточка" content="Используется для текста и медиа." />
+        <Card
+          title="Базовая карточка"
+          content="Используется для текста и медиа."
+        />
         <PriceCard
           title="Прогулка верхом"
           price="1 500 ₽"
@@ -77,11 +80,22 @@ export const Overview: Story = {
         <h3 className="mb-3 font-serif text-2xl">Carousel</h3>
         <Carousel
           items={[
-            { title: "Пакет «Начальный»", description: "3 занятия, знакомство с лошадьми" },
-            { title: "Пакет «Спортивный»", description: "8 занятий, индивидуальная работа" },
+            {
+              title: "Пакет «Начальный»",
+              description: "3 занятия, знакомство с лошадьми",
+            },
+            {
+              title: "Пакет «Спортивный»",
+              description: "8 занятий, индивидуальная работа",
+            },
           ]}
           renderItem={(item, idx) => (
-            <Card title={item.title} content={item.description} key={idx} className="bg-[#fdfaf4]" />
+            <Card
+              title={item.title}
+              content={item.description}
+              key={idx}
+              className="bg-[#fdfaf4]"
+            />
           )}
         />
       </section>
@@ -113,8 +127,16 @@ export const Overview: Story = {
             { key: "weekend", title: "Выходные", align: "right" },
           ]}
           rows={[
-            { service: "Прогулка 30 мин", weekday: "1 000 ₽", weekend: "1 200 ₽" },
-            { service: "Прогулка 60 мин", weekday: "1 500 ₽", weekend: "1 800 ₽" },
+            {
+              service: "Прогулка 30 мин",
+              weekday: "1 000 ₽",
+              weekend: "1 200 ₽",
+            },
+            {
+              service: "Прогулка 60 мин",
+              weekday: "1 500 ₽",
+              weekend: "1 800 ₽",
+            },
             { service: "Фотосессия", weekday: "3 500 ₽", weekend: "4 000 ₽" },
           ]}
         />

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Header } from "../navigation/Header";
 import { MobileMenu } from "../navigation/MobileMenu";
@@ -33,7 +33,12 @@ export const Overview: Story = {
 
     return (
       <div className="min-h-screen bg-[#f6efe0] text-[#2f3600]">
-        <Header links={links} phone="+7 812 345-67-89" sticky transparent={false} />
+        <Header
+          links={links}
+          phone="+7 812 345-67-89"
+          sticky
+          transparent={false}
+        />
 
         <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-10">
           <section>
@@ -41,7 +46,7 @@ export const Overview: Story = {
               items={[
                 { label: "Главная", href: "/" },
                 { label: "Конные прогулки", href: "/horse_riding" },
-                { label: "Маршрут \"Лесной\"" },
+                { label: 'Маршрут "Лесной"' },
               ]}
             />
           </section>

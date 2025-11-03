@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { PersonCard } from "./PersonCard";
 
 const meta: Meta<typeof PersonCard> = {
@@ -9,7 +9,8 @@ const meta: Meta<typeof PersonCard> = {
     name: "Екатерина Петрова",
     role: "Старший тренер",
     photo: "/images/services/5.jpg",
-    bioShort: "Стаж 10 лет. Специализация — подготовка детей и взрослых к соревнованиям.",
+    bioShort:
+      "Стаж 10 лет. Специализация — подготовка детей и взрослых к соревнованиям.",
   },
 };
 
