@@ -11,12 +11,25 @@ export type AnimalCardProps = {
   onClick?: () => void;
 };
 
-export function AnimalCard({ name, photo, tags = [], description, ctaLabel = "Подробнее", onClick }: AnimalCardProps) {
+export function AnimalCard({
+  name,
+  photo,
+  tags = [],
+  description,
+  ctaLabel = "Подробнее",
+  onClick,
+}: AnimalCardProps) {
   return (
     <Card
       media={
         <div className="relative h-56 overflow-hidden rounded-2xl">
-          <Image src={photo} alt={name} fill sizes="(min-width:768px) 240px, 100vw" className="object-cover" />
+          <Image
+            src={photo}
+            alt={name}
+            fill
+            sizes="(min-width:768px) 240px, 100vw"
+            className="object-cover"
+          />
         </div>
       }
       actions={

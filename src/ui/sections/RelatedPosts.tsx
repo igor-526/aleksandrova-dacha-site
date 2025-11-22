@@ -18,10 +18,18 @@ export function RelatedPosts({ posts, className }: RelatedPostsProps) {
       <h2 className="font-serif text-2xl text-[#2f3600]">Похожие материалы</h2>
       <ul className="mt-4 space-y-3 text-sm text-[#4b4d2f]">
         {posts.map((post) => (
-          <li key={post.href} className="flex items-center justify-between gap-4">
+          <li
+            key={post.href}
+            className="flex items-center justify-between gap-4"
+          >
             <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-[#8d784f]">{post.date}</div>
-              <a href={post.href} className="font-medium text-[#2f3600] hover:underline">
+              <div className="text-xs uppercase tracking-[0.3em] text-[#8d784f]">
+                {post.date}
+              </div>
+              <a
+                href={post.href}
+                className="font-medium text-[#2f3600] hover:underline"
+              >
                 {post.title}
               </a>
             </div>

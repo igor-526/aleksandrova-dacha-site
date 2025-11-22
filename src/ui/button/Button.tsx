@@ -21,7 +21,10 @@ const sizeStyles: Record<ButtonSize, string> = {
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "disabled";
 export type ButtonSize = "sm" | "md" | "lg";
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
+export type ButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "onClick"
+> & {
   variant?: ButtonVariant;
   disabledVariant?: boolean;
   size?: ButtonSize;
@@ -53,7 +56,8 @@ export function Button({
 }: ButtonProps) {
   const isDisabledVariant = variant === "disabled";
   const finalDisabled = disabled || loading || isDisabledVariant;
-  const { type, ...buttonRest } = rest as ButtonHTMLAttributes<HTMLButtonElement>;
+  const { type, ...buttonRest } =
+    rest as ButtonHTMLAttributes<HTMLButtonElement>;
 
   const content = (
     <span className="flex items-center justify-center gap-2">
@@ -75,7 +79,7 @@ export function Button({
     variantStyles[variant],
     sizeStyles[size],
     fullWidth && "w-full",
-    className,
+    className
   );
 
   if (href && !isDisabledVariant) {

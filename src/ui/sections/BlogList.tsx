@@ -25,11 +25,19 @@ export function BlogList({ posts, className }: BlogListProps) {
         >
           {post.image && (
             <div className="relative h-48 overflow-hidden rounded-2xl">
-              <Image src={post.image} alt={post.title} fill sizes="(min-width:1024px) 40vw, 90vw" className="object-cover" />
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                sizes="(min-width:1024px) 40vw, 90vw"
+                className="object-cover"
+              />
             </div>
           )}
           <div className="space-y-4">
-            <div className="text-xs uppercase tracking-[0.3em] text-[#8d784f]">{post.date}</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-[#8d784f]">
+              {post.date}
+            </div>
             <h3 className="font-serif text-2xl text-[#2f3600]">{post.title}</h3>
             <p className="text-sm text-[#4b4d2f]">{post.excerpt}</p>
             <Button variant="ghost" href={post.href}>

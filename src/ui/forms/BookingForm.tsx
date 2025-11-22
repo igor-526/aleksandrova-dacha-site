@@ -51,9 +51,14 @@ export function BookingForm({
     notes: "",
     agree: false,
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof BookingFormValues, string>>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof BookingFormValues, string>>
+  >({});
 
-  const update = <K extends keyof BookingFormValues>(key: K, value: BookingFormValues[K]) => {
+  const update = <K extends keyof BookingFormValues>(
+    key: K,
+    value: BookingFormValues[K]
+  ) => {
     setValues((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -78,7 +83,7 @@ export function BookingForm({
     <form
       className={cn(
         "grid gap-5 rounded-3xl border border-[#d3c6aa] bg-[#f8f2e4] p-6 shadow-[var(--shadow-soft,0_12px_28px_rgba(56,64,0,0.1))]",
-        className,
+        className
       )}
       onSubmit={handleSubmit}
     >
@@ -131,11 +136,16 @@ export function BookingForm({
           onChange={(event) => update("agree", event.target.checked)}
           label={
             <span>
-              Соглашаюсь с <a className="underline" href={policyLink}>политикой обработки персональных данных</a>
+              Соглашаюсь с{" "}
+              <a className="underline" href={policyLink}>
+                политикой обработки персональных данных
+              </a>
             </span>
           }
         />
-        {errors.agree && <p className="text-xs text-[#a03b3b]">{errors.agree}</p>}
+        {errors.agree && (
+          <p className="text-xs text-[#a03b3b]">{errors.agree}</p>
+        )}
       </div>
       <Button type="submit" variant="primary" size="lg">
         Отправить заявку

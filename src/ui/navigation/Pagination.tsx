@@ -42,7 +42,12 @@ const getPages = (page: number, total: number) => {
   return pages;
 };
 
-export function Pagination({ page, total, onPageChange, className }: PaginationProps) {
+export function Pagination({
+  page,
+  total,
+  onPageChange,
+  className,
+}: PaginationProps) {
   const pages = getPages(page, total);
 
   const change = (next: number) => {
@@ -53,7 +58,12 @@ export function Pagination({ page, total, onPageChange, className }: PaginationP
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <Button variant="ghost" size="sm" onClick={() => change(page - 1)} disabled={page <= 1}>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => change(page - 1)}
+        disabled={page <= 1}
+      >
         Назад
       </Button>
       <div className="flex items-center gap-1">
@@ -65,7 +75,9 @@ export function Pagination({ page, total, onPageChange, className }: PaginationP
               onClick={() => change(item)}
               className={cn(
                 "h-9 w-9 rounded-full text-sm font-semibold",
-                item === page ? "bg-[#384000] text-white" : "text-[#2f3600] hover:bg-[#e8ddc1]",
+                item === page
+                  ? "bg-[#384000] text-white"
+                  : "text-[#2f3600] hover:bg-[#e8ddc1]"
               )}
             >
               {item}
@@ -74,10 +86,15 @@ export function Pagination({ page, total, onPageChange, className }: PaginationP
             <span key={`dots-${index}`} className="px-2 text-[#8d784f]">
               {DOTS}
             </span>
-          ),
+          )
         )}
       </div>
-      <Button variant="ghost" size="sm" onClick={() => change(page + 1)} disabled={page >= total}>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => change(page + 1)}
+        disabled={page >= total}
+      >
         Вперёд
       </Button>
     </div>

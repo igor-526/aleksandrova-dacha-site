@@ -12,7 +12,13 @@ export type CarouselProps<T> = {
   className?: string;
 };
 
-export function Carousel<T>({ items, renderItem, autoPlay = false, interval = 5000, className }: CarouselProps<T>) {
+export function Carousel<T>({
+  items,
+  renderItem,
+  autoPlay = false,
+  interval = 5000,
+  className,
+}: CarouselProps<T>) {
   const [index, setIndex] = useState(0);
   const length = items.length;
 
@@ -29,7 +35,12 @@ export function Carousel<T>({ items, renderItem, autoPlay = false, interval = 50
   if (length === 0) return null;
 
   return (
-    <div className={cn("relative overflow-hidden rounded-3xl bg-[#f8f2e4] p-6", className)}>
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-3xl bg-[#f8f2e4] p-6",
+        className
+      )}
+    >
       <div className="transition-all duration-500" key={index}>
         {renderItem(currentItem, index)}
       </div>
@@ -58,7 +69,7 @@ export function Carousel<T>({ items, renderItem, autoPlay = false, interval = 50
                 type="button"
                 className={cn(
                   "h-2 w-2 rounded-full bg-[#d3c6aa]",
-                  idx === index && "w-4 bg-[#384000]",
+                  idx === index && "w-4 bg-[#384000]"
                 )}
                 onClick={() => setIndex(idx)}
               />

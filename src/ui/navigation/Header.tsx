@@ -34,7 +34,7 @@ export function Header({
         "relative z-30 border-b border-transparent",
         sticky && "sticky top-0 backdrop-blur",
         transparent ? "bg-transparent" : "bg-[rgba(246,239,224,0.95)]",
-        className,
+        className
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -43,7 +43,11 @@ export function Header({
         </a>
         <nav className="hidden items-center gap-8 text-sm font-medium text-[#2f3600] md:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-[#384000]">
+            <a
+              key={link.href}
+              href={link.href}
+              className="hover:text-[#384000]"
+            >
               {link.label}
             </a>
           ))}

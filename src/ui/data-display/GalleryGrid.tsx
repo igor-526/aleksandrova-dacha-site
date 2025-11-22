@@ -13,7 +13,12 @@ export type GalleryGridProps = {
   className?: string;
 };
 
-export function GalleryGrid({ items, columns = 3, onItemClick, className }: GalleryGridProps) {
+export function GalleryGrid({
+  items,
+  columns = 3,
+  onItemClick,
+  className,
+}: GalleryGridProps) {
   return (
     <div
       className={cn(
@@ -21,7 +26,7 @@ export function GalleryGrid({ items, columns = 3, onItemClick, className }: Gall
         columns === 2 && "sm:grid-cols-2",
         columns === 3 && "sm:grid-cols-2 lg:grid-cols-3",
         columns === 4 && "sm:grid-cols-2 lg:grid-cols-4",
-        className,
+        className
       )}
     >
       {items.map((item, index) => (

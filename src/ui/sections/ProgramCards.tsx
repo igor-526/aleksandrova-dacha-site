@@ -18,7 +18,9 @@ export type ProgramCardsProps = {
 
 export function ProgramCards({ programs, className }: ProgramCardsProps) {
   return (
-    <section className={cn("grid gap-6 md:grid-cols-2 xl:grid-cols-3", className)}>
+    <section
+      className={cn("grid gap-6 md:grid-cols-2 xl:grid-cols-3", className)}
+    >
       {programs.map((program) => (
         <Card
           key={program.title}
@@ -31,9 +33,15 @@ export function ProgramCards({ programs, className }: ProgramCardsProps) {
           }
         >
           <div className="space-y-2 text-sm text-[#4b4d2f]">
-            <div><strong>Уровень:</strong> {program.level}</div>
-            <div><strong>Длительность:</strong> {program.duration}</div>
-            <div className="text-lg font-semibold text-[#2f3600]">{program.price}</div>
+            <div>
+              <strong>Уровень:</strong> {program.level}
+            </div>
+            <div>
+              <strong>Длительность:</strong> {program.duration}
+            </div>
+            <div className="text-lg font-semibold text-[#2f3600]">
+              {program.price}
+            </div>
           </div>
         </Card>
       ))}

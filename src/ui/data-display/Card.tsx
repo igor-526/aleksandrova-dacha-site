@@ -7,7 +7,7 @@ export type CardProps = {
   media?: ReactNode;
   variant?: "default" | "outlined" | "soft";
   actions?: ReactNode;
-  children?: ReactNode;
+  child?: ReactNode;
   className?: string;
 };
 
@@ -23,7 +23,7 @@ export function Card({
   media,
   variant = "default",
   actions,
-  children,
+  child,
   className,
 }: CardProps) {
   return (
@@ -31,17 +31,19 @@ export function Card({
       className={cn(
         "flex h-full flex-col gap-4 rounded-3xl p-6 text-[#2f3600]",
         variantMap[variant],
-        className,
+        className
       )}
     >
       {media}
       {(title || content) && (
         <div className="space-y-2">
           {title && <h3 className="font-serif text-2xl">{title}</h3>}
-          {content && <p className="text-sm leading-relaxed text-[#4b4d2f]">{content}</p>}
+          {content && (
+            <p className="text-sm leading-relaxed text-[#4b4d2f]">{content}</p>
+          )}
         </div>
       )}
-      {children}
+      {child}
       {actions && <div className="mt-auto pt-2">{actions}</div>}
     </article>
   );

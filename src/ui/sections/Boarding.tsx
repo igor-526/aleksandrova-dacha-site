@@ -15,13 +15,24 @@ export type BoardingProps = {
   className?: string;
 };
 
-export function Boarding({ options, ctaLabel = "Оставить заявку", ctaHref = "#booking", className }: BoardingProps) {
+export function Boarding({
+  options,
+  ctaLabel = "Оставить заявку",
+  ctaHref = "#booking",
+  className,
+}: BoardingProps) {
   return (
     <section className={cn("space-y-6", className)}>
       <div className="grid gap-6 md:grid-cols-2">
         {options.map((option) => (
-          <Card key={option.title} title={option.title} content={option.description}>
-            <div className="text-2xl font-semibold text-[#2f3600]">{option.price}</div>
+          <Card
+            key={option.title}
+            title={option.title}
+            content={option.description}
+          >
+            <div className="text-2xl font-semibold text-[#2f3600]">
+              {option.price}
+            </div>
           </Card>
         ))}
       </div>

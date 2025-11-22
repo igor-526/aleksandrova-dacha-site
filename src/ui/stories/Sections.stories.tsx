@@ -417,7 +417,7 @@ export const AllSections: Story = {
           date="25 января 2025"
           hero={
             <img
-              src="/images/home-img.jpg"
+              src="/images/home-img1.jpg"
               alt="Клуб"
               className="w-full rounded-3xl object-cover"
             />

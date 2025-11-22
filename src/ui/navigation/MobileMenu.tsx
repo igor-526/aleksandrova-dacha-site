@@ -27,14 +27,14 @@ export function MobileMenu({ open, onOpenChange, links }: MobileMenuProps) {
     <div
       className={cn(
         "fixed inset-0 z-40 bg-black/40 transition-opacity",
-        open ? "opacity-100" : "pointer-events-none opacity-0",
+        open ? "opacity-100" : "pointer-events-none opacity-0"
       )}
       onClick={() => onOpenChange(false)}
     >
       <nav
         className={cn(
           "absolute right-0 top-0 h-full w-80 max-w-full transform bg-[#f8f2e4] p-6 shadow-xl transition-transform",
-          open ? "translate-x-0" : "translate-x-full",
+          open ? "translate-x-0" : "translate-x-full"
         )}
         onClick={(event) => event.stopPropagation()}
       >
@@ -52,14 +52,22 @@ export function MobileMenu({ open, onOpenChange, links }: MobileMenuProps) {
         <ul className="space-y-4 text-lg text-[#2f3600]">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="hover:text-[#384000]" onClick={() => onOpenChange(false)}>
+              <a
+                href={link.href}
+                className="hover:text-[#384000]"
+                onClick={() => onOpenChange(false)}
+              >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
         <footer className="mt-8">
-          <Button variant="primary" fullWidth onClick={() => onOpenChange(false)}>
+          <Button
+            variant="primary"
+            fullWidth
+            onClick={() => onOpenChange(false)}
+          >
             Записаться
           </Button>
         </footer>

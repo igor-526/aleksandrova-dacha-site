@@ -1,11 +1,11 @@
-import { Price } from "@/types/Price";
-import { get, MOCK_BASE_URL } from "./config";
+import { Service, ServiceForCard, ServicesApi } from "@/types/ServicesType";
+import services_bd from "./lib/serviсes";
 
-const price = {
-  getPrice: async (): Promise<Price> => {
-    const url = `${MOCK_BASE_URL}/mock_price.json`;
-    return get<Price>(url);
+const price: ServicesApi = {
+  convertToServiceForCard(service: Service): ServiceForCard {
+    if (service.subname) {
+      const priceTable = { head: [], body: [] };
+    }
   },
 };
-
 export default price;
