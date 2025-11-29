@@ -7,7 +7,12 @@ import {
   Mission,
 } from "@/ui";
 import { QuickServices } from "../../ui/quick-services/QuickServices";
-import { dataMission, dataText, itemsGallery, itemsServices } from "./dataHome";
+import {
+  dataMission,
+  dataText,
+  itemsGallery,
+  itemsServices,
+} from "./dataHomePage";
 
 const HomePage = () => {
   return (

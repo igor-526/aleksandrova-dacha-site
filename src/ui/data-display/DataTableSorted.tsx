@@ -10,6 +10,7 @@ export type DataColumn = {
 export type DataTableProps = {
   columns: DataColumn[];
   rows: Record<string, ReactNode>[];
+  onSort?: (key: string) => void;
   responsive?: boolean;
   className?: string;
 };
@@ -17,6 +18,7 @@ export type DataTableProps = {
 export function DataTable({
   columns,
   rows,
+  onSort,
   responsive = true,
   className,
 }: DataTableProps) {
@@ -30,12 +32,16 @@ export function DataTable({
                 key={column.key}
                 scope="col"
                 className={cn(
-                  "px-4 py-3 text-center",
-                  column.align === "left" && "text-left",
+                  "px-4 py-3 text-left",
+                  column.align === "center" && "text-center",
                   column.align === "right" && "text-right"
                 )}
               >
-                <button type="button" className="flex items-center gap-1">
+                <button
+                  type="button"
+                  className="flex items-center gap-1"
+                  onClick={() => onSort?.(column.key)}
+                >
                   {column.title}
                 </button>
               </th>
@@ -49,7 +55,7 @@ export function DataTable({
                 <td
                   key={column.key}
                   className={cn(
-                    "px-2.5 py-2",
+                    "px-4 py-3",
                     column.align === "center" && "text-center",
                     column.align === "right" && "text-right"
                   )}

@@ -82,3 +82,4 @@ export * from "./sections/VisitStableCTA";
 export * from "./sections/BlogList";
 export * from "./sections/Article";
 export * from "./sections/RelatedPosts";
+export * from "./empty-page/EmptyPage";

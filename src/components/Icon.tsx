@@ -8,7 +8,7 @@ type Prors = {
 const Icon: FC<Prors> = ({ pathImage }) => {
   return (
     <div>
-      <Image width={40} height={40} src={pathImage} alt={""}></Image>
+      <Image width={40} height={40} src={pathImage} alt={"Логотип"}></Image>
     </div>
   );
 };

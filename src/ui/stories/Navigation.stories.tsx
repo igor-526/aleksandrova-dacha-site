@@ -25,10 +25,52 @@ export const Overview: Story = {
     const [page, setPage] = useState(2);
     const [tab, setTab] = useState("rides");
     const links = [
-      { label: "Разведение", href: "/service/breeding" },
+      {
+        label: "Услуги",
+        children: [
+          {
+            label: "Катание",
+            children: [
+              { label: "Прогулки по лесу", href: "/services/rides/forest" },
+              { label: "Выездные маршруты", href: "/services/rides/travel" },
+            ],
+          },
+          { label: "Обучение", href: "/services/lessons" },
+        ],
+      },
+      {
+        label: "Ферма",
+        children: [
+          { label: "Питомцы", href: "/farm/animals" },
+          { label: "Экскурсии", href: "/farm/tours" },
+        ],
+      },
       { label: "О нас", href: "/about" },
-      { label: "Фотографии", href: "/photosession" },
-      { label: "Контакты", href: "/about/contacts" },
+      { label: "Контакты", href: "/contact" },
+    ];
+    const mobileSocials = [
+      { type: "whatsapp", href: "https://wa.me/78123456789", label: "WhatsApp" },
+      { type: "telegram", href: "https://t.me/aleksandrova_dacha", label: "Telegram" },
+      { type: "vk", href: "https://vk.com/aleksandrova_dacha", label: "VK" },
+      { type: "mail", href: "mailto:hello@aleksandrova-dacha.ru", label: "Email" },
+    ];
+    const footerMenus = [
+      {
+        title: "Навигация",
+        links: [
+          { label: "Услуги", href: "/services" },
+          { label: "Ферма", href: "/farm" },
+          { label: "О нас", href: "/about" },
+          { label: "Контакты", href: "/contact" },
+        ],
+      },
+      {
+        title: "Популярное",
+        links: [
+          { label: "Верховые прогулки", href: "#" },
+          { label: "Дни рождения", href: "#" },
+        ],
+      },
     ];
 
     return (
@@ -36,6 +78,9 @@ export const Overview: Story = {
         <Header
           links={links}
           phone="+7 812 345-67-89"
+          mobileSocials={mobileSocials}
+          brandName="Усадьба «Александрова Дача»"
+          brandLogoSrc="/images/Logo.jpg"
           sticky
           transparent={false}
         />
@@ -45,8 +90,8 @@ export const Overview: Story = {
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
-                { label: "Конные прогулки", href: "/horse_riding" },
-                { label: 'Маршрут "Лесной"' },
+                { label: "Маршруты верхом", href: "/horse_riding" },
+                { label: "Лесная прогулка" },
               ]}
             />
           </section>
@@ -55,9 +100,9 @@ export const Overview: Story = {
             <h2 className="font-serif text-2xl">Tabs</h2>
             <Tabs
               items={[
-                { value: "rides", label: "Прогулки" },
+                { value: "rides", label: "Катание" },
                 { value: "lessons", label: "Обучение" },
-                { value: "zoo", label: "Зоопарк" },
+                { value: "zoo", label: "Мини-зоопарк" },
               ]}
               value={tab}
               onValueChange={setTab}
@@ -78,25 +123,13 @@ export const Overview: Story = {
         </main>
 
         <Footer
-          address="Санкт-Петербург, Александрова Дача"
+          address="Ленинградская область, Александрова Дача"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           socials={[
             { label: "VK", href: "https://vk.com" },
             { label: "Telegram", href: "https://t.me" },
           ]}
-          menus={[
-            {
-              title: "Меню",
-              links,
-            },
-            {
-              title: "Информация",
-              links: [
-                { label: "Политика конфиденциальности", href: "#" },
-                { label: "Документы", href: "#" },
-              ],
-            },
-          ]}
+          menus={footerMenus}
         />
       </div>
     );

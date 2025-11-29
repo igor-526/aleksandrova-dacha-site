@@ -1,0 +1,74 @@
+{
+  "id": "b7106e80-5f6f-4f86-8636-3b33db5b661a",
+  "name": "Выезд на финский залив",
+  "slug": "vyezd-na-finskii-zaliv",
+  "description": "Прогулка, купание, фотосессия. В стоимость входит аренда и доставка лошади, услуги инструктора.",
+  "photos": [
+    {
+      "id": "818a7d5c-a3bb-4754-b845-442ed36d302d",
+      "is_main": true,
+      "url": "/mnt/data/59d637be-06d7-4030-9c3f-2012cf1a8501.png"
+    }
+  ],
+  "groups": [
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "name": "Конные прогулки"
+    }
+  ],
+  "created_at": "2025-11-23T07:08:34.139901",
+  "updated_at": "2025-11-23T07:08:34.139901",
+  "page_data": "<p>Выезд на Финский залив: прогулка по пляжу, купание и фотосессия.</p>",
+  "price_tables": [
+    {
+      "columns": [
+        {
+          "key": "option",
+          "title": "Вариант",
+          "annotation": "",
+          "cell_formatter": []
+        },
+        {
+          "key": "price_any",
+          "title": "В любой день",
+          "annotation": "",
+          "cell_formatter": []
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "option": {
+              "value": "Одна лошадь / час",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            "price_any": {
+              "value": "15000 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            }
+          }
+        },
+        {
+          "cells": {
+            "option": {
+              "value": "Дополнительная лошадь",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            "price_any": {
+              "value": "5000 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

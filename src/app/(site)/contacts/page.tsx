@@ -1,5 +1,5 @@
 import { EmptyPage } from "@/ui";
 
-export default function BreedingPage() {
+export default function ContactsPage() {
   return <EmptyPage />;
 }

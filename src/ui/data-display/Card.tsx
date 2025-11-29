@@ -29,21 +29,22 @@ export function Card({
   return (
     <article
       className={cn(
-        "flex h-full flex-col gap-4 rounded-3xl p-6 text-[#2f3600]",
+        "flex h-full flex-col rounded-3xl px-6 py-5 text-[#2f3600]",
         variantMap[variant],
         className
       )}
     >
       {media}
       {(title || content) && (
-        <div className="space-y-2">
+        <div className="flex h-full flex-col justify-between">
           {title && <h3 className="font-serif text-2xl">{title}</h3>}
           {content && (
             <p className="text-sm leading-relaxed text-[#4b4d2f]">{content}</p>
           )}
+          {child}
         </div>
       )}
-      {child}
+
       {actions && <div className="mt-auto pt-2">{actions}</div>}
     </article>
   );

@@ -1,0 +1,94 @@
+{
+  "id": "3a5af492-16cd-4a25-a8ac-9619b59728cc",
+  "name": "Разовое катание на лошади (пони)",
+  "slug": "razovoe-katanie-poni",
+  "description": "В поводу по манежу или парку. Не более 3-х всадников на одного тренера.",
+  "photos": [
+    {
+      "id": "ee600ba4-ef11-4501-85a7-1db3d49cf8d4",
+      "is_main": true,
+      "url": "/mnt/data/c3e93ad1-0e58-4cc1-8858-76010a3e54dc.png"
+    }
+  ],
+  "groups": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "name": "Катание на пони"
+    }
+  ],
+  "created_at": "2025-11-23T07:08:34.139901",
+  "updated_at": "2025-11-23T07:08:34.139901",
+  "page_data": "<p>Разовое катание на пони в поводу по манежу или парку.</p>",
+  "price_tables": [
+    {
+      "columns": [
+        {
+          "key": "duration",
+          "title": "Продолжительность",
+          "annotation": "",
+          "cell_formatter": []
+        },
+        {
+          "key": "weekday",
+          "title": "Будни",
+          "annotation": "",
+          "cell_formatter": []
+        },
+        {
+          "key": "weekend",
+          "title": "Выходные",
+          "annotation": "",
+          "cell_formatter": []
+        }
+      ],
+      "rows": [
+        {
+          "cells": {
+            "duration": {
+              "value": "Прогулка 30 мин",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            "weekday": {
+              "value": "1000 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            },
+            "weekend": {
+              "value": "1200 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            }
+          }
+        },
+        {
+          "cells": {
+            "duration": {
+              "value": "Прогулка 60 мин",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            "weekday": {
+              "value": "1500 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            },
+            "weekend": {
+              "value": "1800 ₽",
+              "annotation": "",
+              "cell_formatter": [
+                "text_bold"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
