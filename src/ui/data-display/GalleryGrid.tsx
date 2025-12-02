@@ -8,7 +8,7 @@ export type GalleryItem = {
 
 export type GalleryGridProps = {
   items: GalleryItem[];
-  columns?: 2 | 3 | 4;
+  columns?: 1 | 2 | 3 | 4;
   onItemClick?: (index: number) => void;
   className?: string;
 };
@@ -22,7 +22,8 @@ export function GalleryGrid({
   return (
     <div
       className={cn(
-        "grid gap-4",
+        "grid gap-4 grid-rows-1",
+        columns === 1 && "grid-cols-1",
         columns === 2 && "sm:grid-cols-2",
         columns === 3 && "sm:grid-cols-2 lg:grid-cols-3",
         columns === 4 && "sm:grid-cols-2 lg:grid-cols-4",

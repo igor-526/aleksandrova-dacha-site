@@ -1,11 +1,15 @@
-import { Services } from "@/types/Services";
-import { get, MOCK_BASE_URL } from "./config";
+const BASE_URL = "https://apidev.aleksandrova-dacha.ru/api/";
 
-const services = {
-  getServices: async (): Promise<Services> => {
-    const url = `${MOCK_BASE_URL}/mock_services.json`;
-    return get<Services>(url);
+export const services = {
+  getServices: async () => {
+    const res = await fetch(`${BASE_URL}price/`);
+    const data = await res.json();
+    return data;
+  },
+
+  getService: async (slug: string) => {
+    const res = await fetch(`${BASE_URL}price/${slug}?tables=true`);
+    const data = await res.json();
+    return data;
   },
 };
-
-export default services;

@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="max-w-7xl m-auto p-0">
+      <body className="p-0">
         <HeaderPage />
         {children}
       </body>

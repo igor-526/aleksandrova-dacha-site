@@ -1,47 +1,51 @@
-export type PricePhotoDto = {
-  id: string;
-  is_main: boolean;
-  url: string;
+import { UUID } from "crypto";
+import { ApiCreatedUpdatedAtType, ApiPaginationType } from "./api";
+import { PhotoOutShortDto } from "./photos";
+import { PriceGroupSimpleOutDto } from "./priceGroups";
+import { TableType } from "./table";
+
+export type PriceAvailableSorting = 'name' | '-name';
+
+export type PriceListQueryParams = ApiPaginationType & {
+    name?: string | string[] | null;
+    description?: string | null;
+    groups?: string | string[] | null;
+    sort?: PriceAvailableSorting[] | null;
 };
 
-export type PriceGroupDto = {
-  id: string;
-  name: string;
+export type PriceQueryParams = {
+    page_data?: boolean | null;
+    tables?: boolean | null;
 };
 
-export type PriceTableCellDto = {
-  value: string;
-  annotation: string;
-  cell_formatter: string[];
+export type PriceOutDto = ApiCreatedUpdatedAtType & {
+    id: UUID;
+    name: string;
+    slug: string;
+    description: string | null;
+    photos: PhotoOutShortDto[];
+    groups: PriceGroupSimpleOutDto[];
+    price_tables?: TableType[];
+    page_data?: string;
 };
 
-export type PriceTableRowDto = {
-  cells: Record<string, PriceTableCellDto>;
+export type PriceCreateInDto = {
+    name: string;
+    description?: string;
+    groups: UUID[];
+    page_data?: string;
+    price_tables?: TableType[];
 };
 
-export type PriceTableColumnDto = {
-  key: string;
-  title: string;
-  annotation: string;
-  cell_formatter: string[];
+export type PriceUpdateInDto = {
+    name?: string;
+    description?: string;
+    groups?: UUID[];
+    page_data?: string;
+    price_tables?: TableType[];
 };
 
-export type PriceTableDto = {
-  columns: PriceTableColumnDto[];
-  rows: PriceTableRowDto[];
+export type PricePhotosUpdateInDto = {
+    photo_ids?: UUID[];
+    main?: UUID;
 };
-
-export type PriceServiceDto = {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  photos: PricePhotoDto[];
-  groups: PriceGroupDto[];
-  created_at: string;
-  updated_at: string;
-  page_data: string;
-  price_tables: PriceTableDto[];
-};
-
-export type PriceServiceListDto = PriceServiceDto[];

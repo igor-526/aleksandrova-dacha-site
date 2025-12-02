@@ -36,3 +36,38 @@ export const Outlined: Story = {
     variant: "outlined",
   },
 };
+
+export const MediaCustomSize: Story = {
+  args: {
+    media: (
+      <div className="h-full w-full rounded-2xl bg-[#c9b585]" />
+    ),
+    classNameMedia: "h-48 w-full",
+    content: "Медиа блок с кастомными размерами через classNameMedia.",
+  },
+};
+
+const sideMedia = (
+  <div
+    className="h-32 w-40 shrink-0 rounded-2xl bg-cover bg-center"
+    style={{ backgroundImage: "url(/images/home-img.jpg)" }}
+  />
+);
+
+export const MediaLeft: Story = {
+  args: {
+    media: sideMedia,
+    mediaPosition: "left",
+    content:
+      "Краткое описание услуги с текстом, показывающим как карточка выглядит при боковом размещении изображения.",
+  },
+};
+
+export const MediaRight: Story = {
+  args: {
+    media: sideMedia,
+    mediaPosition: "right",
+    content:
+      "Тот же текст, но медиа-блок расположен справа. Заголовок остаётся сверху, как и требовалось.",
+  },
+};

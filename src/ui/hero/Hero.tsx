@@ -35,7 +35,7 @@ export function Hero({
     <section
       className={cn(
         "relative isolate overflow-hidden rounded-[32px] border border-white/30 bg-[#f6efe0] shadow-lg",
-        className,
+        className
       )}
     >
       <div className="absolute inset-0 -z-10">
@@ -52,8 +52,8 @@ export function Hero({
 
       <div
         className={cn(
-          "relative flex flex-col items-center gap-6 px-6 py-16 text-center text-[#2f3600] sm:px-10 sm:py-20",
-          align === "left" && "items-start text-left",
+          "relative flex flex-col items-center gap-4 px-6 py-10 text-center text-[#2f3600] sm:px-10 sm:py-16",
+          align === "left" && "items-start text-left"
         )}
       >
         {subtitle && (
@@ -69,7 +69,11 @@ export function Hero({
             {description}
           </p>
         )}
-        {cta && <div className="flex flex-wrap items-center justify-center gap-4">{cta}</div>}
+        {cta && (
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {cta}
+          </div>
+        )}
       </div>
     </section>
   );

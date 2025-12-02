@@ -1,5 +1,7 @@
-import { EmptyPage } from "@/ui";
+import CarriagesPage from "@/components/Services/Rental/Carriages/CarriagesPage";
 
-export default function ServicesRentalCarriagesPage() {
-  return <EmptyPage />;
-}
+const ServicesRentalCarriages = () => {
+  return <CarriagesPage />;
+};
+
+export default ServicesRentalCarriages;

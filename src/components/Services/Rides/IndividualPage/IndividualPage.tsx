@@ -1,8 +1,8 @@
 import { AboutTeaser, Container, Hero } from "@/ui";
 
-import { ServicesList } from "../ServicesList";
 import { dataTextAboutTeaser, services } from "./dataPrice";
 import { dataTheory } from "./dataIndividualPage";
+import { ServicesList } from "../../ServicesList";
 
 const IndividualPage = () => {
   return (
@@ -13,12 +13,15 @@ const IndividualPage = () => {
           subtitle="Александрова дача"
           description="(индивидуальные занятия и занятия в небольших группах)"
           backgroundImage={{
-            src: "/images/services/riding/riding.jpg",
+            src: "/images/services/rides/individual/individual.jpg",
             alt: "desc",
           }}
         />
         <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
-        <ServicesList items={services} />
+        <ServicesList
+          items={services}
+          classNameMedia="relative h-30 overflow-hidden rounded-2xl"
+        />
         <div className="mb-25">
           <h3>{dataTheory.title}</h3>
           {dataTheory.paragraphs.map((paragraph, index) => (

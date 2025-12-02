@@ -1,4 +1,4 @@
-import { ServiceCardProps } from "../ServiceCard";
+import { ServiceCardProps } from "../../ServiceCard";
 
 export const services: ServiceCardProps[] = [
   {
@@ -103,7 +103,7 @@ export const services: ServiceCardProps[] = [
   },
   {
     id: 5,
-    name: "Конная прогулка в полях",
+    name: "Маршрут для опытных всадников",
     description:
       "Не менее 2-х всадников. Шаг, рысь, галоп, преодоление канав и водных препятствий",
     image: "/images/services/rides/tours/tour5.jpg",
