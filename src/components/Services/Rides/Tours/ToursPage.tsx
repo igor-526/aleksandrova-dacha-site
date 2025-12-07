@@ -1,24 +1,49 @@
-import { AboutTeaser, Container, Hero } from "@/ui";
-import { dataTextAboutTeaser, services } from "./dataPrice";
+import {
+  AboutTeaser,
+  Article,
+  BookingSection,
+  Container,
+  Hero,
+  SafetyNotice,
+} from "@/ui";
+import {
+  dataArticle,
+  dataBookingSection,
+  dataHero,
+  dataSafetyNoticeItems,
+  dataTextAboutTeaser,
+} from "./dataTours";
 import { ServicesList } from "../../ServicesList";
+import dataPrice from "./dataPriceApi";
 
 const ToursPage = () => {
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <Hero
-          title={"Конные прогулки"}
-          subtitle="Александрова дача"
-          backgroundImage={{
-            src: "/images/services/rides/tours/tour.jpg",
-            alt: "desc",
-          }}
-        />
-        <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
+        <Hero {...dataHero} />
+
+        <div className="grid gap-4 lg:grid-cols-4">
+          <AboutTeaser
+            {...dataTextAboutTeaser}
+            className="col-span-2"
+          ></AboutTeaser>
+          <div className="grid gap-4 col-span-2 sm:grid-cols-2">
+            {dataSafetyNoticeItems.map((item, index) => (
+              <SafetyNotice key={index} {...item} />
+            ))}
+          </div>
+        </div>
+
+        <Article {...dataArticle} />
+
         <ServicesList
-          items={services}
-          classNameMedia="relative h-30 overflow-hidden rounded-2xl"
+          items={dataPrice}
+          mediaWidth={"full"}
+          mediaHeight={"150px"}
+          maxCardWidth={"450px"}
         />
+
+        <BookingSection {...dataBookingSection} />
       </Container>
     </div>
   );

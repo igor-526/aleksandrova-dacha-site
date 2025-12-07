@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { TableType } from "@/types/table";
 import { Card } from "../data-display/Card";
 import { PriceCard } from "../data-display/PriceCard";
 import { PersonCard } from "../data-display/PersonCard";
@@ -21,6 +22,37 @@ const meta: Meta = {
 export default meta;
 
 type Story = StoryObj;
+
+const dataTableSample: TableType = {
+  columns: [
+    { key: "service", title: "Service", annotation: "What you get", cell_formatter: [] },
+    { key: "weekday", title: "Weekday", annotation: "Mon–Fri", cell_formatter: [] },
+    { key: "weekend", title: "Weekend", annotation: "Sat–Sun", cell_formatter: [] },
+  ],
+  rows: [
+    {
+      cells: {
+        service: { value: "Ride 30 min", annotation: "Short warm-up", cell_formatter: [] },
+        weekday: { value: "1 000 ₽", annotation: "Base price", cell_formatter: ["text_bold"] },
+        weekend: { value: "1 200 ₽", annotation: "Weekend surcharge", cell_formatter: [] },
+      },
+    },
+    {
+      cells: {
+        service: { value: "Ride 60 min", annotation: "", cell_formatter: [] },
+        weekday: { value: "1 500 ₽", annotation: "", cell_formatter: ["text_bold"] },
+        weekend: { value: "1 800 ₽", annotation: "", cell_formatter: [] },
+      },
+    },
+    {
+      cells: {
+        service: { value: "Trail lesson", annotation: "", cell_formatter: [] },
+        weekday: { value: "2 000 ₽", annotation: "", cell_formatter: ["text_bold"] },
+        weekend: { value: "2 300 ₽", annotation: "", cell_formatter: [] },
+      },
+    },
+  ],
+};
 
 export const Overview: Story = {
   render: () => (
@@ -120,27 +152,9 @@ export const Overview: Story = {
 
       <section>
         <h3 className="mb-3 font-serif text-2xl">DataTable</h3>
-        <DataTable
-          columns={[
-            { key: "service", title: "Услуга" },
-            { key: "weekday", title: "Будни", align: "right" },
-            { key: "weekend", title: "Выходные", align: "right" },
-          ]}
-          rows={[
-            {
-              service: "Прогулка 30 мин",
-              weekday: "1 000 ₽",
-              weekend: "1 200 ₽",
-            },
-            {
-              service: "Прогулка 60 мин",
-              weekday: "1 500 ₽",
-              weekend: "1 800 ₽",
-            },
-            { service: "Фотосессия", weekday: "3 500 ₽", weekend: "4 000 ₽" },
-          ]}
-        />
+        <DataTable item={dataTableSample} />
       </section>
     </div>
   ),
 };
+

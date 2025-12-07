@@ -1,38 +1,55 @@
-import { AboutTeaser, Container, Hero } from "@/ui";
-
-import { dataTextAboutTeaser, services } from "./dataPrice";
-import { dataTheory } from "./dataIndividualPage";
+import {
+  AboutTeaser,
+  Article,
+  BookingSection,
+  Container,
+  Hero,
+  Mission,
+  SafetyNotice,
+} from "@/ui";
+import {
+  dataArticle,
+  dataBookingSection,
+  dataHero,
+  dataMission,
+  dataSafetyNoticeItems,
+  dataTextAboutTeaser,
+} from "./dataIndividualPage";
 import { ServicesList } from "../../ServicesList";
+import dataPrice from "./dataPriceApi";
 
 const IndividualPage = () => {
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <Hero
-          title={"Обучение верховой езде"}
-          subtitle="Александрова дача"
-          description="(индивидуальные занятия и занятия в небольших группах)"
-          backgroundImage={{
-            src: "/images/services/rides/individual/individual.jpg",
-            alt: "desc",
-          }}
-        />
-        <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
-        <ServicesList
-          items={services}
-          classNameMedia="relative h-30 overflow-hidden rounded-2xl"
-        />
-        <div className="mb-25">
-          <h3>{dataTheory.title}</h3>
-          {dataTheory.paragraphs.map((paragraph, index) => (
-            <p
-              key={index}
-              className="mt2 text-base leading-relaxed text-[#4b4d2f]"
-            >
-              {paragraph}
-            </p>
-          ))}
+        <Hero {...dataHero} />
+
+        <div className="grid gap-4 lg:grid-cols-4">
+          <AboutTeaser
+            {...dataTextAboutTeaser}
+            className="col-span-2"
+          ></AboutTeaser>
+          <div className="grid gap-4 col-span-2 sm:grid-cols-2">
+            {dataSafetyNoticeItems.map((item, index) => (
+              <SafetyNotice key={index} {...item} />
+            ))}
+          </div>
         </div>
+
+        <Article {...dataArticle} />
+
+        <ServicesList
+          items={dataPrice}
+          mediaPosition="left"
+          mediaWidth={"1/3"}
+          mediaHeight={"full"}
+          classNameMedia="relative w-1/3 h-full overflow-hidden rounded-2xl"
+          columns={2}
+        />
+
+        <Mission {...dataMission} />
+
+        <BookingSection {...dataBookingSection} />
       </Container>
     </div>
   );

@@ -8,9 +8,10 @@ import {
 } from "@/ui";
 import { QuickServices } from "../../ui/quick-services/QuickServices";
 import {
+  dataGallerySection,
+  dataHero,
   dataMission,
   dataText,
-  itemsGallery,
   itemsServices,
 } from "./dataHomePage";
 
@@ -18,15 +19,9 @@ const HomePage = () => {
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <Hero
-          title={"Александрова Дача"}
-          backgroundImage={{ src: "/images/home-img1.jpg", alt: "desc" }}
-          subtitle={"конно-спортивный клуб"}
-          description="Проведите незабываемый день на нашей конюшне: познакомьтесь с животными, прокатитесь верхом и насладитесь природой."
-          cta={<Button variant="primary">Записаться на прогулку</Button>}
-        />
+        <Hero {...dataHero} />
         <QuickServices items={itemsServices} className="mb-25" />
-        <GallerySection title="Зимние услуги" items={itemsGallery} />
+        <GallerySection {...dataGallerySection} />
         <div className="mb-25">
           {dataText.map((paragraph, index) => (
             <p

@@ -82,7 +82,7 @@ export function BookingForm({
   return (
     <form
       className={cn(
-        "grid gap-5 rounded-3xl border border-[#d3c6aa] bg-[#f8f2e4] p-6 shadow-[var(--shadow-soft,0_12px_28px_rgba(56,64,0,0.1))]",
+        "grid gap-5 rounded-3xl border border-[#d3c6aa] bg-[#f9e0a2]/40 p-6 shadow-[var(--shadow-soft,0_12px_28px_rgba(56,64,0,0.1))]",
         className
       )}
       onSubmit={handleSubmit}

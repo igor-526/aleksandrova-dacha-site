@@ -47,6 +47,21 @@ export const MediaCustomSize: Story = {
   },
 };
 
+export const MediaSizedProps: Story = {
+  args: {
+    media: (
+      <div
+        className="h-full w-full rounded-2xl bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/home-img.jpg)" }}
+      />
+    ),
+    mediaPosition: "left",
+    mediaWidth: "1/3",
+    mediaHeight: "300px",
+    content: "Пример с размерами медиа через mediaWidth/mediaHeight: ширина 1/3, высота 300px.",
+  },
+};
+
 const sideMedia = (
   <div
     className="h-32 w-40 shrink-0 rounded-2xl bg-cover bg-center"

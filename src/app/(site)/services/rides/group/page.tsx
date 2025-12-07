@@ -1,5 +1,5 @@
-import { EmptyPage } from "@/ui";
+import GroupPage from "@/components/Services/Rides/Group/GroupPage";
 
 export default function ServicesRidesGroupPage() {
-  return <EmptyPage />;
+  return <GroupPage />;
 }

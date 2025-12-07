@@ -1,6 +1,7 @@
 import { AboutTeaser, Container, Hero } from "@/ui";
-import { dataTextAboutTeaser, services } from "./dataPrice";
+import { dataTextAboutTeaser } from "./dataPrice";
 import { ServicesList } from "../../ServicesList";
+import dataPrice from "./dataPriceApi";
 
 const CarriagesPage = () => {
   return (
@@ -16,9 +17,12 @@ const CarriagesPage = () => {
         />
         <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
         <ServicesList
-          items={services}
+          items={dataPrice}
           mediaPosition="left"
-          classNameMedia="relative w-1/3 h-full overflow-hidden rounded-2xl"
+          mediaHeight="full"
+          mediaWidth="1/3"
+          classNameMedia=""
+          gallery={true}
           columns={2}
         />
       </Container>

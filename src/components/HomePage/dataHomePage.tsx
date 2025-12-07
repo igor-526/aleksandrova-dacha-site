@@ -1,5 +1,20 @@
-import { MissionProps, QuickServicesProps } from "@/ui";
+import {
+  Button,
+  GallerySectionProps,
+  HeroProps,
+  MissionProps,
+  QuickServicesProps,
+} from "@/ui";
 import Icon from "../Icon";
+
+export const dataHero: HeroProps = {
+  title: "Александрова Дача",
+  backgroundImage: { src: "/images/home-img1.jpg", alt: "desc" },
+  subtitle: "конно-спортивный клуб",
+  description:
+    "Проведите незабываемый день на нашей конюшне: познакомьтесь с животными, прокатитесь верхом и насладитесь природой.",
+  cta: <Button variant="primary">Записаться на прогулку</Button>,
+};
 
 export const itemsServices: QuickServicesProps["items"] = [
   {
@@ -36,18 +51,21 @@ export const itemsServices: QuickServicesProps["items"] = [
   },
 ];
 
-export const itemsGallery = [
-  { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
-  { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
-  { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
-];
+export const dataGallerySection: GallerySectionProps = {
+  title: "Зимние услуги",
+  items: [
+    { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
+    { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
+    { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
+  ],
+};
 
 export const dataText = [
-  "💥 Аренда животных на Новогодние мероприятия",
-  "💥 Фотосессии",
-  "💥 Поздравление Деда Мороза с катанием на лошадях, пони и северных оленях",
-  "💥 Катания на русской тройке (лошади или пони)",
-  "💥 Аренда саней, карет и тележек, запряжённых лошадьми, пони или северным оленем",
+  "❄ Аренда животных на Новогодние мероприятия",
+  "🌲Фотосессии",
+  "❄ Поздравление Деда Мороза с катанием на лошадях, пони и северных оленях",
+  "🌲 Катания на русской тройке (лошади или пони)",
+  "❄ Аренда саней, карет и тележек, запряжённых лошадьми, пони или северным оленем",
 ];
 
 export const dataMission: MissionProps = {

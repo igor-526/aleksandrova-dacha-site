@@ -1,16 +1,16 @@
-import { DataTable, type DataColumn, type DataTableProps } from "../data-display/DataTable";
+import type { TableType } from "@/types/table";
+import { DataTable } from "../data-display/DataTable";
 import { cn } from "../utils/cn";
 
 export type PricingTableProps = {
-  columns: DataColumn[];
-  rows: DataTableProps["rows"];
+  item: TableType;
   className?: string;
 };
 
-export function PricingTable({ columns, rows, className }: PricingTableProps) {
+export function PricingTable({ item, className }: PricingTableProps) {
   return (
     <section className={cn("rounded-3xl border border-[#d3c6aa] bg-white p-4", className)}>
-      <DataTable columns={columns} rows={rows} responsive={true} />
+      <DataTable item={item} responsive={true} />
     </section>
   );
 }

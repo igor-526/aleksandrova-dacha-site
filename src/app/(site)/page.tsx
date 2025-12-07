@@ -1,6 +1,6 @@
 import HomePage from "@/components/HomePage/HomePage";
 
-const Home = () => {
+const Home = async () => {
   return <HomePage />;
 };
 
