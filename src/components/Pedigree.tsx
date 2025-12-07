@@ -1,18 +1,15 @@
 import { Table, TableBody, TableCell, TableRow } from "flowbite-react";
-import horses from "@/api/horses";
-import type { Horse } from "@/types/Horses";
 
 interface Props {
   id: number;
 }
 
 export default async function Pedigree({ id }: Props) {
-  const data: Horse = await horses.getHorse(id);
-  const pedigree = data.pedigree;
-
+  // const data: Horse = await horses.getHorse(id);
+  // const pedigree = data.pedigree;
   return (
     <div className="w-full">
-      <Table>
+      {/* <Table>
         <TableBody className="divide-x">
           <TableRow>
             <TableCell rowSpan={4} className="bg-amber-200">
@@ -65,7 +62,7 @@ export default async function Pedigree({ id }: Props) {
             <TableCell>{pedigree?.dame?.dame?.dame?.name ?? "—"}</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table> */}
     </div>
   );
 }

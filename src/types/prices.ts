@@ -6,6 +6,13 @@ import { TableType } from "./table";
 
 export type PriceAvailableSorting = 'name' | '-name';
 
+export enum PriceFormatter {
+    equal = 'equal',
+    gt = 'gt',
+    lt = 'lt',
+    discuss = 'discuss',
+}
+
 export type PriceListQueryParams = ApiPaginationType & {
     name?: string | string[] | null;
     description?: string | null;
@@ -15,7 +22,6 @@ export type PriceListQueryParams = ApiPaginationType & {
 
 export type PriceQueryParams = {
     page_data?: boolean | null;
-    tables?: boolean | null;
 };
 
 export type PriceOutDto = ApiCreatedUpdatedAtType & {
@@ -25,27 +31,6 @@ export type PriceOutDto = ApiCreatedUpdatedAtType & {
     description: string | null;
     photos: PhotoOutShortDto[];
     groups: PriceGroupSimpleOutDto[];
-    price_tables?: TableType[];
+    price_tables: TableType[];
     page_data?: string;
-};
-
-export type PriceCreateInDto = {
-    name: string;
-    description?: string;
-    groups: UUID[];
-    page_data?: string;
-    price_tables?: TableType[];
-};
-
-export type PriceUpdateInDto = {
-    name?: string;
-    description?: string;
-    groups?: UUID[];
-    page_data?: string;
-    price_tables?: TableType[];
-};
-
-export type PricePhotosUpdateInDto = {
-    photo_ids?: UUID[];
-    main?: UUID;
 };

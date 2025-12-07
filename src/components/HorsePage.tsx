@@ -1,22 +1,20 @@
 import { Card } from "flowbite-react";
-import { Horse } from "@/types/Horses";
-import horses from "@/api/horses";
 import { FC } from "react";
 import { Table, TableBody, TableCell, TableRow } from "flowbite-react";
 
 type Prors = { id: number };
 
 const HorsePage: FC<Prors> = async ({ id }: Prors) => {
-  const getData = async (): Promise<Horse> => {
-    const data = await horses.getHorse(id);
-    return data;
-  };
+  // const getData = async (): Promise<Horse> => {
+  //   const data = await horses.getHorse(id);
+  //   return data;
+  // };
 
-  const data = await getData();
+  // const data = await getData();
 
   return (
     <div>
-      <Card
+      {/* <Card
         href="#"
         className="max-w-sm mb-3"
         imgAlt="Meaningful alt text for an image that is not purely decorative"
@@ -29,10 +27,10 @@ const HorsePage: FC<Prors> = async ({ id }: Prors) => {
         <p className="font-normal text-gray-700 dark:text-gray-400">
           {data.description}
         </p>
-      </Card>
+      </Card> */}
       <div className="w-full">
         <h2>Родословная</h2>
-        <Table>
+        {/* <Table>
           <TableBody className="divide-x">
             <TableRow>
               <TableCell rowSpan={4} className="bg-orange-300">
@@ -87,7 +85,7 @@ const HorsePage: FC<Prors> = async ({ id }: Prors) => {
               <TableCell>{data.pedigree?.dame?.dame?.dame?.name}</TableCell>
             </TableRow>
           </TableBody>
-        </Table>
+        </Table> */}
       </div>
     </div>
   );

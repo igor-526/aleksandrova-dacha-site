@@ -1,20 +1,17 @@
-import horses from "@/api/horses";
-import { Horses } from "@/types/Horses";
-
 import { ReactElement } from "react";
 import CardHorse from "./CardHorse";
 
-const getData = async (): Promise<Horses> => {
-  const data = await horses.getHorses();
-  return data;
-};
+// const getData = async (): Promise<Horses> => {
+//   const data = await horses.getHorses();
+//   return data;
+// };
 
 const HorseList = async (): Promise<ReactElement> => {
-  const data = await getData();
+  // const data = await getData();
 
   return (
     <div>
-      <ul className="flex flex-wrap justify-between">
+      {/* <ul className="flex flex-wrap justify-between">
         {data.map((item) => {
           return (
             <li key={item.id} className="mb-5">
@@ -31,7 +28,7 @@ const HorseList = async (): Promise<ReactElement> => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };

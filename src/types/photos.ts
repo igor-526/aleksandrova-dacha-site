@@ -22,15 +22,3 @@ export type PhotoOutDto = ApiCreatedUpdatedAtType & {
     path: string;
     url: string;
 };
-
-export type PhotoCreateInDto = {
-    name?: string;
-    description?: string;
-    file: File;
-};
-
-export type PhotoUpdateInDto = {
-    name?: string;
-    description?: string;
-    file?: File;
-};

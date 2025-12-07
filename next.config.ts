@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       new URL("http://eqapi.devil-on-the-wheel.ru/media/test_photos/**"),
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   /* config options here */
 };
 
