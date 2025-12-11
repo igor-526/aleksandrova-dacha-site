@@ -22,7 +22,7 @@ export function GalleryGrid({
   return (
     <div
       className={cn(
-        "grid gap-4 grid-rows-1",
+        "w-full h-full grid gap-4 grid-rows-1 ",
         columns === 1 && "grid-cols-1",
         columns === 2 && "sm:grid-cols-2",
         columns === 3 && "sm:grid-cols-2 lg:grid-cols-3",
@@ -34,7 +34,7 @@ export function GalleryGrid({
         <button
           type="button"
           key={item.src}
-          className="group relative h-48 overflow-hidden rounded-2xl"
+          className="group relative h-full w-full overflow-hidden rounded-2xl"
           onClick={() => onItemClick?.(index)}
         >
           <Image
@@ -42,7 +42,7 @@ export function GalleryGrid({
             alt={item.alt ?? ""}
             fill
             sizes="(min-width:1024px) 25vw, (min-width:768px) 35vw, 90vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </button>
       ))}

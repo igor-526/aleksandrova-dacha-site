@@ -1,69 +1,85 @@
-import {
-  Card,
-  DataTable,
-  DataTableProps,
-  GalleryGridProps,
-  GallerySection,
-} from "@/ui";
-import Image from "next/image";
-import { ReactNode } from "react";
+import { cn } from "@/ui";
 
 export type ServiceCardProps = {
-  id: number;
-  name: string;
-  description?: string;
-  image?: string;
-  images?: GalleryGridProps["items"];
-  mediaPosition?: "top" | "left" | "right";
-  classNameMedia?: string;
-  price?: number | string;
-  tablePrice?: DataTableProps;
+  title?: string;
+  content?: string;
+  media?: React.ReactNode;
+  mediaPosition?: "top" | "left";
+  actions?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
 };
 
-export function ServiceCard({
-  id,
-  name,
-  description,
-  image,
-  images = [],
+const ServiceCard = ({
+  title,
+  content,
+  media,
   mediaPosition = "top",
-  classNameMedia,
-  price,
-  tablePrice,
-}: ServiceCardProps) {
-  let children: ReactNode = null;
-  if (price) {
-    children = <div className="font-serif text-2xl">{price} ₽</div>;
-  }
-  if (tablePrice) {
-    children = <DataTable {...tablePrice} />;
-  }
-  return (
-    <div key={id}>
-      <Card
-        key={id}
-        title={name}
-        content={description}
-        variant={"default"}
-        media={
-          <div>
-            {image && (
-              <Image
-                src={image || "/images/default-service.jpg"}
-                alt={"description"}
-                fill
-                sizes="(min-width:768px) 600px, 100vw, 100vh"
-                className="object-cover"
-              />
-            )}
-            {images && <GallerySection items={images} columns={1} />}
-          </div>
-        }
-        mediaPosition={mediaPosition}
-        classNameMedia={classNameMedia}
-      >
-        {children}
-      </Card>
+  actions,
+  children,
+  className,
+}: ServiceCardProps) => {
+  const articleClasses = [
+    "rounded-3xl",
+    "px-6 py-5",
+    "text-[#2f3600]",
+    "border border-[#bcc76e]",
+    "grid gap-4",
+  ];
+
+  const contentBlock = (
+    <div className={cn(" h-full flex flex-col justify-between")}>
+      {(title || content) && (
+        <div className="space-y-1.5 mb-1.5">
+          {title && <h3 className="font-serif text-xl">{title}</h3>}
+          {content && (
+            <p className="text-sm leading-relaxed text-[#4b4d2f]">{content}</p>
+          )}
+        </div>
+      )}
+
+      {children && <div className="mt-auto">{children}</div>}
+      {actions && <div className="mt-auto">{actions}</div>}
     </div>
   );
-}
+
+  return mediaPosition === "top" ? (
+    <article
+      className={cn(
+        ...articleClasses,
+        "grid-rows-3 justify-stretch items-stretch",
+        className
+      )}
+    >
+      <div className="row-span-1">{media}</div>
+      <div className="row-span-2">{contentBlock}</div>
+    </article>
+  ) : (
+    mediaPosition === "left" && (
+      <>
+        <article
+          className={cn(
+            ...articleClasses,
+            "hidden sm:grid grid-cols-3 justify-stretch items-stretch",
+            className
+          )}
+        >
+          <div className="col-span-1">{media}</div>
+          <div className="col-span-2">{contentBlock}</div>
+        </article>
+
+        <article
+          className={cn(
+            ...articleClasses,
+            "sm:hidden grid grid-rows-3 justify-stretch items-stretch",
+            className
+          )}
+        >
+          <div className="row-span-1">{media}</div>
+          <div className="row-span-2">{contentBlock}</div>
+        </article>
+      </>
+    )
+  );
+};
+export default ServiceCard;

@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GalleryGrid, type GalleryGridProps } from "../data-display/GalleryGrid";
+import {
+  GalleryGrid,
+  type GalleryGridProps,
+} from "../data-display/GalleryGrid";
 import { Lightbox } from "../overlays/Lightbox";
 import { cn } from "../utils/cn";
 
@@ -12,7 +15,12 @@ export type GallerySectionProps = {
   className?: string;
 };
 
-export function GallerySection({ title, items, columns, className }: GallerySectionProps) {
+export function GallerySection({
+  title,
+  items,
+  columns,
+  className,
+}: GallerySectionProps) {
   const [index, setIndex] = useState<number | null>(null);
   const [visibleColumns, setVisibleColumns] = useState(1);
 
@@ -26,7 +34,8 @@ export function GallerySection({ title, items, columns, className }: GallerySect
   };
 
   useEffect(() => {
-    const handleResize = () => setVisibleColumns(resolveColumns(window.innerWidth));
+    const handleResize = () =>
+      setVisibleColumns(resolveColumns(window.innerWidth));
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

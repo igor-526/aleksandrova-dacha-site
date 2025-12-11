@@ -13,8 +13,9 @@ import {
   dataSafetyNoticeItems,
   dataTextAboutTeaser,
 } from "./dataTours";
-import { ServicesList } from "../../ServicesList";
+
 import dataPrice from "./dataPriceApi";
+import MyServicesList from "../../MyServicesList";
 
 const ToursPage = () => {
   return (
@@ -36,11 +37,11 @@ const ToursPage = () => {
 
         <Article {...dataArticle} />
 
-        <ServicesList
+        <MyServicesList
           items={dataPrice}
-          mediaWidth={"full"}
-          mediaHeight={"150px"}
-          maxCardWidth={"450px"}
+          mediaPosition="left"
+          columns={2}
+          gallery
         />
 
         <BookingSection {...dataBookingSection} />

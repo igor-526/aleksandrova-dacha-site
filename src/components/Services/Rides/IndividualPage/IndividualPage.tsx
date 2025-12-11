@@ -15,8 +15,8 @@ import {
   dataSafetyNoticeItems,
   dataTextAboutTeaser,
 } from "./dataIndividualPage";
-import { ServicesList } from "../../ServicesList";
 import dataPrice from "./dataPriceApi";
+import MyServicesList from "../../MyServicesList";
 
 const IndividualPage = () => {
   return (
@@ -38,13 +38,11 @@ const IndividualPage = () => {
 
         <Article {...dataArticle} />
 
-        <ServicesList
+        <MyServicesList
           items={dataPrice}
           mediaPosition="left"
-          mediaWidth={"1/3"}
-          mediaHeight={"full"}
-          classNameMedia="relative w-1/3 h-full overflow-hidden rounded-2xl"
           columns={2}
+          gallery
         />
 
         <Mission {...dataMission} />

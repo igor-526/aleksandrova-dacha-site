@@ -21,7 +21,9 @@ const HomePage = () => {
       <Container className="space-y-12">
         <Hero {...dataHero} />
         <QuickServices items={itemsServices} className="mb-25" />
+
         <GallerySection {...dataGallerySection} />
+
         <div className="mb-25">
           {dataText.map((paragraph, index) => (
             <p

@@ -22,12 +22,15 @@ export function ServicesList({
   classNameMedia,
   columns = 3,
   gallery = false,
-  mediaWidth,
+  mediaWidth = "1/3",
   mediaHeight,
-  maxCardWidth,
+  maxCardWidth = "450px",
 }: ServicesListProps) {
   const maxWidthStyle = maxCardWidth
-    ? { maxWidth: typeof maxCardWidth === "number" ? `${maxCardWidth}px` : maxCardWidth }
+    ? {
+        maxWidth:
+          typeof maxCardWidth === "number" ? `${maxCardWidth}px` : maxCardWidth,
+      }
     : undefined;
 
   return (
@@ -55,7 +58,11 @@ export function ServicesList({
           const coverUrl = photos[0]?.url;
 
           return (
-            <div key={index} className="flex h-full w-full mx-auto" style={maxWidthStyle}>
+            <div
+              key={index}
+              className="flex h-full w-full mx-auto"
+              style={maxWidthStyle}
+            >
               <Card
                 className="h-full w-full"
                 title={item.name}

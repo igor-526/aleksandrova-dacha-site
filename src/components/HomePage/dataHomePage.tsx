@@ -52,7 +52,8 @@ export const itemsServices: QuickServicesProps["items"] = [
 ];
 
 export const dataGallerySection: GallerySectionProps = {
-  title: "Зимние услуги",
+  columns: 3,
+  className: "w-full h-[150px] sm:h-[200px]",
   items: [
     { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
     { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
