@@ -1,5 +1,5 @@
 import { AboutTeaser, Container, GallerySection, Hero } from "@/ui";
-import { dataTextAboutTeaser, imagesGroup } from "./dataGroup";
+import { dataAboutTeaser, dataGallerySection } from "./dataGroup";
 import dataPrice from "./dataPriceApi";
 import MyServicesList from "../../MyServicesList";
 
@@ -15,14 +15,10 @@ const GroupPage = () => {
             alt: "desc",
           }}
         />
-        <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
-        <GallerySection items={imagesGroup} columns={3} />
-        <MyServicesList
-          items={dataPrice}
-          mediaPosition="left"
-          columns={2}
-          gallery
-        />
+        <AboutTeaser {...dataAboutTeaser}></AboutTeaser>
+
+        <MyServicesList items={dataPrice} columns={2} />
+        <GallerySection {...dataGallerySection} />
       </Container>
     </div>
   );

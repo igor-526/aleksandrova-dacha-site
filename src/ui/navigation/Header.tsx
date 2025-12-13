@@ -252,20 +252,21 @@ export function Header({
                   >
                       <div className="rounded-2xl border border-[#e6d8bc] bg-[#f8f2e4] p-4 shadow-xl shadow-black/10">
                         <ul className="space-y-3">
-                          {link.children!.map((child) => {
-                            const childHasChildren = Boolean(
-                              child.children?.length
-                            );
-                            const childKey = `${key}-${
-                              child.href || child.label
-                            }`;
-                            const isSubmenuExpanded =
-                              expandedSubmenus[childKey] ?? false;
-                            return (
-                              <li
-                                key={child.href || child.label}
-                                className="group"
-                              >
+                        {link.children!.map((child, childIndex) => {
+                          const childHasChildren = Boolean(
+                            child.children?.length
+                          );
+                          const childKey = `${key}-${
+                            child.href || child.label
+                          }`;
+                          const isSubmenuExpanded =
+                            expandedSubmenus[childKey] ??
+                            (childHasChildren && isOpen && childIndex === 0);
+                          return (
+                            <li
+                              key={child.href || child.label}
+                              className="group"
+                            >
                                 <div className="flex items-start justify-between gap-2">
                                   {childHasChildren ? (
                                     <button
@@ -326,18 +327,7 @@ export function Header({
               );
             })}
           </nav>
-          <div className="hidden items-center gap-4 md:flex">
-            {phone && (
-              <Link
-                href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-                className="flex items-center gap-2 text-sm font-medium text-[#2f3600]"
-              >
-                <Icon name="phone" width={18} height={18} />
-                {phone}
-              </Link>
-            )}
-            {renderCta()}
-          </div>
+        <div className="hidden items-center gap-4 md:flex">{renderCta()}</div>
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d3c6aa] text-[#2f3600] md:hidden"

@@ -1,5 +1,6 @@
 import { HeaderProps } from "@/ui";
 import { FeedbackForm } from "../Services/FeedbackForm";
+import { getSetting } from "../site_settings";
 
 export const dataHeader: HeaderProps = {
   links: [
@@ -58,23 +59,17 @@ export const dataHeader: HeaderProps = {
     { label: "Контакты", href: "/contacts" },
   ],
   mobileSocials: [
-    { type: "whatsapp", href: "https://wa.me/79811555444", label: "WhatsApp" },
-    {
-      type: "telegram",
-      href: "https://t.me/aleksandrova_dacha",
-      label: "Telegram",
-    },
-    { type: "vk", href: "https://vk.com/aleksandrova_dacha", label: "VK" },
+    { type: "vk", href: getSetting("vk"), label: "VK" },
     {
       type: "mail",
-      href: "mailto:hello@aleksandrova-dacha.ru",
+      href: `mailto:${getSetting("mail")}`,
       label: "Email",
     },
   ],
+  phone: getSetting("tel"),
   brandName: "",
   brandLogoSrc: "/images/Logo.jpg",
   brandHref: "/",
-  phone: "+7 (123) 456-78-90",
   sticky: true,
   transparent: false,
   className: "",

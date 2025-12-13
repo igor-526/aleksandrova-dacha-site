@@ -1,24 +1,22 @@
-﻿import { Button } from "../button/Button";
+import { ReactNode } from "react";
 import { cn } from "../utils/cn";
 
 export type AboutTeaserProps = {
   title: string;
-  text: string[];
-  ctaLabel?: string;
-  ctaHref?: string;
+  text: string | string[];
   colorVariant?: "f0e7cf" | "f6efe0" | "fdfaf4";
   withInnerShadow?: boolean;
   className?: string;
+  children?: ReactNode;
 };
 
 export function AboutTeaser({
   title,
   text,
-  ctaLabel = "Р?Р?Р?С?Р?Р+Р?РчРч",
-  ctaHref = "/about",
   colorVariant = "fdfaf4",
   withInnerShadow,
   className,
+  children,
 }: AboutTeaserProps) {
   const variantStyles = {
     f0e7cf: "bg-[#f0e7cf]",
@@ -26,6 +24,7 @@ export function AboutTeaser({
     fdfaf4: "bg-[#fdfaf4]",
   } as const;
   const showInnerShadow = Boolean(withInnerShadow);
+  const paragraphs = Array.isArray(text) ? text : [text];
 
   return (
     <section
@@ -38,7 +37,7 @@ export function AboutTeaser({
       )}
     >
       <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
-      {text.map((paragraph, index) => (
+      {paragraphs.map((paragraph, index) => (
         <p
           key={index}
           className="mt-4 text-base leading-relaxed text-[#4b4d2f]"
@@ -47,9 +46,7 @@ export function AboutTeaser({
         </p>
       ))}
 
-      <Button variant="primary" className="mt-6" href={ctaHref}>
-        {ctaLabel}
-      </Button>
+      {children ? <div className="mt-6">{children}</div> : null}
     </section>
   );
 }

@@ -22,8 +22,6 @@ export const dataTextAboutTeaser: AboutTeaserProps = {
   text: [
     "Обучим взрослых и детей, с нуля до спортивных разрядов. Всадникам, не имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется брать индивидуальные занятия.",
   ],
-  ctaLabel: "Записаться на занятие",
-  ctaHref: "/",
 };
 
 export const dataSafetyNoticeItems: SafetyNoticeProps[] = [

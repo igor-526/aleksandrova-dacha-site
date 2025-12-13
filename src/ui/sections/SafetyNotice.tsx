@@ -34,7 +34,7 @@ export function SafetyNotice({
     >
       <div className="flex items-start gap-4">
         <div className="space-y-3">
-          <h3 className="font-serif text-3xl text-[#2f3600]">{title}</h3>
+          <h3 className="font-serif text-2xl text-[#2f3600]">{title}</h3>
           <ul className="list-disc space-y-2 pl-4 text-base leading-relaxed text-[#4b4d2f]">
             {items.map((item) => (
               <li key={item}>{item}</li>

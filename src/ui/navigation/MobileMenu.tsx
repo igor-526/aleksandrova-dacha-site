@@ -179,7 +179,6 @@ export function MobileMenu({
               key={link.href || link.label}
               item={link}
               onNavigate={() => onOpenChange(false)}
-              defaultExpanded={link.label?.toLowerCase() === "услуги"}
             />
           ))}
         </ul>
