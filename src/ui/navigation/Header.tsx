@@ -189,15 +189,15 @@ export function Header({
           className
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={brandHref} className="flex items-center gap-3">
             {brandLogoSrc && (
               <Image
-                width={48}
-                height={48}
+                width={72}
+                height={72}
                 src={brandLogoSrc}
                 alt={brandName || "Logo"}
-                className="h-12 w-12 rounded-full object-cover"
+                className="h-16 w-16 rounded-full object-cover"
                 priority
               />
             )}

@@ -1,3 +1,4 @@
+import { GallerySection, type GallerySectionProps } from "./GallerySection";
 import { cn } from "../utils/cn";
 
 export type SafetyNoticeProps = {
@@ -6,6 +7,7 @@ export type SafetyNoticeProps = {
   colorVariant?: "f0e7cf" | "f6efe0" | "fdfaf4";
   withInnerShadow?: boolean;
   className?: string;
+  gallerySection?: (GallerySectionProps & { position?: "start" | "end" }) | null;
 };
 
 export function SafetyNotice({
@@ -14,6 +16,7 @@ export function SafetyNotice({
   colorVariant = "f6efe0",
   withInnerShadow,
   className,
+  gallerySection,
 }: SafetyNoticeProps) {
   const variantStyles = {
     f0e7cf: "bg-[#f0e7cf]",
@@ -21,6 +24,23 @@ export function SafetyNotice({
     fdfaf4: "bg-[#fdfaf4]",
   } as const;
   const showInnerShadow = Boolean(withInnerShadow);
+  const galleryPosition = gallerySection?.position ?? "end";
+  const renderGallery = gallerySection
+    ? (() => {
+        const { position: _position, ...galleryProps } = gallerySection;
+        return (
+          <GallerySection
+            {...galleryProps}
+            columns={galleryProps.columns ?? 3}
+            className={cn(
+              "w-full h-[150px] sm:h-[200px]",
+              galleryPosition === "start" ? "mb-6" : "mt-6",
+              gallerySection.className
+            )}
+          />
+        );
+      })()
+    : null;
 
   return (
     <section
@@ -32,6 +52,8 @@ export function SafetyNotice({
         className
       )}
     >
+      {galleryPosition === "start" ? renderGallery : null}
+
       <div className="flex items-start gap-4">
         <div className="space-y-3">
           <h3 className="font-serif text-2xl text-[#2f3600]">{title}</h3>
@@ -42,6 +64,8 @@ export function SafetyNotice({
           </ul>
         </div>
       </div>
+
+      {galleryPosition === "end" ? renderGallery : null}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import {
+  AboutTeaserProps,
   Button,
-  GallerySectionProps,
   HeroProps,
   MissionProps,
   QuickServicesProps,
@@ -51,22 +51,25 @@ export const itemsServices: QuickServicesProps["items"] = [
   },
 ];
 
-export const dataGallerySection: GallerySectionProps = {
-  columns: 3,
-  className: "w-full h-[150px] sm:h-[200px]",
-  items: [
-    { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
-    { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
-    { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
-  ],
-};
-
-export const dataText = [
-  "❄ Аренда животных на Новогодние мероприятия",
-  "🌲Фотосессии",
-  "❄ Поздравление Деда Мороза с катанием на лошадях, пони и северных оленях",
-  "🌲 Катания на русской тройке (лошади или пони)",
-  "❄ Аренда саней, карет и тележек, запряжённых лошадьми, пони или северным оленем",
+export const news: AboutTeaserProps[] = [
+  {
+    title: "Зимние услуги",
+    text: [
+      "❄ Аренда животных на Новогодние мероприятия",
+      "🌲Фотосессии",
+      "❄ Поздравление Деда Мороза с катанием на лошадях, пони и северных оленях",
+      "🌲 Катания на русской тройке (лошади или пони)",
+      "❄ Аренда саней, карет и тележек, запряжённых лошадьми, пони или северным оленем",
+    ],
+    gallerySection: {
+      items: [
+        { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
+        { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
+        { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
+      ],
+      position: "start",
+    },
+  },
 ];
 
 export const dataMission: MissionProps = {
@@ -85,4 +88,5 @@ export const dataMission: MissionProps = {
       text: "Для наших гостей имеется бесплатная парковка на территории клуба, теплая раздевалка, шкафчики и уютное кафе.",
     },
   ],
+  colorVariant: "f0e7cf",
 };

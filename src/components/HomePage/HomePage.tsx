@@ -1,44 +1,23 @@
-import {
-  ContactFarm,
-  Hero,
-  Container,
-  Button,
-  GallerySection,
-  Mission,
-} from "@/ui";
+import { ContactFarm, Hero, Container, Mission, AboutTeaser } from "@/ui";
 import { QuickServices } from "../../ui/quick-services/QuickServices";
-import {
-  dataGallerySection,
-  dataHero,
-  dataMission,
-  dataText,
-  itemsServices,
-} from "./dataHomePage";
+import { dataHero, dataMission, itemsServices, news } from "./dataHomePage";
+import { FeedbackForm } from "../Services/FeedbackForm";
 
 const HomePage = () => {
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
         <Hero {...dataHero} />
-        <QuickServices items={itemsServices} className="mb-25" />
+        <QuickServices items={itemsServices} className="mb-10" />
 
-        <GallerySection {...dataGallerySection} />
-
-        <div className="mb-25">
-          {dataText.map((paragraph, index) => (
-            <p
-              key={index}
-              className="mt-4 text-base leading-relaxed text-[#4b4d2f]"
-            >
-              {paragraph}
-            </p>
+        {news &&
+          news.map((item, index) => (
+            <AboutTeaser key={index} {...item}>
+              <FeedbackForm triggerLabel="Узнать подробности" />
+            </AboutTeaser>
           ))}
-          <Button variant="primary" className="mt-6" href={"/"}>
-            Подробнее...
-          </Button>
-        </div>
 
-        <Mission {...dataMission} className="mb-25" />
+        <Mission {...dataMission} className="mb-10" />
 
         <ContactFarm
           address="Санкт-Петербург, пос. Александрова Дача"

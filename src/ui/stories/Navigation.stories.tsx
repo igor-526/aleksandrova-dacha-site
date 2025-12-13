@@ -6,6 +6,7 @@ import { Breadcrumbs } from "../navigation/Breadcrumbs";
 import { Tabs } from "../navigation/Tabs";
 import { Pagination } from "../navigation/Pagination";
 import { Footer } from "../navigation/Footer";
+import { Button } from "../button/Button";
 
 const meta: Meta = {
   tags: ["autodocs"],
@@ -26,51 +27,33 @@ export const Overview: Story = {
     const [tab, setTab] = useState("rides");
     const links = [
       {
-        label: "Услуги",
+        label: "?‘?>‘??ñ",
         children: [
           {
-            label: "Катание",
+            label: "?ø‘'ø?ñç",
             children: [
-              { label: "Прогулки по лесу", href: "/services/rides/forest" },
-              { label: "Выездные маршруты", href: "/services/rides/travel" },
+              { label: "?‘???‘?>óñ õ? >ç‘?‘?", href: "/services/rides/forest" },
+              { label: "'‘<çú??‘<ç ?ø‘?‘?‘?‘?‘'‘<", href: "/services/rides/travel" },
             ],
           },
-          { label: "Обучение", href: "/services/lessons" },
+          { label: "?+‘?‘Øç?ñç", href: "/services/lessons" },
         ],
       },
       {
-        label: "Ферма",
+        label: "ýç‘??ø",
         children: [
-          { label: "Питомцы", href: "/farm/animals" },
-          { label: "Экскурсии", href: "/farm/tours" },
+          { label: "?ñ‘'??‘Å‘<", href: "/farm/animals" },
+          { label: "-ó‘?ó‘?‘?‘?ññ", href: "/farm/tours" },
         ],
       },
-      { label: "О нас", href: "/about" },
-      { label: "Контакты", href: "/contact" },
+      { label: "? ?ø‘?", href: "/about" },
+      { label: "???‘'øó‘'‘<", href: "/contact" },
     ];
     const mobileSocials = [
       { type: "whatsapp", href: "https://wa.me/78123456789", label: "WhatsApp" },
       { type: "telegram", href: "https://t.me/aleksandrova_dacha", label: "Telegram" },
       { type: "vk", href: "https://vk.com/aleksandrova_dacha", label: "VK" },
       { type: "mail", href: "mailto:hello@aleksandrova-dacha.ru", label: "Email" },
-    ];
-    const footerMenus = [
-      {
-        title: "Навигация",
-        links: [
-          { label: "Услуги", href: "/services" },
-          { label: "Ферма", href: "/farm" },
-          { label: "О нас", href: "/about" },
-          { label: "Контакты", href: "/contact" },
-        ],
-      },
-      {
-        title: "Популярное",
-        links: [
-          { label: "Верховые прогулки", href: "#" },
-          { label: "Дни рождения", href: "#" },
-        ],
-      },
     ];
 
     return (
@@ -79,7 +62,7 @@ export const Overview: Story = {
           links={links}
           phone="+7 812 345-67-89"
           mobileSocials={mobileSocials}
-          brandName="Усадьба «Александрова Дача»"
+          brandName="?‘?ø?‘?+ø ‚<?>çó‘?ø??‘???ø "ø‘Øø‚>"
           brandLogoSrc="/images/Logo.jpg"
           sticky
           transparent={false}
@@ -89,9 +72,9 @@ export const Overview: Story = {
           <section>
             <Breadcrumbs
               items={[
-                { label: "Главная", href: "/" },
-                { label: "Маршруты верхом", href: "/horse_riding" },
-                { label: "Лесная прогулка" },
+                { label: "">ø??ø‘?", href: "/" },
+                { label: "?ø‘?‘?‘?‘?‘'‘< ?ç‘?‘:??", href: "/horse_riding" },
+                { label: ">ç‘??ø‘? õ‘???‘?>óø" },
               ]}
             />
           </section>
@@ -100,9 +83,9 @@ export const Overview: Story = {
             <h2 className="font-serif text-2xl">Tabs</h2>
             <Tabs
               items={[
-                { value: "rides", label: "Катание" },
-                { value: "lessons", label: "Обучение" },
-                { value: "zoo", label: "Мини-зоопарк" },
+                { value: "rides", label: "?ø‘'ø?ñç" },
+                { value: "lessons", label: "?+‘?‘Øç?ñç" },
+                { value: "zoo", label: "?ñ?ñ-ú??õø‘?ó" },
               ]}
               value={tab}
               onValueChange={setTab}
@@ -123,13 +106,26 @@ export const Overview: Story = {
         </main>
 
         <Footer
-          address="Ленинградская область, Александрова Дача"
+          brandName="?‘?ø?‘?+ø ‚<?>çó‘?ø??‘???ø "ø‘Øø‚>"
+          brandLogoSrc="/images/Logo.jpg"
+          brandHref="/"
+          address=">ç?ñ??‘?ø?‘?óø‘? ?+>ø‘?‘'‘?, ?>çó‘?ø??‘???ø "ø‘Øø"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           socials={[
-            { label: "VK", href: "https://vk.com" },
-            { label: "Telegram", href: "https://t.me" },
+            { label: "VK", href: "https://vk.com", type: "vk" },
+            { label: "Telegram", href: "https://t.me", type: "telegram" },
+            { label: "Email", href: "mailto:hello@aleksandrova-dacha.ru", type: "mail" },
           ]}
-          menus={footerMenus}
+          schedule={{
+            weekday: { label: "џ¾ ±£´½¸¼", hours: "11:00 – 19:30" },
+            weekend: { label: "’«¥¾”½¾µ", hours: "10:00 – 20:00" },
+          }}
+          navLinks={links}
+          feedbackSlot={
+            <Button variant="primary" size="lg">
+              �¾±¾� ¾± °¢½¾�ь
+            </Button>
+          }
         />
       </div>
     );

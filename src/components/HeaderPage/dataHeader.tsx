@@ -73,5 +73,5 @@ export const dataHeader: HeaderProps = {
   sticky: true,
   transparent: false,
   className: "",
-  children: <FeedbackForm triggerLabel="Записаться" />,
+  children: <FeedbackForm triggerLabel="Обратная связь" />,
 };

@@ -83,7 +83,7 @@ export function FeedbackForm({
       <Modal
         open={open}
         onOpenChange={setOpen}
-        title="Запись на занятие"
+        title="Связаться с нами"
         footer={<></>}
       >
         <form

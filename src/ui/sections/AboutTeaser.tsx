@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { GallerySection, type GallerySectionProps } from "./GallerySection";
 import { cn } from "../utils/cn";
 
 export type AboutTeaserProps = {
@@ -8,6 +9,7 @@ export type AboutTeaserProps = {
   withInnerShadow?: boolean;
   className?: string;
   children?: ReactNode;
+  gallerySection?: (GallerySectionProps & { position?: "start" | "end" }) | null;
 };
 
 export function AboutTeaser({
@@ -17,6 +19,7 @@ export function AboutTeaser({
   withInnerShadow,
   className,
   children,
+  gallerySection,
 }: AboutTeaserProps) {
   const variantStyles = {
     f0e7cf: "bg-[#f0e7cf]",
@@ -25,6 +28,23 @@ export function AboutTeaser({
   } as const;
   const showInnerShadow = Boolean(withInnerShadow);
   const paragraphs = Array.isArray(text) ? text : [text];
+  const galleryPosition = gallerySection?.position ?? "end";
+  const renderGallery = gallerySection
+    ? (() => {
+        const { position: _position, ...galleryProps } = gallerySection;
+        return (
+          <GallerySection
+            {...galleryProps}
+            columns={galleryProps.columns ?? 3}
+            className={cn(
+              "w-full h-[150px] sm:h-[200px]",
+              galleryPosition === "start" ? "mb-6" : "mt-6",
+              gallerySection.className
+            )}
+          />
+        );
+      })()
+    : null;
 
   return (
     <section
@@ -36,17 +56,23 @@ export function AboutTeaser({
         className
       )}
     >
-      <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
-      {paragraphs.map((paragraph, index) => (
-        <p
-          key={index}
-          className="mt-4 text-base leading-relaxed text-[#4b4d2f]"
-        >
-          {paragraph}
-        </p>
-      ))}
+      {galleryPosition === "start" ? renderGallery : null}
 
-      {children ? <div className="mt-6">{children}</div> : null}
+      <div>
+        <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
+        {paragraphs.map((paragraph, index) => (
+          <p
+            key={index}
+            className="mt-4 text-base leading-relaxed text-[#4b4d2f]"
+          >
+            {paragraph}
+          </p>
+        ))}
+
+        {children ? <div className="mt-6">{children}</div> : null}
+      </div>
+
+      {galleryPosition === "end" ? renderGallery : null}
     </section>
   );
 }

@@ -14,8 +14,8 @@ const variantStyles: Record<ButtonVariant, string> = {
 
 const sizeStyles: Record<ButtonSize, string> = {
   sm: "px-4 py-2 text-sm",
-  md: "px-6 py-2.5 text-base",
-  lg: "px-8 py-3 text-lg",
+  md: "px-6 py-2.5 text-base sm:text-sm",
+  lg: "px-8 py-3 text-lg md:px-6 md:py-2.5 md:text-base sm:px-4 sm:py-2 sm:text-sm",
 };
 
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "disabled";
