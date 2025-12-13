@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useMemo,
+  useState,
+  type MouseEvent,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { Button } from "../button/Button";
 import { cn } from "../utils/cn";
 import { Icon } from "../atoms/Icon";
@@ -24,6 +33,7 @@ export type MobileMenuProps = {
   links: MobileMenuLink[];
   ctaLabel?: string;
   ctaHref?: string;
+  ctaSlot?: ReactNode;
   phone?: string;
   socials?: ContactLink[];
 };
@@ -45,6 +55,12 @@ function MobileMenuItem({
   const hasChildren = item.children?.length;
   const paddingLeft = useMemo(() => Math.min(level * 12, 36), [level]);
 
+  const handleToggle = (event: MouseEvent) => {
+    if (!hasChildren) return;
+    event.preventDefault();
+    setExpanded((prev) => !prev);
+  };
+
   return (
     <li>
       <div
@@ -53,8 +69,17 @@ function MobileMenuItem({
           expanded ? "bg-[#f1e4ca]" : "hover:bg-[#f5ebd8]"
         )}
         style={{ paddingLeft }}
+        onClick={handleToggle}
       >
-        {item.href ? (
+        {hasChildren ? (
+          <button
+            type="button"
+            aria-expanded={expanded}
+            className="flex-1 text-left text-base font-semibold text-[#2f3600]"
+          >
+            {item.label}
+          </button>
+        ) : item.href ? (
           <a
             href={item.href}
             className="flex-1 text-base font-semibold text-[#2f3600]"
@@ -66,16 +91,6 @@ function MobileMenuItem({
           <span className="flex-1 text-base font-semibold text-[#2f3600]">
             {item.label}
           </span>
-        )}
-        {hasChildren && (
-          <button
-            type="button"
-            aria-expanded={expanded}
-            className="text-sm font-semibold text-[#384000]"
-            onClick={() => setExpanded((prev) => !prev)}
-          >
-            {expanded ? "−" : "+"}
-          </button>
         )}
       </div>
 
@@ -106,12 +121,13 @@ export function MobileMenu({
   links,
   ctaLabel = "Записаться",
   ctaHref = "#booking",
+  ctaSlot,
   phone,
   socials = [],
 }: MobileMenuProps) {
   const sanitizedPhone = phone?.replace(/[^+\d]/g, "");
   const contactLinks = [
-    sanitizedPhone && { type: "phone", href: `tel:${sanitizedPhone}`, label: "Позвонить" },
+    sanitizedPhone && { type: "phone", href: `tel:${sanitizedPhone}`, label: "Телефон" },
     ...socials,
   ].filter(Boolean) as ContactLink[];
 
@@ -180,22 +196,47 @@ export function MobileMenu({
                     "flex h-11 w-11 items-center justify-center rounded-full border transition",
                     contactColors[contact.type]
                   )}
-                  target={contact.type === "telegram" || contact.type === "vk" ? "_blank" : undefined}
-                  rel={contact.type === "telegram" || contact.type === "vk" ? "noreferrer" : undefined}
+                  target={
+                    contact.type === "telegram" || contact.type === "vk"
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    contact.type === "telegram" || contact.type === "vk"
+                      ? "noreferrer"
+                      : undefined
+                  }
                 >
                   <Icon name={contact.type} width={20} height={20} />
                 </a>
               ))}
             </div>
           )}
-          <Button
-            variant="primary"
-            fullWidth
-            onClick={() => onOpenChange(false)}
-            href={ctaHref}
+          <div
+            onClickCapture={() => setTimeout(() => onOpenChange(false), 0)}
           >
-            {ctaLabel}
-          </Button>
+            {ctaSlot
+              ? isValidElement(ctaSlot)
+                ? cloneElement(ctaSlot, {
+                    key: "mobile-cta",
+                    className: cn(
+                      (ctaSlot as ReactElement).props?.className,
+                      "w-full"
+                    ),
+                    fullWidth: (ctaSlot as ReactElement).props?.fullWidth ?? true,
+                  })
+                : ctaSlot
+              : (
+                <Button
+                  variant="primary"
+                  fullWidth
+                  onClick={() => onOpenChange(false)}
+                  href={ctaHref}
+                >
+                  {ctaLabel}
+                </Button>
+              )}
+          </div>
         </footer>
       </nav>
     </div>

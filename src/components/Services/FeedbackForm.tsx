@@ -6,14 +6,12 @@ import { useEffect, useRef, useState } from "react";
 export type FeedbackFormValues = {
   name: string;
   phone: string;
-
   notes: string;
   agree: boolean;
 };
 
 export type FeedbackFormProps = {
   serviceType?: string;
-
   onSubmit?: (values: FeedbackFormValues) => void;
   policyLink?: string;
   className?: string;
@@ -23,7 +21,6 @@ export type FeedbackFormProps = {
 const defaultValues: FeedbackFormValues = {
   name: "",
   phone: "",
-
   notes: "",
   agree: false,
 };
@@ -32,7 +29,7 @@ export function FeedbackForm({
   onSubmit,
   policyLink = "/policy",
   className,
-  triggerLabel = "Оставить заявку",
+  triggerLabel = "Записаться",
 }: FeedbackFormProps) {
   const [open, setOpen] = useState(false);
   const [sentOpen, setSentOpen] = useState(false);
@@ -53,10 +50,11 @@ export function FeedbackForm({
     event.preventDefault();
 
     const nextErrors: typeof errors = {};
-    if (!values.name) nextErrors.name = "Укажите имя";
-    if (!values.phone) nextErrors.phone = "Укажите телефон";
+    if (!values.name) nextErrors.name = "Введите имя";
+    if (!values.phone) nextErrors.phone = "Введите телефон";
     if (!values.agree)
-      nextErrors.agree = "Необходимо согласиться с политикой обработки данных";
+      nextErrors.agree =
+        "Необходимо согласиться с политикой конфиденциальности";
 
     setErrors(nextErrors);
 
@@ -85,7 +83,7 @@ export function FeedbackForm({
       <Modal
         open={open}
         onOpenChange={setOpen}
-        title="Оставить заявку"
+        title="Запись на занятие"
         footer={<></>}
       >
         <form
@@ -97,7 +95,7 @@ export function FeedbackForm({
         >
           <Input
             label="Имя"
-            placeholder="Имя и фамилия"
+            placeholder="Ваше имя"
             value={values.name}
             onChange={(event) => update("name", event.target.value)}
             error={errors.name}
@@ -116,7 +114,7 @@ export function FeedbackForm({
 
           <Textarea
             label="Комментарий"
-            placeholder="Опишите задачу или удобное время для связи"
+            placeholder="Расскажите, что вас интересует"
             value={values.notes}
             onChange={(event) => update("notes", event.target.value)}
             className="px-3 py-2 text-sm sm:px-4 sm:text-base"
@@ -129,7 +127,7 @@ export function FeedbackForm({
                 <span>
                   Я согласен с{" "}
                   <a className="underline" href={policyLink}>
-                    политикой обработки персональных данных
+                    политикой конфиденциальности
                   </a>
                 </span>
               }
@@ -167,7 +165,7 @@ export function FeedbackForm({
         footer={<></>}
       >
         <div className="px-2 py-1 text-base text-[#2f3600]">
-          Мы скоро свяжемся с вами.
+          Мы свяжемся с вами в ближайшее время.
         </div>
       </Modal>
     </>
