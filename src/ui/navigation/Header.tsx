@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Button } from "../button/Button";
 import { Icon } from "../atoms/Icon";
 import {
@@ -25,6 +25,7 @@ export type HeaderProps = {
   sticky?: boolean;
   transparent?: boolean;
   className?: string;
+  children?: ReactNode;
 };
 
 export function Header({
@@ -39,6 +40,7 @@ export function Header({
   sticky = false,
   transparent = false,
   className,
+  children,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -281,9 +283,11 @@ export function Header({
               {phone}
             </Link>
           )}
-          <Button href={ctaHref} size={isNarrowNav ? "sm" : "md"}>
-            {ctaLabel}
-          </Button>
+          {children ?? (
+            <Button href={ctaHref} size={isNarrowNav ? "sm" : "md"}>
+              {ctaLabel}
+            </Button>
+          )}
         </div>
         <button
           type="button"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderPage from "@/components/HeaderPage/HeaderPage";
+import { Footer } from "@/ui";
 
 export const metadata: Metadata = {
   title: "Александрова дача",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="p-0">
         <HeaderPage />
         {children}
+        <Footer />
       </body>
     </html>
   );

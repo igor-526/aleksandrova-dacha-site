@@ -1,21 +1,17 @@
+"use client";
+
+import { AboutTeaser, Container, Hero, SafetyNotice } from "@/ui";
 import {
-  AboutTeaser,
-  Article,
-  BookingSection,
-  Container,
-  Hero,
-  SafetyNotice,
-} from "@/ui";
-import {
-  dataArticle,
-  dataBookingSection,
   dataHero,
-  dataSafetyNoticeItems,
+  dataSafetyNoticeRegistration,
+  dataSafetyNoticeTimes,
+  dataSafetyNoticeСloth,
   dataTextAboutTeaser,
 } from "./dataTours";
 
 import dataPrice from "./dataPriceApi";
 import MyServicesList from "../../MyServicesList";
+import { FeedbackForm } from "../../FeedbackForm";
 
 const ToursPage = () => {
   return (
@@ -23,19 +19,21 @@ const ToursPage = () => {
       <Container className="space-y-12">
         <Hero {...dataHero} />
 
-        <div className="grid gap-4 lg:grid-cols-4">
-          <AboutTeaser
-            {...dataTextAboutTeaser}
-            className="col-span-2"
-          ></AboutTeaser>
-          <div className="grid gap-4 col-span-2 sm:grid-cols-2">
-            {dataSafetyNoticeItems.map((item, index) => (
-              <SafetyNotice key={index} {...item} />
-            ))}
-          </div>
-        </div>
+        <AboutTeaser
+          {...dataTextAboutTeaser}
+          className="col-span-2 row-span-2"
+        ></AboutTeaser>
 
-        <Article {...dataArticle} />
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <SafetyNotice
+            {...dataSafetyNoticeRegistration}
+            withInnerShadow={true}
+            colorVariant="f0e7cf"
+            className="md:col-span-2 lg:col-span-1"
+          />
+          <SafetyNotice {...dataSafetyNoticeTimes} colorVariant="f6efe0" />
+          <SafetyNotice {...dataSafetyNoticeСloth} colorVariant="f6efe0" />
+        </div>
 
         <MyServicesList
           items={dataPrice}
@@ -44,7 +42,7 @@ const ToursPage = () => {
           gallery
         />
 
-        <BookingSection {...dataBookingSection} />
+        <FeedbackForm triggerLabel="Заказать обратный звонок" />
       </Container>
     </div>
   );

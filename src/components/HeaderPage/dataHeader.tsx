@@ -1,4 +1,5 @@
 import { HeaderProps } from "@/ui";
+import { FeedbackForm } from "../Services/FeedbackForm";
 
 export const dataHeader: HeaderProps = {
   links: [
@@ -74,9 +75,8 @@ export const dataHeader: HeaderProps = {
   brandLogoSrc: "/images/Logo.jpg",
   brandHref: "/",
   phone: "+7 (123) 456-78-90",
-  ctaLabel: "Записаться",
-  ctaHref: "#booking",
   sticky: true,
   transparent: false,
   className: "",
+  children: <FeedbackForm triggerLabel="Записаться" />,
 };

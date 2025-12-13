@@ -1,4 +1,4 @@
-import { Button } from "../button/Button";
+﻿import { Button } from "../button/Button";
 import { cn } from "../utils/cn";
 
 export type AboutTeaserProps = {
@@ -6,20 +6,34 @@ export type AboutTeaserProps = {
   text: string[];
   ctaLabel?: string;
   ctaHref?: string;
+  colorVariant?: "f0e7cf" | "f6efe0" | "fdfaf4";
+  withInnerShadow?: boolean;
   className?: string;
 };
 
 export function AboutTeaser({
   title,
   text,
-  ctaLabel = "Подробнее",
+  ctaLabel = "Р?Р?Р?С?Р?Р+Р?РчРч",
   ctaHref = "/about",
+  colorVariant = "fdfaf4",
+  withInnerShadow,
   className,
 }: AboutTeaserProps) {
+  const variantStyles = {
+    f0e7cf: "bg-[#f0e7cf]",
+    f6efe0: "bg-[#f6efe0]",
+    fdfaf4: "bg-[#fdfaf4]",
+  } as const;
+  const showInnerShadow = Boolean(withInnerShadow);
+
   return (
     <section
       className={cn(
-        "rounded-3xl bg-[#fdfaf4] p-8 shadow-[0_24px_48px_rgba(56,64,0,0.08)]",
+        "rounded-3xl p-8",
+        variantStyles[colorVariant],
+        showInnerShadow &&
+          "shadow-[inset_0_1px_2px_rgba(47,54,0,0.16),inset_1px_0_2px_rgba(47,54,0,0.12),inset_0_-1px_2px_rgba(255,255,255,0.6),inset_-1px_0_2px_rgba(255,255,255,0.5)]",
         className
       )}
     >

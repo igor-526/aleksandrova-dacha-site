@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
-import { Button } from "../button/Button";
+import { useEffect, type MouseEvent, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { Button, type ButtonProps } from "../button/Button";
 import { cn } from "../utils/cn";
 
 export type ModalProps = {
@@ -14,10 +15,36 @@ export type ModalProps = {
 };
 
 const sizeClass: Record<NonNullable<ModalProps["size"]>, string> = {
-  sm: "max-w-md",
-  md: "max-w-lg",
-  lg: "max-w-2xl",
+  sm: "",
+  md: "",
+  lg: "",
 };
+
+export type ModalTriggerButtonProps = ButtonProps & {
+  onOpenChange: ModalProps["onOpenChange"];
+};
+
+export function ModalTriggerButton({
+  onOpenChange,
+  onClick,
+  children,
+  ...buttonProps
+}: ModalTriggerButtonProps) {
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => {
+    onClick?.(event);
+    if (!event.defaultPrevented) {
+      onOpenChange(true);
+    }
+  };
+
+  return (
+    <Button {...buttonProps} onClick={handleClick}>
+      {children}
+    </Button>
+  );
+}
 
 export function Modal({
   open,
@@ -36,17 +63,19 @@ export function Modal({
 
   if (!open) return null;
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4"
       role="dialog"
       aria-modal="true"
+      onClick={() => onOpenChange(false)}
     >
       <div
         className={cn(
-          "w-full rounded-3xl bg-[#f8f2e4] shadow-xl",
+          "inline-flex max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] flex-col rounded-3xl bg-[#f8f2e4] shadow-xl",
           sizeClass[size]
         )}
+        onClick={(event) => event.stopPropagation()}
       >
         <header className="flex items-center justify-between border-b border-[#e2d6bc] px-6 py-4">
           {title && (
@@ -58,7 +87,7 @@ export function Modal({
             onClick={() => onOpenChange(false)}
             aria-label="Закрыть"
           >
-            ×
+            x
           </button>
         </header>
         <div className="px-6 py-5 text-[#2f3600]">{children}</div>
@@ -72,4 +101,6 @@ export function Modal({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

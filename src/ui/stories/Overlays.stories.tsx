@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+﻿import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Button } from "../button/Button";
-import { Modal } from "../overlays/Modal";
+import { Modal, ModalTriggerButton } from "../overlays/Modal";
 import { Lightbox } from "../overlays/Lightbox";
 import { Toast } from "../overlays/Toast";
 
@@ -26,31 +26,31 @@ export const Interactive: Story = {
     return (
       <div className="space-y-6 rounded-3xl bg-[#fdfaf4] p-6 text-[#2f3600]">
         <div className="flex flex-wrap gap-4">
-          <Button onClick={() => setModalOpen(true)}>Открыть модалку</Button>
+          <ModalTriggerButton onOpenChange={setModalOpen}>РћС‚РєСЂС‹С‚СЊ РјРѕРґР°Р»РєСѓ</ModalTriggerButton>
           <Button variant="secondary" onClick={() => setLightboxOpen(true)}>
-            Открыть Lightbox
+            РћС‚РєСЂС‹С‚СЊ Lightbox
           </Button>
           <Button variant="ghost" onClick={() => setToastOpen(true)}>
-            Показать Toast
+            РџРѕРєР°Р·Р°С‚СЊ Toast
           </Button>
         </div>
 
         <Modal
           open={modalOpen}
           onOpenChange={setModalOpen}
-          title="Бронирование прогулки"
+          title="Р‘СЂРѕРЅРёСЂРѕРІР°РЅРёРµ РїСЂРѕРіСѓР»РєРё"
           footer={
             <div className="flex gap-3">
               <Button variant="ghost" onClick={() => setModalOpen(false)}>
-                Отмена
+                РћС‚РјРµРЅР°
               </Button>
-              <Button>Сохранить</Button>
+              <Button>РЎРѕС…СЂР°РЅРёС‚СЊ</Button>
             </div>
           }
         >
           <p>
-            В модальном окне можно разместить форму или подтверждение действия.
-            Компонент поддерживает разные размеры и настраиваемый футер.
+            Р’ РјРѕРґР°Р»СЊРЅРѕРј РѕРєРЅРµ РјРѕР¶РЅРѕ СЂР°Р·РјРµСЃС‚РёС‚СЊ С„РѕСЂРјСѓ РёР»Рё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РґРµР№СЃС‚РІРёСЏ.
+            РљРѕРјРїРѕРЅРµРЅС‚ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ СЂР°Р·РЅС‹Рµ СЂР°Р·РјРµСЂС‹ Рё РЅР°СЃС‚СЂР°РёРІР°РµРјС‹Р№ С„СѓС‚РµСЂ.
           </p>
         </Modal>
 
@@ -58,9 +58,9 @@ export const Interactive: Story = {
           open={lightboxOpen}
           onClose={() => setLightboxOpen(false)}
           images={[
-            { src: "/images/home-img.jpg", alt: "Конная прогулка" },
-            { src: "/images/services/1.jpg", alt: "Услуга 1" },
-            { src: "/images/services/3.jpg", alt: "Услуга 2" },
+            { src: "/images/home-img.jpg", alt: "РљРѕРЅРЅР°СЏ РїСЂРѕРіСѓР»РєР°" },
+            { src: "/images/services/1.jpg", alt: "РЈСЃР»СѓРіР° 1" },
+            { src: "/images/services/3.jpg", alt: "РЈСЃР»СѓРіР° 2" },
           ]}
         />
 
@@ -68,10 +68,11 @@ export const Interactive: Story = {
           open={toastOpen}
           onOpenChange={setToastOpen}
           tone="success"
-          title="Заявка отправлена"
-          description="Мы свяжемся с вами в течение 15 минут."
+          title="Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°"
+          description="РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ С‚РµС‡РµРЅРёРµ 15 РјРёРЅСѓС‚."
         />
       </div>
     );
   },
 };
+
