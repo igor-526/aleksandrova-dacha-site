@@ -1,6 +1,5 @@
 import {
   AboutTeaserProps,
-  Button,
   HeroProps,
   MissionProps,
   QuickServicesProps,
@@ -13,7 +12,6 @@ export const dataHero: HeroProps = {
   subtitle: "конно-спортивный клуб",
   description:
     "Проведите незабываемый день на нашей конюшне: познакомьтесь с животными, прокатитесь верхом и насладитесь природой.",
-  cta: <Button variant="primary">Записаться на прогулку</Button>,
 };
 
 export const itemsServices: QuickServicesProps["items"] = [

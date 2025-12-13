@@ -1,10 +1,13 @@
-import { ContactFarm, Hero, Container, Mission, AboutTeaser } from "@/ui";
-import { QuickServices } from "../../ui/quick-services/QuickServices";
-import { dataHero, dataMission, itemsServices, news } from "./dataHomePage";
-import { FeedbackForm } from "../Services/FeedbackForm";
+import { ContactFarm, Hero, Container, HeroProps } from "@/ui";
 import { getSetting } from "../site_settings";
 
-const HomePage = () => {
+const dataHero: HeroProps = {
+  title: "Александрова Дача",
+  backgroundImage: { src: "/images/home-img1.jpg", alt: "desc" },
+  subtitle: "конно-спортивный клуб",
+};
+
+const ContactsPage = () => {
   const address = getSetting("address");
   const phone = getSetting("tel");
   const siteName = getSetting("site_name");
@@ -22,33 +25,24 @@ const HomePage = () => {
     vk && { label: "VK", href: vk, type: "vk" as const },
     mail && { label: "Email", href: `mailto:${mail}`, type: "mail" as const },
   ].filter(
-    (item): item is { label: string; href: string; type: "vk" | "mail" } => Boolean(item)
+    (item): item is { label: string; href: string; type: "vk" | "mail" } =>
+      Boolean(item)
   );
 
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
         <Hero {...dataHero} />
-        <QuickServices items={itemsServices} className="mb-10" />
-
-        {news &&
-          news.map((item, index) => (
-            <AboutTeaser key={index} {...item}>
-              <FeedbackForm triggerLabel="Узнать подробности" />
-            </AboutTeaser>
-          ))}
-
-        <Mission {...dataMission} className="mb-10" />
 
         <ContactFarm
           address={address}
           phones={phone ? [phone] : []}
-          hours={
-            [
-              weekdayHours && { label: "Будни", value: weekdayHours },
-              weekendHours && { label: "Выходные", value: weekendHours },
-            ].filter((item): item is { label: string; value: string } => Boolean(item))
-          }
+          hours={[
+            weekdayHours && { label: "Будни", value: weekdayHours },
+            weekendHours && { label: "Выходные", value: weekendHours },
+          ].filter((item): item is { label: string; value: string } =>
+            Boolean(item)
+          )}
           socials={socials}
           map={{
             lat: 59.676168,
@@ -63,4 +57,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ContactsPage;
