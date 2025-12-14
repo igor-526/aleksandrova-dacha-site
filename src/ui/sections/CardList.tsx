@@ -43,7 +43,7 @@ const dimToValue = (value?: MediaDimension) => {
   return value;
 };
 
-function responsiveDimToClasses(dimension?: ResponsiveMediaDimension, axis: "w" | "h") {
+function responsiveDimToClasses(axis: "w" | "h", dimension?: ResponsiveMediaDimension) {
   if (!dimension) return [];
   const entries =
     typeof dimension === "object" && !Array.isArray(dimension)
@@ -69,8 +69,8 @@ export function CardList({
   className,
 }: CardListProps) {
   const inheritedMediaClasses = cn(
-    ...responsiveDimToClasses(mediaWidth, "w"),
-    ...responsiveDimToClasses(mediaHeight, "h")
+    ...responsiveDimToClasses("w", mediaWidth),
+    ...responsiveDimToClasses("h", mediaHeight)
   );
 
   return (

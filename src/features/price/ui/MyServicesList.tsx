@@ -1,5 +1,5 @@
 import { PriceOutDto } from "@/types";
-import { cn, DataTable, GallerySection, MediaImage } from "@/ui";
+import { Button, cn, DataTable, GallerySection, MediaImage } from "@/ui";
 import ServiceCard from "./ServiceCard";
 type MyServicesListProps = {
   heading?: string;
@@ -65,7 +65,21 @@ const MyServicesList = ({
                 mediaPosition={mediaPosition}
                 media={mediaCard}
               >
-                {item.price_tables && <DataTable item={item.price_tables[0]} />}
+                {item.price_tables && item.price_tables.length > 0 && (
+                  <div className="space-y-4">
+                    {item.price_tables.map((table, tableIndex) => (
+                      table && <DataTable key={tableIndex} item={table} />
+                    ))}
+                  </div>
+                )}
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  href={`/uslugi/${item.slug}`}
+                  className="my-2"
+                >
+                  Подробнее
+                </Button>
               </ServiceCard>
             </div>
           );

@@ -145,14 +145,14 @@ export function Header({
   }) => {
     if (children) {
       if (isValidElement(children)) {
-        return cloneElement(children as ReactElement, {
+        const childElement = children as ReactElement<{
+          className?: string;
+          fullWidth?: boolean;
+        }>;
+        return cloneElement(childElement, {
           key: options?.key,
-          className: cn(
-            (children as ReactElement).props?.className,
-            options?.className
-          ),
-          fullWidth:
-            (children as ReactElement).props?.fullWidth ?? options?.fullWidth,
+          className: cn(childElement.props?.className, options?.className),
+          fullWidth: childElement.props?.fullWidth ?? options?.fullWidth,
         });
       }
       return children;

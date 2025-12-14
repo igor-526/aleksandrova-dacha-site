@@ -1,28 +1,27 @@
-import { AboutTeaser, Container, Hero } from "@/ui";
-import MyServicesList from "@/features/price/ui/MyServicesList";
+import { Container } from "@/ui";
 import { getCarriagesPageData } from "@/features/price/services/carriagesPageDataService";
+import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 
 const ServicesRentalCarriages = async () => {
-  const { prices, dataTextAboutTeaser } = await getCarriagesPageData();
+  const {
+    prices,
+    dataHero,
+    dataArticle,
+    dataMission,
+    dataGallerySection,
+  } = await getCarriagesPageData();
 
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <Hero
-          title={"Аренда экипажей"}
-          subtitle="Александрова дача"
-          backgroundImage={{
-            src: "/images/services/rental/carriages/carriages.jpg",
-            alt: "desc",
-          }}
+        <ServicesGroupPage
+          prices={prices}
+          dataHero={dataHero}
+          dataArticle={dataArticle}
+          dataMission={dataMission}
+          dataGallerySection={dataGallerySection}
         />
-        <AboutTeaser {...dataTextAboutTeaser}></AboutTeaser>
-        <MyServicesList
-          items={prices}
-          mediaPosition="left"
-          gallery={true}
-          columns={2}
-        />
+
       </Container>
     </div>
   );

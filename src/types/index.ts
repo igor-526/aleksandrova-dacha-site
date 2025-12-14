@@ -1,4 +1,5 @@
 export * from "./api";
+export * from "./horse";
 export * from "./horseBreeds";
 export * from "./horseCoatColor";
 export * from "./horseOwners";

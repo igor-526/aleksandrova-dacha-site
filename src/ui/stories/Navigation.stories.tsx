@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
 import { Header } from "../navigation/Header";
-import { MobileMenu } from "../navigation/MobileMenu";
+import { MobileMenu, type ContactLink } from "../navigation/MobileMenu";
 import { Breadcrumbs } from "../navigation/Breadcrumbs";
 import { Tabs } from "../navigation/Tabs";
 import { Pagination } from "../navigation/Pagination";
@@ -49,7 +49,7 @@ export const Overview: Story = {
       { label: "? ?ø‘?", href: "/about" },
       { label: "???‘'øó‘'‘<", href: "/contact" },
     ];
-    const mobileSocials = [
+    const mobileSocials: ContactLink[] = [
       { type: "whatsapp", href: "https://wa.me/78123456789", label: "WhatsApp" },
       { type: "telegram", href: "https://t.me/aleksandrova_dacha", label: "Telegram" },
       { type: "vk", href: "https://vk.com/aleksandrova_dacha", label: "VK" },
@@ -62,7 +62,7 @@ export const Overview: Story = {
           links={links}
           phone="+7 812 345-67-89"
           mobileSocials={mobileSocials}
-          brandName="?‘?ø?‘?+ø ‚<?>çó‘?ø??‘???ø "ø‘Øø‚>"
+          brandName="Александрова Дача"
           brandLogoSrc="/images/Logo.jpg"
           sticky
           transparent={false}
@@ -72,9 +72,9 @@ export const Overview: Story = {
           <section>
             <Breadcrumbs
               items={[
-                { label: "">ø??ø‘?", href: "/" },
-                { label: "?ø‘?‘?‘?‘?‘'‘< ?ç‘?‘:??", href: "/horse_riding" },
-                { label: ">ç‘??ø‘? õ‘???‘?>óø" },
+                 { label: "Главная", href: "/" },
+                 { label: "Верховая езда", href: "/horse_riding" },
+                 { label: "Групповые занятия" },
               ]}
             />
           </section>
@@ -106,10 +106,10 @@ export const Overview: Story = {
         </main>
 
         <Footer
-          brandName="?‘?ø?‘?+ø ‚<?>çó‘?ø??‘???ø "ø‘Øø‚>"
+          brandName="Александрова Дача"
           brandLogoSrc="/images/Logo.jpg"
           brandHref="/"
-          address=">ç?ñ??‘?ø?‘?óø‘? ?+>ø‘?‘'‘?, ?>çó‘?ø??‘???ø "ø‘Øø"
+          address="Санкт-Петербург, посёлок Александрова Дача"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           socials={[
             { label: "VK", href: "https://vk.com", type: "vk" },

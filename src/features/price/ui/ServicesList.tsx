@@ -82,7 +82,13 @@ export function ServicesList({
                   )
                 }
               >
-                {item.price_tables && <DataTable item={item.price_tables[0]} />}
+                {item.price_tables && item.price_tables.length > 0 && (
+                  <div className="space-y-4">
+                    {item.price_tables.map((table, tableIndex) => (
+                      table && <DataTable key={tableIndex} item={table} />
+                    ))}
+                  </div>
+                )}
               </Card>
             </div>
           );

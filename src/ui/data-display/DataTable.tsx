@@ -22,6 +22,10 @@ export function DataTable({
   responsive = true,
   className,
 }: DataTableProps) {
+  if (!item || !item.columns || !item.rows) {
+    return null;
+  }
+
   const { columns, rows } = item;
 
   return (

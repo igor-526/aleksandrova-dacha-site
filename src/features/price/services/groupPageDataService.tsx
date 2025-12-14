@@ -1,4 +1,4 @@
-import { AboutTeaserProps, GallerySectionProps } from "@/ui";
+import { ArticleProps, GallerySectionProps, HeroProps } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
 
@@ -10,12 +10,27 @@ export const getGroupPageData = async () => {
 
     const prices = await getPrices();
 
-    const dataAboutTeaser: AboutTeaserProps = {
-        title: "Групповые занятия. Абонементы.",
-        text: [
-            "Наши опытные инструкторы помогут вам освоить верховую езду или просто провести время в компании этих великолепных животных. Независимо от вашего уровня подготовки, у нас найдется подходящий вариант для каждого.",
-        ],
+    const dataHero: HeroProps = {
+        title: "Групповые занятия",
+        subtitle: "Александрова дача",
+        backgroundImage: {
+            src: "/images/services/rides/group/group.jpg",
+            alt: "desc",
+        },
     };
+
+    const dataArticle: ArticleProps = {
+        title: "Групповые занятия. Абонементы.",
+        content:
+            <div className="space-y-4">
+                <p>Наши опытные инструкторы помогут вам освоить верховую езду или просто 
+                    провести время в компании этих великолепных животных. Независимо от 
+                    вашего уровня подготовки, у нас найдется подходящий вариант 
+                    для каждого.</p>
+            </div>,
+    };
+
+    const dataMission = null;
 
     const dataGallerySection: GallerySectionProps = {
         columns: 3,
@@ -54,7 +69,9 @@ export const getGroupPageData = async () => {
 
     return {
         prices,
-        dataAboutTeaser,
+        dataHero,
+        dataArticle,
+        dataMission,
         dataGallerySection,
     };
 };

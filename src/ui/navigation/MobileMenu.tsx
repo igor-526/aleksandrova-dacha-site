@@ -216,14 +216,17 @@ export function MobileMenu({
           >
             {ctaSlot
               ? isValidElement(ctaSlot)
-                ? cloneElement(ctaSlot, {
-                    key: "mobile-cta",
-                    className: cn(
-                      (ctaSlot as ReactElement).props?.className,
-                      "w-full"
-                    ),
-                    fullWidth: (ctaSlot as ReactElement).props?.fullWidth ?? true,
-                  })
+                ? (() => {
+                    const ctaElement = ctaSlot as ReactElement<{
+                      className?: string;
+                      fullWidth?: boolean;
+                    }>;
+                    return cloneElement(ctaElement, {
+                      key: "mobile-cta",
+                      className: cn(ctaElement.props?.className, "w-full"),
+                      fullWidth: ctaElement.props?.fullWidth ?? true,
+                    });
+                  })()
                 : ctaSlot
               : (
                 <Button

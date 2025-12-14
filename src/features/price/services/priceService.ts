@@ -1,4 +1,4 @@
-import { priceList } from "@/api/price";
+import { priceDetail, priceList } from "@/api/price";
 import { ApiResult, ApiListPaginatedResponseType } from "@/types";
 import { PriceListQueryParams, PriceOutDto } from "@/types/prices";
 
@@ -9,4 +9,12 @@ export const fetchPriceList = async (pageName: string): Promise<ApiResult<ApiLis
         offset: 0,
     };
     return await priceList(params);
+}
+
+export const fetchPriceDetail = async (slug: string): Promise<ApiResult<PriceOutDto>> => {
+    const params = {
+        page_data: true,
+        tables: true,
+    };
+    return await priceDetail(slug, params);
 }

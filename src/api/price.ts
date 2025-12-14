@@ -11,10 +11,10 @@ export const priceList = (
 };
 
 export const priceDetail = (
-    priceId: UUID,
+    priceSlug: string,
     params?: { tables?: boolean; page_data?: boolean },
 ): Promise<ApiResult<PriceOutDto>> => {
-    const paramtrizedUrl = addQueryParamsToUrl(`/prices/${priceId}`, params || {});
+    const paramtrizedUrl = addQueryParamsToUrl(`/prices/${priceSlug}`, params || {});
     return apiFetch<PriceOutDto>(paramtrizedUrl, {
         method: "GET",
     });

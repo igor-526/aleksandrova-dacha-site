@@ -1,4 +1,4 @@
-﻿import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Container } from "../foundations/Container";
 import { Hero } from "../hero/Hero";
 import { QuickServices } from "../quick-services/QuickServices";
@@ -6,7 +6,7 @@ import { Highlights } from "../sections/Highlights";
 import { PopularOffers } from "../sections/PopularOffers";
 import { Testimonials } from "../sections/Testimonials";
 import { AboutTeaser } from "../sections/AboutTeaser";
-import { ContactForm } from "../sections/ContactFarm";
+import { ContactBlock } from "../sections/ContactFarm";
 import { BookingSection } from "../sections/BookingSection";
 import { Footer } from "../navigation/Footer";
 import { Button } from "../button/Button";
@@ -178,7 +178,7 @@ export const Landing: Story = {
         </AboutTeaser>
       </Container>
       <Container>
-        <ContactForm
+        <ContactBlock
           address="РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, РїРѕСЃС‘Р»РѕРє РђР»РµРєСЃР°РЅРґСЂРѕРІР° Р”Р°С‡Р°"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           map={{
@@ -198,23 +198,13 @@ export const Landing: Story = {
           { label: "Telegram", href: "https://t.me" },
           { label: "Instagram", href: "https://instagram.com" },
         ]}
-        menus={[
-          {
-            title: "РќР°РІРёРіР°С†РёСЏ",
-            links: [
-              { label: "Р Р°Р·РІРµРґРµРЅРёРµ", href: "/service/breeding" },
-              { label: "Рћ РЅР°СЃ", href: "/about" },
-              { label: "Р¤РѕС‚РѕРіСЂР°С„РёРё", href: "/photosession" },
-            ],
-          },
-          {
-            title: "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ",
-            links: [
-              { label: "РљРѕРЅС‚Р°РєС‚С‹", href: "/about/contacts" },
-              { label: "Р‘Р»РѕРі", href: "/blog" },
-              { label: "РџРѕР»РёС‚РёРєР°", href: "/policy" },
-            ],
-          },
+        navLinks={[
+          { label: "Разведение", href: "/service/breeding" },
+          { label: "О нас", href: "/about" },
+          { label: "Фотографии", href: "/photosession" },
+          { label: "Контакты", href: "/about/contacts" },
+          { label: "Блог", href: "/blog" },
+          { label: "Политика", href: "/policy" },
         ]}
       />
     </div>

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { CardList } from "../sections/CardList";
 import { Button } from "../button/Button";
+import type { ResponsiveMediaPosition } from "../data-display/Card";
 
 const meta: Meta<typeof CardList> = {
   title: "UI/Sections/CardList",
@@ -66,7 +67,7 @@ export const Default: Story = {
 
 const responsiveItems = sampleItems.map((item) => ({
   ...item,
-  mediaPosition: { base: "top", md: "left", xl: "right" },
+  mediaPosition: { base: "top", md: "left", xl: "right" } as ResponsiveMediaPosition,
 }));
 
 export const ResponsiveMedia: Story = {

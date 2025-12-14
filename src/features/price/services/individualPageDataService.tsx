@@ -1,10 +1,8 @@
 import {
-    AboutTeaserProps,
     ArticleProps,
-    BookingSectionProps,
+    GallerySectionProps,
     HeroProps,
     MissionProps,
-    SafetyNoticeProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
@@ -27,39 +25,18 @@ export const getIndividualPageData = async () => {
         },
     };
 
-    const dataTextAboutTeaser: AboutTeaserProps = {
-        title: "Обучение верховой езде",
-        text: [
-            "Обучим взрослых и детей, с нуля до спортивных разрядов. Всадникам, не имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется брать индивидуальные занятия.",
-        ],
-    };
-
-    const dataSafetyNoticeItems: SafetyNoticeProps[] = [
-        {
-            title: "Одежда для занятий",
-            items: [
-                "штаны не стесняющие движения",
-                "ботинки или сапоги с маленьким каблуком",
-                "Верхняя одежда - по погоде",
-                "Защитный шлем выдаем",
-            ],
-        },
-        {
-            title: "Приехать надо за 15-20 мин",
-            items: [
-                "уведомить администрацию клуба о своем приезде",
-                "ознакомиться с техникой безопасности",
-                "оплатить услугу в кассе",
-                "подобрать шлем, переодеться",
-                "познакомится с тренером и лошадью",
-            ],
-        },
-    ];
-
     const dataArticle: ArticleProps = {
-        title: "Услуги и цены",
+        title: "Обучение верховой езде",
         content:
-            "Указанные цены действуют только по предварительной записи. Запись возможна не позднее, чем за день до приезда. Если вы приехали без записи, катание на лошади (пони) возможно только при наличии свободного тренера (инструктора), стоимость услуги увеличится на 200 рублей.",
+            <div className="space-y-4">
+                <p>Обучим взрослых и детей, с нуля до спортивных разрядов. 
+                    Всадникам, не имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется 
+                    брать индивидуальные занятия.</p>
+                <p><b>Указанные цены действуют только по предварительной записи.</b> Запись возможна не позднее, 
+                    чем за день до приезда. Если вы приехали без записи, катание на лошади (пони) 
+                    возможно только при наличии свободного тренера (инструктора), <b>стоимость услуги увеличится 
+                    на 200 рублей.</b></p>
+            </div>,
     };
 
     const dataMission: MissionProps = {
@@ -80,17 +57,46 @@ export const getIndividualPageData = async () => {
         ],
     };
 
-    const dataBookingSection: BookingSectionProps = {
-        image: { src: "/images/home-img.jpg", alt: "" },
+    const dataGallerySection: GallerySectionProps = {
+        columns: 3,
+        className: "w-full h-[150px] sm:h-[200px]",
+        items: [
+            {
+                src: "/images/services/rides/group/images/group1.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group2.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group3.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group4.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group5.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group6.jpg",
+                alt: "group",
+            },
+            {
+                src: "/images/services/rides/group/images/group7.jpg",
+                alt: "group",
+            },
+        ],
     };
 
     return {
         prices,
         dataHero,
-        dataTextAboutTeaser,
-        dataSafetyNoticeItems,
         dataArticle,
         dataMission,
-        dataBookingSection,
+        dataGallerySection,
     };
 };

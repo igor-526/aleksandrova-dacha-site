@@ -87,6 +87,7 @@ export function CallBackRequestModal({
         size="md"
         className="text-sm sm:text-base"
         onClick={handleSubmit}
+        disabled={true}
       >
         Отправить заявку
       </Button>
