@@ -3,10 +3,10 @@ import { Icon } from "../atoms/Icon";
 import { MapEmbed, type MapEmbedProps } from "../media/MapEmbed";
 import { cn } from "../utils/cn";
 
-export type ContactFarmProps = {
+export type ContactFormProps = {
   address: string;
   phones: string[];
-  map: Omit<MapEmbedProps, "className">;
+  map?: Omit<MapEmbedProps, "className">;
   hours?: { label: string; value: string }[];
   socials?: { type?: "vk" | "mail"; label: string; href: string }[];
   ctaLabel?: string;
@@ -14,7 +14,7 @@ export type ContactFarmProps = {
   className?: string;
 };
 
-export function ContactFarm({
+export function ContactBlock({
   address,
   phones,
   map,
@@ -23,18 +23,18 @@ export function ContactFarm({
   ctaLabel = "Построить маршрут",
   ctaHref,
   className,
-}: ContactFarmProps) {
+}: ContactFormProps) {
   const routeHref =
-    ctaHref ??
+    ctaHref && map &&
     (map.provider === "yandex"
-      ? "https://yandex.ru/maps/org/aleksandrova_dacha/1195551970/?ll=30.424075%2C59.676168&z=14.82"
+      ? `https://yandex.ru/maps/org/aleksandrova_dacha/1195551970/?ll=${map.lng}%2C${map.lat}&z=${map.zoom}`
       : `https://www.google.com/maps/dir/?api=1&destination=${map.lat},${map.lng}`);
 
   return (
     <section className={cn("grid gap-8 lg:grid-cols-2", className)}>
       <div className="space-y-5 rounded-3xl bg-[#fdfaf4] p-8 shadow-[0_24px_48px_rgba(56,64,0,0.08)]">
         <h2 className="font-serif text-3xl text-[#2f3600]">Как нас найти</h2>
-        <p className="flex items-start gap-3 text-sm text-[#4b4d2f]">
+        {address && <p className="flex items-start gap-3 text-sm text-[#4b4d2f]">
           <Icon
             name="location"
             width={20}
@@ -42,7 +42,7 @@ export function ContactFarm({
             className="mt-1 text-[#c9b585]"
           />
           {address}
-        </p>
+        </p>}
         {hours.length > 0 && (
           <div className="space-y-1 rounded-2xl bg-[#fff9ee] p-3 text-sm text-[#2f3600]">
             <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.14em] text-[#8b7b43]">
@@ -57,7 +57,7 @@ export function ContactFarm({
             ))}
           </div>
         )}
-        <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#2f3600]">
+        {phones.length > 0 && <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#2f3600]">
           {phones.map((phone) => (
             <a
               key={phone}
@@ -80,14 +80,14 @@ export function ContactFarm({
               {social.label}
             </a>
           ))}
-        </div>
-        <div className="flex justify-center">
+        </div>}
+        {ctaLabel && ctaHref && <div className="flex justify-center">
           <Button href={routeHref} target="_blank" rel="noreferrer">
             {ctaLabel}
           </Button>
-        </div>
+        </div>}
       </div>
-      <MapEmbed {...map} className="min-h-[320px]" />
+      {map && <MapEmbed {...map} className="min-h-[320px]" />}
     </section>
   );
 }

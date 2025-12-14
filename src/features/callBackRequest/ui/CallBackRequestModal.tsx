@@ -1,7 +1,9 @@
 "use client";
 
+import { CallBackRequestInDto } from "@/types";
 import { Button, Checkbox, Modal, cn, Input, Textarea } from "@/ui";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { sendCallBackRequest } from "../services/sendCallBackRequest";
 
 export type FeedbackFormValues = {
   name: string;
@@ -10,9 +12,8 @@ export type FeedbackFormValues = {
   agree: boolean;
 };
 
-export type FeedbackFormProps = {
+export type CallBackRequestModalProps = {
   serviceType?: string;
-  onSubmit?: (values: FeedbackFormValues) => void;
   policyLink?: string;
   className?: string;
   triggerLabel?: string;
@@ -25,15 +26,13 @@ const defaultValues: FeedbackFormValues = {
   agree: false,
 };
 
-export function FeedbackForm({
-  onSubmit,
+export function CallBackRequestModal({
   policyLink = "/policy",
   className,
   triggerLabel = "Записаться",
-}: FeedbackFormProps) {
+}: CallBackRequestModalProps) {
   const [open, setOpen] = useState(false);
   const [sentOpen, setSentOpen] = useState(false);
-  const sentTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [values, setValues] = useState<FeedbackFormValues>(defaultValues);
   const [errors, setErrors] = useState<
     Partial<Record<keyof FeedbackFormValues, string>>
@@ -46,9 +45,7 @@ export function FeedbackForm({
     setValues((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = async () => {
     const nextErrors: typeof errors = {};
     if (!values.name) nextErrors.name = "Введите имя";
     if (!values.phone) nextErrors.phone = "Введите телефон";
@@ -59,20 +56,43 @@ export function FeedbackForm({
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length === 0) {
-      onSubmit?.(values);
-      setOpen(false);
-      setSentOpen(true);
-      if (sentTimerRef.current) clearTimeout(sentTimerRef.current);
-      sentTimerRef.current = setTimeout(() => setSentOpen(false), 3000);
-      setValues(defaultValues);
+      try {
+        await sendCallBackRequest({
+          name: values.name,
+          phone: values.phone,
+          notes: values.notes,
+        });
+        setOpen(false);
+        setSentOpen(true);
+        setValues(defaultValues);
+      } catch (error) {
+        console.error("Ошибка при отправке запроса:", error);
+        // Можно добавить обработку ошибок, например, показать toast
+      }
     }
   };
 
-  useEffect(() => {
-    return () => {
-      if (sentTimerRef.current) clearTimeout(sentTimerRef.current);
-    };
-  }, []);
+  const footer = (
+    <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+      <Button
+        type="button"
+        variant="secondary"
+        size="md"
+        className="text-sm sm:text-base"
+        onClick={() => setOpen(false)}
+      >
+        Отмена
+      </Button>
+      <Button
+        variant="primary"
+        size="md"
+        className="text-sm sm:text-base"
+        onClick={handleSubmit}
+      >
+        Отправить заявку
+      </Button>
+    </div>
+  )
 
   return (
     <>
@@ -84,11 +104,11 @@ export function FeedbackForm({
         open={open}
         onOpenChange={setOpen}
         title="Связаться с нами"
-        footer={<></>}
+        footer={footer}
       >
         <form
           className={cn(
-            "grid gap-4 rounded-3xl border border-[#d3c6aa] bg-[#f9e0a2]/40 p-4 text-sm shadow-[var(--shadow-soft,0_12px_28px_rgba(56,64,0,0.1))] sm:gap-5 sm:p-6 sm:text-base",
+            "grid gap-4 text-sm sm:gap-5 sm:text-base",
             className
           )}
           onSubmit={handleSubmit}
@@ -136,25 +156,6 @@ export function FeedbackForm({
               <p className="text-xs text-[#a03b3b]">{errors.agree}</p>
             )}
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-            <Button
-              type="button"
-              variant="secondary"
-              size="lg"
-              className="text-sm sm:text-base"
-              onClick={() => setOpen(false)}
-            >
-              Отмена
-            </Button>
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              className="text-sm sm:text-base"
-            >
-              Отправить заявку
-            </Button>
-          </div>
         </form>
       </Modal>
 
@@ -162,7 +163,6 @@ export function FeedbackForm({
         open={sentOpen}
         onOpenChange={setSentOpen}
         title="Заявка отправлена"
-        footer={<></>}
       >
         <div className="px-2 py-1 text-base text-[#2f3600]">
           Мы свяжемся с вами в ближайшее время.
@@ -171,3 +171,5 @@ export function FeedbackForm({
     </>
   );
 }
+
+export const FeedbackForm = CallBackRequestModal;

@@ -2,7 +2,7 @@ import { Card } from "flowbite-react";
 import Image from "next/image";
 import { FC } from "react";
 
-type Prors = {
+type CardHorseProps = {
   id: number;
   name: string;
   breed: string;
@@ -13,7 +13,7 @@ type Prors = {
   pathImage: string;
 };
 
-const CardHorse: FC<Prors> = async ({
+const CardHorse: FC<CardHorseProps> = async ({
   id,
   name,
   breed,
@@ -22,7 +22,7 @@ const CardHorse: FC<Prors> = async ({
   dame,
   description,
   pathImage,
-}: Prors) => {
+}: CardHorseProps) => {
   const pathCard = `/archive/breeding/ponies/${id}`;
 
   return (

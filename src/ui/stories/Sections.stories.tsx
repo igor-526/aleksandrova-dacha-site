@@ -8,7 +8,7 @@ import { AboutTeaser } from "../sections/AboutTeaser";
 import { Mission } from "../sections/Mission";
 import { TeamGrid } from "../sections/TeamGrid";
 import { HorsesShowcase } from "../sections/HorsesShowcase";
-import { ContactFarm } from "../sections/ContactFarm";
+import { ContactForm } from "../sections/ContactFarm";
 import { GallerySection } from "../sections/GallerySection";
 import { ProgramsIntro } from "../sections/ProgramsIntro";
 import { ProgramCards } from "../sections/ProgramCards";
@@ -203,7 +203,7 @@ export const AllSections: Story = {
         <TeamGrid members={team} />
         <HorsesShowcase animals={animals} />
 
-        <ContactFarm
+        <ContactForm
           address="╨б╨░╨╜╨║╤В-╨Я╨╡╤В╨╡╤А╨▒╤Г╤А╨│, ╨┐╨╛╤Б. ╨Р╨╗╨╡╨║╤Б╨░╨╜╨┤╤А╨╛╨▓╨░ ╨Ф╨░╤З╨░"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           map={{

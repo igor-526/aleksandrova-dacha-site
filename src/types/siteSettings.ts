@@ -38,10 +38,8 @@ export type SiteSettingOutDto = ApiCreatedUpdatedAtType & {
   type: SiteSettingType;
 };
 
-export type SiteSettingMiniDto = {
+export type SiteSettingMiniOutDto = {
   key: string;
   value: string;
-  name?: string;
-  description?: string | null;
   type: string;
 };

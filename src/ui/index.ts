@@ -85,3 +85,5 @@ export * from "./sections/RelatedPosts";
 export * from "./sections/EmptySection";
 export * from "./sections/CardList";
 export * from "./empty-page/EmptyPage";
+
+export * from "./ImageBlock"

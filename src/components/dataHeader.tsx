@@ -1,8 +1,7 @@
 import { HeaderProps } from "@/ui";
-import { FeedbackForm } from "../Services/FeedbackForm";
-import { getSetting } from "../site_settings";
+import { FeedbackForm } from "../features/callBackRequest/ui/CallBackRequestModal";
 
-export const dataHeader: HeaderProps = {
+export const dataHeader: Pick<HeaderProps, "links" | "brandLogoSrc" | "brandHref" | "sticky" | "transparent" | "className" | "children"> = {
   links: [
     {
       label: "Услуги",
@@ -58,16 +57,6 @@ export const dataHeader: HeaderProps = {
     { label: "О нас", href: "/about" },
     { label: "Контакты", href: "/contacts" },
   ],
-  mobileSocials: [
-    { type: "vk", href: getSetting("vk"), label: "VK" },
-    {
-      type: "mail",
-      href: `mailto:${getSetting("mail")}`,
-      label: "Email",
-    },
-  ],
-  phone: getSetting("tel"),
-  brandName: "",
   brandLogoSrc: "/images/Logo.jpg",
   brandHref: "/",
   sticky: true,

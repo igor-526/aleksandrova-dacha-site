@@ -8,3 +8,4 @@ export * from "./priceGroups";
 export * from "./prices";
 export * from "./siteSettings";
 export * from "./table";
+export * from "./callBackRequest";

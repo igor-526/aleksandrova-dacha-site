@@ -11,7 +11,7 @@ import {
 
 import dataPrice from "./dataPriceApi";
 import MyServicesList from "../../MyServicesList";
-import { FeedbackForm } from "../../FeedbackForm";
+import { FeedbackForm } from "../../../../features/callBackRequest/ui/CallBackRequestModal";
 
 const ToursPage = () => {
   return (

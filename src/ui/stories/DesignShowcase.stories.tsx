@@ -6,7 +6,7 @@ import { Highlights } from "../sections/Highlights";
 import { PopularOffers } from "../sections/PopularOffers";
 import { Testimonials } from "../sections/Testimonials";
 import { AboutTeaser } from "../sections/AboutTeaser";
-import { ContactFarm } from "../sections/ContactFarm";
+import { ContactForm } from "../sections/ContactFarm";
 import { BookingSection } from "../sections/BookingSection";
 import { Footer } from "../navigation/Footer";
 import { Button } from "../button/Button";
@@ -178,7 +178,7 @@ export const Landing: Story = {
         </AboutTeaser>
       </Container>
       <Container>
-        <ContactFarm
+        <ContactForm
           address="РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, РїРѕСЃС‘Р»РѕРє РђР»РµРєСЃР°РЅРґСЂРѕРІР° Р”Р°С‡Р°"
           phones={["+7 (812) 345-67-89", "+7 (981) 155-54-44"]}
           map={{
