@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header, Footer } from "@/ui";
-import { dataHeader } from "@/components/dataHeader";
+import { dataHeader } from "@/features/header/data/dataHeader";
 import { CallBackRequestModal } from "@/features/callBackRequest/ui/CallBackRequestModal";
 import { getSiteSettings } from "@/features/siteSettings";
 

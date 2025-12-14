@@ -1,4 +1,4 @@
-export default function HorseRiding() {
+export default function AboutText() {
   return (
     <div className="w-7xl">
       <h1 className="text-5xl mb-2.5">О нас</h1>
@@ -56,7 +56,6 @@ export default function HorseRiding() {
         свежие фермерские продукты из коровьего и козьего молока, куриные и
         перепелиные яйца.
       </p>
-      <p className="mb-2.5">Наш клуб работает ежедневно с 10:00 до 19:30</p>
     </div>
   );
 }

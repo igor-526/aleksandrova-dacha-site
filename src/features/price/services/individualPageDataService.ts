@@ -1,0 +1,96 @@
+import {
+    AboutTeaserProps,
+    ArticleProps,
+    BookingSectionProps,
+    HeroProps,
+    MissionProps,
+    SafetyNoticeProps,
+} from "@/ui";
+import { PriceOutDto } from "@/types/prices";
+import { fetchPriceList } from "./priceService";
+
+export const getIndividualPageData = async () => {
+    const getPrices = async (): Promise<PriceOutDto[]> => {
+        const result = await fetchPriceList("Индивидуальное обучение");
+        return result.status === "ok" && result.data ? result.data.items : [];
+    };
+
+    const prices = await getPrices();
+
+    const dataHero: HeroProps = {
+        title: "Обучение верховой езде",
+        subtitle: "Александрова дача",
+        description: "(индивидуальные занятия и занятия в небольших группах)",
+        backgroundImage: {
+            src: "/images/services/rides/individual/individual.jpg",
+            alt: "desc",
+        },
+    };
+
+    const dataTextAboutTeaser: AboutTeaserProps = {
+        title: "Обучение верховой езде",
+        text: [
+            "Обучим взрослых и детей, с нуля до спортивных разрядов. Всадникам, не имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется брать индивидуальные занятия.",
+        ],
+    };
+
+    const dataSafetyNoticeItems: SafetyNoticeProps[] = [
+        {
+            title: "Одежда для занятий",
+            items: [
+                "штаны не стесняющие движения",
+                "ботинки или сапоги с маленьким каблуком",
+                "Верхняя одежда - по погоде",
+                "Защитный шлем выдаем",
+            ],
+        },
+        {
+            title: "Приехать надо за 15-20 мин",
+            items: [
+                "уведомить администрацию клуба о своем приезде",
+                "ознакомиться с техникой безопасности",
+                "оплатить услугу в кассе",
+                "подобрать шлем, переодеться",
+                "познакомится с тренером и лошадью",
+            ],
+        },
+    ];
+
+    const dataArticle: ArticleProps = {
+        title: "Услуги и цены",
+        content:
+            "Указанные цены действуют только по предварительной записи. Запись возможна не позднее, чем за день до приезда. Если вы приехали без записи, катание на лошади (пони) возможно только при наличии свободного тренера (инструктора), стоимость услуги увеличится на 200 рублей.",
+    };
+
+    const dataMission: MissionProps = {
+        title: "Вас научат:",
+        points: [
+            {
+                heading: "Техника безопасности",
+                text: "В этот курс входит: техника безопасности, правила поведения в конюшне, правила движения по манежу. Обязателен для всех новичков.",
+            },
+            {
+                heading: "Подготовка лошади",
+                text: "Затем Вас научат чистить и седлать лошадь, выводить ее на манеж, садиться на лошадь. Количество занятий зависит от Ваших способностей.",
+            },
+            {
+                heading: "Управление лошадью",
+                text: "Вы приобретете начальные навыки верховой езды: умение пользоваться средствами управления, правильная посадка, движение шагом, рысью, галопом, смена направления движения.",
+            },
+        ],
+    };
+
+    const dataBookingSection: BookingSectionProps = {
+        image: { src: "/images/home-img.jpg", alt: "" },
+    };
+
+    return {
+        prices,
+        dataHero,
+        dataTextAboutTeaser,
+        dataSafetyNoticeItems,
+        dataArticle,
+        dataMission,
+        dataBookingSection,
+    };
+};

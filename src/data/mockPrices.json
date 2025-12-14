@@ -1,0 +1,978 @@
+{
+  "carriages": [
+    {
+      "id": "893ab671-786a-4bb2-a4a7-a5aa52bb6d11",
+      "name": "Экипаж Виктория",
+      "slug": "ekipag-viktoriya",
+      "description": "Прогулочный изумрудный экипаж'Виктория', с одной или парой лошадей в упряжке. 4-х местный. Откидной капюшон.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d911",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux1.jpg"
+        },
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d912",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux2.jpg"
+        },
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d913",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux3.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Аренда экипажей"
+        }
+      ],
+      "created_at": "2025-12-02T16:06:51.434470+00:00",
+      "updated_at": "2025-12-02T16:06:51.434479+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "onsite",
+              "title": "В клубе",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "outside",
+              "title": "С выездом",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "1 час",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "onsite": { "value": "30000", "annotation": "", "cell_formatter": [] },
+                "outside": { "value": "40000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "893ab671-786a-4bb2-a4a7-a5aa52bb6d16",
+      "name": "Экипаж Виктория",
+      "slug": "ekipag-viktoriya",
+      "description": "Прогулочный изумрудный экипаж'Виктория', с одной или парой лошадей в упряжке. 4-х местный. Откидной капюшон.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d911",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux1.jpg"
+        },
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d912",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux2.jpg"
+        },
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d913",
+          "is_main": true,
+          "url": "/images/services/rental/carriages/lux-white-carriage-with-two-horses/lux3.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Аренда экипажей"
+        }
+      ],
+      "created_at": "2025-12-02T16:06:51.434470+00:00",
+      "updated_at": "2025-12-02T16:06:51.434479+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "onsite",
+              "title": "В клубе",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "outside",
+              "title": "С выездом",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "1 час",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "onsite": { "value": "30000", "annotation": "", "cell_formatter": [] },
+                "outside": { "value": "40000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "group": [
+    {
+      "id": "5b21eca1-b27e-4067-a9fc-f251517f514d",
+      "name": "1-й уровень подготовки",
+      "slug": "1-y-uroven-podgotovki",
+      "description": "Обучение верховой езде в группе 5-12 человек. Подойдет для начинающих всадников.",
+      "photos": [],
+      "groups": [
+        { "id": "4f26d20a-1aeb-4306-b5d4-5db139dcb077", "name": "Групповые занятия" }
+      ],
+      "created_at": "2025-12-02T19:27:11.990823+00:00",
+      "updated_at": "2025-12-02T19:27:11.990833+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "amount",
+              "title": "Занятий в месяц",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "price",
+              "title": "Стоимость",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "price": { "value": "6000", "annotation": "", "cell_formatter": [] },
+                "amount": {
+                  "value": "4 занятия (будни)",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            },
+            {
+              "cells": {
+                "price": { "value": "7000", "annotation": "", "cell_formatter": [] },
+                "amount": {
+                  "value": "4 занятия (выходные)",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            },
+            {
+              "cells": {
+                "price": { "value": "13000", "annotation": "", "cell_formatter": [] },
+                "amount": {
+                  "value": "8 занятий",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            },
+            {
+              "cells": {
+                "price": { "value": "15000", "annotation": "", "cell_formatter": [] },
+                "amount": {
+                  "value": "12 занятий",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4b8f367a-38b6-4321-8fd9-1c0ff2888410",
+      "name": "2-й уровень подготовки",
+      "slug": "2-y-uroven-podgotovki",
+      "description": "Спортивная подготовка (конкур, выездка). Не более 10  человек в группе. Участия в соревнованиях клубного значения, участие в показательных выступлениях.",
+      "photos": [],
+      "groups": [
+        { "id": "4f26d20a-1aeb-4306-b5d4-5db139dcb077", "name": "Групповые занятия" }
+      ],
+      "created_at": "2025-12-02T19:34:59.511181+00:00",
+      "updated_at": "2025-12-02T19:34:59.511192+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "amount",
+              "title": "Занятий в месяц",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "price",
+              "title": "Стоимость",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "price": { "value": "15000", "annotation": "", "cell_formatter": [] },
+                "amount": {
+                  "value": "8 занятий",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "individual": [
+    {
+      "id": "893ab671-786a-4bb2-a4a7-a5aa52bb6d1a",
+      "name": "Разовое занятие",
+      "slug": "razovoe-zanyatie",
+      "description": "Обучение посадке, управлению на шагу, рыси, галопе. Не более 3-х всадников на одного тренера.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d911",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual1.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:06:51.434470+00:00",
+      "updated_at": "2025-12-02T16:06:51.434479+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "30 минут",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "1300", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "1500", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "1700", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0aa6eba2-844a-497b-b955-ec3bd22cfa78",
+      "name": "Индивидуальное занятие",
+      "slug": "individualnoe-zanyatie",
+      "description": "Обучение посадке, управлению на шагу, рыси, галопе. Все внимание только Вам.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d912",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual2.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:11:07.833847+00:00",
+      "updated_at": "2025-12-02T16:11:07.833856+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "30 минут",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "1500", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "1800", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "2300", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2700", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c8bfd002-5d43-4991-aebe-acdcb162ccd3",
+      "name": "Разовое спортивное занятие",
+      "slug": "razovoe-sportivnoe-zanyatie",
+      "description": "Повышение уровня спортивной подготовки. Не более 2-х всадников на одного тренера.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d913",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual3.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:14:51.718278+00:00",
+      "updated_at": "2025-12-02T16:14:51.718287+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "2500", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "3000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e9995dfd-9cd0-45ba-881e-c372d5cc0b9d",
+      "name": "Индивидуальное спортивное занятие",
+      "slug": "individualnoe-sportivnoe-zanyatie",
+      "description": "Повышение уровня спортивной подготовки. Все внимание только Вам.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d914",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual4.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:17:05.840197+00:00",
+      "updated_at": "2025-12-02T16:17:05.840209+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "3000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "3500", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "99c26247-2b40-4fe9-8b2d-dd7151dca3ad",
+      "name": "Теоретическое занятие",
+      "slug": "teoreticheskoe-zanyatie",
+      "description": "Группа до 3-х человек",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d915",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual5.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:20:08.789371+00:00",
+      "updated_at": "2025-12-02T16:20:08.789380+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "30 минут",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "1300", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "1500", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "1700", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "41e176dc-15ed-4878-a824-52eba27b11e2",
+      "name": "Индивидуальное теоретическое занятие",
+      "slug": "individualnoe-teoreticheskoe-zanyatie",
+      "description": "",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d916",
+          "is_main": true,
+          "url": "/images/services/rides/individual/individual6.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "df97aade-2fc9-40ff-8617-5e137e4587a9",
+          "name": "Индивидуальное обучение"
+        }
+      ],
+      "created_at": "2025-12-02T16:23:20.835437+00:00",
+      "updated_at": "2025-12-02T16:23:20.835447+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "30 минут",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "1500", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "1800", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "2300", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2700", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tours": [
+    {
+      "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d719",
+      "name": "Разовое катание на лошади (пони)",
+      "slug": "razovoe-katanie-na-loshadi-poni",
+      "description": "В поводу по манежу или парку. Не более 3-х всадников на одного тренера.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d712",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour1.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-11-30T14:12:17.957457+00:00",
+      "updated_at": "2025-11-30T14:12:17.957465+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "service",
+              "title": " ",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "30 мин",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": {
+                  "value": "1000",
+                  "annotation": "По предварительной записи",
+                  "cell_formatter": []
+                },
+                "weekend": {
+                  "value": "1200",
+                  "annotation": "По предварительной записи",
+                  "cell_formatter": []
+                }
+              }
+            },
+            {
+              "cells": {
+                "service": {
+                  "value": "1 час",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": {
+                  "value": "1500",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekend": {
+                  "value": "1800",
+                  "annotation": "",
+                  "cell_formatter": []
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a15127eb-2720-4522-bc2d-095a5ceeea1b",
+      "name": "Индивидуальное катание на лошади (пони)",
+      "slug": "individualnoe-katanie-na-loshadi-poni",
+      "description": "В поводу по манежу или парку. Все внимание только Вам.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d710",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour2.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-11-30T14:17:24.986470+00:00",
+      "updated_at": "2025-11-30T14:17:24.986478+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "30 мин", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "1200", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "1400", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "1800", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "205ea81d-7393-4f38-b3a2-8d0df0cff638",
+      "name": "Разовое занятие с прогулкой",
+      "slug": "razovoe-zanyatie-s-progulkoy",
+      "description": "Обучение посадке, управлению на шагу / рыси – 30 мин. Прогулка по манежу или парку – 30 мин. Не более 3-х всадников на одного тренера.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d713",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour3.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-12-02T14:30:48.647418+00:00",
+      "updated_at": "2025-12-02T14:30:48.647427+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "service",
+              "title": " ",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "1700", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2d216b4b-6926-460f-af55-631b6f75312b",
+      "name": "Конная прогулка в полях",
+      "slug": "konnaya-progulka-v-polyah",
+      "description": "Не менее 2-х всадников. Шаг, рысь, галоп (по готовности).",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d714",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour4.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-12-02T14:36:59.609287+00:00",
+      "updated_at": "2025-12-02T14:36:59.609297+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "service",
+              "title": " ",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "Только по предварительной записи",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "Только по предварительной записи",
+              "cell_formatter": ["text_bold"]
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "1 час", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "2000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "2500", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": { "value": "2 часа", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "3000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "3500", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "457e9dd8-cb42-45cb-92c0-7a0e9286bf51",
+      "name": "Маршрут для опытных всадников",
+      "slug": "marshrut-dlya-opytnyh-vsadnikov",
+      "description": "Не менее 2-х всадников. Шаг, рысь, галоп, преодоление канав и водных препятствий.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d715",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour5.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-12-02T15:57:20.321803+00:00",
+      "updated_at": "2025-12-02T15:57:20.321814+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            {
+              "key": "service",
+              "title": " ",
+              "annotation": "",
+              "cell_formatter": ["text_bold"]
+            },
+            {
+              "key": "weekday",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": { "value": "3 часа", "annotation": "", "cell_formatter": [] },
+                "weekday": { "value": "4000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "4500", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a530e88d-e532-47a8-bfb8-5e035e26f1d1",
+      "name": "Выезд на финский залив",
+      "slug": "vyezd-na-finskiy-zaliv",
+      "description": "Прогулка, купание, фотосессия. В стоимость входит аренда и доставка лошади, услуги инструктора.",
+      "photos": [
+        {
+          "id": "e2c82029-f1f2-4fd9-9eee-9fee89b8d716",
+          "is_main": true,
+          "url": "/images/services/rides/tours/tour6.jpg"
+        }
+      ],
+      "groups": [
+        {
+          "id": "aeda5ae6-b380-4e6c-a8c7-a9894e55739b",
+          "name": "Конные прогулки и катания"
+        }
+      ],
+      "created_at": "2025-12-02T16:02:14.330079+00:00",
+      "updated_at": "2025-12-02T16:02:14.330088+00:00",
+      "page_data": "<div></div>",
+      "price_tables": [
+        {
+          "columns": [
+            { "key": "service", "title": " ", "annotation": "", "cell_formatter": [] },
+            {
+              "key": "weekday",
+              "title": "Будни",
+              "annotation": "",
+              "cell_formatter": []
+            },
+            {
+              "key": "weekend",
+              "title": "Выходные",
+              "annotation": "",
+              "cell_formatter": []
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "service": {
+                  "value": "1 лошадь",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "15000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "18000", "annotation": "", "cell_formatter": [] }
+              }
+            },
+            {
+              "cells": {
+                "service": {
+                  "value": "доп. лошадь",
+                  "annotation": "",
+                  "cell_formatter": []
+                },
+                "weekday": { "value": "5000", "annotation": "", "cell_formatter": [] },
+                "weekend": { "value": "6000", "annotation": "", "cell_formatter": [] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

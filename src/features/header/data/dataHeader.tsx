@@ -1,5 +1,5 @@
 import { HeaderProps } from "@/ui";
-import { FeedbackForm } from "../features/callBackRequest/ui/CallBackRequestModal";
+import { FeedbackForm } from "@/features/callBackRequest/ui/CallBackRequestModal";
 
 export const dataHeader: Pick<HeaderProps, "links" | "brandLogoSrc" | "brandHref" | "sticky" | "transparent" | "className" | "children"> = {
   links: [

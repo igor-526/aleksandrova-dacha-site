@@ -1,6 +1,5 @@
 "use client";
 
-import { CallBackRequestInDto } from "@/types";
 import { Button, Checkbox, Modal, cn, Input, Textarea } from "@/ui";
 import { useState } from "react";
 import { sendCallBackRequest } from "../services/sendCallBackRequest";
@@ -29,7 +28,7 @@ const defaultValues: FeedbackFormValues = {
 export function CallBackRequestModal({
   policyLink = "/policy",
   className,
-  triggerLabel = "Записаться",
+  triggerLabel = "Связаться",
 }: CallBackRequestModalProps) {
   const [open, setOpen] = useState(false);
   const [sentOpen, setSentOpen] = useState(false);
