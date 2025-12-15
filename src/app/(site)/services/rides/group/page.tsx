@@ -2,6 +2,8 @@ import { Container } from "@/ui";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getGroupPageData } from "@/features/price/services/groupPageDataService";
 
+export const dynamic = 'force-dynamic';
+
 export default async function ServicesRidesGroupPage() {
   const {
     prices,

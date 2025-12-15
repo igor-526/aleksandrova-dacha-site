@@ -4,6 +4,8 @@ import {
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getIndividualPageData } from "@/features/price/services/individualPageDataService";
 
+export const dynamic = 'force-dynamic';
+
 const ServicesRidesIndividual = async () => {
   const {
     prices,
