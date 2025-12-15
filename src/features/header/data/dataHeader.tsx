@@ -1,7 +1,16 @@
 import { HeaderProps } from "@/ui";
 import { FeedbackForm } from "@/features/callBackRequest/ui/CallBackRequestModal";
 
-export const dataHeader: Pick<HeaderProps, "links" | "brandLogoSrc" | "brandHref" | "sticky" | "transparent" | "className" | "children"> = {
+export const dataHeader: Pick<
+  HeaderProps,
+  | "links"
+  | "brandLogoSrc"
+  | "brandHref"
+  | "sticky"
+  | "transparent"
+  | "className"
+  | "children"
+> = {
   links: [
     {
       label: "Услуги",
@@ -18,6 +27,7 @@ export const dataHeader: Pick<HeaderProps, "links" | "brandLogoSrc" | "brandHref
               href: "/services/rides/individual",
             },
             { label: "Групповое обучение", href: "/services/rides/group" },
+            { label: "Конный спорт", href: "/services/rides/sport" },
           ],
         },
         {

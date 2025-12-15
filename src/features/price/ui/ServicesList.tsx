@@ -1,48 +1,35 @@
-import { PriceOutDto } from "@/types/prices";
-import { Card, cn, DataTable } from "@/ui";
-
-export type ServicesListProps = {
+import { PriceOutDto } from "@/types";
+import { Button, cn, DataTable, GallerySection, MediaImage } from "@/ui";
+import ServiceCard from "./ServiceCard";
+type ServicesListProps = {
   heading?: string;
   items: PriceOutDto[];
-  className?: string;
-  mediaPosition?: "top" | "left" | "right";
-  classNameMedia?: string;
-  columns?: 1 | 2 | 3;
+  mediaPosition?: "top" | "left";
   gallery?: boolean;
-  mediaWidth?: "1/3" | "1/2" | "full" | `${number}px` | number | string;
-  mediaHeight?: "1/3" | "1/2" | "full" | `${number}px` | number | string;
-  maxCardWidth?: number | string;
+  columns?: 1 | 2 | 3;
+  className?: string;
 };
 
-export function ServicesList({
+const ServicesList = ({
   heading,
-  items,
-  className,
+  items = [],
   mediaPosition = "top",
-  classNameMedia,
+  gallery = true,
   columns = 3,
-  gallery = false,
-  mediaWidth = "1/3",
-  mediaHeight,
-  maxCardWidth = "450px",
-}: ServicesListProps) {
-  const maxWidthStyle = maxCardWidth
-    ? {
-        maxWidth:
-          typeof maxCardWidth === "number" ? `${maxCardWidth}px` : maxCardWidth,
-      }
-    : undefined;
-
+  className,
+}: ServicesListProps) => {
   return (
-    <section className={cn("space-y-6", className)}>
-      <div className="text-center">
-        <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
-          {heading}
-        </h2>
-      </div>
+    <section className={cn("space-y-6 mx-auto", className)}>
+      {heading && (
+        <div className="text-center">
+          <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
+            {heading}
+          </h2>
+        </div>
+      )}
       <div
         className={cn(
-          "grid gap-6 items-stretch",
+          "grid gap-6 items-stretch justify-items-stretch",
           columns === 1 && "sm:grid-cols-1",
           columns === 2 && "sm:grid-cols-1 md:grid-cols-2",
           columns === 3 && "sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
@@ -55,45 +42,52 @@ export function ServicesList({
             src: photo.url,
             alt: item.slug,
           }));
-          const coverUrl = photos[0]?.url;
+          const photoUrl = photos[0]?.url;
+          const mediaCard = gallery ? (
+            <GallerySection
+              items={galleryItems}
+              columns={1}
+              className="w-full h-full"
+            />
+          ) : (
+            <MediaImage
+              src={photoUrl}
+              alt={item.slug}
+              className="w-full h-full"
+            />
+          );
 
           return (
-            <div
-              key={index}
-              className="flex h-full w-full mx-auto"
-              style={maxWidthStyle}
-            >
-              <Card
-                className="h-full w-full"
+            <div key={index} className={cn("flex mx-auto h-full w-full")}>
+              <ServiceCard
                 title={item.name}
                 content={item.description || ""}
                 mediaPosition={mediaPosition}
-                gallery={gallery}
-                galleryItems={gallery ? galleryItems : undefined}
-                mediaWidth={mediaWidth}
-                mediaHeight={mediaHeight}
-                classNameMedia={classNameMedia}
-                media={
-                  gallery || !coverUrl ? undefined : (
-                    <div
-                      className="h-full w-full rounded-2xl bg-cover bg-center"
-                      style={{ backgroundImage: `url(${coverUrl})` }}
-                    />
-                  )
-                }
+                media={mediaCard}
               >
                 {item.price_tables && item.price_tables.length > 0 && (
                   <div className="space-y-4">
-                    {item.price_tables.map((table, tableIndex) => (
-                      table && <DataTable key={tableIndex} item={table} />
-                    ))}
+                    {item.price_tables.map(
+                      (table, tableIndex) =>
+                        table && <DataTable key={tableIndex} item={table} />
+                    )}
                   </div>
                 )}
-              </Card>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  href={`/uslugi/${item.slug}`}
+                  className="my-2"
+                >
+                  Подробнее
+                </Button>
+              </ServiceCard>
             </div>
           );
         })}
       </div>
     </section>
   );
-}
+};
+
+export default ServicesList;
