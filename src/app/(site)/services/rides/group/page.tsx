@@ -8,6 +8,7 @@ export default async function ServicesRidesGroupPage() {
     dataHero,
     dataArticle,
     dataMission,
+    dataServicesList,
     dataGallerySection,
   } = await getGroupPageData();
 
@@ -19,9 +20,9 @@ export default async function ServicesRidesGroupPage() {
           dataHero={dataHero}
           dataArticle={dataArticle}
           dataMission={dataMission}
+          dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
         />
-
       </Container>
     </div>
   );

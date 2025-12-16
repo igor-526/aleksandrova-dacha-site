@@ -1,6 +1,4 @@
-import {
-  Container,
-} from "@/ui";
+import { Container } from "@/ui";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getIndividualPageData } from "@/features/price/services/individualPageDataService";
 
@@ -10,6 +8,7 @@ const ServicesRidesIndividual = async () => {
     dataHero,
     dataArticle,
     dataMission,
+    dataServicesList,
     dataGallerySection,
   } = await getIndividualPageData();
 
@@ -21,9 +20,9 @@ const ServicesRidesIndividual = async () => {
           dataHero={dataHero}
           dataArticle={dataArticle}
           dataMission={dataMission}
+          dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
         />
-
       </Container>
     </div>
   );

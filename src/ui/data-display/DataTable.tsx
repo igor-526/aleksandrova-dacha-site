@@ -30,7 +30,7 @@ export function DataTable({
 
   return (
     <div className={cn(responsive && "overflow-x-auto", className)}>
-      <table className="min-w-full divide-y divide-[#e2d6bc] text-sm text-[#2f3600]">
+      <table className="min-w-full divide-y divide-[#e2d6bc] text-sm text-[#2f3600] aspect-auto">
         <thead className="bg-[#f0e7cf] text-xs uppercase text-[#8d784f]">
           <tr>
             {columns.map((column) => {

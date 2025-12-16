@@ -3,6 +3,7 @@ import { cn } from "@/ui";
 export type ServiceCardProps = {
   title?: string;
   content?: string;
+  gallery?: boolean;
   media?: React.ReactNode;
   mediaPosition?: "top" | "left";
   actions?: React.ReactNode;
@@ -13,6 +14,7 @@ export type ServiceCardProps = {
 const ServiceCard = ({
   title,
   content,
+  gallery,
   media,
   mediaPosition = "top",
   actions,
@@ -25,6 +27,8 @@ const ServiceCard = ({
     "text-[#2f3600]",
     "border border-[#bcc76e]",
     "grid gap-4",
+    "justify-stretch items-stretch",
+    "w-full h-full mx-auto",
   ];
 
   const contentBlock = (
@@ -43,24 +47,42 @@ const ServiceCard = ({
     </div>
   );
 
-  return mediaPosition === "top" ? (
+  return !gallery ? (
     <article
-      className={cn(
-        ...articleClasses,
-        "grid-rows-3 justify-stretch items-stretch",
-        className
-      )}
+      className={cn(...articleClasses, "grid-rows1 grid-cols-1", className)}
     >
-      <div className="row-span-1">{media}</div>
-      <div className="row-span-2">{contentBlock}</div>
+      <div>{contentBlock}</div>
     </article>
+  ) : mediaPosition === "top" ? (
+    <>
+      <article
+        className={cn(
+          ...articleClasses,
+          "hidden sm:grid md:hidden grid-cols-3 ",
+          className
+        )}
+      >
+        <div className="col-span-1">{media}</div>
+        <div className="col-span-2">{contentBlock}</div>
+      </article>
+      <article
+        className={cn(
+          ...articleClasses,
+          "grid sm:hidden md:grid grid-rows-3 max-w-[500px]",
+          className
+        )}
+      >
+        <div className="row-span-1">{media}</div>
+        <div className="row-span-2">{contentBlock}</div>
+      </article>
+    </>
   ) : (
     mediaPosition === "left" && (
       <>
         <article
           className={cn(
             ...articleClasses,
-            "hidden sm:grid grid-cols-3 justify-stretch items-stretch",
+            "hidden sm:grid md:hidden lg:grid grid-cols-3 ",
             className
           )}
         >
@@ -71,7 +93,7 @@ const ServiceCard = ({
         <article
           className={cn(
             ...articleClasses,
-            "sm:hidden grid grid-rows-3 justify-stretch items-stretch",
+            "grid sm:hidden md:grid lg:hidden grid-rows-3 max-w-[500px]",
             className
           )}
         >

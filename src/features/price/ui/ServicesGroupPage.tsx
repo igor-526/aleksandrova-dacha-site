@@ -9,7 +9,9 @@ import {
   Mission,
   MissionProps,
 } from "@/ui";
-import ServicesList from "@/features/price/ui/ServicesList";
+import ServicesList, {
+  ServicesListProps,
+} from "@/features/price/ui/ServicesList";
 import { PriceOutDto } from "@/types";
 
 type ServicesGroupPageProps = {
@@ -17,6 +19,7 @@ type ServicesGroupPageProps = {
   dataHero?: HeroProps | null;
   dataArticle?: ArticleProps | null;
   dataMission?: MissionProps | null;
+  dataServicesList?: ServicesListProps | null;
   dataGallerySection?: GallerySectionProps | null;
 };
 
@@ -25,6 +28,7 @@ export const ServicesGroupPage = ({
   dataHero,
   dataArticle,
   dataMission,
+  dataServicesList,
   dataGallerySection,
 }: ServicesGroupPageProps) => {
   return (
@@ -35,12 +39,7 @@ export const ServicesGroupPage = ({
         {dataArticle && <Article {...dataArticle} />}
 
         {prices && prices.length > 0 && (
-          <ServicesList
-            items={prices}
-            mediaPosition="left"
-            columns={2}
-            gallery
-          />
+          <ServicesList {...dataServicesList} items={prices} />
         )}
 
         {dataMission && <Mission {...dataMission} />}

@@ -6,6 +6,7 @@ import {
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
+import { ServicesListProps } from "../ui/ServicesList";
 
 export const getSportPageData = async () => {
   const getPrices = async (): Promise<PriceOutDto[]> => {
@@ -63,6 +64,12 @@ export const getSportPageData = async () => {
     ],
   };
 
+  const dataServicesList: ServicesListProps = {
+    items: [],
+    columns: 1,
+    gallery: false,
+  };
+
   const dataGallerySection: GallerySectionProps = {
     columns: 3,
     className: "w-full h-[150px] sm:h-[200px]",
@@ -103,6 +110,7 @@ export const getSportPageData = async () => {
     dataHero,
     dataArticle,
     dataMission,
+    dataServicesList,
     dataGallerySection,
   };
 };

@@ -1,7 +1,7 @@
 import { PriceOutDto } from "@/types";
 import { Button, cn, DataTable, GallerySection, MediaImage } from "@/ui";
 import ServiceCard from "./ServiceCard";
-type ServicesListProps = {
+export type ServicesListProps = {
   heading?: string;
   items: PriceOutDto[];
   mediaPosition?: "top" | "left";
@@ -61,6 +61,7 @@ const ServicesList = ({
             <div key={index} className={cn("flex mx-auto h-full w-full")}>
               <ServiceCard
                 title={item.name}
+                gallery={gallery}
                 content={item.description || ""}
                 mediaPosition={mediaPosition}
                 media={mediaCard}

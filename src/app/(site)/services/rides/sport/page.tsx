@@ -3,8 +3,14 @@ import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getSportPageData } from "@/features/price/services/sportPageDataService";
 
 const ServicesRidesSport = async () => {
-  const { prices, dataHero, dataArticle, dataMission, dataGallerySection } =
-    await getSportPageData();
+  const {
+    prices,
+    dataHero,
+    dataArticle,
+    dataMission,
+    dataServicesList,
+    dataGallerySection,
+  } = await getSportPageData();
 
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
@@ -14,6 +20,7 @@ const ServicesRidesSport = async () => {
           dataHero={dataHero}
           dataArticle={dataArticle}
           dataMission={dataMission}
+          dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
         />
       </Container>
