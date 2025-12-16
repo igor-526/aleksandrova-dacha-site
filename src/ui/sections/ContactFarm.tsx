@@ -74,10 +74,11 @@ export function ContactBlock({
               href={social.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#e4d8bd] px-4 py-2 text-sm font-semibold text-[#2f3600] transition hover:bg-[#d5c7a6]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c9b585] bg-[#f6efe0] text-[#2f3600] transition hover:border-[#2f3600] hover:text-[#1f2600]"
+              aria-label={social.label}
             >
-              {social.type && <Icon name={social.type} width={16} height={16} />}
-              {social.label}
+              {social.type && <Icon name={social.type} width={36} height={36} />}
+              <span className="sr-only">{social.label}</span>
             </a>
           ))}
         </div>}

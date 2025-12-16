@@ -227,7 +227,7 @@ export function MobileMenu({
                   aria-label={contact.label ?? contact.type}
                   onClick={() => onOpenChange(false)}
                   className={cn(
-                    "flex h-11 w-11 items-center justify-center rounded-full border transition",
+                    "flex h-12 w-12 items-center justify-center rounded-full border transition",
                     contactColors[contact.type]
                   )}
                   target={
@@ -241,7 +241,7 @@ export function MobileMenu({
                       : undefined
                   }
                 >
-                  <Icon name={contact.type} width={20} height={20} />
+                  <Icon name={contact.type} width={30} height={30} />
                 </a>
               ))}
             </div>

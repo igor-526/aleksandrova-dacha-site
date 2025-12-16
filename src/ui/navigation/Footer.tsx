@@ -239,12 +239,12 @@ export function Footer({
           )}
 
           {socials.length > 0 && (
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-[#e4d8bd]">
+            <div className="flex flex-wrap items-center gap-3">
               {socials.map((social) => (
                 <a
                   key={social.href}
                   href={social.href}
-                  className="flex items-center gap-2 rounded-full border border-[#3d431c] px-3 py-2 transition hover:border-[#f6efe0] hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3d431c] text-[#f6efe0] transition hover:border-[#f6efe0] hover:text-white"
                   target={
                     social.type === "vk" || social.type === "telegram"
                       ? "_blank"
@@ -255,11 +255,12 @@ export function Footer({
                       ? "noreferrer"
                       : undefined
                   }
+                  aria-label={social.label}
                 >
                   {social.type && (
-                    <Icon name={social.type} width={16} height={16} />
+                    <Icon name={social.type} width={36} height={36} />
                   )}
-                  {social.label}
+                  <span className="sr-only">{social.label}</span>
                 </a>
               ))}
             </div>
