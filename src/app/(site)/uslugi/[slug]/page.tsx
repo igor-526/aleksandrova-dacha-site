@@ -7,6 +7,8 @@ type UslugiPageProps = {
   }>
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function UslugiPage({ params }: UslugiPageProps) {
   const { slug } = await params;
 

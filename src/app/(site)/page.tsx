@@ -2,6 +2,8 @@ import { CallBackRequestModal } from "@/features/callBackRequest/ui/CallBackRequ
 import { getHomePageData } from "@/features/home/services/homePageDataService";
 import { ContactBlock, Hero, Container, Mission, AboutTeaser, QuickServices } from "@/ui";
 
+export const dynamic = 'force-dynamic';
+
 const HomePage = async () => {
 
   const {

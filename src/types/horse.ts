@@ -21,3 +21,5 @@ export type HorseType = {
     dame?: HorseType | null;
   };
 };
+
+

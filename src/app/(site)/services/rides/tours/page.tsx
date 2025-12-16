@@ -2,6 +2,8 @@ import { Container } from "@/ui";
 import { getToursPageData } from "@/features/price/services/toursPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 
+export const dynamic = 'force-dynamic';
+
 const ServicesRidesTours = async () => {
   const {
     prices,
