@@ -27,42 +27,18 @@ export const getSportPageData = async () => {
   };
 
   const dataArticle: ArticleProps = {
-    title: "Обучение верховой езде",
+    title: "Конный спорт",
     content: (
       <div className="space-y-4">
         <p>
-          Обучим взрослых и детей, с нуля до спортивных разрядов. Всадникам, не
-          имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется
-          брать индивидуальные занятия.
-        </p>
-        <p>
-          <b>Указанные цены действуют только по предварительной записи.</b>{" "}
-          Запись возможна не позднее, чем за день до приезда. Если вы приехали
-          без записи, катание на лошади (пони) возможно только при наличии
-          свободного тренера (инструктора),{" "}
-          <b>стоимость услуги увеличится на 200 рублей.</b>
+          Для достижения высоких результатов в спорте желающие могут взять в
+          аренду лошадь (пони)
         </p>
       </div>
     ),
   };
 
-  const dataMission: MissionProps = {
-    title: "Вас научат:",
-    points: [
-      {
-        heading: "Техника безопасности",
-        text: "В этот курс входит: техника безопасности, правила поведения в конюшне, правила движения по манежу. Обязателен для всех новичков.",
-      },
-      {
-        heading: "Подготовка лошади",
-        text: "Затем Вас научат чистить и седлать лошадь, выводить ее на манеж, садиться на лошадь. Количество занятий зависит от Ваших способностей.",
-      },
-      {
-        heading: "Управление лошадью",
-        text: "Вы приобретете начальные навыки верховой езды: умение пользоваться средствами управления, правильная посадка, движение шагом, рысью, галопом, смена направления движения.",
-      },
-    ],
-  };
+  const dataMission = null;
 
   const dataServicesList: ServicesListProps = {
     items: [],
@@ -70,40 +46,7 @@ export const getSportPageData = async () => {
     gallery: false,
   };
 
-  const dataGallerySection: GallerySectionProps = {
-    columns: 3,
-    className: "w-full h-[150px] sm:h-[200px]",
-    items: [
-      {
-        src: "/images/services/rides/group/images/group1.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group2.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group3.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group4.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group5.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group6.jpg",
-        alt: "group",
-      },
-      {
-        src: "/images/services/rides/group/images/group7.jpg",
-        alt: "group",
-      },
-    ],
-  };
+  const dataGallerySection = null;
 
   return {
     prices,
