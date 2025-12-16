@@ -1,9 +1,4 @@
-import {
-  ArticleProps,
-  GallerySectionProps,
-  HeroProps,
-  MissionProps,
-} from "@/ui";
+import { ArticleProps, HeroProps } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
