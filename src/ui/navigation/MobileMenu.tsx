@@ -10,6 +10,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "../button/Button";
 import { cn } from "../utils/cn";
 import { Icon } from "../atoms/Icon";
@@ -42,30 +43,34 @@ type MobileMenuItemProps = {
   item: MobileMenuLink;
   level?: number;
   onNavigate: () => void;
-  defaultExpanded?: boolean;
+  expandedMap: Record<number, string | undefined>;
+  onExpand: (level: number, key?: string) => void;
 };
 
 function MobileMenuItem({
   item,
   level = 0,
   onNavigate,
-  defaultExpanded = false,
+  expandedMap,
+  onExpand,
 }: MobileMenuItemProps) {
-  const [expanded, setExpanded] = useState(defaultExpanded);
   const hasChildren = item.children?.length;
+  const key = item.href || item.label;
+  const expanded = expandedMap[level] === key;
   const paddingLeft = useMemo(() => Math.min(level * 12, 36), [level]);
 
   const handleToggle = (event: MouseEvent) => {
     if (!hasChildren) return;
     event.preventDefault();
-    setExpanded((prev) => !prev);
+    onExpand(level, expanded ? undefined : key);
   };
 
   return (
     <li>
       <div
         className={cn(
-          "flex items-start gap-3 rounded-xl px-3 py-2",
+          "flex items-center justify-between gap-3 rounded-xl px-3",
+          hasChildren ? "py-3" : "py-2",
           expanded ? "bg-[#f1e4ca]" : "hover:bg-[#f5ebd8]"
         )}
         style={{ paddingLeft }}
@@ -82,15 +87,26 @@ function MobileMenuItem({
         ) : item.href ? (
           <a
             href={item.href}
-            className="flex-1 text-base font-semibold text-[#2f3600]"
+            className="flex-1 text-sm font-medium text-[#2f3600]"
             onClick={onNavigate}
           >
             {item.label}
           </a>
         ) : (
-          <span className="flex-1 text-base font-semibold text-[#2f3600]">
+          <span className="flex-1 text-sm font-medium text-[#2f3600]">
             {item.label}
           </span>
+        )}
+        {hasChildren && (
+          <Icon
+            name="chevron-down"
+            width={16}
+            height={16}
+            className={cn(
+              "text-[#2f3600] transition-transform duration-200",
+              expanded && "-rotate-180"
+            )}
+          />
         )}
       </div>
 
@@ -107,6 +123,8 @@ function MobileMenuItem({
               item={child}
               level={level + 1}
               onNavigate={onNavigate}
+              expandedMap={expandedMap}
+              onExpand={onExpand}
             />
           ))}
         </ul>
@@ -126,6 +144,7 @@ export function MobileMenu({
   socials = [],
 }: MobileMenuProps) {
   const sanitizedPhone = phone?.replace(/[^+\d]/g, "");
+  const [expandedMap, setExpandedMap] = useState<Record<number, string | undefined>>({});
   const contactLinks = [
     sanitizedPhone && { type: "phone", href: `tel:${sanitizedPhone}`, label: "Телефон" },
     ...socials,
@@ -146,7 +165,21 @@ export function MobileMenu({
     };
   }, [open]);
 
-  return (
+  const handleExpand = (level: number, key?: string) => {
+    setExpandedMap((prev) => {
+      const next: Record<number, string | undefined> = {};
+      Object.entries(prev).forEach(([lvl, value]) => {
+        const num = Number(lvl);
+        if (num < level) next[num] = value;
+      });
+      if (key) next[level] = key;
+      return next;
+    });
+  };
+
+  if (typeof document === "undefined" || !open) return null;
+
+  const overlay = (
     <div
       className={cn(
         "fixed inset-0 z-40 bg-black/40 transition-opacity",
@@ -179,6 +212,8 @@ export function MobileMenu({
               key={link.href || link.label}
               item={link}
               onNavigate={() => onOpenChange(false)}
+              expandedMap={expandedMap}
+              onExpand={handleExpand}
             />
           ))}
         </ul>
@@ -243,4 +278,6 @@ export function MobileMenu({
       </nav>
     </div>
   );
+
+  return createPortal(overlay, document.body);
 }

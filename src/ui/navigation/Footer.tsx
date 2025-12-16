@@ -52,7 +52,7 @@ function FooterNavList({ links = [] }: { links?: MobileMenuLink[] }) {
   };
 
   const renderNested = (items: MobileMenuLink[], level = 0) => (
-    <ul className={cn("space-y-0.5", level === 0 ? "" : "pl-2")}>
+    <ul className={cn("space-y-1", level === 0 ? "" : "pl-2")}>
       {items.map((item) => {
         const hasChildren = Boolean(item.children?.length);
         const key = item.href || item.label;
@@ -64,12 +64,14 @@ function FooterNavList({ links = [] }: { links?: MobileMenuLink[] }) {
               {item.href ? (
                 <a
                   href={item.href}
-                  className="text-sm text-[#f6efe0] transition hover:text-white"
+                  className="flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-sm text-[#f6efe0] transition hover:bg-[#30370d] hover:text-white"
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </a>
               ) : (
-                <span className="text-sm text-[#f6efe0]">{item.label}</span>
+                <span className="flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-sm text-[#f6efe0]">
+                  <span>{item.label}</span>
+                </span>
               )}
             </li>
           );
@@ -79,7 +81,10 @@ function FooterNavList({ links = [] }: { links?: MobileMenuLink[] }) {
           <li key={key} className="relative">
             <button
               type="button"
-              className="flex w-full items-center gap-2 py-0.5 text-left text-sm text-[#f6efe0] transition hover:text-white"
+              className={cn(
+                "flex w-full items-center justify-between gap-2 rounded-lg px-2.5 text-left text-sm text-[#f6efe0] transition hover:bg-[#30370d] hover:text-white",
+                hasChildren ? "py-2.5 font-semibold" : "py-1.5 font-medium"
+              )}
               aria-expanded={isOpen}
               onClick={(event) => {
                 event.stopPropagation();
@@ -88,19 +93,21 @@ function FooterNavList({ links = [] }: { links?: MobileMenuLink[] }) {
             >
               <span className="truncate">{item.label}</span>
               <Icon
-                name="chevron-down"
+                name={level === 0 ? "chevron-right" : "chevron-down"}
                 width={14}
                 height={14}
                 className={cn(
                   "transition duration-200",
-                  isOpen && "rotate-180"
+                  level === 0 ? (isOpen && "rotate-180") : isOpen && "-rotate-180"
                 )}
               />
             </button>
             <div
               className={cn(
-                "absolute left-full top-0 z-10 ml-2 mt-0 w-max max-w-xs whitespace-nowrap rounded-lg border border-[#3d431c] bg-[#262b00] px-3 py-2 text-sm text-[#f6efe0] shadow-lg",
-                isOpen ? "inline-block" : "hidden"
+                isOpen ? "block" : "hidden",
+                level === 0
+                  ? "absolute left-full top-0 z-10 ml-2 mt-0 w-max max-w-xs whitespace-nowrap rounded-lg border border-[#3d431c] bg-[#262b00] px-2 py-1.5 text-[11px] text-[#f6efe0] shadow-lg"
+                  : "mt-1.5 w-full rounded-lg border border-[#3d431c] bg-[#262b00] px-2 py-1.5 text-[11px] text-[#f6efe0] shadow-lg"
               )}
               onClick={(event) => event.stopPropagation()}
             >
@@ -205,14 +212,14 @@ export function Footer({
           )}
         </div>
 
-        <div className="hidden w-full max-w-[110px] space-y-3 mt-4 md:col-span-1 md:block lg:col-span-1 lg:mt-6">
+        <div className="hidden w-auto space-y-3 mt-4 md:col-span-1 md:block lg:col-span-1 lg:mt-6 lg:self-start">
           <h3 className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-[#e4d8bd]">
             Навигация
           </h3>
           <FooterNavList links={navLinks} />
         </div>
 
-        <div className="flex w-full flex-col items-center justify-center space-y-4 mt-4 md:col-span-1 lg:col-span-1 lg:mt-6">
+        <div className="flex w-full flex-col items-center justify-start space-y-4 mt-4 md:col-span-1 lg:col-span-1 lg:mt-6">
           <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#e4d8bd]">
             Контакты
           </h3>

@@ -64,10 +64,9 @@ export function Header({
   const handleCloseDropdown = () => setActiveDropdown(null);
   const handleOpenDropdown = (key: string) => setActiveDropdown(key);
   const toggleSubmenu = (key: string) =>
-    setExpandedSubmenus((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+    setExpandedSubmenus((prev) =>
+      prev[key] ? {} : { [key]: true }
+    );
 
   useEffect(() => {
     setExpandedSubmenus({});
@@ -215,41 +214,63 @@ export function Header({
               const key = link.href || link.label;
               const isOpen = activeDropdown === key;
 
-              return (
-                <div
-                  key={key}
-                  className="relative"
-                  onMouseEnter={() => hasChildren && handleOpenDropdown(key)}
-                  onFocus={() => hasChildren && handleOpenDropdown(key)}
-                >
-                  {link.href ? (
-                    <Link
-                      href={link.href}
-                      className="flex items-center gap-1 rounded-full px-1 md:px-3 lg:px-3 py-2 transition hover:bg-[#f1e4ca] hover:text-[#1f2600]"
-                    >
-                      <span>{link.label}</span>
-                      {hasChildren && (
-                        <Icon name="chevron-down" width={16} height={16} />
-                      )}
-                    </Link>
-                  ) : (
-                    <span className="flex items-center gap-1 rounded-full px-1 md:px-3 lg:px-3 py-2 transition hover:bg-[#f1e4ca] hover:text-[#1f2600]">
-                      <span>{link.label}</span>
-                      {hasChildren && (
-                        <Icon name="chevron-down" width={16} height={16} />
-                      )}
-                    </span>
-                  )}
+            const baseTopItemClass =
+              "flex items-center justify-between gap-2 rounded-full px-3 py-2.5 transition hover:bg-[#f1e4ca] hover:text-[#1f2600]";
+            return (
+              <div
+                key={key}
+                className="relative"
+                onMouseEnter={() => hasChildren && handleOpenDropdown(key)}
+                onFocus={() => hasChildren && handleOpenDropdown(key)}
+              >
+                {link.href ? (
+                  <Link
+                    href={link.href}
+                    className={baseTopItemClass}
+                  >
+                    <span className="whitespace-nowrap">{link.label}</span>
+                    {hasChildren && (
+                      <Icon
+                        name="chevron-down"
+                        width={16}
+                        height={16}
+                        className={cn(
+                          "transition-transform duration-200",
+                          isOpen && "-rotate-180"
+                        )}
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className={baseTopItemClass}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="whitespace-nowrap">{link.label}</span>
+                    {hasChildren && (
+                      <Icon
+                        name="chevron-down"
+                        width={16}
+                        height={16}
+                        className={cn(
+                          "transition-transform duration-200",
+                          isOpen && "-rotate-180"
+                        )}
+                      />
+                    )}
+                  </button>
+                )}
 
                   {hasChildren && (
-                  <div
-                    className={cn(
-                      "absolute left-0 top-full w-[320px] pt-3 transition duration-200",
-                      isOpen
-                        ? "pointer-events-auto opacity-100"
-                        : "pointer-events-none opacity-0"
-                    )}
-                  >
+                    <div
+                      className={cn(
+                        "absolute left-0 top-full w-[320px] pt-3 transition duration-200",
+                        isOpen
+                          ? "pointer-events-auto opacity-100"
+                          : "pointer-events-none opacity-0"
+                      )}
+                    >
                       <div className="rounded-2xl border border-[#e6d8bc] bg-[#f8f2e4] p-4 shadow-xl shadow-black/10">
                         <ul className="space-y-3">
                         {link.children!.map((child, childIndex) => {
@@ -260,33 +281,49 @@ export function Header({
                             child.href || child.label
                           }`;
                           const isSubmenuExpanded =
-                            expandedSubmenus[childKey] ??
-                            (childHasChildren && isOpen && childIndex === 0);
+                            expandedSubmenus[childKey] ?? false;
+                          const containerClasses = cn(
+                            "flex items-start justify-between gap-2 rounded-xl px-2 transition-colors hover:bg-[#f1e4ca]",
+                            childHasChildren ? "py-3" : "py-1.5"
+                          );
+                          const toggleTextClasses =
+                            "flex flex-1 items-center justify-between text-base font-semibold text-[#2f3600]";
+                          const linkTextClasses =
+                            "flex flex-1 items-center justify-between text-sm font-medium text-[#2f3600]";
                           return (
                             <li
                               key={child.href || child.label}
                               className="group"
                             >
-                                <div className="flex items-start justify-between gap-2">
+                                <div className={containerClasses}>
                                   {childHasChildren ? (
                                     <button
                                       type="button"
                                       aria-expanded={isSubmenuExpanded}
-                                      className="flex-1 text-left text-base font-semibold text-[#2f3600] transition-colors group-hover:text-[#1f2600]"
+                                      className={cn(toggleTextClasses, "text-left")}
                                       onClick={() => toggleSubmenu(childKey)}
                                     >
-                                      {child.label}
+                                      <span>{child.label}</span>
+                                      <Icon
+                                        name="chevron-down"
+                                        width={14}
+                                        height={14}
+                                        className={cn(
+                                          "transition-transform duration-200",
+                                          isSubmenuExpanded && "-rotate-180"
+                                        )}
+                                      />
                                     </button>
                                   ) : child.href ? (
                                     <Link
                                       href={child.href}
-                                      className="flex-1 text-base font-semibold text-[#2f3600] transition-colors group-hover:text-[#1f2600]"
+                                      className={linkTextClasses}
                                     >
-                                      {child.label}
+                                      <span>{child.label}</span>
                                     </Link>
                                   ) : (
-                                    <span className="flex-1 text-base font-semibold text-[#2f3600]">
-                                      {child.label}
+                                    <span className={linkTextClasses}>
+                                      <span>{child.label}</span>
                                     </span>
                                   )}
                                 </div>
@@ -352,7 +389,7 @@ export function Header({
           socials={mobileSocials}
         />
       </header>
-      {isMobile && <div className="h-20 md:hidden" aria-hidden="true" />}
+      {isMobile && <div className="h-[97px] md:hidden" aria-hidden="true" />}
     </>
   );
 }

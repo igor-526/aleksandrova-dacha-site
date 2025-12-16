@@ -9,6 +9,7 @@ export type IconName =
   | "arrow-right"
   | "quote"
   | "chevron-down"
+  | "chevron-right"
   | "whatsapp"
   | "telegram"
   | "vk"
@@ -58,6 +59,11 @@ const paths: Record<IconName, (props: SVGProps<SVGSVGElement>) => ReactElement> 
   "chevron-down": (props) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
       <path d="M6 9l6 6 6-6" />
+    </svg>
+  ),
+  "chevron-right": (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
+      <path d="M9 6l6 6-6 6" />
     </svg>
   ),
   whatsapp: (props) => (
