@@ -72,5 +72,5 @@ export const dataHeader: Pick<
   sticky: true,
   transparent: false,
   className: "",
-  children: <FeedbackForm triggerLabel="Обратная связь" />,
+  children: <FeedbackForm triggerLabel="Обратный звонок" />,
 };
