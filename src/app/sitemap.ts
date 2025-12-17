@@ -32,8 +32,8 @@ async function getAllDynamicRoutes(): Promise<string[]> {
       offset: 0,
     });
     
-    if (result.status === 'ok' && result.data?.results) {
-      return result.data.results.map(price => `/uslugi/${price.slug}`);
+    if (result.status === 'ok' && result.data?.items) {
+      return result.data.items.map(price => `/uslugi/${price.slug}`);
     }
   } catch (error) {
     console.error('Error fetching dynamic routes for sitemap:', error);
