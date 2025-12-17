@@ -8,9 +8,6 @@ import { getSiteSettings } from "@/features/siteSettings";
 export const metadata: Metadata = {
   title: "Александрова дача",
   description: "Конно-спортивный клуб",
-  other: {
-    "yandex-verification": "7d127ba5492caaec",
-  },
 };
 
 export default async function RootLayout({
