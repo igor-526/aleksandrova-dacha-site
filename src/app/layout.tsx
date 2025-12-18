@@ -8,6 +8,11 @@ import { getSiteSettings } from "@/features/siteSettings";
 export const metadata: Metadata = {
   title: "Александрова дача",
   description: "Конно-спортивный клуб",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default async function RootLayout({
