@@ -1,4 +1,14 @@
+import { Metadata } from "next";
+
 import { HR } from "flowbite-react";
+
+import { buildPageMetadata } from "@/lib/metadata";
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Архив: верховая езда",
+    "Подробная статья о прогулках верхом, групповых занятиях и впечатлениях гостей."
+  );
 
 export default function HorseRiding() {
   return (

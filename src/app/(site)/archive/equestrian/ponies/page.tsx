@@ -1,3 +1,13 @@
+import { Metadata } from "next";
+
+import { buildPageMetadata } from "@/lib/metadata";
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Архив: пони",
+    "Материалы о пони и пони-клубе: особенности содержания и занятия для детей."
+  );
+
 export default function EquestrianHorse() {
   return (
     <div>

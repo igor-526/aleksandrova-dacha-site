@@ -1,11 +1,20 @@
+import { Metadata } from "next";
+
 import { ContactBlock, Hero, Container, HeroProps } from "@/ui";
 import { getSiteSettings } from "@/features/siteSettings";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const dataHero: HeroProps = {
   title: "Александрова Дача",
   backgroundImage: { src: "/images/home-img1.jpg", alt: "desc" },
   subtitle: "конно-спортивный клуб",
 };
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Контакты",
+    "Адрес, телефон, соцсети и схема проезда в клуб, а также часы работы."
+  );
 
 export default async function Contacts() {
   const settings = await getSiteSettings();

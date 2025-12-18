@@ -1,8 +1,17 @@
+import { Metadata } from "next";
+
 import { Container } from "@/ui";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getGroupPageData } from "@/features/price/services/groupPageDataService";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Групповые занятия",
+    "Групповые уроки верховой езды: стоимость и условия записи."
+  );
 
 export default async function ServicesRidesGroupPage() {
   const {

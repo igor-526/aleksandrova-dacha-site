@@ -1,8 +1,17 @@
+import { Metadata } from "next";
+
 import { Container } from "@/ui";
 import { getCarriagesPageData } from "@/features/price/services/carriagesPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export const dynamic = 'force-dynamic';
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Прокат карет и экипажей",
+    "Аренда карет и экипажей для прогулок, свадеб и торжеств с ценами и условиями."
+  );
 
 const ServicesRentalCarriages = async () => {
   const {

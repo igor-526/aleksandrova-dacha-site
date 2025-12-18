@@ -1,8 +1,17 @@
+import { Metadata } from "next";
+
 import { Container } from "@/ui";
 import { getToursPageData } from "@/features/price/services/toursPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Конные прогулки",
+    "Катания и конные прогулки: описание, продолжительность и цены."
+  );
 
 const ServicesRidesTours = async () => {
   const {

@@ -1,11 +1,26 @@
+import { Metadata } from "next";
+
 import { CallBackRequestModal } from "@/features/callBackRequest/ui/CallBackRequestModal";
 import { getHomePageData } from "@/features/home/services/homePageDataService";
-import { ContactBlock, Hero, Container, Mission, AboutTeaser, QuickServices } from "@/ui";
+import { buildPageMetadata } from "@/lib/metadata";
+import {
+  ContactBlock,
+  Hero,
+  Container,
+  Mission,
+  AboutTeaser,
+  QuickServices,
+} from "@/ui";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+export const generateMetadata = async (): Promise<Metadata> =>
+  buildPageMetadata(
+    "Главная",
+    "Конный клуб «Александрова Дача»: занятия верховой ездой, прогулки, прокат лошадей и пони, племенная работа и контактная мини-ферма."
+  );
 
 const HomePage = async () => {
-
   const {
     dataHero,
     itemsServices,
@@ -39,20 +54,24 @@ const HomePage = async () => {
         <ContactBlock
           address={address ?? ""}
           phones={phone ? [phone] : []}
-          hours={
-            [
-              weekdayHours && { label: "Будни", value: weekdayHours },
-              weekendHours && { label: "Выходные", value: weekendHours },
-            ].filter((item): item is { label: string; value: string } => Boolean(item))
-          }
+          hours={[
+            weekdayHours && { label: "Будни", value: weekdayHours },
+            weekendHours && { label: "Выходные", value: weekendHours },
+          ].filter((item): item is { label: string; value: string } =>
+            Boolean(item)
+          )}
           socials={socials}
-          map={ addressLatitude && addressLongitude ? {
-            lat: addressLatitude,
-            lng: addressLongitude,
-            zoom: 13,
-            provider: "yandex",
-            markerLabel: siteName,
-          } : undefined}
+          map={
+            addressLatitude && addressLongitude
+              ? {
+                  lat: addressLatitude,
+                  lng: addressLongitude,
+                  zoom: 13,
+                  provider: "yandex",
+                  markerLabel: siteName,
+                }
+              : undefined
+          }
         />
       </Container>
     </div>
