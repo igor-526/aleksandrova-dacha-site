@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { Container } from "@/ui";
 import { getCarriagesPageData } from "@/features/price/services/carriagesPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
@@ -14,13 +14,8 @@ export const generateMetadata = async (): Promise<Metadata> =>
   );
 
 const ServicesRentalCarriages = async () => {
-  const {
-    prices,
-    dataHero,
-    dataArticle,
-    dataMission,
-    dataGallerySection,
-  } = await getCarriagesPageData();
+  const { prices, dataHero, dataArticle, dataMission, dataGallerySection } =
+    await getCarriagesPageData();
 
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
@@ -32,7 +27,6 @@ const ServicesRentalCarriages = async () => {
           dataMission={dataMission}
           dataGallerySection={dataGallerySection}
         />
-
       </Container>
     </div>
   );

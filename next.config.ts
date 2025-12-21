@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
         hostname: "api.aleksandrova-dacha.ru",
         pathname: "/media/**",
       },
+      new URL("https://mc.yandex.ru/watch/**"),
     ],
   },
   eslint: {

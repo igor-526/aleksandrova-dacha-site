@@ -4,6 +4,7 @@ import { Header, Footer } from "@/ui";
 import { dataHeader } from "@/features/header/data/dataHeader";
 import { CallBackRequestModal } from "@/features/callBackRequest/ui/CallBackRequestModal";
 import { getSiteSettings } from "@/features/siteSettings";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Александрова дача",
@@ -29,7 +30,10 @@ export default async function RootLayout({
       href: `mailto:${settings.mail}`,
       label: "Email",
     },
-  ].filter((item): item is { type: "vk" | "mail"; href: string; label: string } => Boolean(item));
+  ].filter(
+    (item): item is { type: "vk" | "mail"; href: string; label: string } =>
+      Boolean(item)
+  );
 
   return (
     <html lang="ru">
@@ -52,11 +56,17 @@ export default async function RootLayout({
         />
         <noscript>
           <div>
-            <img
+            <Image
+              src={"https://mc.yandex.ru/watch/105850153"}
+              alt=""
+              fill
+              style={{ position: "absolute", left: "-9999px" }}
+            />
+            {/* <img
               src="https://mc.yandex.ru/watch/105850153"
               style={{ position: "absolute", left: "-9999px" }}
               alt=""
-            />
+            /> */}
           </div>
         </noscript>
         {/* /Yandex.Metrika counter */}
@@ -75,8 +85,14 @@ export default async function RootLayout({
           phones={settings.phone ? [settings.phone] : []}
           socials={settings.socials}
           schedule={{
-            weekday: { label: "По будням", hours: settings.weekdayHours?.replace(" - ", " – ") },
-            weekend: { label: "Выходные", hours: settings.weekendHours?.replace(" - ", " – ") },
+            weekday: {
+              label: "Будни",
+              hours: settings.weekdayHours?.replace(" - ", " – "),
+            },
+            weekend: {
+              label: "Выходные",
+              hours: settings.weekendHours?.replace(" - ", " – "),
+            },
           }}
           navLinks={dataHeader.links}
           feedbackSlot={<CallBackRequestModal triggerLabel="Связаться" />}

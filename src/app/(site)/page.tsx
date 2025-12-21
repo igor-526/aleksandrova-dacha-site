@@ -2,9 +2,9 @@ import { Metadata } from "next";
 
 import { CallBackRequestModal } from "@/features/callBackRequest/ui/CallBackRequestModal";
 import { getHomePageData } from "@/features/home/services/homePageDataService";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 import {
-  ContactBlock,
+  ContactsBlock,
   Hero,
   Container,
   Mission,
@@ -26,14 +26,15 @@ const HomePage = async () => {
     itemsServices,
     news,
     dataMission,
-    address,
-    phone,
-    siteName,
-    weekdayHours,
-    weekendHours,
-    socials,
-    addressLatitude,
-    addressLongitude,
+    dataContactsBlock,
+    // address,
+    // phone,
+    // siteName,
+    // weekdayHours,
+    // weekendHours,
+    // socials,
+    // addressLatitude,
+    // addressLongitude,
   } = await getHomePageData();
 
   return (
@@ -50,29 +51,7 @@ const HomePage = async () => {
           ))}
 
         <Mission {...dataMission} className="mb-10" />
-
-        <ContactBlock
-          address={address ?? ""}
-          phones={phone ? [phone] : []}
-          hours={[
-            weekdayHours && { label: "Будни", value: weekdayHours },
-            weekendHours && { label: "Выходные", value: weekendHours },
-          ].filter((item): item is { label: string; value: string } =>
-            Boolean(item)
-          )}
-          socials={socials}
-          map={
-            addressLatitude && addressLongitude
-              ? {
-                  lat: addressLatitude,
-                  lng: addressLongitude,
-                  zoom: 13,
-                  provider: "yandex",
-                  markerLabel: siteName,
-                }
-              : undefined
-          }
-        />
+        <ContactsBlock {...dataContactsBlock} />
       </Container>
     </div>
   );

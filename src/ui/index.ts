@@ -59,7 +59,7 @@ export * from "./sections/AboutTeaser";
 export * from "./sections/Mission";
 export * from "./sections/TeamGrid";
 export * from "./sections/HorsesShowcase";
-export * from "./sections/ContactFarm";
+export * from "./sections/ContactsBlock";
 export * from "./sections/GallerySection";
 export * from "./sections/ProgramsIntro";
 export * from "./sections/ProgramCards";
@@ -86,4 +86,4 @@ export * from "./sections/EmptySection";
 export * from "./sections/CardList";
 export * from "./empty-page/EmptyPage";
 
-export * from "./ImageBlock"
+export * from "./ImageBlock";

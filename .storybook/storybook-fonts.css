@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600;700&family=Jost:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap");
+
+:root {
+  --font-sans-main: "Jost", "Manrope", "Inter", "Segoe UI", sans-serif;
+  --font-serif-main: "Cormorant Infant", "PT Serif", "Georgia", serif;
+  --font-geist-sans: var(--font-sans-main);
+  --font-geist-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+}
+
+body {
+  font-family: var(--font-sans-main);
+}

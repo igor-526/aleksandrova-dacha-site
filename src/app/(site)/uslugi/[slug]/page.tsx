@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { fetchPriceDetail } from "@/features/price/services/priceService";
 import { OneServicePage } from "@/features/price/ui/OneServicePage";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 
 type UslugiPageProps = {
   params: {
@@ -12,8 +12,10 @@ type UslugiPageProps = {
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: UslugiPageProps): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: UslugiPageProps): Promise<Metadata> {
+  const { slug } = await params;
   const result = await fetchPriceDetail(slug);
 
   if (result.status !== "ok" || !result.data) {
@@ -21,13 +23,15 @@ export async function generateMetadata({ params }: UslugiPageProps): Promise<Met
   }
 
   const title = result.data.name || "Услуга";
-  const description = result.data.description || "Описание услуги, ее стоимость и детали программы.";
+  const description =
+    result.data.description ||
+    "Описание услуги, ее стоимость и детали программы.";
 
   return buildPageMetadata(title, description);
 }
 
 export default async function UslugiPage({ params }: UslugiPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const result = await fetchPriceDetail(slug);
 

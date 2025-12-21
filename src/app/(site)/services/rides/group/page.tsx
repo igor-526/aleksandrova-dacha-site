@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Container } from "@/ui";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { getGroupPageData } from "@/features/price/services/groupPageDataService";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 
 export const dynamic = "force-dynamic";
 

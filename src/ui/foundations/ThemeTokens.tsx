@@ -37,8 +37,9 @@ export function ThemeTokens({
     "--radius-lg": "32px",
     "--radius-md": "20px",
     "--radius-sm": "12px",
-    "--font-serif": "'Cormorant Garamond', serif",
-    "--font-sans": "'Jost', 'Segoe UI', sans-serif",
+    "--font-serif": "var(--font-serif-main, 'PT Serif', 'Georgia', serif)",
+    "--font-sans":
+      "var(--font-sans-main, 'Manrope', 'Inter', 'Segoe UI', sans-serif)",
   } satisfies Record<string, string>;
 
   return <div style={cssVars as CSSProperties}>{children}</div>;

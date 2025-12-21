@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { HR } from "flowbite-react";
 
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(

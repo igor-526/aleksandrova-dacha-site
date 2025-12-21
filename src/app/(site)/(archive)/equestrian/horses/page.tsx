@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
