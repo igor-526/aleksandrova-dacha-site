@@ -17,10 +17,12 @@ const ServicesRidesTours = async () => {
   const {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
     dataGallerySection,
+    additionalSection,
   } = await getToursPageData();
 
   return (
@@ -29,10 +31,12 @@ const ServicesRidesTours = async () => {
         <ServicesGroupPage
           prices={prices}
           dataHero={dataHero}
+          dataBreadcrumbs={dataBreadcrumbs}
           dataArticle={dataArticle}
           dataMission={dataMission}
           dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
+          additionalSection={additionalSection}
         />
       </Container>
     </div>

@@ -1,5 +1,6 @@
 import {
   ArticleProps,
+  BreadcrumbsProps,
   GallerySectionProps,
   HeroProps,
   MissionProps,
@@ -26,6 +27,16 @@ export const getIndividualPageData = async () => {
     },
   };
 
+  const dataBreadcrumbs: BreadcrumbsProps = {
+    items: [
+      { label: "Главная", href: "/" },
+      { label: "Услуги", href: "/services" },
+      { label: "Верховая езда", href: "/services/rides" },
+      { label: "Индивидуальное обучение" },
+    ],
+    className: "-mt-9 px-6",
+  };
+
   const dataArticle: ArticleProps = {
     title: "Обучение верховой езде",
     content: (
@@ -36,10 +47,10 @@ export const getIndividualPageData = async () => {
           брать индивидуальные занятия.
         </p>
         <p>
-          <b>Указанные цены действуют только по предварительной записи.</b>{" "}
+          <b>Указанные цены действуют только по предварительной записи.</b>
           Запись возможна не позднее, чем за день до приезда. Если вы приехали
           без записи, катание на лошади (пони) возможно только при наличии
-          свободного тренера (инструктора),{" "}
+          свободного тренера (инструктора),
           <b>стоимость услуги увеличится на 200 рублей.</b>
         </p>
       </div>
@@ -108,6 +119,7 @@ export const getIndividualPageData = async () => {
 
   return {
     prices,
+    dataBreadcrumbs,
     dataHero,
     dataArticle,
     dataMission,

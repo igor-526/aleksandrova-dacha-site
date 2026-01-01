@@ -17,6 +17,7 @@ const ServicesRidesIndividual = async () => {
   const {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
@@ -29,6 +30,7 @@ const ServicesRidesIndividual = async () => {
         <ServicesGroupPage
           prices={prices}
           dataHero={dataHero}
+          dataBreadcrumbs={dataBreadcrumbs}
           dataArticle={dataArticle}
           dataMission={dataMission}
           dataServicesList={dataServicesList}

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "../utils/cn";
 
 export type ArticleProps = {
-  title: string;
+  title?: string;
   date?: string;
   content: ReactNode;
   hero?: ReactNode;

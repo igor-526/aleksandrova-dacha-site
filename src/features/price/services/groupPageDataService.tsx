@@ -1,15 +1,28 @@
-import { ArticleProps, GallerySectionProps, HeroProps } from "@/ui";
+import {
+  ArticleProps,
+  BreadcrumbsProps,
+  GallerySectionProps,
+  HeroProps,
+} from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
-import { ServicesListProps } from "../ui/ServicesList";
+import ServicesList, { ServicesListProps } from "../ui/ServicesList";
+import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
+import { ReactNode } from "react";
 
-export const getGroupPageData = async () => {
+export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
   const getPrices = async (): Promise<PriceOutDto[]> => {
     const result = await fetchPriceList("Групповое обучение");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 
+  const getPricesRental = async (): Promise<PriceOutDto[]> => {
+    const result = await fetchPriceList("Групповое обучение (аренда)");
+    return result.status === "ok" && result.data ? result.data.items : [];
+  };
+
   const prices = await getPrices();
+  const pricesRental = await getPricesRental();
 
   const dataHero: HeroProps = {
     title: "Групповые занятия",
@@ -18,6 +31,16 @@ export const getGroupPageData = async () => {
       src: "/images/services/rides/group/group.jpg",
       alt: "desc",
     },
+  };
+
+  const dataBreadcrumbs: BreadcrumbsProps = {
+    items: [
+      { label: "Главная", href: "/" },
+      { label: "Услуги", href: "/services" },
+      { label: "Верховая езда", href: "/services/rides" },
+      { label: "Групповое обучение" },
+    ],
+    className: "-mt-9 px-6",
   };
 
   const dataArticle: ArticleProps = {
@@ -78,12 +101,17 @@ export const getGroupPageData = async () => {
     ],
   };
 
+  const additionalSection: ReactNode = (
+    <ServicesList items={pricesRental} columns={1} gallery={false} />
+  );
   return {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
     dataGallerySection,
+    additionalSection,
   };
 };

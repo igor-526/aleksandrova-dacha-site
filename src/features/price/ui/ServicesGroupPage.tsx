@@ -1,6 +1,8 @@
 import {
   Article,
   ArticleProps,
+  Breadcrumbs,
+  BreadcrumbsProps,
   Container,
   GallerySection,
   GallerySectionProps,
@@ -13,28 +15,35 @@ import ServicesList, {
   ServicesListProps,
 } from "@/features/price/ui/ServicesList";
 import { PriceOutDto } from "@/types";
+import { ReactNode } from "react";
 
-type ServicesGroupPageProps = {
+export type ServicesGroupPageProps = {
   prices?: PriceOutDto[] | null;
   dataHero?: HeroProps | null;
+  dataBreadcrumbs?: BreadcrumbsProps | null;
   dataArticle?: ArticleProps | null;
   dataMission?: MissionProps | null;
   dataServicesList?: ServicesListProps | null;
   dataGallerySection?: GallerySectionProps | null;
+  additionalSection?: ReactNode | null;
 };
 
 export const ServicesGroupPage = ({
   prices,
   dataHero,
+  dataBreadcrumbs,
   dataArticle,
   dataMission,
   dataServicesList,
   dataGallerySection,
+  additionalSection,
 }: ServicesGroupPageProps) => {
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
         {dataHero && <Hero {...dataHero} />}
+
+        {dataBreadcrumbs && <Breadcrumbs {...dataBreadcrumbs} />}
 
         {dataArticle && <Article {...dataArticle} />}
 
@@ -45,6 +54,8 @@ export const ServicesGroupPage = ({
         {dataMission && <Mission {...dataMission} />}
 
         {dataGallerySection && <GallerySection {...dataGallerySection} />}
+
+        {additionalSection}
       </Container>
     </div>
   );

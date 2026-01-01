@@ -1,9 +1,17 @@
-import { ArticleProps, HeroProps } from "@/ui";
+import {
+  ArticleProps,
+  BreadcrumbsProps,
+  HeroProps,
+  MissionProps,
+  PreparationTips,
+  PreparationTipsProps,
+} from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
+import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
 
-export const getToursPageData = async () => {
+export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
   const getPrices = async (): Promise<PriceOutDto[]> => {
     const result = await fetchPriceList("Конные прогулки и катания");
     return result.status === "ok" && result.data ? result.data.items : [];
@@ -20,44 +28,98 @@ export const getToursPageData = async () => {
     },
   };
 
+  const dataBreadcrumbs: BreadcrumbsProps = {
+    items: [
+      { label: "Главная", href: "/" },
+      { label: "Услуги", href: "/services" },
+      { label: "Верховая езда", href: "/services/rides" },
+      { label: "Конные прогулки" },
+    ],
+    className: "-mt-9 px-6",
+  };
+
   const dataArticle: ArticleProps = {
-    title: "Верховая езда для взрослых и детей",
     content: (
       <div className="space-y-4">
         <p>
-          Наши опытные инструкторы помогут вам освоить верховую езду или просто
-          провести время в компании этих великолепных животных. Независимо от
-          вашего уровня подготовки, у нас найдется подходящий вариант для
-          каждого.
+          Верховая езда – это увлекательный вид активного отдыха. Наши лошади и
+          пони воспитаны, приветливы и дружелюбны. Они дадут вам возможность
+          почувствовать себя значительно лучше - энергичнее, сильнее, свободнее.
+          В зависимости от уровня Вашей подготовки конные прогулки могут быть
+          разной сложности и продолжительности.
         </p>
-        <div className="font-bold">Предварительная запись</div>
-        <ul className="list-disc list-inside">
-          <li>Запись возможна не позднее, чем за день до приезда</li>
-          <li>Указанные цены действуют только по предварительной записи</li>
-          <li>
-            Без записи, катание возможно только при наличии свободного тренера
-            (инструктора)
-          </li>
-          <li>Без записи стоимость услуги увеличится на 200 рублей</li>
-        </ul>
       </div>
     ),
   };
 
-  const dataMission = null;
+  const dataMission: MissionProps = {
+    title: "Конные прогулки для всей семьи",
+    points: [
+      {
+        heading: "Для детей и новичков",
+        text: "Если Вы никогда не сидели в седле, но у Вас есть огромное желание прокатиться верхом, инструктор составит Вам компанию, ведя лошадь в поводу. Верховые прогулки проводятся в зависимости от погодных условий на открытом или закрытом манежах. Также Вы сможете прогуляться верхом по территории клуба.",
+      },
+      {
+        heading: "Для начинающих всадников",
+        text: "На разовом занятии в прогулкой опытный инструктор объяснит все секреты общения с лошадьми, научат держаться в седле и управлять лошадью на шагу и рыси. В нашем пони-клубе возможно обучение детей с 5 лет",
+      },
+      {
+        heading: "Для опытных всадников",
+        text: "Более опытные всадники смогут получить массу удовольствия от поездок по пригородам Санкт-Петербурга - поля, лесные дорожки, водные препятствия и незабываемые впечатления!",
+      },
+    ],
+  };
   const dataServicesList: ServicesListProps = {
+    heading: "Услуги и цены",
+    content: (
+      <p>
+        <b> Указанные цены действуют только по предварительной записи. </b>
+        Запись возможна не позднее, чем за день до приезда. Если вы приехали без
+        записи, катание на лошади (пони) возможно только при наличии свободного
+        тренера (инструктора),
+        <b> стоимость услуги увеличится на 200 рублей.</b>
+      </p>
+    ),
     items: [],
     mediaPosition: "top",
     gallery: true,
   };
+
   const dataGallerySection = null;
+
+  const dataPreparationTips: PreparationTipsProps = {
+    title: "Как подготовиться",
+    tips: [
+      {
+        heading: "Удобная одежда:",
+        text: "Верх - по погоде, без скользких тканей. Штаны не стесняющие движения. Ботинки или сапоги с маленьким каблуком.",
+      },
+      {
+        heading: "Время приезда:",
+        text: "Приходите за 15 минут, чтобы подобрать шлем, переодеться и пройти инструктаж, а также познакомиться с тренером и лошадью (пони)",
+      },
+      {
+        heading: "Что взять с собой:",
+        text: "Возьмите угощение для лошади (пони). Они с удовольствием полакомятся морковкой или яблоком. Не забудьте взять хорошее настроение!",
+      },
+      {
+        heading: "В клубе имеется:",
+        text: "Раздевалка со шкафчиками, туалет, комната отдыха, парковка для машин на территории клуба, конный магазин, уютное кафе ",
+      },
+    ],
+    columns: 2,
+  };
+
+  const additionalSection = <PreparationTips {...dataPreparationTips} />;
 
   return {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
     dataGallerySection,
+    additionalSection,
   };
 };

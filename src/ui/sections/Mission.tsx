@@ -1,7 +1,7 @@
 import { cn } from "../utils/cn";
 
 export type MissionProps = {
-  title: string;
+  title?: string;
   points: { heading: string; text: string }[];
   className?: string;
   colorVariant?: "f0e7cf" | "f6efe0" | "fdfaf4" | "f8f2e4";
@@ -38,7 +38,9 @@ export function Mission({
       <div className="mt-6 grid gap-6 md:grid-cols-3">
         {points.map((point) => (
           <div key={point.heading} className="space-y-2">
-            <h3 className="text-lg font-semibold text-[#2f3600]">{point.heading}</h3>
+            <h3 className="text-lg font-semibold text-[#2f3600]">
+              {point.heading}
+            </h3>
             <p className="text-sm text-[#4b4d2f]">{point.text}</p>
           </div>
         ))}

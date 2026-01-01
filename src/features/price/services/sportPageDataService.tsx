@@ -1,4 +1,4 @@
-import { ArticleProps, HeroProps } from "@/ui";
+import { ArticleProps, BreadcrumbsProps, HeroProps } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
@@ -19,6 +19,16 @@ export const getSportPageData = async () => {
       src: "/images/services/rides/individual/individual.jpg",
       alt: "desc",
     },
+  };
+
+  const dataBreadcrumbs: BreadcrumbsProps = {
+    items: [
+      { label: "Главная", href: "/" },
+      { label: "Услуги", href: "/services" },
+      { label: "Верховая езда", href: "/services/rides" },
+      { label: "Конный спорт" },
+    ],
+    className: "-mt-9 px-6",
   };
 
   const dataArticle: ArticleProps = {
@@ -46,6 +56,7 @@ export const getSportPageData = async () => {
   return {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,

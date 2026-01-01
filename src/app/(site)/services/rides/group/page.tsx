@@ -17,10 +17,12 @@ export default async function ServicesRidesGroupPage() {
   const {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
     dataGallerySection,
+    additionalSection,
   } = await getGroupPageData();
 
   return (
@@ -29,10 +31,12 @@ export default async function ServicesRidesGroupPage() {
         <ServicesGroupPage
           prices={prices}
           dataHero={dataHero}
+          dataBreadcrumbs={dataBreadcrumbs}
           dataArticle={dataArticle}
           dataMission={dataMission}
           dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
+          additionalSection={additionalSection}
         />
       </Container>
     </div>

@@ -15,6 +15,7 @@ const ServicesRidesSport = async () => {
   const {
     prices,
     dataHero,
+    dataBreadcrumbs,
     dataArticle,
     dataMission,
     dataServicesList,
@@ -27,6 +28,7 @@ const ServicesRidesSport = async () => {
         <ServicesGroupPage
           prices={prices}
           dataHero={dataHero}
+          dataBreadcrumbs={dataBreadcrumbs}
           dataArticle={dataArticle}
           dataMission={dataMission}
           dataServicesList={dataServicesList}

@@ -1,8 +1,10 @@
 import { PriceOutDto } from "@/types";
 import { Button, cn, DataTable, GallerySection, MediaImage } from "@/ui";
 import ServiceCard from "./ServiceCard";
+import { ReactNode } from "react";
 export type ServicesListProps = {
   heading?: string;
+  content?: ReactNode;
   items: PriceOutDto[];
   mediaPosition?: "top" | "left";
   gallery?: boolean;
@@ -12,6 +14,7 @@ export type ServicesListProps = {
 
 const ServicesList = ({
   heading,
+  content,
   items = [],
   mediaPosition = "top",
   gallery = true,
@@ -21,12 +24,13 @@ const ServicesList = ({
   return (
     <section className={cn("space-y-6 mx-auto", className)}>
       {heading && (
-        <div className="text-center">
+        <div className="px-6">
           <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
             {heading}
           </h2>
         </div>
       )}
+      <div className="px-6">{content}</div>
       <div
         className={cn(
           "grid gap-6 items-stretch justify-items-stretch",
@@ -77,7 +81,7 @@ const ServicesList = ({
                 <Button
                   variant="secondary"
                   size="sm"
-                  href={`/uslugi/${item.slug}`}
+                  href={`/services/${item.slug}`}
                   className="my-2"
                 >
                   Подробнее
