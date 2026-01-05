@@ -3,7 +3,6 @@ import {
   BreadcrumbsProps,
   HeroProps,
   MissionProps,
-  PreparationTips,
   PreparationTipsProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
@@ -53,7 +52,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
   };
 
   const dataMission: MissionProps = {
-    title: "Конные прогулки для всей семьи",
+    title: "Конные прогулки для всех уровней подготовки",
     points: [
       {
         heading: "Для детей и новичков",
@@ -61,7 +60,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
       },
       {
         heading: "Для начинающих всадников",
-        text: "На разовом занятии в прогулкой опытный инструктор объяснит все секреты общения с лошадьми, научат держаться в седле и управлять лошадью на шагу и рыси. В нашем пони-клубе возможно обучение детей с 5 лет",
+        text: "На разовом занятии в прогулкой опытный инструктор объяснит все секреты общения с лошадьми, научат держаться в седле и управлять лошадью на шагу и рыси. В нашем пони-клубе возможно обучение детей с 5 лет.",
       },
       {
         heading: "Для опытных всадников",
@@ -96,7 +95,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
       },
       {
         heading: "Время приезда:",
-        text: "Приходите за 15 минут, чтобы подобрать шлем, переодеться и пройти инструктаж, а также познакомиться с тренером и лошадью (пони)",
+        text: "Приходите за 15 минут, чтобы подобрать шлем, переодеться и пройти инструктаж, а также познакомиться с тренером и лошадью (пони).",
       },
       {
         heading: "Что взять с собой:",
@@ -104,13 +103,13 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
       },
       {
         heading: "В клубе имеется:",
-        text: "Раздевалка со шкафчиками, туалет, комната отдыха, парковка для машин на территории клуба, конный магазин, уютное кафе ",
+        text: "Раздевалка со шкафчиками, туалет, комната отдыха, парковка для машин на территории клуба, конный магазин, уютное кафе. ",
       },
     ],
     columns: 2,
   };
 
-  const additionalSection = <PreparationTips {...dataPreparationTips} />;
+  const additionalSection = null;
 
   return {
     prices,
@@ -120,6 +119,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
     dataMission,
     dataServicesList,
     dataGallerySection,
+    dataPreparationTips,
     additionalSection,
   };
 };

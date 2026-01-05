@@ -10,6 +10,8 @@ import {
   HeroProps,
   Mission,
   MissionProps,
+  PreparationTips,
+  PreparationTipsProps,
 } from "@/ui";
 import ServicesList, {
   ServicesListProps,
@@ -25,6 +27,7 @@ export type ServicesGroupPageProps = {
   dataMission?: MissionProps | null;
   dataServicesList?: ServicesListProps | null;
   dataGallerySection?: GallerySectionProps | null;
+  dataPreparationTips?: PreparationTipsProps | null;
   additionalSection?: ReactNode | null;
 };
 
@@ -36,6 +39,7 @@ export const ServicesGroupPage = ({
   dataMission,
   dataServicesList,
   dataGallerySection,
+  dataPreparationTips,
   additionalSection,
 }: ServicesGroupPageProps) => {
   return (
@@ -54,6 +58,8 @@ export const ServicesGroupPage = ({
         {dataMission && <Mission {...dataMission} />}
 
         {dataGallerySection && <GallerySection {...dataGallerySection} />}
+
+        {dataPreparationTips && <PreparationTips {...dataPreparationTips} />}
 
         {additionalSection}
       </Container>

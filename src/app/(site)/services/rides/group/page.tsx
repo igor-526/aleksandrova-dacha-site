@@ -22,6 +22,7 @@ export default async function ServicesRidesGroupPage() {
     dataMission,
     dataServicesList,
     dataGallerySection,
+    dataPreparationTips,
     additionalSection,
   } = await getGroupPageData();
 
@@ -36,6 +37,7 @@ export default async function ServicesRidesGroupPage() {
           dataMission={dataMission}
           dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
+          dataPreparationTips={dataPreparationTips}
           additionalSection={additionalSection}
         />
       </Container>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "../atoms/Icon";
 import { cn } from "../utils/cn";
 
@@ -12,12 +15,45 @@ export type BreadcrumbsProps = {
 };
 
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+  const listRef = useRef<HTMLOListElement | null>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      const el = listRef.current;
+      if (!el) return;
+      const hasOverflow = el.scrollWidth > el.clientWidth + 1;
+      setIsOverflowing((prev) => (prev === hasOverflow ? prev : hasOverflow));
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [items]);
+
   return (
     <nav
       aria-label="Навигация"
-      className={cn("text-sm text-[#2f3600] italic", className)}
+      className={cn(
+        "text-sm text-[#2f3600] italic",
+        isOverflowing &&
+          "relative after:pointer-events-none after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#8d784f] after:content-['...']",
+        className
+      )}
     >
-      <ol className="flex flex-wrap items-center gap-2">
+      <ol
+        ref={listRef}
+        className="flex flex-nowrap items-center gap-2 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={
+          isOverflowing
+            ? {
+                maskImage: "linear-gradient(90deg, #000 70%, transparent)",
+                WebkitMaskImage:
+                  "linear-gradient(90deg, #000 70%, transparent)",
+              }
+            : undefined
+        }
+      >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (

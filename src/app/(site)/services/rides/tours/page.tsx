@@ -22,6 +22,7 @@ const ServicesRidesTours = async () => {
     dataMission,
     dataServicesList,
     dataGallerySection,
+    dataPreparationTips,
     additionalSection,
   } = await getToursPageData();
 
@@ -36,6 +37,7 @@ const ServicesRidesTours = async () => {
           dataMission={dataMission}
           dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
+          dataPreparationTips={dataPreparationTips}
           additionalSection={additionalSection}
         />
       </Container>
