@@ -5,7 +5,7 @@ import { ServicesListProps } from "../ui/ServicesList";
 
 export const getSportPageData = async () => {
   const getPrices = async (): Promise<PriceOutDto[]> => {
-    const result = await fetchPriceList("Конный спорт");
+    const result = await fetchPriceList("Конный спорт (аренда)");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 

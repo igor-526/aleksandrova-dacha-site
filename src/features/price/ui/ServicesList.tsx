@@ -9,6 +9,7 @@ export type ServicesListProps = {
   mediaPosition?: "top" | "left";
   gallery?: boolean;
   columns?: 1 | 2 | 3;
+  moreDetails?: boolean;
   className?: string;
 };
 
@@ -19,6 +20,7 @@ const ServicesList = ({
   mediaPosition = "top",
   gallery = true,
   columns = 3,
+  moreDetails = true,
   className,
 }: ServicesListProps) => {
   return (
@@ -78,14 +80,16 @@ const ServicesList = ({
                     )}
                   </div>
                 )}
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  href={`/services/${item.slug}`}
-                  className="my-2"
-                >
-                  Подробнее
-                </Button>
+                {moreDetails && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    href={`/services/${item.slug}`}
+                    className="my-2"
+                  >
+                    Подробнее
+                  </Button>
+                )}
               </ServiceCard>
             </div>
           );
