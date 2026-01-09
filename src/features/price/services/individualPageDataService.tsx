@@ -89,31 +89,41 @@ export const getIndividualPageData = async () => {
     className: "w-full h-[150px] sm:h-[200px]",
     items: [
       {
-        src: "/images/services/rides/group/images/group1.jpg",
+        src: "/images/services/rides/individual/individual.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group2.jpg",
+        src: "/images/services/rides/individual/individual1.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group3.jpg",
+        src: "/images/services/rides/individual/3.jpg",
+        alt: "group",
+      }, {
+        src: "/images/services/rides/individual/4.jpg",
+        alt: "group",
+      }, {
+        src: "/images/services/rides/individual/5.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group4.jpg",
+        src: "/images/services/rides/individual/individual2.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group5.jpg",
+        src: "/images/services/rides/individual/individual3.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group6.jpg",
+        src: "/images/services/rides/individual/individual4.jpg",
         alt: "group",
       },
       {
-        src: "/images/services/rides/group/images/group7.jpg",
+        src: "/images/services/rides/individual/individual5.jpg",
+        alt: "group",
+      },
+      {
+        src: "/images/services/rides/individual/individual6.jpg",
         alt: "group",
       },
     ],

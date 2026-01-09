@@ -29,19 +29,19 @@
     "@storybook/addon-docs": "^9.1.15",
     "@storybook/addon-onboarding": "^9.1.15",
     "@storybook/addon-vitest": "^9.1.15",
+    "@storybook/nextjs-vite": "^9.1.15",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.4",
+    "@vitest/browser-playwright": "^4.0.3",
+    "@vitest/coverage-v8": "^4.0.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^15.4.4",
     "eslint-plugin-storybook": "^9.1.15",
+    "playwright": "^1.56.1",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "@storybook/nextjs-vite": "^9.1.15",
-    "vitest": "^4.0.3",
-    "playwright": "^1.56.1",
-    "@vitest/browser-playwright": "^4.0.3",
-    "@vitest/coverage-v8": "^4.0.3"
+    "vitest": "^4.0.3"
   }
 }

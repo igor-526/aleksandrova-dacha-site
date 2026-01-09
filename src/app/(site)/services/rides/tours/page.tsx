@@ -26,6 +26,9 @@ const ServicesRidesTours = async () => {
     additionalSection,
   } = await getToursPageData();
 
+  console.log(prices ? prices[0] : "")
+
+
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">

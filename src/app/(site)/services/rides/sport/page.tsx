@@ -20,6 +20,7 @@ const ServicesRidesSport = async () => {
     dataMission,
     dataServicesList,
     dataGallerySection,
+    additionalSection
   } = await getSportPageData();
 
   return (
@@ -33,6 +34,7 @@ const ServicesRidesSport = async () => {
           dataMission={dataMission}
           dataServicesList={dataServicesList}
           dataGallerySection={dataGallerySection}
+          additionalSection={additionalSection}
         />
       </Container>
     </div>

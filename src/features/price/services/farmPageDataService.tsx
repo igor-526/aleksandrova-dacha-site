@@ -60,32 +60,56 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
     className: "w-full h-[150px] sm:h-[200px]",
     items: [
       {
-        src: "/images/services/rides/group/images/group1.jpg",
-        alt: "group",
+        src: "/images/services/farm/05.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group2.jpg",
-        alt: "group",
+        src: "/images/services/farm/04.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group3.jpg",
-        alt: "group",
+        src: "/images/services/farm/12.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group4.jpg",
-        alt: "group",
+        src: "/images/services/farm/07.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group5.jpg",
-        alt: "group",
+        src: "/images/services/farm/01.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group6.jpg",
-        alt: "group",
+        src: "/images/services/farm/06.jpg",
+        alt: "farm",
       },
       {
-        src: "/images/services/rides/group/images/group7.jpg",
-        alt: "group",
+        src: "/images/services/farm/02.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/03.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/09.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/10.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/11.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/08.jpg",
+        alt: "farm",
+      },
+      {
+        src: "/images/services/farm/13.jpg",
+        alt: "farm",
       },
     ],
   };
