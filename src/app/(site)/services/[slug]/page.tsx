@@ -5,9 +5,7 @@ import { OneServicePage } from "@/features/price/ui/OneServicePage";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 
 type UslugiPageProps = {
-  params: {
-    slug: string;
-  };
+  params: Promise<any>;
 };
 
 export const dynamic = "force-dynamic";
