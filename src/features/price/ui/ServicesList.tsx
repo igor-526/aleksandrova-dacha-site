@@ -84,7 +84,7 @@ const ServicesList = ({
                   <Button
                     variant="secondary"
                     size="sm"
-                    href={`/services/${item.slug}`}
+                    href={`/uslugi/${item.slug}`}
                     className="my-2"
                   >
                     Подробнее

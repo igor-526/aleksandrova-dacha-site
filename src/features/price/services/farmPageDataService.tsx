@@ -21,7 +21,7 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
     title: "Контактная мини-ферма",
     subtitle: "Александрова дача",
     backgroundImage: {
-      src: "/images/services/farm/1.jpg",
+      src: "/images/services/farm/01.jpg",
       alt: "desc",
     },
   };

@@ -37,11 +37,10 @@ const ServiceCard = ({
         <div className="space-y-1.5 mb-1.5">
           {title && <h3 className="font-serif text-xl">{title}</h3>}
           {content &&
-            content.split("|").map((item, index) => (
-              <p key={index} className="text-sm leading-relaxed text-[#4b4d2f]">
-                {item}
-              </p>
-            ))}
+            <p className="text-sm leading-relaxed text-[#4b4d2f] whitespace-pre-wrap mb-1">
+              {content}
+            </p>
+          }
         </div>
       )}
 
