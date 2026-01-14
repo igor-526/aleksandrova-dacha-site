@@ -177,7 +177,7 @@ export function Header({
           isMobile
             ? "fixed inset-x-0 top-0"
             : sticky
-              ? "relative sticky top-0 backdrop-blur"
+              ? "sticky top-0 backdrop-blur"
               : "relative",
           transparent ? "bg-transparent" : "bg-[rgba(246,239,224,0.95)]",
           isMobile
@@ -189,7 +189,7 @@ export function Header({
         )}
       >
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link href={brandHref} className="flex items-center gap-3">
+          <Link rel="canonical" href={brandHref} className="flex items-center gap-3">
             {brandLogoSrc && (
               <Image
                 width={72}
@@ -214,53 +214,53 @@ export function Header({
               const key = link.href || link.label;
               const isOpen = activeDropdown === key;
 
-            const baseTopItemClass =
-              "flex items-center justify-between gap-2 rounded-full px-3 py-2.5 transition hover:bg-[#f1e4ca] hover:text-[#1f2600]";
-            return (
-              <div
-                key={key}
-                className="relative"
-                onMouseEnter={() => hasChildren && handleOpenDropdown(key)}
-                onFocus={() => hasChildren && handleOpenDropdown(key)}
-              >
-                {link.href ? (
-                  <Link
-                    href={link.href}
-                    className={baseTopItemClass}
-                  >
-                    <span className="whitespace-nowrap">{link.label}</span>
-                    {hasChildren && (
-                      <Icon
-                        name="chevron-down"
-                        width={16}
-                        height={16}
-                        className={cn(
-                          "transition-transform duration-200",
-                          isOpen && "-rotate-180"
-                        )}
-                      />
-                    )}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className={baseTopItemClass}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="whitespace-nowrap">{link.label}</span>
-                    {hasChildren && (
-                      <Icon
-                        name="chevron-down"
-                        width={16}
-                        height={16}
-                        className={cn(
-                          "transition-transform duration-200",
-                          isOpen && "-rotate-180"
-                        )}
-                      />
-                    )}
-                  </button>
-                )}
+              const baseTopItemClass =
+                "flex items-center justify-between gap-2 rounded-full px-3 py-2.5 transition hover:bg-[#f1e4ca] hover:text-[#1f2600]";
+              return (
+                <div
+                  key={key}
+                  className="relative"
+                  onMouseEnter={() => hasChildren && handleOpenDropdown(key)}
+                  onFocus={() => hasChildren && handleOpenDropdown(key)}
+                >
+                  {link.href ? (
+                    <Link rel="canonical"
+                      href={link.href}
+                      className={baseTopItemClass}
+                    >
+                      <span className="whitespace-nowrap">{link.label}</span>
+                      {hasChildren && (
+                        <Icon
+                          name="chevron-down"
+                          width={16}
+                          height={16}
+                          className={cn(
+                            "transition-transform duration-200",
+                            isOpen && "-rotate-180"
+                          )}
+                        />
+                      )}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className={baseTopItemClass}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="whitespace-nowrap">{link.label}</span>
+                      {hasChildren && (
+                        <Icon
+                          name="chevron-down"
+                          width={16}
+                          height={16}
+                          className={cn(
+                            "transition-transform duration-200",
+                            isOpen && "-rotate-180"
+                          )}
+                        />
+                      )}
+                    </button>
+                  )}
 
                   {hasChildren && (
                     <div
@@ -273,28 +273,27 @@ export function Header({
                     >
                       <div className="rounded-2xl border border-[#e6d8bc] bg-[#f8f2e4] p-4 shadow-xl shadow-black/10">
                         <ul className="space-y-3">
-                        {link.children!.map((child, childIndex) => {
-                          const childHasChildren = Boolean(
-                            child.children?.length
-                          );
-                          const childKey = `${key}-${
-                            child.href || child.label
-                          }`;
-                          const isSubmenuExpanded =
-                            expandedSubmenus[childKey] ?? false;
-                          const containerClasses = cn(
-                            "flex items-start justify-between gap-2 rounded-xl px-2 transition-colors hover:bg-[#f1e4ca]",
-                            childHasChildren ? "py-3" : "py-1.5"
-                          );
-                          const toggleTextClasses =
-                            "flex flex-1 items-center justify-between text-base font-semibold text-[#2f3600]";
-                          const linkTextClasses =
-                            "flex flex-1 items-center justify-between text-sm font-medium text-[#2f3600]";
-                          return (
-                            <li
-                              key={child.href || child.label}
-                              className="group"
-                            >
+                          {link.children!.map((child) => {
+                            const childHasChildren = Boolean(
+                              child.children?.length
+                            );
+                            const childKey = `${key}-${child.href || child.label
+                              }`;
+                            const isSubmenuExpanded =
+                              expandedSubmenus[childKey] ?? false;
+                            const containerClasses = cn(
+                              "flex items-start justify-between gap-2 rounded-xl px-2 transition-colors hover:bg-[#f1e4ca]",
+                              childHasChildren ? "py-3" : "py-1.5"
+                            );
+                            const toggleTextClasses =
+                              "flex flex-1 items-center justify-between text-base font-semibold text-[#2f3600]";
+                            const linkTextClasses =
+                              "flex flex-1 items-center justify-between text-sm font-medium text-[#2f3600]";
+                            return (
+                              <li
+                                key={child.href || child.label}
+                                className="group"
+                              >
                                 <div className={containerClasses}>
                                   {childHasChildren ? (
                                     <button
@@ -315,7 +314,7 @@ export function Header({
                                       />
                                     </button>
                                   ) : child.href ? (
-                                    <Link
+                                    <Link rel="canonical"
                                       href={child.href}
                                       className={linkTextClasses}
                                     >
@@ -338,7 +337,7 @@ export function Header({
                                     {child.children!.map((nested) => (
                                       <li key={nested.href || nested.label}>
                                         {nested.href ? (
-                                          <Link
+                                          <Link rel="canonical"
                                             href={nested.href}
                                             className="text-sm text-[#3a3f1c] transition-colors hover:text-[#1f2600]"
                                           >
@@ -364,7 +363,7 @@ export function Header({
               );
             })}
           </nav>
-        <div className="hidden items-center gap-4 md:flex">{renderCta()}</div>
+          <div className="hidden items-center gap-4 md:flex">{renderCta()}</div>
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d3c6aa] text-[#2f3600] md:hidden"

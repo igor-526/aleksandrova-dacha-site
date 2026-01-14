@@ -85,7 +85,7 @@ function MobileMenuItem({
             {item.label}
           </button>
         ) : item.href ? (
-          <a
+          <a rel="canonical"
             href={item.href}
             className="flex-1 text-sm font-medium text-[#2f3600]"
             onClick={onNavigate}
@@ -237,8 +237,8 @@ export function MobileMenu({
                   }
                   rel={
                     contact.type === "telegram" || contact.type === "vk"
-                      ? "noreferrer"
-                      : undefined
+                      ? "noreferrer canonical"
+                      : "canonical"
                   }
                 >
                   <Icon name={contact.type} width={30} height={30} />
@@ -252,16 +252,16 @@ export function MobileMenu({
             {ctaSlot
               ? isValidElement(ctaSlot)
                 ? (() => {
-                    const ctaElement = ctaSlot as ReactElement<{
-                      className?: string;
-                      fullWidth?: boolean;
-                    }>;
-                    return cloneElement(ctaElement, {
-                      key: "mobile-cta",
-                      className: cn(ctaElement.props?.className, "w-full"),
-                      fullWidth: ctaElement.props?.fullWidth ?? true,
-                    });
-                  })()
+                  const ctaElement = ctaSlot as ReactElement<{
+                    className?: string;
+                    fullWidth?: boolean;
+                  }>;
+                  return cloneElement(ctaElement, {
+                    key: "mobile-cta",
+                    className: cn(ctaElement.props?.className, "w-full"),
+                    fullWidth: ctaElement.props?.fullWidth ?? true,
+                  });
+                })()
                 : ctaSlot
               : (
                 <Button

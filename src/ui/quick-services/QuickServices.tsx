@@ -56,6 +56,7 @@ export function QuickServices({
           return item.href ? (
             <Link
               key={item.id}
+              rel="canonical"
               href={item.href}
               className="block focus:outline-none"
             >

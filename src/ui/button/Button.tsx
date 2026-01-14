@@ -87,7 +87,7 @@ export function Button({
       <a
         href={href}
         target={target}
-        rel={rel}
+        rel={cn(rel, "canonical")}
         onClick={finalDisabled ? undefined : onClick}
         className={baseClasses}
         aria-disabled={finalDisabled || undefined}

@@ -62,7 +62,7 @@ function FooterNavList({ links = [] }: { links?: MobileMenuLink[] }) {
           return (
             <li key={key}>
               {item.href ? (
-                <a
+                <a rel="canonical"
                   href={item.href}
                   className="flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-sm text-[#f6efe0] transition hover:bg-[#30370d] hover:text-white"
                 >
@@ -151,7 +151,7 @@ export function Footer({
           {(brandLogoSrc || displayName) && (
             <div className="flex items-center gap-4 -mt-6">
               {brandLogoSrc && (
-                <a
+                <a rel="canonical"
                   href={brandHref}
                   className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-[#3d431c] bg-[#262b00]"
                 >
@@ -165,7 +165,7 @@ export function Footer({
                 </a>
               )}
               {displayName && (
-                <a
+                <a rel="canonical"
                   href={brandHref}
                   className="font-serif text-2xl text-[#f6efe0] transition hover:text-white"
                 >
@@ -227,7 +227,7 @@ export function Footer({
             <div className="space-y-2 text-sm">
               {phones.map((phone) => (
                 <a
-                  key={phone}
+                  key={phone} rel="canonical"
                   href={`tel:${sanitizePhone(phone)}`}
                   className="flex items-center gap-2 text-[#f6efe0] transition hover:text-white"
                 >
@@ -252,8 +252,8 @@ export function Footer({
                   }
                   rel={
                     social.type === "vk" || social.type === "telegram"
-                      ? "noreferrer"
-                      : undefined
+                      ? "noreferrer canonical"
+                      : "canonical"
                   }
                   aria-label={social.label}
                 >

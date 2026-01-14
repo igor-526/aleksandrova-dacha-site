@@ -37,7 +37,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
       className={cn(
         "text-sm text-[#2f3600] italic",
         isOverflowing &&
-          "relative after:pointer-events-none after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#8d784f] after:content-['...']",
+        "relative after:pointer-events-none after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#8d784f] after:content-['...']",
         className
       )}
     >
@@ -47,10 +47,10 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         style={
           isOverflowing
             ? {
-                maskImage: "linear-gradient(90deg, #000 70%, transparent)",
-                WebkitMaskImage:
-                  "linear-gradient(90deg, #000 70%, transparent)",
-              }
+              maskImage: "linear-gradient(90deg, #000 70%, transparent)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, #000 70%, transparent)",
+            }
             : undefined
         }
       >
@@ -62,7 +62,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
               className="flex items-center gap-2"
             >
               {item.href && !isLast ? (
-                <a href={item.href} className="text-[#2f3600] hover:underline">
+                <a rel="canonical" href={item.href} className="text-[#2f3600] hover:underline">
                   {item.label}
                 </a>
               ) : (
