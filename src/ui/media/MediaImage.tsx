@@ -16,7 +16,7 @@ const ratioClasses: Record<Exclude<MediaImageProps["ratio"], undefined>, string>
   auto: "",
 };
 
-export function MediaImage({ src, alt, ratio = "landscape", fill = false, className }: MediaImageProps) {
+export function MediaImage({ src, alt, ratio = "auto", fill = true, className }: MediaImageProps) {
   if (fill) {
     return (
       <div className={cn("relative overflow-hidden", ratioClasses[ratio], className)}>

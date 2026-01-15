@@ -66,6 +66,7 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
     items: [],
     columns: 2,
     mediaPosition: "top",
+    gallery: true,
   };
 
   const dataGallerySection: GallerySectionProps = {

@@ -2,12 +2,14 @@ import { PriceOutDto } from "@/types";
 import { Button, cn, DataTable, GallerySection, MediaImage } from "@/ui";
 import ServiceCard from "./ServiceCard";
 import { ReactNode } from "react";
+import Link from "next/link";
 export type ServicesListProps = {
   heading?: string;
   content?: ReactNode;
   items: PriceOutDto[];
   mediaPosition?: "top" | "left";
   gallery?: boolean;
+  typeMedia?: "image" | "gallery";
   columns?: 1 | 2 | 3;
   moreDetails?: boolean;
   className?: string;
@@ -18,9 +20,10 @@ const ServicesList = ({
   content,
   items = [],
   mediaPosition = "top",
-  gallery = true,
+  gallery = false,
+  typeMedia = "image",
   columns = 3,
-  moreDetails = true,
+  moreDetails = false,
   className,
 }: ServicesListProps) => {
   return (
@@ -48,8 +51,8 @@ const ServicesList = ({
             src: photo.url,
             alt: item.slug,
           }));
-          const photoUrl = photos[0]?.url;
-          const mediaCard = gallery ? (
+
+          const mediaCard = (typeMedia === "gallery") ? (
             <GallerySection
               items={galleryItems}
               columns={1}
@@ -57,14 +60,14 @@ const ServicesList = ({
             />
           ) : (
             <MediaImage
-              src={photoUrl}
-              alt={item.slug}
+              src={galleryItems[0]?.src || "/images/placeholder.png"}
+              alt={galleryItems[0]?.alt || "image"}
               className="w-full h-full"
             />
           );
 
           return (
-            <div key={index} className={cn("flex mx-auto h-full w-full")}>
+            <Link key={index} rel="canonical" href={`/uslugi/${item.slug}`} className={cn("flex mx-auto h-full w-full transition-transform duration-200 hover:-translate-y-1 hover:rounded-3xl hover:shadow-[0_16px_36px_rgba(56,64,0,0.12)]")}>
               <ServiceCard
                 title={item.name}
                 gallery={gallery}
@@ -91,7 +94,7 @@ const ServicesList = ({
                   </Button>
                 )}
               </ServiceCard>
-            </div>
+            </Link>
           );
         })}
       </div>

@@ -44,8 +44,8 @@ const ServiceCard = ({
         </div>
       )}
 
-      {children && <div className="mt-auto">{children}</div>}
-      {actions && <div className="mt-auto">{actions}</div>}
+      {children && <div>{children}</div>}
+      {actions && <div>{actions}</div>}
     </div>
   );
 
