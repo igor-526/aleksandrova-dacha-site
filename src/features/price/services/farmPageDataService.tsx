@@ -5,21 +5,30 @@ import {
   HeroProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
-import { fetchPriceList } from "./priceService";
+import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
 import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
+import { PriceGroupOutDto } from "@/types";
+import { group } from "console";
 
 export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
+  const getGroup = async (): Promise<PriceGroupOutDto> => {
+    const result = await fetchPriceGroup("57b058fd-df75-4676-b5f0-f607b79bdd9c")
+    return result.status === "ok" && result.data ? result.data : null;
+  };
+
   const getPrices = async (): Promise<PriceOutDto[]> => {
-    const result = await fetchPriceList("Экскурсии");
+    const result = await fetchPriceList("Контактная мини-ферма");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 
+  const group = await getGroup();
   const prices = await getPrices();
 
   const dataHero: HeroProps = {
-    title: "Контактная мини-ферма",
+    title: group?.name || "",
     subtitle: "Александрова дача",
+    description: "знакомство с животными мини-фермы клуба",
     backgroundImage: {
       src: "/images/services/farm/01.jpg",
       alt: "desc",
@@ -28,21 +37,16 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
-      { label: "Главная", href: "/" },
-      { label: "Услуги", href: "/services" },
-      { label: "Мини-ферма" },
+      { name: "Услуги", href: "/services" },
+      { name: "Мини-ферма" },
     ],
     className: "-mt-9 px-6",
   };
 
   const dataArticle: ArticleProps = {
     content: (
-      <div className="space-y-4">
-        <p>
-          Знакомство с животными из мини-фермы нашего клуба носит добрый,
-          познавательный характер. У нас живут около 110 лошадей и пони, а также
-          верблюды, северные олени, козы, кролики, гуси и другие животные.
-        </p>
+      <div className="space-y-4 whitespace-break-spaces">
+        {group?.description}
       </div>
     ),
   };
@@ -53,6 +57,7 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
     items: [],
     columns: 2,
     mediaPosition: "top",
+    gallery: true
   };
 
   const dataGallerySection: GallerySectionProps = {

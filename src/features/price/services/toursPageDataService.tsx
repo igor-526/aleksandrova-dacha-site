@@ -6,20 +6,26 @@ import {
   PreparationTipsProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
-import { fetchPriceList } from "./priceService";
+import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
 import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
+import { PriceGroupOutDto } from "@/types";
 
 export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
+  const getGroup = async (): Promise<PriceGroupOutDto> => {
+    const result = await fetchPriceGroup("95f58d8a-ca02-4008-a732-c2e4760a8cf5")
+    return result.status === "ok" && result.data ? result.data : null;
+  };
+
   const getPrices = async (): Promise<PriceOutDto[]> => {
     const result = await fetchPriceList("Конные прогулки и катания");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 
+  const group = await getGroup();
   const prices = await getPrices();
-
   const dataHero: HeroProps = {
-    title: "Конные прогулки",
+    title: group?.name || "",
     subtitle: "Александрова дача",
     backgroundImage: {
       src: "/images/services/rides/tours/tour.jpg",
@@ -29,24 +35,17 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
-      { label: "Главная", href: "/" },
-      { label: "Услуги", href: "/services" },
-      { label: "Верховая езда", href: "/services/rides" },
-      { label: "Конные прогулки" },
+      { name: "Услуги", href: "/services" },
+      { name: "Верховая езда", href: "/services/rides" },
+      { name: "Конные прогулки" },
     ],
     className: "-mt-9 px-6",
   };
 
   const dataArticle: ArticleProps = {
     content: (
-      <div className="space-y-4">
-        <p>
-          Верховая езда – это увлекательный вид активного отдыха. Наши лошади и
-          пони воспитаны, приветливы и дружелюбны. Они дадут вам возможность
-          почувствовать себя значительно лучше - энергичнее, сильнее, свободнее.
-          В зависимости от уровня Вашей подготовки конные прогулки могут быть
-          разной сложности и продолжительности.
-        </p>
+      <div className="space-y-4 whitespace-break-spaces">
+        {group?.description}
       </div>
     ),
   };

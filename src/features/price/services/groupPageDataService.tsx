@@ -7,12 +7,18 @@ import {
   PreparationTipsProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
-import { fetchPriceList } from "./priceService";
+import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import ServicesList, { ServicesListProps } from "../ui/ServicesList";
 import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
 import { ReactNode } from "react";
+import { PriceGroupOutDto } from "@/types";
 
 export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
+  const getGroup = async (): Promise<PriceGroupOutDto> => {
+    const result = await fetchPriceGroup("0f2c3b90-3115-4dd0-9bd0-f05de5376df8")
+    return result.status === "ok" && result.data ? result.data : null;
+  };
+
   const getPrices = async (): Promise<PriceOutDto[]> => {
     const result = await fetchPriceList("Групповое обучение");
     return result.status === "ok" && result.data ? result.data.items : [];
@@ -23,12 +29,14 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 
+  const group = await getGroup();
   const prices = await getPrices();
   const pricesRental = await getPricesRental();
 
   const dataHero: HeroProps = {
-    title: "Групповые занятия",
+    title: group?.name || "",
     subtitle: "Александрова дача",
+    description: "обучение верховой езде для разных уровней подготовки",
     backgroundImage: {
       src: "/images/services/rides/group/group5.jpg",
       alt: "desc",
@@ -37,10 +45,9 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
-      { label: "Главная", href: "/" },
-      { label: "Услуги", href: "/services" },
-      { label: "Верховая езда", href: "/services/rides" },
-      { label: "Групповое обучение" },
+      { name: "Услуги", href: "/services" },
+      { name: "Верховая езда", href: "/services/rides" },
+      { name: "Групповое обучение" },
     ],
     className: "-mt-9 px-6",
   };
@@ -48,16 +55,8 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
   const dataArticle: ArticleProps = {
     title: "Групповые занятия. Абонементы.",
     content: (
-      <div className="space-y-4">
-        <p>
-          Для постоянно занимающихся верховой ездой в нашем клубе предусмотрены
-          групповые занятия по абонементам. Группы формируются по уровню
-          подготовки всадников.
-        </p>
-        <p>
-          Набор в группы осуществляется в сентябре. В группы на пони принимаются
-          дети от 6 до 10 лет, на лошадях - от 10 лет.
-        </p>
+      <div className="space-y-4 whitespace-break-spaces">
+        {group?.description}
       </div>
     ),
   };

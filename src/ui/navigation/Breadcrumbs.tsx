@@ -5,7 +5,7 @@ import { Icon } from "../atoms/Icon";
 import { cn } from "../utils/cn";
 
 export type BreadcrumbItem = {
-  label: string;
+  name: string;
   href?: string;
 };
 
@@ -31,6 +31,8 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
     return () => window.removeEventListener("resize", checkOverflow);
   }, [items]);
 
+  let position = 1;
+
   return (
     <nav
       aria-label="Навигация"
@@ -41,7 +43,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         className
       )}
     >
-      <ol
+      <ol itemScope itemType="http://schema.org/BreadcrumbList"
         ref={listRef}
         className="flex flex-nowrap items-center gap-2 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={
@@ -58,16 +60,21 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
           const isLast = index === items.length - 1;
           return (
             <li
-              key={`${item.label}-${index}`}
+              key={`${item.name}-${index}`}
+              itemProp="itemListElement"
+              itemScope
+              itemType="http://schema.org/ListItem"
               className="flex items-center gap-2"
             >
               {item.href && !isLast ? (
-                <a rel="canonical" href={item.href} className="text-[#2f3600] hover:underline">
-                  {item.label}
+                <a itemProp="item" rel="canonical" href={item.href} className="text-[#2f3600] hover:underline">
+                  {item.name}
                 </a>
+
               ) : (
-                <span className="text-[#8d784f]">{item.label}</span>
+                <span itemProp="name" className="text-[#8d784f]">{item.name}</span>
               )}
+              <meta itemProp="position" content={String(position++)} />
               {!isLast && (
                 <Icon
                   name="arrow-right"

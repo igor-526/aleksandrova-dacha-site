@@ -16,4 +16,4 @@ export type PriceGroupSimpleOutDto = {
 
 export type PriceGroupOutDto = ApiCreatedUpdatedAtType & PriceGroupSimpleOutDto & {
     description: string | null;
-};
+} | null;

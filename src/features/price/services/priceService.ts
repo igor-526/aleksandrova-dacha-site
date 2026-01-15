@@ -1,6 +1,12 @@
 import { priceDetail, priceList } from "@/api/price";
-import { ApiResult, ApiListPaginatedResponseType } from "@/types";
+import { priceGroupDetail } from "@/api/priceGroups";
+import { ApiResult, ApiListPaginatedResponseType, PriceGroupOutDto } from "@/types";
 import { PriceListQueryParams, PriceOutDto } from "@/types/prices";
+import { UUID } from "crypto";
+
+export const fetchPriceGroup = async (priceGroupId: UUID): Promise<ApiResult<PriceGroupOutDto>> => {
+    return await priceGroupDetail(priceGroupId);
+}
 
 export const fetchPriceList = async (pageName: string): Promise<ApiResult<ApiListPaginatedResponseType<PriceOutDto>>> => {
     const params: PriceListQueryParams = {

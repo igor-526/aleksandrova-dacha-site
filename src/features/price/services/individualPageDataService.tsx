@@ -6,21 +6,29 @@ import {
   MissionProps,
 } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
-import { fetchPriceList } from "./priceService";
+import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
+import { PriceGroupOutDto } from "@/types";
 
 export const getIndividualPageData = async () => {
+  const getGroup = async (): Promise<PriceGroupOutDto> => {
+    const result = await fetchPriceGroup("8d9651fe-6b98-4f31-9c7f-f314d4a6b990")
+    return result.status === "ok" && result.data ? result.data : null;
+  };
+
   const getPrices = async (): Promise<PriceOutDto[]> => {
     const result = await fetchPriceList("Индивидуальное обучение");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
 
+  const group = await getGroup();
+
   const prices = await getPrices();
 
   const dataHero: HeroProps = {
-    title: "Обучение верховой езде",
+    title: group?.name || "",
     subtitle: "Александрова дача",
-    description: "(индивидуальные занятия и занятия в небольших группах)",
+    description: "обучение верховой езде с опытным инструктором",
     backgroundImage: {
       src: "/images/services/rides/individual/individual.jpg",
       alt: "desc",
@@ -29,22 +37,17 @@ export const getIndividualPageData = async () => {
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
-      { label: "Главная", href: "/" },
-      { label: "Услуги", href: "/services" },
-      { label: "Верховая езда", href: "/services/rides" },
-      { label: "Индивидуальное обучение" },
+      { name: "Услуги", href: "/services" },
+      { name: "Верховая езда", href: "/services/rides" },
+      { name: "Индивидуальное обучение" },
     ],
     className: "-mt-9 px-6",
   };
 
   const dataArticle: ArticleProps = {
     content: (
-      <div className="space-y-4">
-        <p>
-          Обучим взрослых и детей, с нуля до спортивных разрядов. Всадникам, не
-          имеющим начальных навыков верховой езды и детям до 6 лет рекомендуется
-          брать индивидуальные занятия.
-        </p>
+      <div className="space-y-4 whitespace-break-spaces">
+        {group?.description}
       </div>
     ),
   };
