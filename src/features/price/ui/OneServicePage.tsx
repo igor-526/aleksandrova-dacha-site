@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import {
+  Breadcrumbs,
   Container,
   GallerySection,
   Hero,
@@ -6,19 +10,45 @@ import {
 } from "@/ui";
 import { PriceOutDto } from "@/types";
 
+
 type OneServicePageProps = {
   price: PriceOutDto;
 }
 
 export const OneServicePage = ({
-  price,
-
+  price
 }: OneServicePageProps) => {
+  const [storedBreadcrumbs, setStoredBreadcrumbs] = useState<
+    { name: string; href?: string }[] | null
+  >(null);
+
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem("serviceBreadcrumbs");
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        setStoredBreadcrumbs(parsed);
+      }
+    } catch {
+      // ignore malformed storage
+    }
+  }, []);
+
+  const breadcrumbItems = useMemo(() => {
+    if (!storedBreadcrumbs || storedBreadcrumbs.length === 0) {
+      return [{ name: price.name }];
+    }
+
+    const next = [...storedBreadcrumbs];
+    const trimmed = next.length >= 3 ? next.slice(1) : next;
+    return [...trimmed, { name: price.name }];
+  }, [price.name, storedBreadcrumbs]);
+
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
         <Hero
-
           title={price.name}
           subtitle="Александрова дача"
           backgroundImage={{
@@ -26,6 +56,9 @@ export const OneServicePage = ({
             alt: "Изображение услуги",
           }}
         />
+
+        <Breadcrumbs items={breadcrumbItems} className="-mt-9 px-6" />
+
 
         {price.description && <p className="whitespace-pre-wrap">{price.description}</p>}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Icon } from "../atoms/Icon";
 import { cn } from "../utils/cn";
 
@@ -12,18 +12,22 @@ export type BreadcrumbItem = {
 export type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   className?: string;
+  storageKey?: string;
 };
 
-export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, className, storageKey }: BreadcrumbsProps) {
   const listRef = useRef<HTMLOListElement | null>(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
     const checkOverflow = () => {
       const el = listRef.current;
       if (!el) return;
       const hasOverflow = el.scrollWidth > el.clientWidth + 1;
-      setIsOverflowing((prev) => (prev === hasOverflow ? prev : hasOverflow));
+      if (hasOverflow) {
+        requestAnimationFrame(() => {
+          el.scrollLeft = el.scrollWidth;
+        });
+      }
     };
 
     checkOverflow();
@@ -31,30 +35,32 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
     return () => window.removeEventListener("resize", checkOverflow);
   }, [items]);
 
+  useEffect(() => {
+    if (!storageKey) return;
+    try {
+      const storedItems = items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        if (isLast && !item.href) {
+          return { ...item, href: window.location.pathname };
+        }
+        return item;
+      });
+      sessionStorage.setItem(storageKey, JSON.stringify(storedItems));
+    } catch {
+      // ignore write errors (privacy mode, quota)
+    }
+  }, [items, storageKey]);
+
   let position = 1;
 
   return (
     <nav
       aria-label="Навигация"
-      className={cn(
-        "text-sm text-[#2f3600] italic",
-        isOverflowing &&
-        "relative after:pointer-events-none after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#8d784f] after:content-['...']",
-        className
-      )}
+      className={cn("text-sm text-[#2f3600] italic", className)}
     >
       <ol itemScope itemType="http://schema.org/BreadcrumbList"
         ref={listRef}
         className="flex flex-nowrap items-center gap-2 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        style={
-          isOverflowing
-            ? {
-              maskImage: "linear-gradient(90deg, #000 70%, transparent)",
-              WebkitMaskImage:
-                "linear-gradient(90deg, #000 70%, transparent)",
-            }
-            : undefined
-        }
       >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -64,7 +70,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
               itemProp="itemListElement"
               itemScope
               itemType="http://schema.org/ListItem"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 last:font-semibold"
             >
               {item.href && !isLast ? (
                 <a itemProp="item" rel="canonical" href={item.href} className="text-[#2f3600] hover:underline">
@@ -72,7 +78,9 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                 </a>
 
               ) : (
-                <span itemProp="name" className="text-[#8d784f]">{item.name}</span>
+                <span itemProp="name" className="text-[#2f3600]">
+                  {item.name}
+                </span>
               )}
               <meta itemProp="position" content={String(position++)} />
               {!isLast && (

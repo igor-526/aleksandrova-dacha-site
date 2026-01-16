@@ -47,7 +47,9 @@ export const ServicesGroupPage = ({
       <Container className="space-y-12">
         {dataHero && <Hero {...dataHero} />}
 
-        {dataBreadcrumbs && <Breadcrumbs {...dataBreadcrumbs} />}
+        {dataBreadcrumbs && (
+          <Breadcrumbs {...dataBreadcrumbs} storageKey="serviceBreadcrumbs" />
+        )}
 
         {dataArticle && <Article {...dataArticle} />}
 

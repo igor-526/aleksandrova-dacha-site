@@ -3,15 +3,15 @@ import {
 } from "@/ui";
 import { PriceOutDto } from "@/types";
 
-type OneServiceGallery = {
+type ServiceGalleryType = {
     price: PriceOutDto;
     columns?: 1 | 2 | 3 | 4;
 }
 
-export const OneServiceGallery = ({
+export const ServiceGallery = ({
     price,
     columns = 3
-}: OneServiceGallery) => {
+}: ServiceGalleryType) => {
     return (
         <div className="h-full">
             {price.name && <h3 className="font-serif text-xl">{price.name}</h3>}

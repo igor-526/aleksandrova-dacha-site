@@ -143,6 +143,7 @@ export function MobileMenu({
   phone,
   socials = [],
 }: MobileMenuProps) {
+  const [mounted, setMounted] = useState(false);
   const sanitizedPhone = phone?.replace(/[^+\d]/g, "");
   const [expandedMap, setExpandedMap] = useState<Record<number, string | undefined>>({});
   const contactLinks = [
@@ -165,6 +166,10 @@ export function MobileMenu({
     };
   }, [open]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleExpand = (level: number, key?: string) => {
     setExpandedMap((prev) => {
       const next: Record<number, string | undefined> = {};
@@ -177,7 +182,7 @@ export function MobileMenu({
     });
   };
 
-  if (typeof document === "undefined" || !open) return null;
+  if (typeof document === "undefined" || !mounted) return null;
 
   const overlay = (
     <div
@@ -185,6 +190,7 @@ export function MobileMenu({
         "fixed inset-0 z-40 bg-black/40 transition-opacity",
         open ? "opacity-100" : "pointer-events-none opacity-0"
       )}
+      aria-hidden={!open}
       onClick={() => onOpenChange(false)}
     >
       <nav

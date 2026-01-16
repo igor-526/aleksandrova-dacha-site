@@ -3,7 +3,7 @@ import { PriceOutDto } from "@/types/prices";
 import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
 import { ReactNode } from "react";
-import { OneServiceGallery } from "../ui/OneServiseGallery";
+import { ServiceGallery } from "../ui/ServiseGallery";
 import { PriceGroupOutDto } from "@/types";
 
 export const getSportPageData = async () => {
@@ -66,7 +66,7 @@ export const getSportPageData = async () => {
 
   const additionalSection: ReactNode = (
     <div className="grid gap-8 md:grid-cols-2">
-      {typeSport.map((price, index) => <div key={index} className="h-96"><OneServiceGallery price={price} columns={1} /></div>)}
+      {typeSport.map((price, index) => <div key={index} className="h-96"><ServiceGallery price={price} columns={1} /></div>)}
     </div>
   )
 

@@ -72,12 +72,12 @@ export function CallBackRequestModal({
   };
 
   const footer = (
-    <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+    <div className="flex flex-row flex-nowrap gap-3 justify-end">
       <Button
         type="button"
         variant="secondary"
         size="md"
-        className="text-sm sm:text-base"
+        className="px-3 py-2 text-xs sm:px-4 sm:text-base"
         onClick={() => setOpen(false)}
       >
         Отмена
@@ -85,7 +85,7 @@ export function CallBackRequestModal({
       <Button
         variant="primary"
         size="md"
-        className="text-sm sm:text-base"
+        className="px-3 py-2 text-xs sm:px-4 sm:text-base"
         onClick={handleSubmit}
         disabled={true}
       >
@@ -105,6 +105,7 @@ export function CallBackRequestModal({
         onOpenChange={setOpen}
         title="Связаться с нами"
         footer={footer}
+        fullWidthOnMobile={true}
       >
         <form
           className={cn(

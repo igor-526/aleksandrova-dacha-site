@@ -12,6 +12,7 @@ export type ModalProps = {
   size?: "sm" | "md" | "lg";
   children: ReactNode;
   footer?: ReactNode;
+  fullWidthOnMobile?: boolean;
 };
 
 const sizeClass: Record<NonNullable<ModalProps["size"]>, string> = {
@@ -53,6 +54,7 @@ export function Modal({
   size = "md",
   children,
   footer,
+  fullWidthOnMobile = false,
 }: ModalProps) {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -65,7 +67,10 @@ export function Modal({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4"
+      className={cn(
+        "fixed inset-0 z-50 grid place-items-center bg-black/40 p-4",
+        fullWidthOnMobile && "p-0 sm:p-4"
+      )}
       role="dialog"
       aria-modal="true"
       onClick={() => onOpenChange(false)}
@@ -73,6 +78,8 @@ export function Modal({
       <div
         className={cn(
           "inline-flex max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] flex-col rounded-3xl bg-[#f8f2e4] shadow-xl",
+          fullWidthOnMobile &&
+            "w-full max-w-none rounded-none sm:w-auto sm:max-w-[calc(100vw-2rem)] sm:rounded-3xl",
           sizeClass[size]
         )}
         onClick={(event) => event.stopPropagation()}
