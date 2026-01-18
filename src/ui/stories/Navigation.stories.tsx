@@ -72,9 +72,9 @@ export const Overview: Story = {
           <section>
             <Breadcrumbs
               items={[
-                 { label: "Главная", href: "/" },
-                 { label: "Верховая езда", href: "/horse_riding" },
-                 { label: "Групповые занятия" },
+                 { name: "Главная", href: "/" },
+                 { name: "Верховая езда", href: "/horse_riding" },
+                 { name: "Групповые занятия" },
               ]}
             />
           </section>
