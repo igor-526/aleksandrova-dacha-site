@@ -11,7 +11,7 @@ export const generateMetadata = async (): Promise<Metadata> =>
     "Подготовка к соревнованиям и спортивные программы по верховой езде. Аренда лошадей и пони."
   );
 
-const ServicesRidesSport = async () => {
+export default async function ServicesRidesSport() {
   const {
     prices,
     dataHero,
@@ -40,5 +40,3 @@ const ServicesRidesSport = async () => {
     </div>
   );
 };
-
-export default ServicesRidesSport;

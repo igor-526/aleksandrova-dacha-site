@@ -41,7 +41,13 @@ export function Carousel<T>({
         className
       )}
     >
-      <div className="transition-all duration-500" key={index}>
+      <div
+        className={cn(
+          "transition-all duration-500",
+          length > 1 && "mb-2"
+        )}
+        key={index}
+      >
         {renderItem(currentItem, index)}
       </div>
       {length > 1 && (
@@ -49,7 +55,7 @@ export function Carousel<T>({
           <Button
             variant="ghost"
             size="sm"
-            className="absolute left-4 top-1/2 -translate-y-1/2"
+            className="absolute left-4 top-1/2 -translate-y-1/2 border-0"
             onClick={() => setIndex((prev) => (prev - 1 + length) % length)}
           >
             ←
@@ -57,7 +63,7 @@ export function Carousel<T>({
           <Button
             variant="ghost"
             size="sm"
-            className="absolute right-4 top-1/2 -translate-y-1/2"
+            className="absolute right-4 top-1/2 -translate-y-1/2 border-0"
             onClick={() => setIndex((prev) => (prev + 1) % length)}
           >
             →

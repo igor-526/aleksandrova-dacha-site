@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> =>
     "Персональные тренировки по верховой езде с учетом целей всадника."
   );
 
-const ServicesRidesIndividual = async () => {
+export default async function ServicesRidesIndividual() {
   const {
     prices,
     dataHero,
@@ -40,5 +40,3 @@ const ServicesRidesIndividual = async () => {
     </div>
   );
 };
-
-export default ServicesRidesIndividual;

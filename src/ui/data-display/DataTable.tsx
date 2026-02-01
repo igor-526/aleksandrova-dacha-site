@@ -61,10 +61,10 @@ export function DataTable({
   const isScaledDown = scale < 1;
   const scaledStyle = isScaledDown
     ? {
-        transform: `scale(${scale})`,
-        transformOrigin: "top left",
-        width: `${(1 / scale) * 100}%`,
-      }
+      transform: `scale(${scale})`,
+      transformOrigin: "top left",
+      width: `${(1 / scale) * 100}%`,
+    }
     : undefined;
 
   return (
@@ -82,9 +82,9 @@ export function DataTable({
       >
         <table
           ref={tableRef}
-          className="min-w-full divide-y divide-[#e2d6bc] text-sm text-[#2f3600] aspect-auto"
+          className="min-w-full divide-y divide-[#e2d6bc] text-[12px] text-[#2f3600] aspect-auto sm:text-sm"
         >
-          <thead className="bg-[#f0e7cf] text-xs uppercase text-[#8d784f]">
+          <thead className="bg-[#f0e7cf] text-[9px] sm:text-xs uppercase text-[#8d784f]">
             <tr>
               {columns.map((column) => {
                 const titleContent = (
@@ -97,7 +97,7 @@ export function DataTable({
                   <th
                     key={column.key}
                     scope="col"
-                    className="px-4 py-3 text-left"
+                    className="px-2 py-3 text-left"
                   >
                     {column.annotation ? (
                       <Tooltip content={column.annotation} side="top">
@@ -133,7 +133,7 @@ export function DataTable({
                   return (
                     <td
                       key={column.key}
-                      className={cn("px-2.5 py-2", cellClasses)}
+                      className={cn("px-2 py-2", cellClasses)}
                     >
                       {cellContent}
                     </td>

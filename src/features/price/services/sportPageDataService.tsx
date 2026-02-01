@@ -1,4 +1,4 @@
-import { ArticleProps, BreadcrumbsProps, HeroProps } from "@/ui";
+import { ArticleProps, BreadcrumbsProps, HeroProps, Mission, MissionProps } from "@/ui";
 import { PriceOutDto } from "@/types/prices";
 import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
@@ -29,7 +29,7 @@ export const getSportPageData = async () => {
   const dataHero: HeroProps = {
     title: group?.name || "",
     subtitle: "Александрова дача",
-    description: "спортивные тренировки по выездке, конкуру",
+    description: group?.description || "",
     backgroundImage: {
       src: "/images/services/rides/equestrian-sport/04.jpg",
       alt: "desc",
@@ -46,12 +46,12 @@ export const getSportPageData = async () => {
   };
 
   const dataArticle: ArticleProps = {
-
-    content: (
-      <div className="space-y-4 whitespace-break-spaces">
-        {group?.description}
-      </div>
-    ),
+    content: <div>
+      <p className="mb-2">Для достижения высоких результатов в конном спорте важно достичь доверия, взаимопонимания, согласованности и гармонии между всадником и лошадью.</p>
+      <p className="mb-2">Если вы являетесь владельцем лошади (пони), вы можете воспользоваться услугой постоя в нашем клубе и тренироваться самостоятельно или под руководством тренера.</p>
+      <p >Если у вас нет своей лошади, вы можете арендовать лошадь (пони) в нашем клубе для тренировок и участия в соревнованиях по выездке, конкуру и другим видам спорта.</p>
+    </div>,
+    className: "bg-[#f0e7cf] rounded-lg py-2 shadow-md",
   };
 
   const dataMission = null;
@@ -64,12 +64,20 @@ export const getSportPageData = async () => {
 
   const dataGallerySection = null;
 
-  const additionalSection: ReactNode = (
-    <div className="grid gap-8 md:grid-cols-2">
+  const dataAdditionalSection: MissionProps = {
+    points: [
+      { heading: "Опытные тренеры", text: "Наши тренеры помогут вам развить навыки верховой езды и достичь ваших целей в конном спорте." },
+      { heading: "Наши спортсмены", text: "Мы гордимся достижениями наших спортсменов на соревнованиях разного уровня." },
+      { heading: "Лошади и пони", text: "У нас есть широкий выбор спортивных лошадей и пони для аренды и тренировок." },
+    ]
+  };
+
+  const additionalSection: ReactNode = (<>
+    <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
       {typeSport.map((price, index) => <div key={index} className="h-96"><ServiceGallery price={price} columns={1} /></div>)}
     </div>
-  )
-
+    <Mission {...dataAdditionalSection} />
+  </>)
 
   return {
     prices,

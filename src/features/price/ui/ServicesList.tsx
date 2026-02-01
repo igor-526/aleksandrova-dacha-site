@@ -10,6 +10,7 @@ export type ServicesListProps = {
   mediaPosition?: "top" | "left";
   gallery?: boolean;
   typeMedia?: "image" | "gallery";
+  minHeightCard?: string;
   columns?: 1 | 2 | 3;
   moreDetails?: boolean;
   className?: string;
@@ -22,6 +23,7 @@ const ServicesList = ({
   mediaPosition = "top",
   gallery = false,
   typeMedia = "image",
+  minHeightCard,
   columns = 3,
   moreDetails = false,
   className,
@@ -35,7 +37,7 @@ const ServicesList = ({
           </h2>
         </div>
       )}
-      <div className="px-6">{content}</div>
+      <div className="px-6 font-serif text-sm md:text-md lg:text-lg text-[#2f3600]">{content}</div>
       <div
         className={cn(
           "grid gap-6 items-stretch justify-items-stretch",
@@ -73,7 +75,9 @@ const ServicesList = ({
                 gallery={gallery}
                 content={item.description || ""}
                 mediaPosition={mediaPosition}
+                colunms={columns}
                 media={mediaCard}
+                className={`min-h-[${minHeightCard || "auto"}]`}
               >
                 {item.price_tables && item.price_tables.length > 0 && (
                   <div className="space-y-4">

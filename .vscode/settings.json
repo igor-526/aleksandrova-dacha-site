@@ -16,5 +16,8 @@
       "createTheme(?:<\\w+>)?\\s*\\(([^)]*)\\)",
       "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
     ]
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

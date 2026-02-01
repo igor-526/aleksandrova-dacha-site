@@ -28,7 +28,7 @@ export const getIndividualPageData = async () => {
   const dataHero: HeroProps = {
     title: group?.name || "",
     subtitle: "Александрова дача",
-    description: "обучение верховой езде с опытным инструктором",
+    description: group?.description || "",
     backgroundImage: {
       src: "/images/services/rides/individual/individual.jpg",
       alt: "desc",
@@ -45,11 +45,13 @@ export const getIndividualPageData = async () => {
   };
 
   const dataArticle: ArticleProps = {
-    content: (
-      <div className="space-y-4 whitespace-break-spaces">
-        {group?.description}
-      </div>
-    ),
+    content: <div>
+      <p className="mb-2">Приглашаем на занятия по верховой езде взрослых и детей с 5 лет. Тренер занимается только с одним всадником.</p>
+      <p className="mb-2">Вы приобретете базовые навыки взаимодействия с лошадью (пони), научитесь правильной посадке и управлению на шагу, рыси, галопе.</p>
+      <p className="mb-2">Для начала занятий не требуется особой спортивной подготовки.</p>
+      <p >Опытные всадники смогут на индивидуальных занятиях улучшить свои навыки и подготовиться к соревнованиям.</p>
+    </div>,
+    className: "bg-[#f0e7cf] rounded-lg py-2 shadow-md",
   };
 
   const dataMission: MissionProps = {

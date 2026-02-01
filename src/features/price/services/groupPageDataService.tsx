@@ -36,7 +36,7 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
   const dataHero: HeroProps = {
     title: group?.name || "",
     subtitle: "Александрова дача",
-    description: "обучение верховой езде для разных уровней подготовки",
+    description: group?.description || "",
     backgroundImage: {
       src: "/images/services/rides/group/group5.jpg",
       alt: "desc",
@@ -53,12 +53,13 @@ export const getGroupPageData = async (): Promise<ServicesGroupPageProps> => {
   };
 
   const dataArticle: ArticleProps = {
-    title: "Групповые занятия. Абонементы.",
-    content: (
-      <div className="space-y-4 whitespace-break-spaces">
-        {group?.description}
-      </div>
-    ),
+    content: <div>
+      <p className="mb-2">Группы формируются в зависимости от уровня подготовки участников.</p>
+      <p className="mb-2">Набор в группы проводится ежегодно в сентябре.</p>
+      <p className="mb-2">Для записи в уже сформированную группу в течение года у Вас должен быть минимальный опыт верховой езды, Вы должны уметь самостоятельно чистить лошадь (пони), седлать и выводить на манеж. Этому можно обучиться на индивидуальных занятиях.</p>
+      <p ></p>
+    </div>,
+    className: "bg-[#f0e7cf] rounded-lg py-2 shadow-md",
   };
 
   const dataServicesList: ServicesListProps = {

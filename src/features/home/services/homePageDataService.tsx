@@ -25,7 +25,7 @@ export const getHomePageData = async () => {
       title: "Верховая езда для взрослых и детей",
       description:
         "Для любого возраста и уровня подготовки. Прогулки, обучение, спорт.",
-      href: "/services/rides/tours",
+      href: "/services/rides",
       icon: <ImageBlock pathImage="/icons/ridding.ico" alt="Верховая езда" />,
     },
     {
@@ -117,12 +117,12 @@ export const getHomePageData = async () => {
     map:
       settings.addressLatitude && settings.addressLongitude
         ? {
-            lat: settings.addressLatitude,
-            lng: settings.addressLongitude,
-            zoom: 13,
-            provider: "yandex",
-            markerLabel: settings.siteName,
-          }
+          lat: settings.addressLatitude,
+          lng: settings.addressLongitude,
+          zoom: 13,
+          provider: "yandex",
+          markerLabel: settings.siteName,
+        }
         : undefined,
   };
 

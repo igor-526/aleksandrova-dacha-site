@@ -16,6 +16,9 @@ import {
 import ServicesList, {
   ServicesListProps,
 } from "@/features/price/ui/ServicesList";
+import ServicesCarousel, {
+  ServicesCarouselData,
+} from "@/ui/data-display/ServicesCarousel";
 import { PriceOutDto } from "@/types";
 import { ReactNode } from "react";
 
@@ -25,6 +28,7 @@ export type ServicesGroupPageProps = {
   dataBreadcrumbs?: BreadcrumbsProps | null;
   dataArticle?: ArticleProps | null;
   dataMission?: MissionProps | null;
+  dataCarusel?: ServicesCarouselData | null;
   dataServicesList?: ServicesListProps | null;
   dataGallerySection?: GallerySectionProps | null;
   dataPreparationTips?: PreparationTipsProps | null;
@@ -37,6 +41,7 @@ export const ServicesGroupPage = ({
   dataBreadcrumbs,
   dataArticle,
   dataMission,
+  dataCarusel,
   dataServicesList,
   dataGallerySection,
   dataPreparationTips,
@@ -52,6 +57,8 @@ export const ServicesGroupPage = ({
         )}
 
         {dataArticle && <Article {...dataArticle} />}
+
+        {dataCarusel && <ServicesCarousel {...dataCarusel} />}
 
         {prices && prices.length > 0 && (
           <ServicesList {...dataServicesList} items={prices} />

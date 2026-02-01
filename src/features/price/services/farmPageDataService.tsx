@@ -9,7 +9,6 @@ import { fetchPriceGroup, fetchPriceList } from "./priceService";
 import { ServicesListProps } from "../ui/ServicesList";
 import { ServicesGroupPageProps } from "../ui/ServicesGroupPage";
 import { PriceGroupOutDto } from "@/types";
-import { group } from "console";
 
 export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
   const getGroup = async (): Promise<PriceGroupOutDto> => {
@@ -28,7 +27,7 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
   const dataHero: HeroProps = {
     title: group?.name || "",
     subtitle: "Александрова дача",
-    description: "знакомство с животными мини-фермы клуба",
+    description: group?.description || "",
     backgroundImage: {
       src: "/images/services/farm/01.jpg",
       alt: "desc",
@@ -44,11 +43,12 @@ export const getFarmPageData = async (): Promise<ServicesGroupPageProps> => {
   };
 
   const dataArticle: ArticleProps = {
-    content: (
-      <div className="space-y-4 whitespace-break-spaces">
-        {group?.description}
-      </div>
-    ),
+    content: <div>
+      <p className="mb-2">Наши животные привыкли к общению с людьми, они дружелюбны и ласковы.</p>
+      <p className="mb-2">Во время экскурсии вы сможете погладить и покормить животных, узнать много интересного о их повадках и образе жизни.</p>
+      <p >После экскурсии все желающие смогут прокатиться на пони или лошади, верхом или в экипаже (санях).</p>
+    </div>,
+    className: "bg-[#f0e7cf] rounded-lg py-2 shadow-md",
   };
 
   const dataMission = null;

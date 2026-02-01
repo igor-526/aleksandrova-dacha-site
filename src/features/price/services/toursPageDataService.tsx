@@ -1,5 +1,4 @@
 import {
-  ArticleProps,
   BreadcrumbsProps,
   HeroProps,
   MissionProps,
@@ -27,6 +26,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
   const dataHero: HeroProps = {
     title: group?.name || "",
     subtitle: "Александрова дача",
+    description: group?.description || "",
     backgroundImage: {
       src: "/images/services/rides/tours/tour.jpg",
       alt: "desc",
@@ -42,13 +42,7 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
     className: "-mt-9 px-6",
   };
 
-  const dataArticle: ArticleProps = {
-    content: (
-      <div className="space-y-4 whitespace-break-spaces">
-        {group?.description}
-      </div>
-    ),
-  };
+  const dataArticle = null
 
   const dataMission: MissionProps = {
     title: "Конные прогулки для всех уровней подготовки",

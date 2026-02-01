@@ -6,6 +6,7 @@ export type ServiceCardProps = {
   gallery?: boolean;
   media?: React.ReactNode;
   mediaPosition?: "top" | "left";
+  colunms?: 1 | 2 | 3;
   actions?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
@@ -17,6 +18,7 @@ const ServiceCard = ({
   gallery,
   media,
   mediaPosition = "top",
+  colunms,
   actions,
   children,
   className,
@@ -70,7 +72,7 @@ const ServiceCard = ({
       <article
         className={cn(
           ...articleClasses,
-          "grid sm:hidden md:grid grid-rows-3 max-w-[500px]",
+          "grid sm:hidden md:grid grid-rows-3 max-w-[400px] md:max-w-full",
           className
         )}
       >
@@ -79,12 +81,12 @@ const ServiceCard = ({
       </article>
     </>
   ) : (
-    mediaPosition === "left" && (
+    mediaPosition === "left" && colunms === 1 ? (
       <>
         <article
           className={cn(
             ...articleClasses,
-            "hidden sm:grid md:hidden lg:grid grid-cols-3 ",
+            "hidden md:grid grid-cols-3",
             className
           )}
         >
@@ -95,10 +97,32 @@ const ServiceCard = ({
         <article
           className={cn(
             ...articleClasses,
-            "grid sm:hidden md:grid lg:hidden grid-rows-3 max-w-[500px]",
+            "grid md:hidden grid-rows-3 max-w-[400px] md:max-w-full",
+            className
+          )}        >
+          <div className="row-span-1">{media}</div>
+          <div className="row-span-2">{contentBlock}</div>
+        </article>
+      </>
+    ) : (
+      <>
+        <article
+          className={cn(
+            ...articleClasses,
+            "hidden sm:grid md:hidden lg:grid grid-cols-3",
             className
           )}
         >
+          <div className="col-span-1">{media}</div>
+          <div className="col-span-2">{contentBlock}</div>
+        </article>
+
+        <article
+          className={cn(
+            ...articleClasses,
+            "grid sm:hidden md:grid lg:hidden grid-rows-3 max-w-[400px] md:max-w-full",
+            className
+          )}        >
           <div className="row-span-1">{media}</div>
           <div className="row-span-2">{contentBlock}</div>
         </article>
