@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Container } from "@/ui";
-import { getCarriagesPageData } from "@/features/price/services/carriagesPageDataService";
+import { getCarriagesPageData } from "@/features/price/services/Rental/carriagesPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 

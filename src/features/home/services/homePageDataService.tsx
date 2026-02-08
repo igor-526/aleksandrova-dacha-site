@@ -43,7 +43,7 @@ export const getHomePageData = async () => {
       title: "Аренда экипажей и животных",
       description:
         "На массовые мероприятия, праздники, свадьбу или для фотосессии.",
-      href: "/rental",
+      href: "/services/rental",
       icon: (
         <ImageBlock
           pathImage="/icons/rent.ico"

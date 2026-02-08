@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { Container } from "@/ui";
-import { getAnimalsPageData } from "@/features/price/services/animalsPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { buildPageMetadata } from "@/features/metadata/metadata";
+import { getAnimalsPageData } from "@/features/price/services/Rental/animalsPageDataService";
 
 export const dynamic = "force-dynamic";
 

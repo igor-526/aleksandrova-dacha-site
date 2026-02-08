@@ -144,9 +144,11 @@ export function Card({
             <div className="space-y-1.5 mb-1.5">
               {title && <h3 className="font-serif text-2xl">{title}</h3>}
               {content && (
-                <p className="text-sm leading-relaxed text-[#4b4d2f]">
-                  {content}
-                </p>
+                <div className="text-sm leading-relaxed text-[#4b4d2f]">
+                  {content.split("\n").map((line, index) => (
+                    <p key={index} className="mb-1">{line}</p>
+                  ))}
+                </div>
               )}
             </div>
           )}

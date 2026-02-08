@@ -23,11 +23,9 @@ export function QuickServices({
 }: QuickServicesProps) {
   return (
     <section className={cn("space-y-6", className)}>
-      <div className="text-center">
-        <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
-          {heading}
-        </h2>
-      </div>
+      <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl px-6">
+        {heading}
+      </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => {
           const content = (

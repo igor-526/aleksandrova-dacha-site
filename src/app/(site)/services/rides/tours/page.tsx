@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { Container } from "@/ui";
-import { getToursPageData } from "@/features/price/services/toursPageDataService";
+import { getToursPageData } from "@/features/price/services/Ride/toursPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 

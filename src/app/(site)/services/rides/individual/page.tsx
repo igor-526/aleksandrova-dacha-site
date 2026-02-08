@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Container } from "@/ui";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
-import { getIndividualPageData } from "@/features/price/services/individualPageDataService";
+import { getIndividualPageData } from "@/features/price/services/Ride/individualPageDataService";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 
 export const dynamic = "force-dynamic";
