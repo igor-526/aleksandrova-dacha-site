@@ -1,27 +1,24 @@
 import { UUID } from "crypto";
-import { ApiCreatedUpdatedAtType, ApiPaginationType } from "./api";
+import { ApiCreatedUpdatedAtType } from "./api";
 
-export type HorseOwnerAvailableSorting = 'name' | 'description' | 'type' | '-name' | '-description' | '-type';
+export type HorseOwnerListAvalableSortings = "name" | "description" | "export type" | "-name" | "-description" | "-export type"
 
-export enum HorseOwnerTypeEnum {
-    PERSON = "person",
-    COMPANY = "company",
+export type HorseOwnerListQueryParams = {
+    name?: string | null //регистронезависимый фильтр по вхождению наименования
+    description?: string | null //регистронезависимый фильтр по вхождению описания
+    type?: ("person" | "company")[] //фильтрация по типу (логика OR)
+    address?: string | null //регистронезависимый фильтр по вхождению адреса
+    phone_numbers?: string | null //фильтрация по номеру телефона
+    sort?: HorseOwnerListAvalableSortings[] //список полей сортировки по приоритету
+    limit?: number | null //[min=1 max=100 default=25] количество запсией
+    offset?: number | null //[min=0 default=0] отступ записей
 }
 
-export type HorseOwnerListQueryParams = ApiPaginationType & {
-    name?: string | null;
-    description?: string | null;
-    type?: HorseOwnerTypeEnum[] | null;
-    address?: string | null;
-    phone_numbers?: string | null;
-    sort?: HorseOwnerAvailableSorting[];
-};
-
 export type HorseOwnerOutDto = ApiCreatedUpdatedAtType & {
-    id: UUID;
-    name: string;
-    description: string | null;
-    type: HorseOwnerTypeEnum;
-    address?: string | null;
-    phone_numbers: string[];
-};
+    id: UUID //UUID
+    name: string //наименование
+    description: string | null //описание
+    type: "person" | "company" //тип
+    address: string | null //адрес
+    phone_numbers: string[] //номера телефонов в формате "+7 (999) 123-45-67
+}

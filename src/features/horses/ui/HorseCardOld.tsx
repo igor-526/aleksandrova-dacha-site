@@ -13,7 +13,7 @@ type CardHorseProps = {
   pathImage: string;
 };
 
-const CardHorse: FC<CardHorseProps> = async ({
+const HorseCard: FC<CardHorseProps> = async ({
   id,
   name,
   breed,
@@ -46,4 +46,4 @@ const CardHorse: FC<CardHorseProps> = async ({
   );
 };
 
-export default CardHorse;
+export default HorseCard;

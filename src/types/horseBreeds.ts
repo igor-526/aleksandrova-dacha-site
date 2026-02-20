@@ -1,24 +1,25 @@
 import { UUID } from "crypto";
-import { ApiCreatedUpdatedAtType, ApiPaginationType } from "./api";
+import { ApiCreatedUpdatedAtType } from "./api";
 
-export type HorseBreedAvailableSorting = 'name' | 'description' | 'slug' | '-name' | '-description' | '-slug';
+export type HorseBreedListAvailableSorting = "name" | "description" | "slug" | "-name" | "-description" | "-slug"
 
-export type HorseBreedListQueryParams = ApiPaginationType & {
-    name?: string | null;
-    slug?: string | null;
-    description?: string | null;
-    page_data?: string | null;
-    sort?: HorseBreedAvailableSorting[];
-};
+export type HorseBreedListQueryParams = {
+    name?: string | null //регистронезависимый поиск по вхождению наименования
+    description?: string | null //регистронезависимый поиск по вхождению описания
+    sort?: HorseBreedListAvailableSorting[] | null //список полей для сортировки по приоритету
+    limit?: number | null //[min=1 max=100 default=50] //количество записей для вывода
+    offset?: number | null //[min=0 default=0] //отступ записей
+}
 
 export type HorseBreedDetailQueryParams = {
-    page_data?: boolean | null;
-};
+    page_data?: boolean | null //[default=false] выводить ли контент страницы
+}
 
 export type HorseBreedOutDto = ApiCreatedUpdatedAtType & {
-    id: UUID;
-    name: string;
-    slug: string;
-    description: string | null;
-    page_data?: string | null;
-};
+    id: UUID //UUID
+    name: string //наименование
+    short_name: string | null //короткое наименование
+    slug: string //буквенный идентификатор
+    description: string | null //описание
+    page_data?: string //[ПРИ page_data=true] контент страницы в формате HTML
+}
