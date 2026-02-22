@@ -5,7 +5,7 @@ import {
     GallerySection,
 } from "@/ui";
 import { HorseOutDto } from "@/types";
-import { Pedigree } from "./Pedigree";
+import { Pedigree1 } from "./Pedigree1";
 
 type OneHorsePageProps = {
     horse: HorseOutDto;
@@ -44,7 +44,7 @@ export const OneHorsePage = ({
                         {horse.description && <p className="whitespace-pre-wrap">{horse.description}</p>}
                     </div>
                 </div>
-                <Pedigree horse={horse} />
+                <Pedigree1 />
             </Container>
         </div>
     );
