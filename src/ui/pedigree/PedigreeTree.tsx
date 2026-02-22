@@ -1,15 +1,15 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useMemo } from "react";
-import type { HorseType } from "@/types/horse";
+import type { HorseOutDto } from "@/types/horse";
 import { cn } from "../utils/cn";
 
 const MAX_GENERATIONS = 3;
 
-const KIND_LABEL: Record<number, string> = {
-  0: "Лошадь",
-  1: "Пони",
+const KIND_LABEL: Record<HorseOutDto["kind"], string> = {
+  horse: "Лошадь",
+  pony: "Пони",
 };
 
 const clampGenerations = (value: number | undefined) => {
@@ -17,13 +17,13 @@ const clampGenerations = (value: number | undefined) => {
   return Math.min(Math.max(1, value), MAX_GENERATIONS);
 };
 
-const getPhoto = (horse?: HorseType | null) =>
-  horse?.photos?.[0]?.image ?? "/images/services/5.jpg";
+const getPhoto = (horse?: HorseOutDto | null) =>
+  horse?.photos?.[0]?.url ?? "/images/services/5.jpg";
 
 type PedigreeCardProps = {
-  horse: HorseType | null;
+  horse: HorseOutDto | null;
   role?: "ancestor" | "child";
-  onGalleryOpen?: (horse: HorseType, startIndex: number) => void;
+  onGalleryOpen?: (horse: HorseOutDto, startIndex: number) => void;
 };
 
 const PedigreeCard = ({
@@ -46,7 +46,7 @@ const PedigreeCard = ({
       <div className="relative h-32 w-full bg-[#e2d6bc]">
         <Image
           src={photoSrc}
-          alt={horse?.name ?? "Нет данных"}
+          alt={horse?.name ?? "РќРµС‚ РґР°РЅРЅС‹С…"}
           fill
           className="object-cover"
           sizes="240px"
@@ -54,24 +54,24 @@ const PedigreeCard = ({
       </div>
       <div className="flex flex-col gap-2 px-4 py-3 text-sm text-[#2f3600]">
         <h3 className="text-lg font-semibold leading-tight">
-          {horse?.name ?? "Неизвестно"}
+          {horse?.name ?? "РќРµРёР·РІРµСЃС‚РЅРѕ"}
         </h3>
         {horse?.breed?.name && (
-          <p className="text-xs text-[#4b4d2f]">Порода: {horse.breed.name}</p>
+          <p className="text-xs text-[#4b4d2f]">РџРѕСЂРѕРґР°: {horse.breed.name}</p>
         )}
         {horse?.kind !== undefined && (
           <p className="text-xs text-[#4b4d2f]">
-            Тип: {KIND_LABEL[horse.kind] ?? "—"}
+            РўРёРї: {KIND_LABEL[horse.kind] ?? "вЂ”"}
           </p>
         )}
         {horse?.bdate_formatted && (
           <p className="text-xs text-[#4b4d2f]">
-            Рождена: {horse.bdate_formatted}
+            Р РѕР¶РґРµРЅР°: {horse.bdate_formatted}
           </p>
         )}
         {horse?.ddate_formatted && (
           <p className="text-xs text-[#4b4d2f]">
-            Умерла: {horse.ddate_formatted}
+            РЈРјРµСЂР»Р°: {horse.ddate_formatted}
           </p>
         )}
         {showGalleryButton && (
@@ -80,7 +80,7 @@ const PedigreeCard = ({
             onClick={() => horse && onGalleryOpen?.(horse, 0)}
             className="mt-2 self-start rounded-full bg-[#f0e7cf] px-3 py-1 text-xs font-medium text-[#2f3600] hover:bg-[#e4d8bd]"
           >
-            Смотреть фото
+            РЎРјРѕС‚СЂРµС‚СЊ С„РѕС‚Рѕ
           </button>
         )}
       </div>
@@ -88,26 +88,26 @@ const PedigreeCard = ({
   );
 };
 
-type AncestorRows = Array<Array<HorseType | null>>;
+type AncestorRows = Array<Array<HorseOutDto | null>>;
 
 const buildRows = (
-  pedigree: HorseType["pedigree"],
+  pedigree: HorseOutDto["pedigree"],
   generations: number
 ): AncestorRows => {
   const rows: AncestorRows = [];
   if (!pedigree) return rows;
 
-  let current: Array<HorseType | null> = [
+  let current: Array<HorseOutDto | null> = [
     pedigree.sire ?? null,
-    pedigree.dame ?? null,
+    pedigree.dam ?? null,
   ];
 
   for (let level = 0; level < generations; level += 1) {
     rows.push(current);
 
-    const next: Array<HorseType | null> = [];
+    const next: Array<HorseOutDto | null> = [];
     current.forEach((node) => {
-      next.push(node?.pedigree?.sire ?? null, node?.pedigree?.dame ?? null);
+      next.push(node?.pedigree?.sire ?? null, node?.pedigree?.dam ?? null);
     });
 
     if (next.every((node) => !node)) break;
@@ -121,8 +121,8 @@ const RowGrid = ({
   entries,
   onGalleryOpen,
 }: {
-  entries: Array<HorseType | null>;
-  onGalleryOpen?: (horse: HorseType, startIndex: number) => void;
+  entries: Array<HorseOutDto | null>;
+  onGalleryOpen?: (horse: HorseOutDto, startIndex: number) => void;
 }) => (
   <div
     className="grid gap-3"
@@ -142,9 +142,9 @@ const RowGrid = ({
 );
 
 export type PedigreeTreeProps = {
-  pedigree?: HorseType["pedigree"];
+  pedigree?: HorseOutDto["pedigree"];
   generations?: number;
-  onGalleryOpen?: (horse: HorseType, startIndex: number) => void;
+  onGalleryOpen?: (horse: HorseOutDto, startIndex: number) => void;
   className?: string;
 };
 
@@ -178,7 +178,7 @@ export function PedigreeTree({
         </div>
       ) : (
         <div className="w-64 text-xs text-[#4b4d2f]">
-          Данные о родословной недоступны
+          Р”Р°РЅРЅС‹Рµ Рѕ СЂРѕРґРѕСЃР»РѕРІРЅРѕР№ РЅРµРґРѕСЃС‚СѓРїРЅС‹
         </div>
       )}
     </div>

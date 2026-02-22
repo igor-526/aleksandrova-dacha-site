@@ -1,63 +1,67 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { HorseOutDto } from "@/types/horse";
 import { PedigreeTree } from "../pedigree/PedigreeTree";
-import type { HorseType } from "@/types/horse";
+
+const now = "2025-01-01T00:00:00Z";
+
+const makeUuid = (seed: number): `${string}-${string}-${string}-${string}-${string}` =>
+  `00000000-0000-4000-8000-${seed.toString().padStart(12, "0")}`;
 
 const createHorse = (
-  id: number,
+  seed: number,
   name: string,
-  overrides: Partial<HorseType> = {}
-): HorseType => ({
-  id,
+  overrides: Partial<HorseOutDto> = {}
+): HorseOutDto => ({
+  id: makeUuid(seed),
+  slug: overrides.slug ?? `horse-${seed}`,
   name,
-  breed: overrides.breed ?? { id: id, name: "Порода" },
-  sex: overrides.sex ?? 0,
-  description: overrides.description ?? "Описание лошади",
-  age: overrides.age ?? 5,
+  kind: overrides.kind ?? "horse",
+  sex: overrides.sex ?? "female",
+  this_stable: overrides.this_stable ?? true,
   bdate_formatted: overrides.bdate_formatted ?? "2019",
   ddate_formatted: overrides.ddate_formatted ?? null,
+  age: overrides.age ?? 6,
+  created_at: overrides.created_at ?? now,
+  updated_at: overrides.updated_at ?? null,
   photos: overrides.photos ?? [],
-  kind: overrides.kind,
-  owner: overrides.owner,
-  children: overrides.children,
   pedigree: overrides.pedigree,
 });
 
-const buildMockHorse = (): HorseType => {
+const buildMockHorse = (): HorseOutDto => {
   const greatGrandParents = Array.from({ length: 8 }).map((_, index) =>
-    createHorse(100 + index, `ГП ${index + 1}`, { description: "Предок" })
+    createHorse(100 + index, `GG ${index + 1}`)
   );
 
   const grandparents = [
-    createHorse(20, "Дед 1", {
-      pedigree: { sire: greatGrandParents[0], dame: greatGrandParents[1] },
+    createHorse(20, "Grand Sire 1", {
+      pedigree: { sire: greatGrandParents[0], dam: greatGrandParents[1], foals: [] },
     }),
-    createHorse(21, "Бабушка 1", {
-      pedigree: { sire: greatGrandParents[2], dame: greatGrandParents[3] },
+    createHorse(21, "Grand Dam 1", {
+      pedigree: { sire: greatGrandParents[2], dam: greatGrandParents[3], foals: [] },
     }),
-    createHorse(22, "Дед 2", {
-      pedigree: { sire: greatGrandParents[4], dame: greatGrandParents[5] },
+    createHorse(22, "Grand Sire 2", {
+      pedigree: { sire: greatGrandParents[4], dam: greatGrandParents[5], foals: [] },
     }),
-    createHorse(23, "Бабушка 2", {
-      pedigree: { sire: greatGrandParents[6], dame: greatGrandParents[7] },
+    createHorse(23, "Grand Dam 2", {
+      pedigree: { sire: greatGrandParents[6], dam: greatGrandParents[7], foals: [] },
     }),
   ];
 
   const parents = {
-    sire: createHorse(10, "Отец", {
-      pedigree: { sire: grandparents[0], dame: grandparents[1] },
+    sire: createHorse(10, "Sire", {
+      sex: "male",
+      pedigree: { sire: grandparents[0], dam: grandparents[1], foals: [] },
     }),
-    dame: createHorse(11, "Мать", {
-      pedigree: { sire: grandparents[2], dame: grandparents[3] },
+    dam: createHorse(11, "Dam", {
+      sex: "female",
+      pedigree: { sire: grandparents[2], dam: grandparents[3], foals: [] },
     }),
+    foals: [],
   };
 
-  return createHorse(1, "Глория", {
+  return createHorse(1, "Main Horse", {
     pedigree: parents,
-    children: [
-      createHorse(2, "Грация"),
-      createHorse(3, "Грейс"),
-      createHorse(4, "Грета"),
-    ],
+    sex: "female",
   });
 };
 
