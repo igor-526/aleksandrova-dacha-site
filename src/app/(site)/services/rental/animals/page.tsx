@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
-    "Катание на верблюдах, оленях и лошадях",
-    "Аренда животных для катаний и прогулок в Александровой даче. Верблюды, северные олени, лошади и пони.",
+    "Аренда животных для катаний",
+    "Аренда животных для катаний в Александровой даче. Верблюды, северные олени, лошади и пони.",
   );
 
 const ServicesRentalAnimals = async () => {

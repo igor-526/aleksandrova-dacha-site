@@ -82,7 +82,7 @@ export const getRentalPageData = async (): Promise<RentalPageProps> => {
                 <p>Вас ждут трюковые лошади, пегасы и единороги, нарядные верблюды и олени, а также пушистые кролики, очаровательные барашки и козочки и другие милые животные.</p>
                 <p>Фотосессии проводятся в живописном парке или в оборудованной фотостудии на территории клуба. Возможна доставка животных в любую точку города и области.</p>
                 <p className="mb-4">Большой выбор костюмов и аксессуаров для фотосессий!</p>
-                <p><Button variant="primary" href="/services/rental/fotosession">Запланировать фотосессию</Button></p>
+                <p><Button variant="primary" href="/services/rental/photosessions" size="md" className="text-sm sm:px-6 sm:py-2.5 sm:text-base">Посмотреть животных</Button></p>
             </div>
 
         ),

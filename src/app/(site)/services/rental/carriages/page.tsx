@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
-    "Прокат карет, саней и экипажей",
-    "Аренда карет и экипажей для катаний, прогулок, свадеб и торжеств. Можно запрячь одну, пару или тройку лошадей.",
+    "Аренда экипажей",
+    "Аренда карет, саней и экипажей для катаний, прогулок, свадеб и торжеств. Можно запрячь одну, пару или тройку лошадей.",
   );
 
 const ServicesRentalCarriages = async () => {

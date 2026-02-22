@@ -95,7 +95,7 @@ export default async function RootLayout({
             },
           }}
           navLinks={dataHeader.links}
-          feedbackSlot={<CallBackRequestModal triggerLabel="Связаться" />}
+          feedbackSlot={<CallBackRequestModal triggerLabel="Заказать обратный звонок" />}
         />
       </body>
     </html>

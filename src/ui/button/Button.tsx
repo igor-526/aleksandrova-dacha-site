@@ -74,7 +74,7 @@ export function Button({
   );
 
   const baseClasses = cn(
-    "inline-flex items-center justify-center rounded-full font-semibold transition-colors duration-200",
+    "inline-flex items-center justify-center rounded-full font-semibold transition-colors duration-200 text-center",
     "disabled:cursor-not-allowed disabled:opacity-60",
     variantStyles[variant],
     sizeStyles[size],
