@@ -1,26 +1,23 @@
 import { Metadata } from "next";
-import { EmptyPage } from "@/ui";
 import { buildPageMetadata } from "@/features/metadata/metadata";
-// import { Container } from "@/ui";
-// import { HorseListPage } from "@/features/horses/ui/HorseListPage";
-// import { getHorseListPageData } from "@/features/horses/data/horseListPageData";
+import { Container } from "@/ui";
+import { HorseListPage } from "@/features/horses/ui/HorseListPage";
+import { getHorseListPageData } from "@/features/horses/data/horseListPageData";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
-    "Разведение: лошади",
-    "Каталог племенных лошадей хозяйства."
+    "Разведение племенных лошадей в Александровой даче",
+    "У нас вы найдете лошадей тракененской, ганноверской, буденновской, забайкальской пород, а также советские и французские тяжеловозы",
   );
 
 export default async function BreedingHorsesPage() {
-  // const { horses } = await getHorseListPageData();
+  const { dataBreadcrumbs, dataArticles, dataHorseList } = await getHorseListPageData();
 
   return (
-    <EmptyPage />
-    // <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
-    //   <Container className="space-y-12">
-    //     <h1>Лошади</h1>
-    //     <HorseListPage horses={horses} />
-    //   </Container>
-    // </div>
+    <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
+      <Container className="space-y-12">
+        <HorseListPage dataBreadcrumbs={dataBreadcrumbs} dataArticles={dataArticles} dataHorseList={dataHorseList} />
+      </Container>
+    </div>
   );
 }

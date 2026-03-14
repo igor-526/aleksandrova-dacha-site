@@ -4,7 +4,7 @@ import { HorseListPageProps } from "../ui/HorseListPage";
 import { ArticleProps, BreadcrumbsProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
-export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
+export const getStallionsListPageData = async (): Promise<HorseListPageProps> => {
 
   const getHorses = async (): Promise<HorseOutDto[]> => {
     const result = await fetchHorseList(["horse"]);
@@ -17,22 +17,22 @@ export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
     items: [
       { name: "Главная", href: "/" },
       { name: "Разведение", href: "/breeding" },
-      { name: "Коне-ферма" },
+      { name: "Жеребцы для случки" },
     ],
     className: "-mt-9 px-6",
   };
 
   const dataArticles: ArticleProps = {
-    title: "Коне-ферма",
+    title: "Жеребцы для случки",
     content: <div className="space-y-2 border border-[#d3c6aa] bg-[#f0e7cf] p-6 -mx-6 rounded-xl shadow-xl">
-      <p>Мы занимаемся разведением лошадей с 2001 года и имеем богатый опыт в этой области.</p>
-      <p>Ведется племенная работа с лошадьми Тракененской, Ганноверской, Буденновской, Забайкальской, Советской и Французской тяжелoвозной (першерон) пород.</p>
-    </div>,
+      <p>Наши жеребцы обладают отличными генетическими качествами и имеют многочисленное потомство.</p>
+      <p>Мы будем рады помочь вам в выборе подходящего жеребца и обеспечить успешную случку.</p>
+    </div>
   }
 
   const dataHorseList: HorseListProps = {
     items: horses,
-    columns: 3,
+    columns: 1,
   }
 
   return {

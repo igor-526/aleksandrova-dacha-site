@@ -1,21 +1,44 @@
 import {
+    Article,
+    ArticleProps,
+    Breadcrumbs,
+    BreadcrumbsProps,
     Container,
+    Hero,
 } from "@/ui";
-import { HorseOutDto } from "@/types";
-import HorseList from "./HorseList";
+import HorseList, { HorseListProps } from "./HorseList";
 
 export type HorseListPageProps = {
-    horses?: HorseOutDto[] | null;
+    dataBreadcrumbs?: BreadcrumbsProps | null;
+    dataArticles?: ArticleProps | null;
+    dataHorseList?: HorseListProps | null;
 };
 
 export const HorseListPage = ({
-    horses,
+    dataBreadcrumbs,
+    dataArticles,
+    dataHorseList
 }: HorseListPageProps) => {
     return (
         <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
             <Container className="space-y-12">
-                {horses && horses.length > 0 && (
-                    <HorseList items={horses} />
+                <Hero
+                    title="Разведение и продажа"
+                    subtitle="Александрова дача"
+                    description="Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки"
+                    backgroundImage={{
+                        src: "/images/horses/horses.jpg",
+                        alt: "Kонюшня Александровой дачи",
+                    }}
+                />
+                {dataBreadcrumbs && (
+                    <Breadcrumbs {...dataBreadcrumbs} storageKey="serviceBreadcrumbs" />
+                )}
+                {dataArticles && (
+                    <Article {...dataArticles} />
+                )}
+                {dataHorseList && (
+                    <HorseList {...dataHorseList} />
                 )}
             </Container>
         </div>

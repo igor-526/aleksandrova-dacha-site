@@ -3,7 +3,7 @@ import { cn } from "@/ui";
 import { ReactNode } from "react";
 import Link from "next/link";
 import HorseCard from "./HorseCard";
-export type HorsesListProps = {
+export type HorseListProps = {
     heading?: string;
     content?: ReactNode;
     items: HorseOutDto[];
@@ -17,7 +17,7 @@ const HorseList = ({
     items = [],
     columns = 3,
     className,
-}: HorsesListProps) => {
+}: HorseListProps) => {
     return (
         <section className={cn("space-y-6 mx-auto", className)}>
             {heading && (
