@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {
+  getRatioClassName,
+  getRatioStyle,
+  type MediaImageProps,
+} from "../media/MediaImage";
 import { cn } from "../utils/cn";
 
 export type GalleryItem = {
@@ -9,6 +14,7 @@ export type GalleryItem = {
 export type GalleryGridProps = {
   items: GalleryItem[];
   columns?: 1 | 2 | 3 | 4;
+  ratio?: MediaImageProps["ratio"];
   onItemClick?: (index: number) => void;
   className?: string;
 };
@@ -16,6 +22,7 @@ export type GalleryGridProps = {
 export function GalleryGrid({
   items,
   columns = 3,
+  ratio = "auto",
   onItemClick,
   className,
 }: GalleryGridProps) {
@@ -34,7 +41,11 @@ export function GalleryGrid({
         <button
           type="button"
           key={item.src}
-          className="group relative h-full w-full overflow-hidden rounded-2xl"
+          className={cn(
+            "group relative h-full w-full overflow-hidden rounded-2xl",
+            getRatioClassName(ratio)
+          )}
+          style={getRatioStyle(ratio)}
           onClick={() => onItemClick?.(index)}
         >
           <Image

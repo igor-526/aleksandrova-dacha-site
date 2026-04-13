@@ -12,6 +12,7 @@ export type GallerySectionProps = {
   title?: string;
   items: GalleryGridProps["items"];
   columns?: GalleryGridProps["columns"];
+  ratio?: GalleryGridProps["ratio"];
   className?: string;
 };
 
@@ -19,17 +20,17 @@ export function GallerySection({
   title,
   items,
   columns,
+  ratio,
   className,
 }: GallerySectionProps) {
   const [index, setIndex] = useState<number | null>(null);
   const [visibleColumns, setVisibleColumns] = useState(1);
 
   const resolveColumns = (width: number) => {
-    if (width >= 1024) {
-      if (!columns || columns === 3) return 3;
-      return columns;
-    }
-    if (width >= 640) return 2;
+    const maxColumns = columns ?? 3;
+
+    if (width >= 1024) return maxColumns;
+    if (width >= 640) return Math.min(maxColumns, 2);
     return 1;
   };
 
@@ -49,6 +50,7 @@ export function GallerySection({
       <GalleryGrid
         items={visibleItems}
         columns={columns}
+        ratio={ratio}
         onItemClick={(idx) => setIndex(idx)}
       />
       <Lightbox

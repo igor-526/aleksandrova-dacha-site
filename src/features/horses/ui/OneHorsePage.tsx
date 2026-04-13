@@ -28,7 +28,8 @@ export const OneHorsePage = ({
 
     const horseGallerySection = <GallerySection
         columns={1}
-        className="w-full h-full"
+        ratio="4/3"
+        className="w-full"
         items={horsePhotos}
     />
 
