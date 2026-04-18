@@ -24,7 +24,7 @@ export function Article({
             {date}
           </p>
         )}
-        <h2 className="font-serif text-3xl sm:text-4xl">{title}</h2>
+        <h2 className="font-serif text-2xl sm:text-3xl">{title}</h2>
       </header>}
       {hero}
       <div className="prose prose-lg max-w-none text-[#2f3600] prose-headings:font-serif prose-headings:text-[#2f3600] prose-a:text-[#384000]">

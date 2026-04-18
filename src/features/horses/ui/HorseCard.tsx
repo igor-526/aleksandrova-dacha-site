@@ -10,19 +10,19 @@ const HorseCard = ({
     horse, className,
 }: HorseCardProps) => {
     const articleClasses =
-        "rounded-3xl px-6 py-5 text-[#2f3600] border border-[#bcc76e] flex flex-col justify-stretch items-stretch w-full h-full mx-auto";
-
+        "rounded-3xl p-2 text-[#2f3600] border border-[#bcc76e] flex flex-col justify-stretch items-stretch w-full h-full mx-auto";
+    const cardColor = horse.sex === "male" ? "bg-[#8d784f]/25" : "bg-[#f0e7cf]";
     const content = horse.sex + ", " + horse.breed?.short_name + ", " + horse.coat_color?.short_name + ", " + horse.bdate_formatted;
     const pedigree = horse.pedigree && horse.pedigree.sire?.name + " + " + horse.pedigree.dam?.name;
     const media = horse.photos && horse.photos.length > 0
-        ? (<MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} className="w-full h-full" />)
-        : <MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} className="w-full h-full" />;
+        ? (<MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />)
+        : <MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />;
 
     return (
-        <article className={cn(articleClasses, className)}>
-            <div className="w-full h-48 overflow-hidden rounded-2xl">
+        <article className={cn(articleClasses, cardColor, className)}>
+            <div className="w-full overflow-hidden rounded-2xl">
                 {media}</div>
-            <h3 className="text-2xl font-bold mt-4">{horse.name}</h3>
+            <h3 className="pl-2 sm:text-lg md:text-xl lg:text-2xl font-bold">{horse.name}</h3>
             <div className="text-sm mt-2">{content}</div>
             {pedigree && <div className="text-sm mt-1 italic text-[#2f3600]/80">{pedigree}</div>}
         </article>

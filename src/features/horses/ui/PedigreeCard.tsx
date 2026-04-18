@@ -26,16 +26,16 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
     if (vertical) {
         switch (level) {
             case "level1":
-                styleCard.container = "p-3 border border-[#2f3600] text-sm";
-                styleCard.h3 = "text-sm font-bold";
+                styleCard.container = "p-3 border border-[#2f3600]";
+                styleCard.h3 = "font-bold";
                 break;
             case "level2":
-                styleCard.container = "p-3 border border-[#2f3600] text-sm";
-                styleCard.h3 = "text-sm font-bold";
+                styleCard.container = "p-3 border border-[#2f3600]";
+                styleCard.h3 = "font-bold";
                 break;
             case "level3":
-                styleCard.container = "flex items-center justify-center p-3 border border-[#2f3600] text-sm";
-                styleCard.h3 = "text-sm font-bold";
+                styleCard.container = "flex items-center justify-center p-3 border border-[#2f3600]";
+                styleCard.h3 = "font-bold";
                 break
             default:
                 break;
@@ -44,15 +44,15 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
         switch (level) {
             case "level1":
                 styleCard.container = "flex flex-col items-center justify-center gap-2 p-3 border border-[#2f3600]";
-                styleCard.h3 = "text-xl font-bold";
+                styleCard.h3 = "font-bold";
                 break;
             case "level2":
                 styleCard.container = "flex flex-col gap-2 p-3 border border-[#2f3600]";
-                styleCard.h3 = "text-xl font-bold";
+                styleCard.h3 = "font-bold";
                 break;
             case "level3":
                 styleCard.container = "flex items-center justify-start p-3 border border-[#2f3600]";
-                styleCard.h3 = "text-md font-bold";
+                styleCard.h3 = "font-bold";
                 break;
             default:
                 break;
@@ -63,14 +63,16 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
 
 
     return (
-        <div style={style} className={cn(styleCard.container, styleCard.bg, className)}>
+        <div style={style} className={cn(styleCard.container, styleCard.bg, "font-serif text-[10px] sm:text-sm", className)}>
             {level === "level1" &&
                 <div className={"w-full h-full flex flex-col items-center justify-center"}>
-                    {horse.photo && horse.photo.length > 0 && <GallerySection
-                        columns={1}
-                        className="w-[100%] h-[70%]"
-                        items={horse.photo}
-                    />}
+                    <div className="mb-2 w-[100%] md:w-[80%] lg:w-[70%]">
+                        {horse.photo && horse.photo.length > 0 && <GallerySection
+                            columns={1}
+                            items={horse.photo}
+                            ratio="4/3"
+                        />}
+                    </div>
                     <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
                     <p className="text-center">
                         {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
@@ -81,12 +83,15 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
             }
             {(level === "level2" || ((level === "level3") && vertical)) &&
                 <div className={"h-full flex flex-col items-center justify-center"}>
-                    <div className="flex items-center gap-2">
-                        {horse.photo && horse.photo.length > 0 && <GallerySection
-                            columns={1}
-                            className="w-[30px] h-[30px]"
-                            items={horse.photo}
-                        />}
+                    <div className="flex flex-col items-center gap-1">
+                        <div className="hidden min-[500px]:block">
+                            {horse.photo && horse.photo.length > 0 && <GallerySection
+                                columns={1}
+                                className="w-[30px] h-[30px]"
+                                items={horse.photo}
+                            />}
+                        </div>
+
                         <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
                     </div>
                     <p className="text-center">

@@ -22,6 +22,6 @@ export type HorseServiceOutDto = ApiCreatedUpdatedAtType & {
     slug: string;
     description: string;
     price: number;
-    price_formatter: PriceFormatter;
+    price_formatter?: PriceFormatter;
     page_data?: string;
 };

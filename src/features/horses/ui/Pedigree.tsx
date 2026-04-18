@@ -153,35 +153,35 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
         "rss sss rsd sds rds dss rdd dds"
         "rss ssd rsd sdd rds dsd rdd ddd"
       `,
-      className: ["w-full sm:max-w-[640px]",
+      className: ["w-full sm:max-w-[768px]",
         "grid gap-x-2 gap-y-2",
         "grid-cols-[10px_minmax(50px,1fr)_10px_minmax(50px,1fr)_10px_minmax(50px,1fr)_10px_minmax(50px,1fr)]",
-        "grid-rows-[minmax(50px,3fr)_10px_minmax(50px,1fr)_minmax(50px,1fr)_minmax(50px,1fr)]"
+        "grid-rows-[minmax(50px,2fr)_10px_minmax(50px,1fr)_minmax(50px,1fr)_minmax(50px,1fr)]"
       ]
     }
   };
 
   return (
-    <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
-      <h2 className="mb-4 text-2xl font-bold">Pedigree</h2>
+    <div className="bg-[#f6efe0] text-[#2f3600]">
+      <h2 className="mb-4 text-2xl font-bold">Родословная</h2>
       <div
         style={Horizotal.style}
-        className={cn(...Horizotal.style.className)}
+        className={cn(...Horizotal.style.className, "hidden md:grid")}
       >
-        <PedigreeCard horse={pedigree.s} level="level1" style={{ gridArea: "s" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.ss} level="level2" style={{ gridArea: "ss" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.sd} level="level2" style={{ gridArea: "sd" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.sss} level="level3" style={{ gridArea: "sss" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ssd} level="level3" style={{ gridArea: "ssd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.sds} level="level3" style={{ gridArea: "sds" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.sdd} level="level3" style={{ gridArea: "sdd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.d} level="level1" style={{ gridArea: "d" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.ds} level="level2" style={{ gridArea: "ds" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.dd} level="level2" style={{ gridArea: "dd" }} className="border-r-0" />
-        <PedigreeCard horse={pedigree.dss} level="level3" style={{ gridArea: "dss" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.dsd} level="level3" style={{ gridArea: "dsd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.dds} level="level3" style={{ gridArea: "dds" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ddd} level="level3" style={{ gridArea: "ddd" }} className="border-t-0" />
+        <PedigreeCard horse={pedigree.s} level="level1" style={{ gridArea: "s" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ss} level="level2" style={{ gridArea: "ss" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sd} level="level2" style={{ gridArea: "sd" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sss} level="level3" style={{ gridArea: "sss" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ssd} level="level3" style={{ gridArea: "ssd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sds} level="level3" style={{ gridArea: "sds" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sdd} level="level3" style={{ gridArea: "sdd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.d} level="level1" style={{ gridArea: "d" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ds} level="level2" style={{ gridArea: "ds" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dd} level="level2" style={{ gridArea: "dd" }} className="border-r-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dss} level="level3" style={{ gridArea: "dss" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dsd} level="level3" style={{ gridArea: "dsd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dds} level="level3" style={{ gridArea: "dds" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ddd} level="level3" style={{ gridArea: "ddd" }} className="border-t-[#d3c6aa]" />
         <PedigreeSeparator level="level12" style={{ gridArea: "rs" }} />
         <PedigreeSeparator level="level23" style={{ gridArea: "rss" }} />
         <PedigreeSeparator level="level23" style={{ gridArea: "rsd" }} />
@@ -191,22 +191,22 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       </div>
       <div
         style={Vertical.style}
-        className={cn(...Vertical.style.className)}
+        className={cn(...Vertical.style.className, "grid md:hidden")}
       >
-        <PedigreeCard horse={pedigree.s} level="level1" vertical style={{ gridArea: "s" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ss} level="level2" vertical style={{ gridArea: "ss" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.sd} level="level2" vertical style={{ gridArea: "sd" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.sss} level="level3" vertical style={{ gridArea: "sss" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ssd} level="level3" vertical style={{ gridArea: "ssd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.sds} level="level3" vertical style={{ gridArea: "sds" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.sdd} level="level3" vertical style={{ gridArea: "sdd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.d} level="level1" vertical style={{ gridArea: "d" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ds} level="level2" vertical style={{ gridArea: "ds" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.dd} level="level2" vertical style={{ gridArea: "dd" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.dss} level="level3" vertical style={{ gridArea: "dss" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.dsd} level="level3" vertical style={{ gridArea: "dsd" }} className="border-t-0" />
-        <PedigreeCard horse={pedigree.dds} level="level3" vertical style={{ gridArea: "dds" }} className="border-b-0" />
-        <PedigreeCard horse={pedigree.ddd} level="level3" vertical style={{ gridArea: "ddd" }} className="border-t-0" />
+        <PedigreeCard horse={pedigree.s} level="level1" vertical style={{ gridArea: "s" }} className=" border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ss} level="level2" vertical style={{ gridArea: "ss" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sd} level="level2" vertical style={{ gridArea: "sd" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sss} level="level3" vertical style={{ gridArea: "sss" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ssd} level="level3" vertical style={{ gridArea: "ssd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sds} level="level3" vertical style={{ gridArea: "sds" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.sdd} level="level3" vertical style={{ gridArea: "sdd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.d} level="level1" vertical style={{ gridArea: "d" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ds} level="level2" vertical style={{ gridArea: "ds" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dd} level="level2" vertical style={{ gridArea: "dd" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dss} level="level3" vertical style={{ gridArea: "dss" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dsd} level="level3" vertical style={{ gridArea: "dsd" }} className="border-t-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.dds} level="level3" vertical style={{ gridArea: "dds" }} className="border-b-[#d3c6aa]" />
+        <PedigreeCard horse={pedigree.ddd} level="level3" vertical style={{ gridArea: "ddd" }} className="border-t-[#d3c6aa]" />
         <PedigreeSeparator level="level12" vertical style={{ gridArea: "rs" }} />
         <PedigreeSeparator level="level23" vertical style={{ gridArea: "rss" }} />
         <PedigreeSeparator level="level23" vertical style={{ gridArea: "rsd" }} />

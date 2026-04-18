@@ -7,7 +7,7 @@ export type HorseListProps = {
     heading?: string;
     content?: ReactNode;
     items: HorseOutDto[];
-    columns?: 1 | 2 | 3;
+    columns?: 1 | 2 | 3 | 5;
     className?: string;
 };
 
@@ -19,7 +19,7 @@ const HorseList = ({
     className,
 }: HorseListProps) => {
     return (
-        <section className={cn("space-y-6 mx-auto", className)}>
+        <section className={cn("space-y-6 mx-auto font-serif", className)}>
             {heading && (
                 <div className="px-6">
                     <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
@@ -35,9 +35,10 @@ const HorseList = ({
             <div
                 className={cn(
                     "grid gap-6 items-stretch justify-items-stretch",
-                    columns === 1 && "sm:grid-cols-1",
+                    columns === 1 && "grid-cols-1",
                     columns === 2 && "sm:grid-cols-1 md:grid-cols-2",
-                    columns === 3 && "sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+                    columns === 3 && "grid-cols-2 md:grid-cols-3",
+                    columns === 5 && "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5",
                     className
                 )}
             >

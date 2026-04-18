@@ -24,9 +24,9 @@ export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
 
   const dataArticles: ArticleProps = {
     title: "Коне-ферма",
-    content: <div className="space-y-2 border border-[#d3c6aa] bg-[#f0e7cf] p-6 -mx-6 rounded-xl shadow-xl">
-      <p>Мы занимаемся разведением лошадей с 2001 года и имеем богатый опыт в этой области.</p>
-      <p>Ведется племенная работа с лошадьми Тракененской, Ганноверской, Буденновской, Забайкальской, Советской и Французской тяжелoвозной (першерон) пород.</p>
+    content: <div className="-mx-6 flex justify-items-stretch items-stretch flex-col sm:flex-row gap-2">
+      <p className="border border-[#d3c6aa] bg-[#f0e7cf] p-6 rounded-xl">Мы занимаемся разведением лошадей с 2001 года и имеем богатый опыт в этой области.</p>
+      <p className="border border-[#d3c6aa] bg-[#f0e7cf] p-6 rounded-xl">Ведется племенная работа с лошадьми Тракененской, Ганноверской, Буденновской, Забайкальской, Советской и Французской тяжелoвозной (першерон) пород.</p>
     </div>,
   }
 
