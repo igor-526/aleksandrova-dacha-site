@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { Container } from "@/ui";
 import { buildPageMetadata } from "@/features/metadata/metadata";
-import { RentalPage } from "@/features/price/services/Rental/RentalPage";
+import { RentalPage } from "@/features/price/ui/RentalPage";
 import { getRentalPageData } from "@/features/price/services/Rental/rentalPageDataService";
 import { getRidePageData } from "@/features/price/services/Ride/ridePageDataService";
-import { RidePage } from "@/features/price/services/Ride/RidePage";
+import { RidePage } from "@/features/price/ui/RidePage";
 import { getServicesPageData } from "@/features/price/services/servicesPageDataService";
 import { ServicesGroupPage } from "@/features/price/ui/ServicesGroupPage";
 

@@ -1,17 +1,33 @@
-import { HorseOutDto } from "@/types";
-import { fetchHorseList } from "./horseService";
+import { fetchHorseList, getHorseListPageSize } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
-import { ArticleProps, BreadcrumbsProps } from "@/ui";
+import { BreadcrumbsProps, HeroProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
 export const getStallionsListPageData = async (): Promise<HorseListPageProps> => {
-
-  const getHorses = async (): Promise<HorseOutDto[]> => {
-    const result = await fetchHorseList(["horse"]);
-    return result.status === "ok" && result.data ? result.data.items : [];
+  const columns = 1;
+  const visibleRows = 2;
+  const pageSize = getHorseListPageSize(columns, visibleRows);
+  const fetchParams = {
+    kind: ["horse"] as ("horse" | "pony")[],
   };
 
-  const horses = await getHorses();
+  const result = await fetchHorseList({
+    ...fetchParams,
+    limit: pageSize,
+    offset: 0,
+  });
+  const horses = result.status === "ok" && result.data ? result.data.items : [];
+  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
+
+  const dataHero: HeroProps = {
+    title: "Разведение и продажа",
+    subtitle: "Александрова дача",
+    description: "Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки",
+    backgroundImage: {
+      src: "/images/horses/stallions.jpg",
+      alt: "Kонюшня Александровой дачи",
+    }
+  }
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
@@ -22,22 +38,18 @@ export const getStallionsListPageData = async (): Promise<HorseListPageProps> =>
     className: "-mt-9 px-6",
   };
 
-  const dataArticles: ArticleProps = {
-    title: "Жеребцы для случки",
-    content: <div className="space-y-2 border border-[#d3c6aa] bg-[#f0e7cf] p-6 -mx-6 rounded-xl shadow-xl">
-      <p>Наши жеребцы обладают отличными генетическими качествами и имеют многочисленное потомство.</p>
-      <p>Мы будем рады помочь вам в выборе подходящего жеребца и обеспечить успешную случку.</p>
-    </div>
-  }
-
   const dataHorseList: HorseListProps = {
     items: horses,
-    columns: 1,
+    columns,
+    visibleRows,
+    fetchParams,
+    totalItems,
+    pageSize,
   }
 
   return {
+    dataHero,
     dataBreadcrumbs,
-    dataArticles,
     dataHorseList,
   };
 }

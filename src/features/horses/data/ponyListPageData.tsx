@@ -1,17 +1,33 @@
-import { HorseOutDto } from "@/types";
-import { fetchHorseList } from "./horseService";
+import { fetchHorseList, getHorseListPageSize } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
-import { ArticleProps, BreadcrumbsProps } from "@/ui";
+import { BreadcrumbsProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
 export const getPonyListPageData = async (): Promise<HorseListPageProps> => {
-
-  const getHorses = async (): Promise<HorseOutDto[]> => {
-    const result = await fetchHorseList(["pony"]);
-    return result.status === "ok" && result.data ? result.data.items : [];
+  const columns = 3;
+  const visibleRows = 2;
+  const pageSize = getHorseListPageSize(columns, visibleRows);
+  const fetchParams = {
+    kind: ["pony"] as ("horse" | "pony")[],
   };
 
-  const horses = await getHorses();
+  const result = await fetchHorseList({
+    ...fetchParams,
+    limit: pageSize,
+    offset: 0,
+  });
+  const horses = result.status === "ok" && result.data ? result.data.items : [];
+  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
+
+  const dataHero = {
+    title: "Разведение и продажа",
+    subtitle: "Александрова дача",
+    description: "Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки",
+    backgroundImage: {
+      src: "/images/horses/pony.jpg",
+      alt: "Kонюшня Александровой дачи",
+    }
+  }
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
@@ -22,22 +38,18 @@ export const getPonyListPageData = async (): Promise<HorseListPageProps> => {
     className: "-mt-9 px-6",
   };
 
-  const dataArticles: ArticleProps = {
-    title: "Пони-ферма",
-    content: <div className="space-y-2 border border-[#d3c6aa] bg-[#f0e7cf] p-6 -mx-6 rounded-xl shadow-xl">
-      <p>Мы занимаемся разведением пони уже более 20 лет и имеем богатый опыт в этой области.</p>
-      <p>Наше племенное хозяйство разводит и продает Шетлендских, Уэльских и Аппалуза пони.</p>
-    </div>
-  }
-
   const dataHorseList: HorseListProps = {
     items: horses,
-    columns: 3,
+    columns,
+    visibleRows,
+    fetchParams,
+    totalItems,
+    pageSize,
   }
 
   return {
+    dataHero,
     dataBreadcrumbs,
-    dataArticles,
     dataHorseList,
   };
 }

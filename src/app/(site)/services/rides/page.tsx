@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Container } from "@/ui";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 import { getRidePageData } from "@/features/price/services/Ride/ridePageDataService";
-import { RidePage } from "@/features/price/services/Ride/RidePage";
+import { RidePage } from "@/features/price/ui/RidePage";
 
 export const dynamic = "force-dynamic";
 

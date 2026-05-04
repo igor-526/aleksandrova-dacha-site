@@ -6,7 +6,7 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   href: string;
-  date: string;
+  date?: string;
   image?: string;
 };
 

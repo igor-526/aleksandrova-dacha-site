@@ -7,7 +7,7 @@ import {
     ImageBlock,
     QuickServicesProps,
 } from "@/ui";
-import { RidePageProps } from "./RidePage";
+import { RidePageProps } from "../../ui/RidePage";
 import { FeedbackForm } from "@/features/callBackRequest/ui/CallBackRequestModal";
 
 export const getRidePageData = async (): Promise<RidePageProps> => {

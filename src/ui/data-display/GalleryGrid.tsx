@@ -11,18 +11,33 @@ export type GalleryItem = {
   alt?: string;
 };
 
+export type GalleryRounded = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
+
 export type GalleryGridProps = {
   items: GalleryItem[];
   columns?: 1 | 2 | 3 | 4;
   ratio?: MediaImageProps["ratio"];
+  rounded?: GalleryRounded;
   onItemClick?: (index: number) => void;
   className?: string;
+};
+
+const roundedClassNameMap: Record<GalleryRounded, string> = {
+  none: "rounded-none",
+  sm: "rounded-sm",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl",
+  "2xl": "rounded-2xl",
+  "3xl": "rounded-3xl",
+  full: "rounded-full",
 };
 
 export function GalleryGrid({
   items,
   columns = 3,
   ratio = "auto",
+  rounded = "2xl",
   onItemClick,
   className,
 }: GalleryGridProps) {
@@ -42,7 +57,8 @@ export function GalleryGrid({
           type="button"
           key={item.src}
           className={cn(
-            "group relative h-full w-full overflow-hidden rounded-2xl",
+            "group relative h-full w-full overflow-hidden",
+            roundedClassNameMap[rounded],
             getRatioClassName(ratio)
           )}
           style={getRatioStyle(ratio)}

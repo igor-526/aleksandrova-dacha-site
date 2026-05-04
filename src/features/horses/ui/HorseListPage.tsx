@@ -1,41 +1,31 @@
 import {
-    Article,
-    ArticleProps,
     Breadcrumbs,
     BreadcrumbsProps,
     Container,
     Hero,
+    HeroProps,
 } from "@/ui";
 import HorseList, { HorseListProps } from "./HorseList";
 
 export type HorseListPageProps = {
+    dataHero?: HeroProps | null;
     dataBreadcrumbs?: BreadcrumbsProps | null;
-    dataArticles?: ArticleProps | null;
     dataHorseList?: HorseListProps | null;
 };
 
 export const HorseListPage = ({
+    dataHero,
     dataBreadcrumbs,
-    dataArticles,
     dataHorseList
 }: HorseListPageProps) => {
     return (
         <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
             <Container className="space-y-12">
-                <Hero
-                    title="Разведение и продажа"
-                    subtitle="Александрова дача"
-                    description="Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки"
-                    backgroundImage={{
-                        src: "/images/horses/horses.jpg",
-                        alt: "Kонюшня Александровой дачи",
-                    }}
-                />
+                {dataHero && (
+                    <Hero {...dataHero} />
+                )}
                 {dataBreadcrumbs && (
                     <Breadcrumbs {...dataBreadcrumbs} storageKey="serviceBreadcrumbs" />
-                )}
-                {dataArticles && (
-                    <Article {...dataArticles} />
                 )}
                 {dataHorseList && (
                     <HorseList {...dataHorseList} />

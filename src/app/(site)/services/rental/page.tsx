@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Container } from "@/ui";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 import { getRentalPageData } from "@/features/price/services/Rental/rentalPageDataService";
-import { RentalPage } from "@/features/price/services/Rental/RentalPage";
+import { RentalPage } from "@/features/price/ui/RentalPage";
 
 export const dynamic = "force-dynamic";
 

@@ -8,7 +8,7 @@ import {
     MediaImageProps,
     VisitStableCTAProps,
 } from "@/ui";
-import { RentalPageProps } from "./RentalPage";
+import { RentalPageProps } from "../../ui/RentalPage";
 
 export const getRentalPageData = async (): Promise<RentalPageProps> => {
     const dataHero: HeroProps = {

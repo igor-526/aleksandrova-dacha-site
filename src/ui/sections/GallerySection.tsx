@@ -13,6 +13,7 @@ export type GallerySectionProps = {
   items: GalleryGridProps["items"];
   columns?: GalleryGridProps["columns"];
   ratio?: GalleryGridProps["ratio"];
+  rounded?: GalleryGridProps["rounded"];
   className?: string;
 };
 
@@ -21,6 +22,7 @@ export function GallerySection({
   items,
   columns,
   ratio,
+  rounded = "2xl",
   className,
 }: GallerySectionProps) {
   const [index, setIndex] = useState<number | null>(null);
@@ -51,6 +53,7 @@ export function GallerySection({
         items={visibleItems}
         columns={columns}
         ratio={ratio}
+        rounded={rounded}
         onItemClick={(idx) => setIndex(idx)}
       />
       <Lightbox

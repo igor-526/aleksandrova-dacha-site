@@ -89,7 +89,7 @@ export const OneHorsePage = ({
     return (
         <Container className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600] font-serif">
             <div className="w-full mb-3 p-3 bg-[#f0e7cf] border-y border-[#d3c6aa]">
-                <h1 className="mb-4 mx-auto w-full text-4xl sm:text-5xl md:text-6xl">{horseName}</h1>
+                <h1 className="mb-4 mx-auto w-full text-4xl sm:text-5xl">{horseName}</h1>
                 <div className="mb-2 flex flex-col md:flex-row gap-4">
                     <div className="mx-auto w-full md:w-[50%] lg:w-[57%]">{horseGallerySection}</div>
                     <div className="w-full md:w-[50%] lg:w-[43%] p-2 flex flex-col justify-between gap-2 text-sm md:text-base bg-[#f8f2e4] border-y border-[#d3c6aa]">
@@ -106,6 +106,7 @@ export const OneHorsePage = ({
                     {horseDescription} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam error nam ab ad? Tempora, inventore et dolor consequatur sed reprehenderit recusandae qui cupiditate tenetur aspernatur sunt facilis nulla similique ullam.
                 </div>
             </div>
+
             <Breadcrumbs items={breadcrumbItems} className="ml-6" />
 
             <ul className="flex flex-col md:flex-row gap-3 font-serif">
@@ -122,9 +123,8 @@ export const OneHorsePage = ({
             {horse.pedigree?.foals && horse.pedigree.foals.length > 0 &&
                 <div className="p-4 bg-[#f0e7cf] border-y border-[#d3c6aa]">
                     <h2 className="mb-4 text-xl font-serif font-bold">Потомство ({horse.pedigree.foals.length})</h2>
-                    <HorseList items={horse.pedigree?.foals} columns={5} />
+                    <HorseList items={horse.pedigree?.foals} columns={5} visibleRows={2} />
                 </div>}
-
 
         </Container>
     );

@@ -58,13 +58,15 @@ const ServicesList = ({
             <GallerySection
               items={galleryItems}
               columns={1}
-              className="w-full h-full"
+              ratio="7/3"
+              className="w-full"
             />
           ) : (
             <MediaImage
               src={galleryItems[0]?.src || "/images/placeholder.png"}
               alt={galleryItems[0]?.alt || "image"}
-              className="w-full h-full"
+              ratio="7/3"
+              className="w-full"
             />
           );
 
@@ -77,7 +79,7 @@ const ServicesList = ({
                 mediaPosition={mediaPosition}
                 colunms={columns}
                 media={mediaCard}
-                className={`min-h-[${minHeightCard || "auto"}]`}
+
               >
                 {item.price_tables && item.price_tables.length > 0 && (
                   <div className="space-y-4">

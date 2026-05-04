@@ -11,12 +11,12 @@ export const generateMetadata = async (): Promise<Metadata> =>
   );
 
 export default async function BreedingSalePage() {
-  const { dataBreadcrumbs, dataArticles, dataHorseList } = await getSaleListPageData();
+  const { dataHero, dataBreadcrumbs, dataHorseList } = await getSaleListPageData();
 
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <HorseListPage dataBreadcrumbs={dataBreadcrumbs} dataArticles={dataArticles} dataHorseList={dataHorseList} />
+        <HorseListPage dataHero={dataHero} dataBreadcrumbs={dataBreadcrumbs} dataHorseList={dataHorseList} />
       </Container>
     </div>
   );

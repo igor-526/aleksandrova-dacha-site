@@ -1,43 +1,55 @@
-import { HorseOutDto } from "@/types";
-import { fetchHorseList } from "./horseService";
+import { fetchHorseList, getHorseListPageSize } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
-import { ArticleProps, BreadcrumbsProps } from "@/ui";
+import { BreadcrumbsProps, HeroProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
 export const getSaleListPageData = async (): Promise<HorseListPageProps> => {
-
-  const getHorses = async (): Promise<HorseOutDto[]> => {
-    const result = await fetchHorseList(["horse"]);
-    return result.status === "ok" && result.data ? result.data.items : [];
+  const columns = 1;
+  const visibleRows = 2;
+  const pageSize = getHorseListPageSize(columns, visibleRows);
+  const fetchParams = {
+    kind: ["horse"] as ("horse" | "pony")[],
   };
 
-  const horses = await getHorses();
+  const result = await fetchHorseList({
+    ...fetchParams,
+    limit: pageSize,
+    offset: 0,
+  });
+  const horses = result.status === "ok" && result.data ? result.data.items : [];
+  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
+
+  const dataHero: HeroProps = {
+    title: "Разведение и продажа",
+    subtitle: "Александрова дача",
+    description: "Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки",
+    backgroundImage: {
+      src: "/images/horses/sale.jpg",
+      alt: "Kонюшня Александровой дачи",
+    }
+  }
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
       { name: "Главная", href: "/" },
-      { name: "Продажа", href: "/breeding" },
+      { name: "Разведение и продажа", href: "/breeding" },
       { name: "Продажа лошадей и пони" },
     ],
     className: "-mt-9 px-6",
   };
 
-  const dataArticles: ArticleProps = {
-    title: "Продажа лошадей и пони",
-    content: <div className="space-y-2 border border-[#d3c6aa] bg-[#f0e7cf] p-6 -mx-6 rounded-xl shadow-xl">
-      <p>Возможна доставка в любой регион России и СНГ.</p>
-      <p>Перевозим животных наземным транспортом или самолетом.</p>
-    </div>
-  }
-
   const dataHorseList: HorseListProps = {
     items: horses,
-    columns: 1,
+    columns,
+    visibleRows,
+    fetchParams,
+    totalItems,
+    pageSize,
   }
 
   return {
+    dataHero,
     dataBreadcrumbs,
-    dataArticles,
     dataHorseList,
   };
 }

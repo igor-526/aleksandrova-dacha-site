@@ -1,17 +1,33 @@
-import { HorseOutDto } from "@/types";
-import { fetchHorseList } from "./horseService";
+import { fetchHorseList, getHorseListPageSize } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
-import { ArticleProps, BreadcrumbsProps } from "@/ui";
+import { BreadcrumbsProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
 export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
-
-  const getHorses = async (): Promise<HorseOutDto[]> => {
-    const result = await fetchHorseList(["horse"]);
-    return result.status === "ok" && result.data ? result.data.items : [];
+  const columns = 3;
+  const visibleRows = 2;
+  const pageSize = getHorseListPageSize(columns, visibleRows);
+  const fetchParams = {
+    kind: ["horse"] as ("horse" | "pony")[],
   };
 
-  const horses = await getHorses();
+  const result = await fetchHorseList({
+    ...fetchParams,
+    limit: pageSize,
+    offset: 0,
+  });
+  const horses = result.status === "ok" && result.data ? result.data.items : [];
+  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
+
+  const dataHero = {
+    title: "Разведение и продажа",
+    subtitle: "Александрова дача",
+    description: "Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки",
+    backgroundImage: {
+      src: "/images/horses/horse.jpg",
+      alt: "Kонюшня Александровой дачи",
+    }
+  }
 
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
@@ -22,22 +38,18 @@ export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
     className: "-mt-9 px-6",
   };
 
-  const dataArticles: ArticleProps = {
-    title: "Коне-ферма",
-    content: <div className="-mx-6 flex justify-items-stretch items-stretch flex-col sm:flex-row gap-2">
-      <p className="border border-[#d3c6aa] bg-[#f0e7cf] p-6 rounded-xl">Мы занимаемся разведением лошадей с 2001 года и имеем богатый опыт в этой области.</p>
-      <p className="border border-[#d3c6aa] bg-[#f0e7cf] p-6 rounded-xl">Ведется племенная работа с лошадьми Тракененской, Ганноверской, Буденновской, Забайкальской, Советской и Французской тяжелoвозной (першерон) пород.</p>
-    </div>,
-  }
-
   const dataHorseList: HorseListProps = {
     items: horses,
-    columns: 3,
+    columns,
+    visibleRows,
+    fetchParams,
+    totalItems,
+    pageSize,
   }
 
   return {
+    dataHero,
     dataBreadcrumbs,
-    dataArticles,
     dataHorseList,
   };
 }

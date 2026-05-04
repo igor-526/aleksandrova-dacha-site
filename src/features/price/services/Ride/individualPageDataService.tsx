@@ -85,7 +85,7 @@ export const getIndividualPageData = async () => {
       </p>
     ),
     columns: 2,
-    mediaPosition: "left",
+    mediaPosition: "top",
     gallery: true,
   };
 

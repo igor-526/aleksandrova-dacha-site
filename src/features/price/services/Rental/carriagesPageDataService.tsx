@@ -62,9 +62,8 @@ export const getCarriagesPageData = async () => {
       <div>Окончательная стоимость аренды зависит от <b>продолжительности катания</b> и <b>места доставки</b> экипажа и животных.</div>
     </>,
     items: [],
-    columns: 1,
-    mediaPosition: "left",
-    minHeightCard: "300px",
+    columns: 2,
+    mediaPosition: "top",
     gallery: true,
   };
   const dataGallerySection = null;
