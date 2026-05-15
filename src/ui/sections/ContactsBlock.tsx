@@ -34,9 +34,9 @@ export function ContactsBlock({
   return (
     <section className={cn("grid gap-8 lg:grid-cols-2", className)}>
       <div className="space-y-5 rounded-3xl bg-[#fdfaf4] p-8 shadow-[0_24px_48px_rgba(56,64,0,0.08)]">
-        <h2 className="font-serif text-3xl text-[#2f3600]">Как нас найти</h2>
+        <h2 className="text-[#2f3600]">Как нас найти</h2>
         {address && (
-          <p className="flex items-start gap-3 text-sm text-[#4b4d2f]">
+          <p className="flex items-start gap-3 text-[#4b4d2f]">
             <Icon
               name="location"
               width={20}
@@ -47,7 +47,7 @@ export function ContactsBlock({
           </p>
         )}
         {hours.length > 0 && (
-          <div className="space-y-1 rounded-2xl bg-[#fff9ee] p-3 text-sm text-[#2f3600]">
+          <div className="space-y-1 rounded-2xl bg-[#fff9ee] p-3 text-[#2f3600]">
             <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.14em] text-[#8b7b43]">
               <Icon name="calendar" width={16} height={16} />
               График работы

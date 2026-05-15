@@ -34,9 +34,9 @@ export function EmptyPage({
         <div className="rounded-full border border-[#d3c6aa] bg-white px-6 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#4b4d2f]">
           Скоро обновится
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl">{title}</h1>
+        <h1>{title}</h1>
         {description && (
-          <p className="max-w-2xl text-lg leading-relaxed text-[#4b4d2f]">
+          <p className="max-w-2xl text-[#4b4d2f]">
             {description}
           </p>
         )}

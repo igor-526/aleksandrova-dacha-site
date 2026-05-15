@@ -29,7 +29,7 @@ export function Container<T extends ElementType = "div">({
   return (
     <Component
       className={cn(
-        "mx-auto px-1 sm:px-2 lg:px-2.5",
+        "container-content mx-auto px-1 sm:px-2 lg:px-2.5",
         sizeClassMap[size],
         className
       )}

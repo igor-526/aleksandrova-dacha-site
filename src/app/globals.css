@@ -34,3 +34,84 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+:where(.container-content h1) {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+:where(.container-content h2) {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  line-height: 1.15;
+}
+
+:where(.container-content h3) {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+:where(.container-content p, .container-content li) {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+  :where(.container-content h1) {
+    font-size: 3rem;
+  }
+
+  :where(.container-content h2) {
+    font-size: 2rem;
+  }
+
+  :where(.container-content h3) {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  :where(.container-content p, .container-content li) {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :where(.container-content h1) {
+    font-size: 3.5rem;
+  }
+
+  :where(.container-content h2) {
+    font-size: 2rem;
+  }
+
+  :where(.container-content h3) {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  :where(.container-content p, .container-content li) {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :where(.container-content h1) {
+    font-size: 4rem;
+  }
+
+  :where(.container-content h2) {
+    font-size: 2.25rem;
+  }
+
+  :where(.container-content h3) {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  :where(.container-content p, .container-content li) {
+    font-size: 1rem;
+  }
+}

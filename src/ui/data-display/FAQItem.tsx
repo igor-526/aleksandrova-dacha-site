@@ -19,16 +19,16 @@ export function FAQItem({ question, answer, defaultOpen = false }: FAQItemProps)
         className="flex w-full items-center justify-between gap-4 text-left text-[#2f3600]"
         onClick={() => setOpen((prev) => !prev)}
       >
-        <span className="text-lg font-semibold">{question}</span>
+        <span>{question}</span>
         <span className="text-2xl leading-none">{open ? "−" : "+"}</span>
       </button>
       <div
         className={cn(
-          "grid overflow-hidden text-sm text-[#4b4d2f] transition-[grid-template-rows,opacity]",
+          "grid overflow-hidden text-[#4b4d2f] transition-[grid-template-rows,opacity]",
           open ? "mt-3 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
       >
-        <div className="min-h-0 leading-relaxed">{answer}</div>
+        <div className="min-h-0">{answer}</div>
       </div>
     </div>
   );

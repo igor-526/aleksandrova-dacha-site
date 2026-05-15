@@ -23,9 +23,9 @@ const HorseCard = ({
             <div className="w-full overflow-hidden rounded-2xl">
                 {media}
             </div>
-            <h3 className="mx-auto sm:text-lg md:text-xl">{horse.name}</h3>
-            <div className="mx-auto text-sm mt-2">{content}</div>
-            {pedigree && <div className="mx-auto text-sm mt-1 italic text-[#2f3600]/80">{pedigree}</div>}
+            <h3 className="mx-auto">{horse.name}</h3>
+            <div className="mx-auto mt-2">{content}</div>
+            {pedigree && <div className="mx-auto mt-1 italic text-[#2f3600]/80">{pedigree}</div>}
         </article>
     )
 };

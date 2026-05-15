@@ -34,14 +34,14 @@ export function Mission({
         className
       )}
     >
-      <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
+      <h2 className="text-[#2f3600]">{title}</h2>
       <div className="mt-6 grid gap-6 md:grid-cols-3">
         {points.map((point) => (
           <div key={point.heading} className="space-y-2">
-            <h3 className="text-lg font-semibold text-[#2f3600]">
+            <h3 className="text-[#2f3600]">
               {point.heading}
             </h3>
-            <p className="text-sm text-[#4b4d2f]">{point.text}</p>
+            <p className="text-[#4b4d2f]">{point.text}</p>
           </div>
         ))}
       </div>

@@ -15,8 +15,8 @@ export type RelatedPostsProps = {
 export function RelatedPosts({ posts, className }: RelatedPostsProps) {
   return (
     <section className={cn("rounded-3xl bg-[#f0e7cf] p-6", className)}>
-      <h2 className="font-serif text-2xl text-[#2f3600]">Похожие материалы</h2>
-      <ul className="mt-4 space-y-3 text-sm text-[#4b4d2f]">
+      <h2 className="text-[#2f3600]">Похожие материалы</h2>
+      <ul className="mt-4 space-y-3 text-[#4b4d2f]">
         {posts.map((post) => (
           <li
             key={post.href}

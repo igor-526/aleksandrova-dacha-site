@@ -1,4 +1,4 @@
-﻿import { Button, type ButtonVariant } from "../button/Button";
+import { Button, type ButtonVariant } from "../button/Button";
 import { MediaImage } from "../media/MediaImage";
 import { cn } from "../utils/cn";
 
@@ -35,8 +35,8 @@ export function VisitStableCTA({
       )}
     >
       <div className="space-y-5">
-        <h2 className="font-serif text-3xl sm:text-4xl">{title}</h2>
-        <div className="text-sm sm:text-base text-[#f0e7cf]">
+        <h2 className="">{title}</h2>
+        <div className="text-[#f0e7cf]">
           {text.split("\n").map((line, index) => (
             <p key={index} className="mb-1">
               {line}

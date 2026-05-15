@@ -22,9 +22,9 @@ export function RouteTypes({ routes, className }: RouteTypesProps) {
           title={route.title}
           content={route.description}
         >
-          <div className="flex flex-wrap gap-4 text-sm text-[#4b4d2f]">
-            <span><strong>Время:</strong> {route.duration}</span>
-            <span><strong>Маршрут:</strong> {route.distance}</span>
+          <div className="flex flex-wrap gap-4 text-[#4b4d2f]">
+            <span><strong>Р’СЂРµРјСЏ:</strong> {route.duration}</span>
+            <span><strong>РњР°СЂС€СЂСѓС‚:</strong> {route.distance}</span>
           </div>
         </Card>
       ))}

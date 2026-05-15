@@ -32,14 +32,14 @@ export function ProgramCards({ programs, className }: ProgramCardsProps) {
             </Button>
           }
         >
-          <div className="space-y-2 text-sm text-[#4b4d2f]">
+          <div className="space-y-2 text-[#4b4d2f]">
             <div>
               <strong>Уровень:</strong> {program.level}
             </div>
             <div>
               <strong>Длительность:</strong> {program.duration}
             </div>
-            <div className="text-lg font-semibold text-[#2f3600]">
+            <div className="text-[#2f3600]">
               {program.price}
             </div>
           </div>

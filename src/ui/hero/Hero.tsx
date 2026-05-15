@@ -34,7 +34,7 @@ export function Hero({
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden rounded-[32px] border border-white/30 bg-[#f6efe0] shadow-lg",
+        "relative isolate min-h-[360px] overflow-hidden rounded-[32px] border border-white/30 bg-[#f6efe0] shadow-lg",
         className
       )}
     >
@@ -46,6 +46,7 @@ export function Hero({
           sizes="(min-width: 1280px) 1100px, (min-width: 768px) 80vw, 100vw"
           className="object-cover"
           priority
+          radioGroup="8/3"
         />
         <div className={cn("absolute inset-0", overlayStyles[overlay])} />
       </div>
@@ -57,15 +58,15 @@ export function Hero({
         )}
       >
         {subtitle && (
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#8d784f]">
+          <div className="text-sm font-semibold uppercase tracking-[0.3em] text-[#8d784f]">
             {subtitle}
-          </p>
+          </div>
         )}
-        <h1 className="max-w-3xl font-serif text-4xl leading-tight text-[#2f3600] sm:text-5xl md:text-6xl">
+        <h1 className="max-w-3xl leading-tight text-[#2f3600] sm:text-5xl md:text-6xl">
           {title}
         </h1>
         {description && (
-          <p className="max-w-2xl text-base leading-relaxed text-[#4b4d2f] sm:text-lg">
+          <p className="max-w-2xl text-base leading-relaxed text-[#4b4d2f]">
             {description}
           </p>
         )}

@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { buildPageMetadata } from "@/features/metadata/metadata";
-import { Container, EmptyPage } from "@/ui";
+import { Container } from "@/ui";
+import { HorseListPage } from "@/features/horses/ui/HorseListPage";
+import { getPonyListPageData } from "@/features/horses/data/ponyListPageData";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
@@ -9,10 +11,12 @@ export const generateMetadata = async (): Promise<Metadata> =>
   );
 
 export default async function BreedingPoniesPage() {
+  const { dataHero, dataBreadcrumbs, dataHorseList } = await getPonyListPageData();
+
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <EmptyPage />
+        <HorseListPage dataHero={dataHero} dataBreadcrumbs={dataBreadcrumbs} dataHorseList={dataHorseList} />
       </Container>
     </div>
   );

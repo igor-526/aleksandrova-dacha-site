@@ -30,7 +30,7 @@ export function Boarding({
             title={option.title}
             content={option.description}
           >
-            <div className="text-2xl font-semibold text-[#2f3600]">
+            <div className="text-[#2f3600]">
               {option.price}
             </div>
           </Card>

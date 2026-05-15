@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { HR } from "flowbite-react";
 
 import { buildPageMetadata } from "@/features/metadata/metadata";
+import { Container } from "@/ui";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
@@ -12,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> =>
 
 export default function HorseRiding() {
   return (
-    <div>
+    <Container className="space-y-8 pb-20">
       <h1 className="text-5xl mb-2.5">Верховая езда</h1>
       <div className="columns-1 gap-4 sm:columns-2 sm:gap-8">
         <p className="mb-2.5">
@@ -128,6 +129,6 @@ export default function HorseRiding() {
           все необходимое от угощений для лошадок до экипировки).
         </p>
       </div>
-    </div>
+    </Container>
   );
 }

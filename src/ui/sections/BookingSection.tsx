@@ -24,10 +24,10 @@ export function BookingSection({
     >
       <div className="space-y-5 ">
         {title && (
-          <h2 className="font-serif text-4xl text-[#2f3600]">{title}</h2>
+          <h2 className="text-[#2f3600]">{title}</h2>
         )}
         {description && (
-          <p className="text-base text-[#4b4d2f]">{description}</p>
+          <p className="text-[#4b4d2f]">{description}</p>
         )}
         <BookingForm {...formProps} />
       </div>

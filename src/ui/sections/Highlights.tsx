@@ -21,8 +21,8 @@ export function Highlights({ items, className }: HighlightsProps) {
           className="rounded-3xl bg-[#f8f2e4] p-6 shadow-[0_16px_32px_rgba(56,64,0,0.08)]"
         >
           {item.icon && <Icon name={item.icon} width={36} height={36} className="text-[#c9b585]" />}
-          <h3 className="mt-4 font-serif text-2xl text-[#2f3600]">{item.title}</h3>
-          <p className="mt-2 text-sm text-[#4b4d2f]">{item.description}</p>
+          <h3 className="mt-4 text-[#2f3600]">{item.title}</h3>
+          <p className="mt-2 text-[#4b4d2f]">{item.description}</p>
         </div>
       ))}
     </section>

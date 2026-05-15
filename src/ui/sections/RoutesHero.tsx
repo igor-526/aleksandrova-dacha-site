@@ -32,8 +32,8 @@ export function RoutesHero({
         <p className="text-sm uppercase tracking-[0.4em] text-[#8d784f]">
           {subtitle}
         </p>
-        <h1 className="font-serif text-4xl text-[#2f3600]">{title}</h1>
-        <p className="text-base text-[#4b4d2f]">{description}</p>
+        <h1 className="text-[#2f3600]">{title}</h1>
+        <p className="text-[#4b4d2f]">{description}</p>
         <Button href={ctaHref}>{ctaLabel}</Button>
       </div>
       <MediaImage

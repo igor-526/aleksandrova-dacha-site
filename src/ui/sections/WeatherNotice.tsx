@@ -12,10 +12,10 @@ export function WeatherNotice({ message, details = [], className }: WeatherNotic
     <section className={cn("flex flex-col gap-4 rounded-3xl bg-[#e2d6bc] p-6 text-[#2f3600]", className)}>
       <div className="flex items-center gap-3">
         <Icon name="calendar" width={32} height={32} />
-        <p className="text-lg font-semibold">{message}</p>
+        <p>{message}</p>
       </div>
       {details.length > 0 && (
-        <ul className="space-y-2 text-sm">
+        <ul className="space-y-2">
           {details.map((detail) => (
             <li key={detail}>• {detail}</li>
           ))}

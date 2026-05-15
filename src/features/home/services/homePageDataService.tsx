@@ -1,5 +1,4 @@
 import {
-  AboutTeaserProps,
   HeroProps,
   MissionProps,
   QuickServicesProps,
@@ -63,26 +62,23 @@ export const getHomePageData = async () => {
     },
   ];
 
-  const news: AboutTeaserProps[] = [
-    {
-      title: "Зимние услуги",
-      text: [
-        "❄ Аренда животных на Новогодние мероприятия",
-        "🌲Фотосессии",
-        "❄ Поздравление Деда Мороза с катанием на лошадях, пони и северных оленях",
-        "🌲 Катания на русской тройке (лошади или пони)",
-        "❄ Аренда саней, карет и тележек, запряжённых лошадьми, пони или северным оленем",
-      ],
-      gallerySection: {
-        items: [
-          { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
-          { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
-          { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
-        ],
-        position: "start",
-      },
-    },
-  ];
+  //  const news: AboutTeaserProps[] = [
+  //    {
+  //      title: "Зимние услуги",
+  //      text: [
+  //        "❄ Аренда животных на Новогодние мероприятия",
+
+  //      gallerySection: {
+  //        items: [
+  //          { src: "/images/gallery/new-year1.jpg", alt: "Gallery Image 1" },
+  //          { src: "/images/gallery/new-year2.jpg", alt: "Gallery Image 2" },
+  //          { src: "/images/gallery/new-year3.jpg", alt: "Gallery Image 3" },
+  //        ],
+  //        position: "start",
+  //      },
+  //    },
+  //  ];
+
 
   const dataMission: MissionProps = {
     title: "Наши преимущества",
@@ -130,16 +126,7 @@ export const getHomePageData = async () => {
     getApiSetting: settings.getSetting,
     dataHero,
     itemsServices,
-    news,
     dataMission,
     dataContactsBlock,
-    // address: settings.address,
-    // addressLatitude: settings.addressLatitude,
-    // addressLongitude: settings.addressLongitude,
-    // phone: settings.phone,
-    // siteName: settings.siteName,
-    // weekdayHours: settings.weekdayHours,
-    // weekendHours: settings.weekendHours,
-    // socials: settings.socials,
   };
 };

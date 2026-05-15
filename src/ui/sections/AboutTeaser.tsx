@@ -59,11 +59,11 @@ export function AboutTeaser({
       {galleryPosition === "start" ? renderGallery : null}
 
       <div>
-        <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
+        <h2 className="text-[#2f3600]">{title}</h2>
         {paragraphs.map((paragraph, index) => (
           <p
             key={index}
-            className="mt-4 text-base leading-relaxed text-[#4b4d2f]"
+            className="mt-4 text-[#4b4d2f]"
           >
             {paragraph}
           </p>

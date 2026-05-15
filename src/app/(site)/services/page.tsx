@@ -12,23 +12,35 @@ export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
-    "Услуги в клубе Александрова дача",
-    "Конные прогулки и обучение верховой езде, аренда лошадей и пони, аренда экипажей и животных, спортивная аренда, постой, фотосессии. Контактная мини-ферма.",
+    "РЈСЃР»СѓРіРё РІ РєР»СѓР±Рµ РђР»РµРєСЃР°РЅРґСЂРѕРІР° РґР°С‡Р°",
+    "РљРѕРЅРЅС‹Рµ РїСЂРѕРіСѓР»РєРё Рё РѕР±СѓС‡РµРЅРёРµ РІРµСЂС…РѕРІРѕР№ РµР·РґРµ, Р°СЂРµРЅРґР° Р»РѕС€Р°РґРµР№ Рё РїРѕРЅРё, Р°СЂРµРЅРґР° СЌРєРёРїР°Р¶РµР№ Рё Р¶РёРІРѕС‚РЅС‹С…, СЃРїРѕСЂС‚РёРІРЅР°СЏ Р°СЂРµРЅРґР°, РїРѕСЃС‚РѕР№, С„РѕС‚РѕСЃРµСЃСЃРёРё. РљРѕРЅС‚Р°РєС‚РЅР°СЏ РјРёРЅРё-С„РµСЂРјР°."
   );
 
 export default async function Services() {
   const { dataHero, dataBreadcrumbs } = await getServicesPageData();
   const { dataArticleRide, dataQuickServices } = await getRidePageData();
-  const { dataCards, dataVisiStableCTA, dataArticleRental } = await getRentalPageData();
+  const { dataCards, dataVisiStableCTA, dataArticleRental } =
+    await getRentalPageData();
+
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container>
-        <ServicesGroupPage dataHero={dataHero} dataBreadcrumbs={dataBreadcrumbs} />
-        <h2 className="text-3xl font-serif sm:text-4xl mb-6 px-8">Верховая езда</h2>
-        <RidePage dataArticleRide={dataArticleRide} dataQuickServices={dataQuickServices} />
-        <h2 className="text-3xl font-serif sm:text-4xl mb-6 px-8">Аренда экипажей и животных</h2>
-        <RentalPage dataCards={dataCards} dataVisiStableCTA={dataVisiStableCTA} dataArticleRental={dataArticleRental} />
+        <ServicesGroupPage
+          dataHero={dataHero}
+          dataBreadcrumbs={dataBreadcrumbs}
+        />
+        <h2 className="mb-6 px-8">Р’РµСЂС…РѕРІР°СЏ РµР·РґР°</h2>
+        <RidePage
+          dataArticleRide={dataArticleRide}
+          dataQuickServices={dataQuickServices}
+        />
+        <h2 className="mb-6 px-8">РђСЂРµРЅРґР° СЌРєРёРїР°Р¶РµР№ Рё Р¶РёРІРѕС‚РЅС‹С…</h2>
+        <RentalPage
+          dataCards={dataCards}
+          dataVisiStableCTA={dataVisiStableCTA}
+          dataArticleRental={dataArticleRental}
+        />
       </Container>
     </div>
   );
-};
+}

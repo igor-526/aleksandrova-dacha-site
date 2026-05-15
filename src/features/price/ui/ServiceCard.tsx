@@ -35,9 +35,9 @@ const ServiceCard = ({
     <div className={cn("h-full flex flex-col justify-between")}>
       {(title || content) && (
         <div className="space-y-1.5 mb-1.5">
-          {title && <h3 className="font-serif text-xl pt-1">{title}</h3>}
+          {title && <h3 className="pt-1 mb-3">{title}</h3>}
           {content &&
-            <p className="grow text-sm leading-relaxed text-[#4b4d2f] whitespace-pre-wrap mb-1">
+            <p className="grow mb-1 whitespace-pre-wrap text-[#4b4d2f]">
               {content}
             </p>
           }

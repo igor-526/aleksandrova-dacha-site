@@ -14,7 +14,7 @@ export const ServiceGallery = ({
 }: ServiceGalleryType) => {
     return (
         <div className="h-full">
-            {price.name && <h3 className="font-serif text-xl">{price.name}</h3>}
+            {price.name && <h3>{price.name}</h3>}
             {price.description && <p>{price.description}</p>}
             {price.photos.length > 0 &&
                 <GallerySection

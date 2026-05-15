@@ -1,42 +1,48 @@
 import { Metadata } from "next";
-import { buildPageMetadata } from "@/features/metadata/metadata";
+
 import { fetchHorseDetail } from "@/features/horses/data/horseService";
+import { buildPageMetadata } from "@/features/metadata/metadata";
 import { OneHorsePage } from "@/features/horses/ui/OneHorsePage";
+import { Container } from "@/ui";
 
 type HorsesPageProps = {
-    params: Promise<{
-        slug: string;
-    }>;
+  params: Promise<{
+    slug: string;
+  }>;
 };
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
-    params,
+  params,
 }: HorsesPageProps): Promise<Metadata> {
-    const { slug } = await params;
-    const result = await fetchHorseDetail(slug);
+  const { slug } = await params;
+  const result = await fetchHorseDetail(slug);
 
-    if (result.status !== "ok" || !result.data) {
-        return buildPageMetadata("Лошадь", "Описание лошади недоступно.");
-    }
+  if (result.status !== "ok" || !result.data) {
+    return buildPageMetadata("Р›РѕС€Р°РґСЊ", "РћРїРёСЃР°РЅРёРµ Р»РѕС€Р°РґРё РЅРµРґРѕСЃС‚СѓРїРЅРѕ.");
+  }
 
-    const title = result.data.name || "Лошадь";
-    const description =
-        result.data.description ||
-        "Описание лошади, порода, пол, масть, родословная, потомки";
+  const title = result.data.name || "Р›РѕС€Р°РґСЊ";
+  const description =
+    result.data.description ||
+    "РћРїРёСЃР°РЅРёРµ Р»РѕС€Р°РґРё, РїРѕСЂРѕРґР°, РїРѕР», РјР°СЃС‚СЊ, СЂРѕРґРѕСЃР»РѕРІРЅР°СЏ, РїРѕС‚РѕРјРєРё";
 
-    return buildPageMetadata(title, description);
+  return buildPageMetadata(title, description);
 }
 
-export default async function UslugiPage({ params }: HorsesPageProps) {
-    const { slug } = await params;
+export default async function HorsesPage({ params }: HorsesPageProps) {
+  const { slug } = await params;
 
-    const result = await fetchHorseDetail(slug);
+  const result = await fetchHorseDetail(slug);
 
-    if (result.status !== "ok" || !result.data) {
-        return <h1>Услуга не найдена</h1>;
-    }
+  if (result.status !== "ok" || !result.data) {
+    return (
+      <Container className="pb-20 pt-8">
+        <h1>Р›РѕС€Р°РґСЊ РЅРµ РЅР°Р№РґРµРЅР°</h1>
+      </Container>
+    );
+  }
 
-    return <OneHorsePage horse={result.data} />;
+  return <OneHorsePage horse={result.data} />;
 }

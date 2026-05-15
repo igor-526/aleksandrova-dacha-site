@@ -38,8 +38,8 @@ export function BlogList({ posts, className }: BlogListProps) {
             <div className="text-xs uppercase tracking-[0.3em] text-[#8d784f]">
               {post.date}
             </div>
-            <h3 className="font-serif text-2xl text-[#2f3600]">{post.title}</h3>
-            <p className="text-sm text-[#4b4d2f]">{post.excerpt}</p>
+            <h3 className="text-[#2f3600]">{post.title}</h3>
+            <p className="text-[#4b4d2f]">{post.excerpt}</p>
             <Button variant="ghost" href={post.href}>
               Читать далее
             </Button>

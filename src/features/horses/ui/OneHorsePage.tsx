@@ -87,42 +87,42 @@ export const OneHorsePage = ({
     }, [horse.name, storedBreadcrumbs]);
 
     return (
-        <Container className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600] font-serif">
+        <Container className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
             <div className="w-full mb-3 p-3 bg-[#f0e7cf] border-y border-[#d3c6aa]">
-                <h1 className="mb-4 mx-auto w-full text-4xl sm:text-5xl">{horseName}</h1>
+                <h1 className="mb-4 mx-auto w-full">{horseName}</h1>
                 <div className="mb-2 flex flex-col md:flex-row gap-4">
                     <div className="mx-auto w-full md:w-[50%] lg:w-[57%]">{horseGallerySection}</div>
-                    <div className="w-full md:w-[50%] lg:w-[43%] p-2 flex flex-col justify-between gap-2 text-sm md:text-base bg-[#f8f2e4] border-y border-[#d3c6aa]">
-                        <h2 className="text-xl font-bold">Информация</h2>
-                        <div className="md:blockw-[35%] border-t border-[#2f3600]" />
+                    <div className="w-full md:w-[50%] lg:w-[43%] bg-[#f8f2e4] border-y border-[#d3c6aa] p-2">
+                        <h2 className="mb-4">Информация</h2>
+                        <div className="md:block w-[55%] border-t border-[#2f3600]" />
                         <div className="grow flex flex-col sm:flex-row md:flex-col">
                             <div className="grow">{horseInfoSection}</div>
-                            <div className="md:blockw-[35%] border-t border-[#2f3600]" />
+                            <div className="md:block w-[55%] border-t border-[#2f3600]" />
                             {horseOwnerSection}
                         </div>
                     </div>
                 </div>
-                <div className="p-2 text-sm md:text-base">
+                <p className="p-2">
                     {horseDescription} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam error nam ab ad? Tempora, inventore et dolor consequatur sed reprehenderit recusandae qui cupiditate tenetur aspernatur sunt facilis nulla similique ullam.
-                </div>
+                </p>
             </div>
 
             <Breadcrumbs items={breadcrumbItems} className="ml-6" />
 
-            <ul className="flex flex-col md:flex-row gap-3 font-serif">
+            <ul className="flex flex-col gap-3 md:flex-row">
                 {services && services.map((service) =>
                     <li key={service.id} className="p-3 flex flex-col gap-3 bg-[#f8f2e4] border border-[#d3c6aa] rounded-2xl">
-                        <h2 className="text-xl font-bold">{service.name}</h2>
-                        <p className="mb-2 text-sm md:text-base">{service.description}</p>
+                        <h2 className="">{service.name}</h2>
+                        <p className="mb-2">{service.description}</p>
                         <div className="w-[35%] border-t border-[#2f3600]" />
-                        <p className="text-lg">Цена: <b>{service.price} руб.</b></p>
+                        <p className="">Цена: <b>{service.price} руб.</b></p>
                     </li>)}
             </ul>
 
             <div className="w-full p-2"><Pedigree horse={horse} /></div>
             {horse.pedigree?.foals && horse.pedigree.foals.length > 0 &&
                 <div className="p-4 bg-[#f0e7cf] border-y border-[#d3c6aa]">
-                    <h2 className="mb-4 text-xl font-serif font-bold">Потомство ({horse.pedigree.foals.length})</h2>
+                    <h2 className="mb-4">Потомство ({horse.pedigree.foals.length})</h2>
                     <HorseList items={horse.pedigree?.foals} columns={5} visibleRows={2} />
                 </div>}
 

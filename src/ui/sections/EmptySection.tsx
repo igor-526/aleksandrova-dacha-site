@@ -41,7 +41,7 @@ export function EmptySection({
     <section
       {...props}
       style={mergedStyle}
-      className={cn(" text-[#2f3600]", className)}
+      className={cn("text-[#2f3600]", className)}
     >
       <Container className="flex justify-center">
         <div
@@ -51,12 +51,10 @@ export function EmptySection({
             contentClassName
           )}
         >
-          {title && (
-            <h2 className="font-serif text-3xl sm:text-4xl">{title}</h2>
-          )}
+          {title && <h2>{title}</h2>}
           {children ?? (
             <div className="rounded-2xl border-2 border-dashed border-[#d3c6aa] bg-white/60 p-8 text-center text-[#4b4d2f]">
-              Добавьте сюда свой контент
+              Р”РѕР±Р°РІСЊС‚Рµ СЃСЋРґР° СЃРІРѕР№ РєРѕРЅС‚РµРЅС‚
             </div>
           )}
         </div>

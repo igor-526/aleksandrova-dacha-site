@@ -39,7 +39,7 @@ export function AnimalCard({
       }
     >
       <div className="space-y-3">
-        <h3 className="font-serif text-2xl">{name}</h3>
+        <h3>{name}</h3>
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-[#8d784f]">
             {tags.map((tag) => (
@@ -49,7 +49,7 @@ export function AnimalCard({
             ))}
           </div>
         )}
-        {description && <p className="text-sm text-[#4b4d2f]">{description}</p>}
+        {description && <p className="text-[#4b4d2f]">{description}</p>}
       </div>
     </Card>
   );

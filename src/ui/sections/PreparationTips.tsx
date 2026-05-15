@@ -22,14 +22,14 @@ export function PreparationTips({
 
   return (
     <section className={cn("space-y-4", className)}>
-      <h2 className="font-serif text-3xl text-[#2f3600] px-6">{title}</h2>
+      <h2 className="px-6 text-[#2f3600]">{title}</h2>
       <div className={tipsLayout}>
         {tips.map((tip) => (
           <div key={tip.heading} className="rounded-2xl bg-[#f0e7cf] p-4">
-            <h3 className="text-lg font-semibold text-[#2f3600]">
+            <h3 className="text-[#2f3600]">
               {tip.heading}
             </h3>
-            <p className="mt-2 text-sm text-[#4b4d2f]">{tip.text}</p>
+            <p className="mt-2 text-[#4b4d2f]">{tip.text}</p>
           </div>
         ))}
       </div>

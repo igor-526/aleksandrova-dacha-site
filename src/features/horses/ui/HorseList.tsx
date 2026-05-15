@@ -125,16 +125,16 @@ const HorseList = ({
     };
 
     return (
-        <section className={cn("space-y-6 mx-auto font-serif", className)}>
+        <section className={cn("space-y-6 mx-auto", className)}>
             {heading && (
                 <div className="px-6">
-                    <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
+                    <h2 className="text-[#2f3600]">
                         {heading}
                     </h2>
                 </div>
             )}
             {content && (
-                <div className="px-6 font-serif text-sm md:text-md lg:text-lg text-[#2f3600]">
+                <div className="px-6 text-[#2f3600]">
                     {content}
                 </div>
             )}

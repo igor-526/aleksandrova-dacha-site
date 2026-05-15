@@ -32,12 +32,12 @@ const ServicesList = ({
     <section className={cn("space-y-6 mx-auto", className)}>
       {heading && (
         <div className="px-6">
-          <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl">
+          <h2 className="text-[#2f3600]">
             {heading}
           </h2>
         </div>
       )}
-      <div className="px-6 font-serif text-sm md:text-md lg:text-lg text-[#2f3600]">{content}</div>
+      <div className="px-6 text-[#2f3600]">{content}</div>
       <div
         className={cn(
           "grid gap-6 items-stretch justify-items-stretch",

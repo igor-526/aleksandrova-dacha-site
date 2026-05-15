@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import AboutText from "@/features/about/ui/AboutText";
 import { buildPageMetadata } from "@/features/metadata/metadata";
+import { Container } from "@/ui";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
@@ -12,9 +13,9 @@ export const generateMetadata = async (): Promise<Metadata> =>
 export default function AboutPage() {
   return (
     <div className="pb-20">
-      <div className="container mx-auto">
+      <Container>
         <AboutText />
-      </div>
+      </Container>
     </div>
   );
 }

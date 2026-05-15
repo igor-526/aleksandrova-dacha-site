@@ -163,7 +163,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
 
   return (
     <div className="bg-[#f6efe0] text-[#2f3600]">
-      <h2 className="mb-4 text-2xl font-bold">Родословная</h2>
+      <h2 className="mb-4">Родословная</h2>
       <div
         style={Horizotal.style}
         className={cn(...Horizotal.style.className, "hidden md:grid")}

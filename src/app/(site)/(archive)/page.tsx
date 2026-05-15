@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import { buildPageMetadata } from "@/features/metadata/metadata";
+import { Container } from "@/ui";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
@@ -10,8 +11,8 @@ export const generateMetadata = async (): Promise<Metadata> =>
 
 export default function ArchiveHome() {
   return (
-    <div className="w-7xl">
-      <div className="w-full h-250 bg-no-repeat bg-[url(/images/home-img.jpg)] bg-cover object-center"></div>
-    </div>
+    <Container className="pb-20">
+      <div className="h-250 w-full bg-[url(/images/home-img.jpg)] bg-cover bg-center bg-no-repeat"></div>
+    </Container>
   );
 }

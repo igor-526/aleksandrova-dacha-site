@@ -23,7 +23,7 @@ export function QuickServices({
 }: QuickServicesProps) {
   return (
     <section className={cn("space-y-6", className)}>
-      <h2 className="font-serif text-3xl text-[#2f3600] sm:text-4xl px-6">
+      <h2 className="px-6 text-[#2f3600]">
         {heading}
       </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -40,10 +40,10 @@ export function QuickServices({
                 </div>
               )}
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-[#2f3600]">
+                <h3 className="text-[#2f3600]">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[#4b4d2f]">
+                <p className="text-[#4b4d2f]">
                   {item.description}
                 </p>
               </div>

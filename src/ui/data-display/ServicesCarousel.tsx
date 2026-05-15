@@ -19,7 +19,7 @@ const ServicesCarousel = ({ items, autoPlay, interval, className }: ServicesCaro
     <Carousel
       items={items}
       renderItem={(item) => (
-        <div className="rounded-lg bg-[#f0e7cf] p-6 text-sm md:text-md lg:text-lg text-center shadow-md">
+        <div className="rounded-lg bg-[#f0e7cf] p-6 text-center shadow-md">
           {item}
         </div>
       )}

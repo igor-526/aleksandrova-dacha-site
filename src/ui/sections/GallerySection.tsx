@@ -48,7 +48,7 @@ export function GallerySection({
 
   return (
     <section className={cn("space-y-6", className)}>
-      {title && <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>}
+      {title && <h2 className="text-[#2f3600]">{title}</h2>}
       <GalleryGrid
         items={visibleItems}
         columns={columns}

@@ -30,9 +30,9 @@ export function PriceCard({
         </Button>
       }
     >
-      <div className="text-4xl font-semibold text-[#2f3600]">{price}</div>
+      <div className="text-[#2f3600]">{price}</div>
       {features.length > 0 && (
-        <ul className="mt-4 space-y-2 text-sm text-[#4b4d2f]">
+        <ul className="mt-4 space-y-2 text-[#4b4d2f]">
           {features.map((feature) => (
             <li key={feature}>• {feature}</li>
           ))}

@@ -12,8 +12,8 @@ export function PhotoGallery({ title, description, items, className }: PhotoGall
   return (
     <section className={cn("space-y-5", className)}>
       <div>
-        <h2 className="font-serif text-3xl text-[#2f3600]">{title}</h2>
-        {description && <p className="mt-2 text-sm text-[#4b4d2f]">{description}</p>}
+        <h2 className="text-[#2f3600]">{title}</h2>
+        {description && <p className="mt-2 text-[#4b4d2f]">{description}</p>}
       </div>
       <GalleryGrid items={items} />
     </section>

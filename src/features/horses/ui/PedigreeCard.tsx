@@ -27,15 +27,12 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
         switch (level) {
             case "level1":
                 styleCard.container = "p-3 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break;
             case "level2":
                 styleCard.container = "p-2 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break;
             case "level3":
                 styleCard.container = "flex items-center justify-center p-2 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break
             default:
                 break;
@@ -44,15 +41,12 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
         switch (level) {
             case "level1":
                 styleCard.container = "flex flex-col items-center justify-center gap-2 p-3 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break;
             case "level2":
                 styleCard.container = "flex flex-col gap-2 p-3 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break;
             case "level3":
                 styleCard.container = "flex items-center justify-start p-3 border border-[#2f3600]";
-                styleCard.h3 = "font-bold";
                 break;
             default:
                 break;
@@ -73,7 +67,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             ratio="4/3"
                         />}
                     </div>
-                    <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
+                    <h3 className="text-center">{horse.name}</h3>
                     <p className="text-center">
                         {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                         {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -92,7 +86,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             rounded="md"
                         />}
                     </div>
-                    <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
+                    <h3 className="text-center">{horse.name}</h3>
                     <p className="text-center">
                         {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                         {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -110,7 +104,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         rounded="lg"
                     />}
                     <div className="w-[60%] h-full flex flex-col items-center justify-center">
-                        <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
+                        <h3 className="text-center">{horse.name}</h3>
                         <p className="text-center">
                             {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                             {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -130,7 +124,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         rounded="md"
                     />}
                     <div className="w-full flex items-center gap-2.5">
-                        <h3 className={cn(styleCard.h3, "text-center")}>{horse.name}</h3>
+                        <h3 className="text-center">{horse.name}</h3>
                         <p className="text-center">
                             {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                             {horse.color && !horse.bdate && <span>{horse.color}</span>}
