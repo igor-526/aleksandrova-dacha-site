@@ -6,7 +6,6 @@ import {
     HeroProps,
     MediaImage,
     MediaImageProps,
-    VisitStableCTAProps,
 } from "@/ui";
 import { RentalPageProps } from "../../ui/RentalPage";
 
@@ -53,21 +52,9 @@ export const getRentalPageData = async (): Promise<RentalPageProps> => {
         href: "/services/rental/animals",
     }];
 
-    const dataVisiStableCTA: VisitStableCTAProps = {
-        title: "Спортивные лошади и пони",
-        text: "Приглашаем спортсменов и любителей верховой езды арендовать наших лошадей и пони для тренировок и соревнований. \n Поможем подобрать идеального партнера для ваших целей. \n Давайте вместе достигать новых вершин в мире конного спорта!",
-        image: { src: "/images/services/rental/sport.jpg", alt: "Спортивные лошади и пони" },
-        ctaLabel: "Выбрать лошадь",
-        ctaHref: "/services/rental/equestrian-sport",
-        secondaryCtaLabel: "Цены и условия",
-        secondaryCtaHref: "/services/rides/sport",
-        secondaryCtaVariant: "secondary",
-
-    }
-
     const dataMediaImage: MediaImageProps = {
         src: "/images/services/rental/fotosession.jpg",
-        alt: "Аренда лошадей, пони и другихживотных для фотосессий",
+        alt: "Аренда лошадей, пони и других животных для фотосессий",
         ratio: "landscape",
     };
 
@@ -78,10 +65,12 @@ export const getRentalPageData = async (): Promise<RentalPageProps> => {
                 <div className="rounded-2xl overflow-hidden mb-4">
                     <MediaImage {...dataMediaImage} />
                 </div>
-                <p>Профессиональные фотографы и стилисты помогут вам создать незабываемые кадры с нашими животными!</p>
-                <p>Вас ждут трюковые лошади, пегасы и единороги, нарядные верблюды и олени, а также пушистые кролики, очаровательные барашки и козочки и другие милые животные.</p>
-                <p>Фотосессии проводятся в живописном парке или в оборудованной фотостудии на территории клуба. Возможна доставка животных в любую точку города и области.</p>
-                <p className="mb-4">Большой выбор костюмов и аксессуаров для фотосессий!</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Профессиональные фотографы и стилисты помогут вам создать незабываемые кадры с нашими животными!</li>
+                    <li>Вас ждут трюковые лошади, пегасы и единороги, нарядные верблюды и олени, а также пушистые кролики, очаровательные барашки и козочки и другие милые животные.</li>
+                    <li>Фотосессии проводятся в живописном парке или в оборудованной фотостудии на территории клуба. Возможна доставка животных в любую точку города и области.</li>
+                    <li className="mb-4">Большой выбор костюмов и аксессуаров для фотосессий!</li>
+                </ul>
                 <p><Button variant="primary" href="/services/rental/photosessions" size="md" className="text-sm sm:px-6 sm:py-2.5 sm:text-base">Посмотреть животных</Button></p>
             </div>
 
@@ -93,7 +82,6 @@ export const getRentalPageData = async (): Promise<RentalPageProps> => {
         dataHero,
         dataBreadcrumbs,
         dataCards,
-        dataVisiStableCTA,
         dataArticleRental,
     };
 };

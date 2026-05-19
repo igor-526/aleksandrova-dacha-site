@@ -13,11 +13,11 @@ export const generateMetadata = async (): Promise<Metadata> =>
   );
 
 export default async function ServicesRides() {
-  const { dataHero, dataBreadcrumbs, dataArticleRide, dataQuickServices } = await getRidePageData();
+  const { dataHero, dataBreadcrumbs, dataArticleRide, dataMission, dataVisiStableCTA, dataQuickServices } = await getRidePageData();
   return (
     <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
       <Container className="space-y-12">
-        <RidePage dataHero={dataHero} dataArticleRide={dataArticleRide} dataBreadcrumbs={dataBreadcrumbs} dataQuickServices={dataQuickServices} />
+        <RidePage dataHero={dataHero} dataArticleRide={dataArticleRide} dataBreadcrumbs={dataBreadcrumbs} dataMission={dataMission} dataVisiStableCTA={dataVisiStableCTA} dataQuickServices={dataQuickServices} />
       </Container>
     </div>
   );

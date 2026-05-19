@@ -9,6 +9,7 @@ import { fetchPriceGroup, fetchPriceList } from "../priceService";
 import { ServicesListProps } from "../../ui/ServicesList";
 import { ServicesGroupPageProps } from "../../ui/ServicesGroupPage";
 import { PriceGroupOutDto } from "@/types";
+import { getSiteSettings } from "@/features/siteSettings";
 
 export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
   const getGroup = async (): Promise<PriceGroupOutDto> => {
@@ -20,6 +21,8 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
     const result = await fetchPriceList("Конные прогулки и катания");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
+
+  const pricePlus = await getSiteSettings().then(settings => settings.price_plus);
 
   const group = await getGroup();
   const prices = await getPrices();
@@ -65,11 +68,11 @@ export const getToursPageData = async (): Promise<ServicesGroupPageProps> => {
     heading: "Услуги и цены",
     content: (
       <p>
-        <b> Указанные цены действуют только по предварительной записи. </b>
+        <b> * Указанные цены действуют только по предварительной записи. </b>
         Запись возможна не позднее, чем за день до приезда. Если вы приехали без
         записи, катание на лошади (пони) возможно только при наличии свободного
         тренера (инструктора),
-        <b> стоимость услуги увеличится на 200 рублей.</b>
+        <b> стоимость услуги увеличится на {pricePlus} рублей.</b>
       </p>
     ),
     items: [],

@@ -9,6 +9,7 @@ import { PriceOutDto } from "@/types/prices";
 import { fetchPriceGroup, fetchPriceList } from "../priceService";
 import { ServicesListProps } from "../../ui/ServicesList";
 import { PriceGroupOutDto } from "@/types";
+import { getSiteSettings } from "@/features/siteSettings";
 
 export const getIndividualPageData = async () => {
   const getGroup = async (): Promise<PriceGroupOutDto> => {
@@ -20,6 +21,8 @@ export const getIndividualPageData = async () => {
     const result = await fetchPriceList("Индивидуальное обучение");
     return result.status === "ok" && result.data ? result.data.items : [];
   };
+
+  const pricePlus = await getSiteSettings().then(settings => settings.price_plus);
 
   const group = await getGroup();
 
@@ -45,12 +48,12 @@ export const getIndividualPageData = async () => {
   };
 
   const dataArticle: ArticleProps = {
-    content: <div>
-      <p className="mb-2">Приглашаем на занятия по верховой езде взрослых и детей с 5 лет. Тренер занимается только с одним всадником.</p>
-      <p className="mb-2">Вы приобретете базовые навыки взаимодействия с лошадью (пони), научитесь правильной посадке и управлению на шагу, рыси, галопе.</p>
-      <p className="mb-2">Для начала занятий не требуется особой спортивной подготовки.</p>
-      <p >Опытные всадники смогут на индивидуальных занятиях улучшить свои навыки и подготовиться к соревнованиям.</p>
-    </div>,
+    content: <ul className="list-disc ml-6 space-y-2">
+      <li>Приглашаем на занятия по верховой езде взрослых и детей с 5 лет. Занятия в мини-группах (до 3 человек) или индивидуально с одним всадником.</li>
+      <li>Вы приобретете базовые навыки взаимодействия с лошадью (пони), научитесь правильной посадке и управлению на шагу, рыси, галопе.</li>
+      <li>Для начала занятий не требуется особой спортивной подготовки.</li>
+      <li>Опытные всадники смогут на индивидуальных занятиях улучшить свои навыки и подготовиться к соревнованиям.</li>
+    </ul>,
     className: "bg-[#f0e7cf] rounded-lg py-2 shadow-md",
   };
 
@@ -77,11 +80,11 @@ export const getIndividualPageData = async () => {
     items: [],
     content: (
       <p>
-        <b> Указанные цены действуют только по предварительной записи. </b>
+        <b> * Указанные цены действуют только по предварительной записи. </b>
         Запись возможна не позднее, чем за день до приезда. Если вы приехали без
         записи, катание на лошади (пони) возможно только при наличии свободного
         тренера (инструктора),
-        <b> стоимость услуги увеличится на 200 рублей.</b>
+        <b> стоимость услуги увеличится на {pricePlus} рублей.</b>
       </p>
     ),
     columns: 2,

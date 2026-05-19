@@ -12,6 +12,7 @@ export interface SiteSettings {
     vk?: string;
     mail?: string;
     socials: Array<{ label: string; href: string; type: "vk" | "mail" }>;
+    price_plus?: number;
     getSetting: (key: string) => string | undefined;
 }
 
@@ -45,6 +46,7 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
         : undefined;
     const vk = getApiSetting("vk");
     const mail = getApiSetting("mail");
+    const price_plus = getApiSetting("price_plus") ? parseFloat(getApiSetting("price_plus") as string) : undefined;
     const socials = [
         vk && { label: "VK", href: vk, type: "vk" as const },
         mail && { label: "Email", href: `mailto:${mail}`, type: "mail" as const },
@@ -63,6 +65,7 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
         vk,
         mail,
         socials,
+        price_plus,
         getSetting: getApiSetting,
     };
 };

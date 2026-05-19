@@ -23,7 +23,6 @@ const ServicesList = ({
   mediaPosition = "top",
   gallery = false,
   typeMedia = "image",
-  minHeightCard,
   columns = 3,
   moreDetails = false,
   className,
@@ -65,7 +64,7 @@ const ServicesList = ({
             <MediaImage
               src={galleryItems[0]?.src || "/images/placeholder.png"}
               alt={galleryItems[0]?.alt || "image"}
-              ratio="7/3"
+              ratio="7/4"
               className="w-full"
             />
           );

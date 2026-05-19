@@ -42,10 +42,6 @@ export const dataHeader: Pick<
               label: "Животные для фотосессий",
               href: "/services/rental/photosessions",
             },
-            {
-              label: "Спортивные лошади и пони",
-              href: "/services/rental/equestrian-sport",
-            },
           ],
         },
         { label: "Мини-ферма", href: "/services/farm" },

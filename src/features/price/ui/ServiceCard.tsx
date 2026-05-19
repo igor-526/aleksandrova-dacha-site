@@ -37,9 +37,13 @@ const ServiceCard = ({
         <div className="space-y-1.5 mb-1.5">
           {title && <h3 className="pt-1 mb-3">{title}</h3>}
           {content &&
-            <p className="grow mb-1 whitespace-pre-wrap text-[#4b4d2f]">
-              {content}
-            </p>
+            //           <p className="grow mb-1 whitespace-pre-wrap text-[#4b4d2f]">
+            //             {content}
+            //            </p>
+            content.split("\n").map((line, index) => (
+              <p key={index} className="grow mb-2 whitespace-pre-wrap text-[#4b4d2f]">
+                {line} </p>
+            ))
           }
         </div>
       )}

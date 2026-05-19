@@ -12,14 +12,14 @@ export const dynamic = "force-dynamic";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
-    "РЈСЃР»СѓРіРё РІ РєР»СѓР±Рµ РђР»РµРєСЃР°РЅРґСЂРѕРІР° РґР°С‡Р°",
-    "РљРѕРЅРЅС‹Рµ РїСЂРѕРіСѓР»РєРё Рё РѕР±СѓС‡РµРЅРёРµ РІРµСЂС…РѕРІРѕР№ РµР·РґРµ, Р°СЂРµРЅРґР° Р»РѕС€Р°РґРµР№ Рё РїРѕРЅРё, Р°СЂРµРЅРґР° СЌРєРёРїР°Р¶РµР№ Рё Р¶РёРІРѕС‚РЅС‹С…, СЃРїРѕСЂС‚РёРІРЅР°СЏ Р°СЂРµРЅРґР°, РїРѕСЃС‚РѕР№, С„РѕС‚РѕСЃРµСЃСЃРёРё. РљРѕРЅС‚Р°РєС‚РЅР°СЏ РјРёРЅРё-С„РµСЂРјР°."
+    "Услуги верховой езды, аренды экипажей иживотных в Александровой даче",
+    "Конные прогулки и обучение верховой езде, аренда лошадей и пони, аренда конных экипажей, спортивная аренда, постой, фотосессии. Контактная мини-ферма."
   );
 
 export default async function Services() {
   const { dataHero, dataBreadcrumbs } = await getServicesPageData();
   const { dataArticleRide, dataQuickServices } = await getRidePageData();
-  const { dataCards, dataVisiStableCTA, dataArticleRental } =
+  const { dataCards, dataArticleRental } =
     await getRentalPageData();
 
   return (
@@ -29,15 +29,14 @@ export default async function Services() {
           dataHero={dataHero}
           dataBreadcrumbs={dataBreadcrumbs}
         />
-        <h2 className="mb-6 px-8">Р’РµСЂС…РѕРІР°СЏ РµР·РґР°</h2>
+        <h2 className="mb-6 px-8">Верховая езда</h2>
         <RidePage
           dataArticleRide={dataArticleRide}
           dataQuickServices={dataQuickServices}
         />
-        <h2 className="mb-6 px-8">РђСЂРµРЅРґР° СЌРєРёРїР°Р¶РµР№ Рё Р¶РёРІРѕС‚РЅС‹С…</h2>
+        <h2 className="mb-6 px-8">Аренда экипажей и животных</h2>
         <RentalPage
           dataCards={dataCards}
-          dataVisiStableCTA={dataVisiStableCTA}
           dataArticleRental={dataArticleRental}
         />
       </Container>

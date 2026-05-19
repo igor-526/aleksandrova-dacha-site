@@ -8,8 +8,6 @@ import {
     Container,
     Hero,
     HeroProps,
-    VisitStableCTA,
-    VisitStableCTAProps,
 } from "@/ui";
 import Link from "next/link";
 
@@ -17,7 +15,6 @@ export type RentalPageProps = {
     dataHero?: HeroProps | null;
     dataBreadcrumbs?: BreadcrumbsProps | null;
     dataCards?: (CardProps & { href?: string })[] | null;
-    dataVisiStableCTA?: VisitStableCTAProps | null;
     dataArticleRental?: ArticleProps | null;
 };
 
@@ -25,7 +22,6 @@ export const RentalPage = ({
     dataHero,
     dataBreadcrumbs,
     dataCards,
-    dataVisiStableCTA,
     dataArticleRental,
 }: RentalPageProps) => {
     return (
@@ -42,7 +38,6 @@ export const RentalPage = ({
                         ))}
                     </div>
                 )}
-                {dataVisiStableCTA && <VisitStableCTA {...dataVisiStableCTA} />}
                 {dataArticleRental && <Article {...dataArticleRental} />}
             </Container>
         </div>

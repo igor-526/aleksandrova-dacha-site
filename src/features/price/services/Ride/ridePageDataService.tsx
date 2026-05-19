@@ -5,7 +5,9 @@ import {
     GallerySectionProps,
     HeroProps,
     ImageBlock,
+    MissionProps,
     QuickServicesProps,
+    VisitStableCTAProps,
 } from "@/ui";
 import { RidePageProps } from "../../ui/RidePage";
 import { FeedbackForm } from "@/features/callBackRequest/ui/CallBackRequestModal";
@@ -60,14 +62,14 @@ export const getRidePageData = async (): Promise<RidePageProps> => {
     const dataArticleRide: ArticleProps = {
         title: "Обучение и прокат",
         content: (<div className="space-y-8">
-            <div className="space-y-2">
-                <p>Верховая езда для взрослых и детей, для новичков и опытных всадников.</p>
-                <p>В любую погоду в крытом манеже или на открытом воздухе.</p>
-                <p>Профессиональные тренеры. Лошади и пони под любого всадника.</p>
-                <p>Комфортные условия: теплая раздевалка, шкафчики для вещей, бесплатная парковка, уютное кафе.</p>
-            </div>
-            <FeedbackForm triggerLabel="Записаться на занятие" />
             <GallerySection {...dataGallerySection} />
+            <ul className="list-disc ml-6 space-y-2">
+                <li>Верховая езда для взрослых и детей, для новичков и опытных всадников.</li>
+                <li>В любую погоду в крытом манеже или на открытом воздухе.</li>
+                <li>Профессиональные тренеры. Лошади и пони под любого всадника.</li>
+                <li>Комфортные условия: теплая раздевалка, шкафчики для вещей, бесплатная парковка, уютное кафе.</li>
+            </ul>
+            <FeedbackForm triggerLabel="Записаться на занятие" />
         </div>
         ),
         className: "bg-white/70 p-6 rounded-3xl",
@@ -119,10 +121,28 @@ export const getRidePageData = async (): Promise<RidePageProps> => {
         ]
     };
 
+    const dataMission: MissionProps = {
+        points: [
+            { heading: "Опытные тренеры", text: "Наши тренеры помогут вам развить навыки верховой езды и достичь ваших целей в конном спорте." },
+            { heading: "Наши спортсмены", text: "Мы гордимся достижениями наших спортсменов на соревнованиях разного уровня." },
+            { heading: "Лошади и пони", text: "У нас есть широкий выбор спортивных лошадей и пони для аренды и тренировок." },
+        ]
+    };
+
+    const dataVisiStableCTA: VisitStableCTAProps = {
+        title: "Спортивные лошади и пони в аренду",
+        text: "Приглашаем спортсменов и любителей верховой езды арендовать наших лошадей и пони для тренировок и соревнований. \n Поможем подобрать идеального партнера для ваших целей. \n Давайте вместе достигать новых вершин в мире конного спорта!",
+        image: { src: "/images/services/rental/sport.jpg", alt: "Спортивные лошади и пони" },
+        ctaLabel: "Выбрать лошадь",
+        ctaHref: "/services/rides/sport",
+    }
+
     return {
         dataHero,
         dataBreadcrumbs,
         dataArticleRide,
         dataQuickServices,
+        dataVisiStableCTA,
+        dataMission
     };
 };

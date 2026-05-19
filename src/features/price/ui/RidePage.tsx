@@ -6,8 +6,12 @@ import {
     Container,
     Hero,
     HeroProps,
+    Mission,
+    MissionProps,
     QuickServices,
     QuickServicesProps,
+    VisitStableCTA,
+    VisitStableCTAProps,
 } from "@/ui";
 
 export type RidePageProps = {
@@ -15,6 +19,8 @@ export type RidePageProps = {
     dataBreadcrumbs?: BreadcrumbsProps | null;
     dataArticleRide?: ArticleProps | null;
     dataQuickServices?: QuickServicesProps | null;
+    dataVisiStableCTA?: VisitStableCTAProps | null;
+    dataMission?: MissionProps | null;
 };
 
 export const RidePage = ({
@@ -22,6 +28,8 @@ export const RidePage = ({
     dataBreadcrumbs,
     dataArticleRide,
     dataQuickServices,
+    dataVisiStableCTA,
+    dataMission,
 }: RidePageProps) => {
 
     return (
@@ -33,6 +41,8 @@ export const RidePage = ({
                 )}
                 {dataQuickServices && <QuickServices {...dataQuickServices} />}
                 {dataArticleRide && <Article {...dataArticleRide} />}
+                {dataMission && <Mission {...dataMission} />}
+                {dataVisiStableCTA && <VisitStableCTA {...dataVisiStableCTA} />}
             </Container>
         </div>
     );
