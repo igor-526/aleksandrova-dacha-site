@@ -13,7 +13,7 @@ export const getRentalPageData = async (): Promise<RentalPageProps> => {
     const dataHero: HeroProps = {
         title: "Аренда экипажей и животных",
         subtitle: "Александрова дача",
-        description: "Лошади, пони, северные олени и верблюды в аренду для катаний верхом, в экипажах и санях. Спортивные лошади и пони для участия в соревнованиях.",
+        description: "Лошади, пони, северные олени и верблюды в аренду для катаний верхом, в экипажах и санях. Фотосессии с верблюдами, северными оленями, козочками и барашками и другими животными.",
         backgroundImage: {
             src: "/images/services/rental/rental.jpg",
             alt: "desc",

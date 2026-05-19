@@ -11,6 +11,7 @@ import {
 } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Button } from "../button/Button";
 import { Icon } from "../atoms/Icon";
 import {
@@ -50,6 +51,7 @@ export function Header({
   className,
   children,
 }: HeaderProps) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [expandedSubmenus, setExpandedSubmenus] = useState<
@@ -71,6 +73,11 @@ export function Header({
   useEffect(() => {
     setExpandedSubmenus({});
   }, [activeDropdown]);
+
+  useEffect(() => {
+    setActiveDropdown(null);
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -227,6 +234,7 @@ export function Header({
                     <Link rel="canonical"
                       href={link.href}
                       className={baseTopItemClass}
+                      onClick={handleCloseDropdown}
                     >
                       <span className="whitespace-nowrap">{link.label}</span>
                       {hasChildren && (
@@ -317,6 +325,7 @@ export function Header({
                                     <Link rel="canonical"
                                       href={child.href}
                                       className={linkTextClasses}
+                                      onClick={handleCloseDropdown}
                                     >
                                       <span>{child.label}</span>
                                     </Link>
@@ -340,6 +349,7 @@ export function Header({
                                           <Link rel="canonical"
                                             href={nested.href}
                                             className="text-sm text-[#3a3f1c] transition-colors hover:text-[#1f2600]"
+                                            onClick={handleCloseDropdown}
                                           >
                                             {nested.label}
                                           </Link>

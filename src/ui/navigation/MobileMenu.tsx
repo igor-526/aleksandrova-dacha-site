@@ -65,6 +65,14 @@ function MobileMenuItem({
     onExpand(level, expanded ? undefined : key);
   };
 
+  const handleItemClick = (event: MouseEvent) => {
+    if (hasChildren) {
+      handleToggle(event);
+      return;
+    }
+    onNavigate();
+  };
+
   return (
     <li>
       <div
@@ -74,7 +82,7 @@ function MobileMenuItem({
           expanded ? "bg-[#f1e4ca]" : "hover:bg-[#f5ebd8]"
         )}
         style={{ paddingLeft }}
-        onClick={handleToggle}
+        onClick={handleItemClick}
       >
         {hasChildren ? (
           <button
