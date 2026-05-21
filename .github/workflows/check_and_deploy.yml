@@ -1,0 +1,60 @@
+name: CheckAndDeploy
+
+on:
+  push:
+    branches:
+      - main
+      - release
+      - feature/cicd
+
+env:
+  IMAGE: ghcr.io/igor-526/aleksandrova-dacha-site
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Install deps
+        run: npm install
+
+      - name: lint
+        run: npm run lint
+
+      - name: build
+        run: npm run build
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/release'
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+            EQUESTRIAN_SERVICE_KEY=${{ secrets.EQUESTRIAN_SERVICE_KEY }}
+            NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY=${{ secrets.NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY }}
+
+
