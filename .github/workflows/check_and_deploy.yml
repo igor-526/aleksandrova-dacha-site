@@ -68,6 +68,6 @@ jobs:
           helm upgrade --install site-ad .helm/ \
             --namespace consumer \
             --create-namespace \
-            --set image.tag=${{ github.sha }} \
+            --set imageTag=${{ github.sha }} \
             --wait
 
