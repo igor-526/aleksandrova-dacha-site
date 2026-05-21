@@ -5,7 +5,7 @@ replicaCount: 1
 namespace: consumer
 
 # App settings
-containerPort: 3001
+containerPort: 3000
 resources:
   requests:
     cpu: 100m
