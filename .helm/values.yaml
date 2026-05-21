@@ -1,0 +1,23 @@
+# Deployment settings
+name: site-ad
+componentsLabel: site-ad
+replicaCount: 1
+namespace: consumer
+
+# App settings
+containerPort: 3001
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# Ingress settings
+url: ad.eqcms.ru
+
+# Image settings
+image: ghcr.io/igor-526/aleksandrova-dacha-site
+imagePullSecertName: ghcr-secret-ad
+imageTag: latest
