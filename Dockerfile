@@ -49,16 +49,17 @@ COPY --from=builder /app/tsconfig.json ./tsconfig.json
 # Создаем директории для nginx
 RUN mkdir -p /var/log/nginx /var/lib/nginx /run/nginx
 
-# Создаем скрипт для генерации конфигурации nginx с динамическим портом
+# Создаем скрипт для генерации конфигурации nginx с динамическими портами
 RUN echo '#!/bin/sh' > /app/generate-nginx-config.sh && \
     echo 'NGINX_PORT=${PORT:-3000}' >> /app/generate-nginx-config.sh && \
+    echo 'NEXTJS_PORT=${NEXTJS_PORT:-3001}' >> /app/generate-nginx-config.sh && \
     echo 'cat > /etc/nginx/http.d/default.conf <<"NGINXEOF"' >> /app/generate-nginx-config.sh && \
     echo 'server {' >> /app/generate-nginx-config.sh && \
     echo '    listen NGINX_PORT_PLACEHOLDER;' >> /app/generate-nginx-config.sh && \
     echo '    server_name _;' >> /app/generate-nginx-config.sh && \
     echo '' >> /app/generate-nginx-config.sh && \
     echo '    location / {' >> /app/generate-nginx-config.sh && \
-    echo '        proxy_pass http://127.0.0.1:3000;' >> /app/generate-nginx-config.sh && \
+    echo '        proxy_pass http://127.0.0.1:NEXTJS_PORT_PLACEHOLDER;' >> /app/generate-nginx-config.sh && \
     echo '        proxy_http_version 1.1;' >> /app/generate-nginx-config.sh && \
     echo '        proxy_set_header Upgrade $http_upgrade;' >> /app/generate-nginx-config.sh && \
     echo '        proxy_set_header Connection "upgrade";' >> /app/generate-nginx-config.sh && \
@@ -70,13 +71,13 @@ RUN echo '#!/bin/sh' > /app/generate-nginx-config.sh && \
     echo '    }' >> /app/generate-nginx-config.sh && \
     echo '' >> /app/generate-nginx-config.sh && \
     echo '    location /_next/static {' >> /app/generate-nginx-config.sh && \
-    echo '        proxy_pass http://127.0.0.1:3000;' >> /app/generate-nginx-config.sh && \
+    echo '        proxy_pass http://127.0.0.1:NEXTJS_PORT_PLACEHOLDER;' >> /app/generate-nginx-config.sh && \
     echo '        proxy_cache_valid 200 60m;' >> /app/generate-nginx-config.sh && \
     echo '        add_header Cache-Control "public, immutable";' >> /app/generate-nginx-config.sh && \
     echo '    }' >> /app/generate-nginx-config.sh && \
     echo '}' >> /app/generate-nginx-config.sh && \
     echo 'NGINXEOF' >> /app/generate-nginx-config.sh && \
-    echo 'sed -i "s/NGINX_PORT_PLACEHOLDER/$NGINX_PORT/g" /etc/nginx/http.d/default.conf' >> /app/generate-nginx-config.sh && \
+    echo 'sed -i "s/NGINX_PORT_PLACEHOLDER/$NGINX_PORT/g; s/NEXTJS_PORT_PLACEHOLDER/$NEXTJS_PORT/g" /etc/nginx/http.d/default.conf' >> /app/generate-nginx-config.sh && \
     chmod +x /app/generate-nginx-config.sh
 
 # Создаем конфигурацию supervisor для управления процессами
@@ -94,7 +95,7 @@ RUN mkdir -p /etc/supervisor/conf.d && \
     echo 'stderr_logfile_maxbytes=0' >> /etc/supervisor/conf.d/supervisord.conf && \
     echo '' >> /etc/supervisor/conf.d/supervisord.conf && \
     echo '[program:nextjs]' >> /etc/supervisor/conf.d/supervisord.conf && \
-    echo 'command=node_modules/.bin/next start -p 3000' >> /etc/supervisor/conf.d/supervisord.conf && \
+    echo 'command=/bin/sh -c "exec node_modules/.bin/next start -p ${NEXTJS_PORT:-3001}"' >> /etc/supervisor/conf.d/supervisord.conf && \
     echo 'directory=/app' >> /etc/supervisor/conf.d/supervisord.conf && \
     echo 'autostart=true' >> /etc/supervisor/conf.d/supervisord.conf && \
     echo 'autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf && \
@@ -109,8 +110,9 @@ RUN echo '#!/bin/sh' > /app/start.sh && \
     echo 'exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf' >> /app/start.sh && \
     chmod +x /app/start.sh
 
-# PORT будет установлен через переменную окружения из docker-compose
+# PORT - внешний порт nginx внутри контейнера; NEXTJS_PORT - внутренний порт Next.js
 ENV PORT=3000
+ENV NEXTJS_PORT=3001
 
 EXPOSE 3000
 
