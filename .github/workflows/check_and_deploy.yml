@@ -54,7 +54,6 @@ jobs:
           build-args: |
             NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
             EQUESTRIAN_SERVICE_KEY=${{ secrets.EQUESTRIAN_SERVICE_KEY }}
-            NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY=${{ secrets.NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY }}
 
       - name: Set up kubeconfig
         run: |
@@ -70,4 +69,3 @@ jobs:
             --create-namespace \
             --set imageTag=${{ github.sha }} \
             --wait
-

@@ -17,7 +17,9 @@ COPY . .
 
 # Устанавливаем переменные окружения для сборки
 ARG NEXT_PUBLIC_API_BASE_URL
+ARG EQUESTRIAN_SERVICE_KEY
 ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
+ENV EQUESTRIAN_SERVICE_KEY=$EQUESTRIAN_SERVICE_KEY
 
 # Собираем приложение
 RUN npm run build
@@ -28,6 +30,10 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
+ARG NEXT_PUBLIC_API_BASE_URL
+ARG EQUESTRIAN_SERVICE_KEY
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
+ENV EQUESTRIAN_SERVICE_KEY=$EQUESTRIAN_SERVICE_KEY
 
 # Устанавливаем nginx и supervisor
 RUN apk add --no-cache nginx supervisor
@@ -45,7 +51,7 @@ RUN mkdir -p /var/log/nginx /var/lib/nginx /run/nginx
 
 # Создаем скрипт для генерации конфигурации nginx с динамическим портом
 RUN echo '#!/bin/sh' > /app/generate-nginx-config.sh && \
-    echo 'NGINX_PORT=${PORT:-5201}' >> /app/generate-nginx-config.sh && \
+    echo 'NGINX_PORT=${PORT:-3000}' >> /app/generate-nginx-config.sh && \
     echo 'cat > /etc/nginx/http.d/default.conf <<"NGINXEOF"' >> /app/generate-nginx-config.sh && \
     echo 'server {' >> /app/generate-nginx-config.sh && \
     echo '    listen NGINX_PORT_PLACEHOLDER;' >> /app/generate-nginx-config.sh && \
@@ -104,8 +110,8 @@ RUN echo '#!/bin/sh' > /app/start.sh && \
     chmod +x /app/start.sh
 
 # PORT будет установлен через переменную окружения из docker-compose
-ENV PORT=5201
+ENV PORT=3000
 
-EXPOSE 5201
+EXPOSE 3000
 
 CMD ["/app/start.sh"]

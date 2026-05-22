@@ -35,7 +35,7 @@ export function addQueryParamsToUrl<T extends Record<string, unknown>>(
   return `${path}${queryPart}${hash}`;
 }
 
-function resolveApiBaseUrl() {
+export function resolveApiBaseUrl() {
   const explicitUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ?? 
     process.env.API_BASE_URL;
@@ -93,19 +93,15 @@ function resolveApiBaseUrl() {
   return "http://localhost:8001/api";
 }
 
-function resolveEquestrianServiceKey() {
-  return (
-    process.env.EQUESTRIAN_SERVICE_KEY ||
-    process.env.NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY ||
-    "default-equestrian"
-  ).trim();
+export function resolveEquestrianServiceKey() {
+  return (process.env.EQUESTRIAN_SERVICE_KEY || "default-equestrian").trim();
 }
 
 function isGetRequest(options?: RequestInit) {
   return !options?.method || options.method.toUpperCase() === "GET";
 }
 
-function buildHeaders(options?: RequestInit) {
+export function buildHeaders(options?: RequestInit) {
   const headers = new Headers({
     Accept: "application/json",
     "Content-Type": "application/json",
