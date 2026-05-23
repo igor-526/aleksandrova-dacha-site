@@ -37,10 +37,24 @@ export type HorseDetailQueryParams = {
   pedigree?: number | null //[min=0 max=3] количество поколений для вывода
 }
 
+export type FoalParentRefDto = {
+  id: UUID      // UUID производителя
+  name: string  // кличка производителя
+}
+
+export type FoalParentsDto = {
+  sire: FoalParentRefDto | null  // отец жеребёнка
+  dam: FoalParentRefDto | null   // мать жеребёнка
+}
+
+export type HorseFoalOutDto = HorseOutDto & {
+  parents: FoalParentsDto  // первое поколение производителей
+}
+
 export type HorsePedigreeOutDto = {
   sire: HorseOutDto | null //отец
   dam: HorseOutDto | null //мать
-  foals: HorseOutDto[] //жеребята
+  foals: HorseFoalOutDto[] //жеребята
 }
 
 export type HorseOutDto = ApiCreatedUpdatedAtType & {
