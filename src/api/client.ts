@@ -35,7 +35,7 @@ export function addQueryParamsToUrl<T extends Record<string, unknown>>(
   return `${path}${queryPart}${hash}`;
 }
 
-function resolveApiBaseUrl() {
+export function resolveApiBaseUrl() {
   const explicitUrl =
     process.env.NEXT_PUBLIC_API_BASE_URL ?? 
     process.env.API_BASE_URL;
@@ -93,6 +93,35 @@ function resolveApiBaseUrl() {
   return "http://localhost:8001/api";
 }
 
+export function resolveEquestrianServiceKey() {
+  return (process.env.EQUESTRIAN_SERVICE_KEY || "default-equestrian").trim();
+}
+
+function isGetRequest(options?: RequestInit) {
+  return !options?.method || options.method.toUpperCase() === "GET";
+}
+
+export function buildHeaders(options?: RequestInit) {
+  const headers = new Headers({
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  });
+
+  for (const [key, value] of Object.entries(normalizeHeaders(options?.headers))) {
+    headers.set(key, value);
+  }
+
+  if (isGetRequest(options) && !headers.has("X-Equestrian-Service-Key")) {
+    const serviceKey = resolveEquestrianServiceKey();
+
+    if (serviceKey) {
+      headers.set("X-Equestrian-Service-Key", serviceKey);
+    }
+  }
+
+  return headers;
+}
+
 export default async function apiFetch<T>(
   path: string,
   options?: RequestInit
@@ -103,11 +132,7 @@ export default async function apiFetch<T>(
   try {
     const res = await fetch(url, {
       ...options,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        ...normalizeHeaders(options?.headers),
-      },
+      headers: buildHeaders(options),
     });
 
     if (res.status === 204 || res.status === 205) {
