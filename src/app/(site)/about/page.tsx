@@ -1,21 +1,28 @@
 import { Metadata } from "next";
-
-import AboutText from "@/features/about/ui/AboutText";
 import { buildPageMetadata } from "@/features/metadata/metadata";
 import { Container } from "@/ui";
+import { getAboutPageData } from "@/features/about/data/aboutPageData";
+import { AboutPage } from "@/features/about/ui/AboutPage";
 
 export const generateMetadata = async (): Promise<Metadata> =>
   buildPageMetadata(
     "О клубе",
-    "История конного клуба, главные направления работы и возможности для гостей."
+    "О кооно-спортивном клубе Александрова Дача"
   );
 
-export default function AboutPage() {
+export default async function About() {
+
+  const {
+    dataHero,
+    dataBreadcrumbs,
+  } = await getAboutPageData();
+
   return (
-    <div className="pb-20">
-      <Container>
-        <AboutText />
-      </Container>
+    <div className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
+      <AboutPage
+        dataHero={dataHero}
+        dataBreadcrumbs={dataBreadcrumbs}
+      />
     </div>
   );
 }
