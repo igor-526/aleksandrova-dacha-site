@@ -1,6 +1,21 @@
-export default function AboutText() {
+import { Breadcrumbs, BreadcrumbsProps, Container, Hero, HeroProps } from "@/ui";
+
+export type AboutPageProps = {
+  dataHero: HeroProps,
+  dataBreadcrumbs: BreadcrumbsProps
+}
+
+export const AboutPage = ({
+  dataHero,
+  dataBreadcrumbs
+}: AboutPageProps) => {
+
   return (
-    <div className="w-7xl">
+    <Container className=" space-y-12">
+      {dataHero && <Hero {...dataHero} />}
+      {dataBreadcrumbs && (
+        <Breadcrumbs {...dataBreadcrumbs} storageKey="serviceBreadcrumbs" />
+      )}
       <h1 className="text-5xl mb-2.5">О нас</h1>
       <p className="mb-2.5">
         Царскосельский конно-спортивный клуб Александрова Дача (бывший КСК
@@ -56,6 +71,6 @@ export default function AboutText() {
         свежие фермерские продукты из коровьего и козьего молока, куриные и
         перепелиные яйца.
       </p>
-    </div>
+    </Container>
   );
 }
