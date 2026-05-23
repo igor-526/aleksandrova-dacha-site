@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         hostname: "api.aleksandrova-dacha.ru",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "cloud.eqcms.ru",
+        pathname: "/**",
+      },
       new URL("https://mc.yandex.ru/watch/**"),
     ],
   },
