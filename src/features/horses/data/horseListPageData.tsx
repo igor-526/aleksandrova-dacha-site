@@ -1,4 +1,4 @@
-import { fetchHorseList, getHorseListPageSize } from "./horseService";
+import { fetchHorsesByBreeds } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
 import { BreadcrumbsProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
@@ -6,18 +6,8 @@ import { HorseListProps } from "../ui/HorseList";
 export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
   const columns = 3;
   const visibleRows = 2;
-  const pageSize = getHorseListPageSize(columns, visibleRows);
-  const fetchParams = {
-    kind: ["horse"] as ("horse" | "pony")[],
-  };
 
-  const result = await fetchHorseList({
-    ...fetchParams,
-    limit: pageSize,
-    offset: 0,
-  });
-  const horses = result.status === "ok" && result.data ? result.data.items : [];
-  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
+  const horsesByBreeds = await fetchHorsesByBreeds("horse");
 
   const dataHero = {
     title: "Разведение и продажа",
@@ -39,12 +29,10 @@ export const getHorseListPageData = async (): Promise<HorseListPageProps> => {
   };
 
   const dataHorseList: HorseListProps = {
-    items: horses,
+    itemsByBreed: horsesByBreeds,
     columns,
     visibleRows,
-    fetchParams,
-    totalItems,
-    pageSize,
+    fetchParams: { kind: ["horse"] },
   }
 
   return {

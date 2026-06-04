@@ -44,7 +44,7 @@ export const OneHorsePage = ({
         {horse.ddate_formatted && <p><b>Дата смерти:</b> {horse.ddate_formatted}</p>}
     </div>)
 
-    const horseDescription = (horse.description && <p>{horse.description}</p>)
+    const horseDescription = (horse.description && <p className="p-2">{horse.description}</p>)
 
     const horseOwnerSection = <div className="p-2">
         <p><b>Владелец: </b> {horse.horse_owner?.name}</p>
@@ -53,7 +53,7 @@ export const OneHorsePage = ({
             <div className="flex">
                 <b>Телефон: </b>
                 <ul className="flex gap-2">{horse.horse_owner?.phone_numbers.map((phone, index) =>
-                    (<li key={index}>{phone}</li>))}
+                (<li key={index}>{phone}</li>))}
                 </ul>
             </div>
         }
@@ -102,9 +102,7 @@ export const OneHorsePage = ({
                         </div>
                     </div>
                 </div>
-                <p className="p-2">
-                    {horseDescription} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam error nam ab ad? Tempora, inventore et dolor consequatur sed reprehenderit recusandae qui cupiditate tenetur aspernatur sunt facilis nulla similique ullam.
-                </p>
+                {horseDescription} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam error nam ab ad? Tempora, inventore et dolor consequatur sed reprehenderit recusandae qui cupiditate tenetur aspernatur sunt facilis nulla similique ullam.
             </div>
 
             <Breadcrumbs items={breadcrumbItems} className="ml-6" />

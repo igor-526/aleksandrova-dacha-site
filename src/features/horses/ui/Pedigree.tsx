@@ -17,7 +17,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       color: horse.pedigree?.sire?.coat_color?.short_name,
       bdate: horse.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.photos && horse.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+        horse.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     d: {
       name: horse.pedigree?.dam?.name,
@@ -25,7 +25,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       color: horse.pedigree?.dam?.coat_color?.short_name,
       bdate: horse.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.dam?.photos && horse.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+        horse.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     ss: {
       name: horse.pedigree?.sire?.pedigree?.sire?.name,
@@ -41,7 +41,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       color: horse.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
       bdate: horse.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+        horse.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     ds: {
       name: horse.pedigree?.dam?.pedigree?.sire?.name,
@@ -56,7 +56,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       sex: horse.pedigree?.dam?.pedigree?.dam?.sex,
       color: horse.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
       bdate: horse.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
-      photo: horse.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+      photo: horse.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     sss: {
       name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.name,
@@ -64,7 +64,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
       bdate: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+        horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     ssd: {
       name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.name,
@@ -96,7 +96,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
       color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
       bdate: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [{ src: "/images/horses/horse1.jpg", alt: "Изображение лошади" }],
+        horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     dsd: {
       name: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.name,

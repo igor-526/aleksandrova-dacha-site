@@ -4,6 +4,7 @@ import { ApiCreatedUpdatedAtType } from "./api";
 export type HorseBreedListAvailableSorting = "name" | "description" | "slug" | "-name" | "-description" | "-slug"
 
 export type HorseBreedListQueryParams = {
+    kind?: "horse" | "pony" // фильтр по типу породы
     name?: string | null //регистронезависимый поиск по вхождению наименования
     description?: string | null //регистронезависимый поиск по вхождению описания
     sort?: HorseBreedListAvailableSorting[] | null //список полей для сортировки по приоритету
