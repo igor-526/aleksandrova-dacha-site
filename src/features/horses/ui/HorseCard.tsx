@@ -16,7 +16,7 @@ const HorseCard = ({
     const pedigree = horse.pedigree && horse.pedigree.sire?.name + " + " + horse.pedigree.dam?.name;
     const media = horse.photos && horse.photos.length > 0
         ? (<MediaImage src={horse.photos[0].url} alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />)
-        : <MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} ratio="4/3" fill={false} className="w-full" />;
+        : <MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />;
 
     return (
         <article className={cn(articleClasses, cardColor, className)}>

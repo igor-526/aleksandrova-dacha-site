@@ -67,7 +67,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             ratio="4/3"
                         />}
                     </div>
-                    <h3 className="text-center">{horse.name}</h3>
+                    <p className="text-center font-bold">{horse.name}</p>
                     <p className="text-center">
                         {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                         {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -86,7 +86,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             rounded="md"
                         />}
                     </div>
-                    <h3 className="text-center">{horse.name}</h3>
+                    <p className="text-center font-bold">{horse.name}</p>
                     <p className="text-center">
                         {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                         {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -104,7 +104,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         rounded="lg"
                     />}
                     <div className="w-[60%] h-full flex flex-col items-center justify-center">
-                        <h3 className="text-center">{horse.name}</h3>
+                        <p className="text-center font-bold">{horse.name}</p>
                         <p className="text-center">
                             {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                             {horse.color && !horse.bdate && <span>{horse.color}</span>}
@@ -123,8 +123,8 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         ratio="4/3"
                         rounded="md"
                     />}
-                    <div className="w-full flex items-center gap-2.5">
-                        <h3 className="text-center">{horse.name}</h3>
+                    <div className="w-full flex flex-col items-center">
+                        <p className="text-center font-bold">{horse.name}</p>
                         <p className="text-center">
                             {horse.color && horse.bdate && <span>{horse.color}, {horse.bdate}</span>}
                             {horse.color && !horse.bdate && <span>{horse.color}</span>}

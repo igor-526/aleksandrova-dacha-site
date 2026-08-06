@@ -14,7 +14,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     s: {
       name: horse.pedigree?.sire?.name,
       sex: horse.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.photos && horse.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -22,7 +22,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     d: {
       name: horse.pedigree?.dam?.name,
       sex: horse.pedigree?.dam?.sex,
-      color: horse.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.dam?.photos && horse.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -30,7 +30,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     ss: {
       name: horse.pedigree?.sire?.pedigree?.sire?.name,
       sex: horse.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -38,7 +38,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     sd: {
       name: horse.pedigree?.sire?.pedigree?.dam?.name,
       sex: horse.pedigree?.sire?.pedigree?.dam?.sex,
-      color: horse.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -46,7 +46,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     ds: {
       name: horse.pedigree?.dam?.pedigree?.sire?.name,
       sex: horse.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -54,14 +54,14 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     dd: {
       name: horse.pedigree?.dam?.pedigree?.dam?.name,
       sex: horse.pedigree?.dam?.pedigree?.dam?.sex,
-      color: horse.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
       photo: horse.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
     },
     sss: {
       name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.name,
       sex: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -69,7 +69,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     ssd: {
       name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.name,
       sex: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.sex,
-      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -77,7 +77,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     sds: {
       name: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.name,
       sex: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -85,7 +85,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     sdd: {
       name: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.name,
       sex: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.sex,
-      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -93,7 +93,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     dss: {
       name: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.name,
       sex: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -101,7 +101,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     dsd: {
       name: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.name,
       sex: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.sex,
-      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -109,7 +109,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     dds: {
       name: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.name,
       sex: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
         horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -117,7 +117,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
     ddd: {
       name: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.name,
       sex: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.sex,
-      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
+      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.coat_color?.description,
       bdate: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
       photo: (horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos && horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos.length > 0) &&
         horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: item.name })) || [],
@@ -136,7 +136,7 @@ export const Pedigree = ({ horse }: PedigreeProps) => {
         "d rd dd rdd dds"
         "d rd dd rdd ddd"  
       `,
-      className: ["h-[500px] w-full",
+      className: ["h-[600px] w-full",
         "grid gap-2",
         "grid-cols-[minmax(120px,1fr)_20px_minmax(120px,1fr)_20px_minmax(120px,1fr)]",
         "grid-rows-8"

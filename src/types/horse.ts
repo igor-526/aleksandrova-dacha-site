@@ -24,6 +24,8 @@ export type HorseListQueryParams = {
   ddate_gte?: string | null //минимальная дата смерти лошади (формат YYYY-MM-DD)
   ddate_lte?: string | null //максимальная дата смерти лошади (формат YYYY-MM-DD)
   horse_owner_ids?: UUID[] | null //фильтр по UUID владельцев (логика OR)
+  services?: UUID[] | null //фильтр по UUID оказываемых услуг (логика OR)
+  service_names?: UUID[] | null //фильтр по наименованиям услуг (регистронезависимое полное совпадение) (логика OR)
   this_stable?: boolean | null //фильтр по местонахождению лошади на данной конюшни
   exclude_ids?: UUID[] | null //исключить UUID лошадей
   include_ids?: UUID[] | null //искать только среди этих UUID лошадей
