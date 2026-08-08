@@ -32,5 +32,7 @@ export type PriceOutDto = ApiCreatedUpdatedAtType & {
     photos: PhotoOutShortDto[];
     groups: PriceGroupSimpleOutDto[];
     price_tables: TableType[];
-    page_data?: string;
+    page_data?: string | null;
 };
+
+export type PriceOutWithTablesDto = PriceOutDto;

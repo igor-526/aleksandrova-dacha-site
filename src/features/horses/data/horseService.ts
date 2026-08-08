@@ -10,13 +10,16 @@ export const getHorseListPageSize = (columns: HorseListColumns, visibleRows: num
 };
 
 export const fetchHorseList = async (
-    params: HorseListQueryParams = {}
+    params: HorseListQueryParams = {},
+    serviceNames?: string | string[]
 ): Promise<ApiResult<ApiListPaginatedResponseType<HorseOutDto>>> => {
     const normalizedParams: HorseListQueryParams = {
+        this_stable: true,
         pedigree: 1,
         limit: 10,
         offset: 0,
         ...params,
+        ...(serviceNames ? { service_names: Array.isArray(serviceNames) ? serviceNames : [serviceNames] } : {}),
     };
 
     return await horseList(normalizedParams);
@@ -39,9 +42,12 @@ export type HorsesByBreed = {
     total: number;
 };
 
-export const fetchHorsesByBreeds = async (kind: "horse" | "pony"): Promise<HorsesByBreed[]> => {
+export const fetchHorsesByBreeds = async (
+    kind: "horse" | "pony",
+    serviceNames?: string | string[]
+): Promise<HorsesByBreed[]> => {
     const breedsResult = await fetchBreedList(kind);
-    
+
     if (breedsResult.status !== "ok" || !breedsResult.data?.items) {
         return [];
     }
@@ -51,12 +57,15 @@ export const fetchHorsesByBreeds = async (kind: "horse" | "pony"): Promise<Horse
 
     for (const breed of breeds) {
         // Загружаем сразу большее количество лошадей, чтобы избежать проблем с pagination по breed_ids
-        const horsesResult = await fetchHorseList({
-            breed_ids: [breed.id],
-            kind: [kind],
-            limit: 100,
-            offset: 0,
-        });
+        const horsesResult = await fetchHorseList(
+            {
+                breed_ids: [breed.id],
+                kind: [kind],
+                limit: 100,
+                offset: 0,
+            },
+            serviceNames
+        );
 
         if (horsesResult.status === "ok" && horsesResult.data?.items) {
             horsesByBreeds.push({

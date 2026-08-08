@@ -4,15 +4,16 @@ import {
   ApiResult,
   ApiListPaginatedResponseType,
   PriceListQueryParams,
-  PriceOutDto,
+  PriceOutWithTablesDto,
+  PriceQueryParams,
 } from "@/types";
 
 export const priceList = (
   params: PriceListQueryParams = {},
   options?: RequestInit
-): Promise<ApiResult<ApiListPaginatedResponseType<PriceOutDto>>> => {
+): Promise<ApiResult<ApiListPaginatedResponseType<PriceOutWithTablesDto>>> => {
   const paramtrizedUrl = addQueryParamsToUrl("/prices", params);
-  return apiFetch<ApiListPaginatedResponseType<PriceOutDto>>(
+  return apiFetch<ApiListPaginatedResponseType<PriceOutWithTablesDto>>(
     paramtrizedUrl,
     options
   );
@@ -20,13 +21,13 @@ export const priceList = (
 
 export const priceDetail = (
   priceSlug: string,
-  params?: { tables?: boolean; page_data?: boolean }
-): Promise<ApiResult<PriceOutDto>> => {
+  params?: PriceQueryParams
+): Promise<ApiResult<PriceOutWithTablesDto>> => {
   const paramtrizedUrl = addQueryParamsToUrl(
     `/prices/${priceSlug}`,
     params || {}
   );
-  return apiFetch<PriceOutDto>(paramtrizedUrl, {
+  return apiFetch<PriceOutWithTablesDto>(paramtrizedUrl, {
     method: "GET",
   });
 };

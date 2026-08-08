@@ -2,7 +2,7 @@ import { UUID } from "crypto"
 import { HorseBreedOutDto } from "./horseBreeds"
 import { HorseCoatColorOutDto } from "./horseCoatColor"
 import { HorseOwnerOutDto } from "./horseOwners"
-import { PhotoOutDto } from "./photos"
+import { PhotoOutShortDto } from "./photos"
 import { HorseServiceOutDto } from "./horseServices"
 import { ApiCreatedUpdatedAtType } from "./api"
 
@@ -25,7 +25,7 @@ export type HorseListQueryParams = {
   ddate_lte?: string | null //максимальная дата смерти лошади (формат YYYY-MM-DD)
   horse_owner_ids?: UUID[] | null //фильтр по UUID владельцев (логика OR)
   services?: UUID[] | null //фильтр по UUID оказываемых услуг (логика OR)
-  service_names?: UUID[] | null //фильтр по наименованиям услуг (регистронезависимое полное совпадение) (логика OR)
+  service_names?: string[] | null //фильтр по наименованиям услуг (регистронезависимое полное совпадение) (логика OR)
   this_stable?: boolean | null //фильтр по местонахождению лошади на данной конюшни
   exclude_ids?: UUID[] | null //исключить UUID лошадей
   include_ids?: UUID[] | null //искать только среди этих UUID лошадей
@@ -63,6 +63,7 @@ export type HorseOutDto = ApiCreatedUpdatedAtType & {
   id: UUID //UUID
   slug: string //буквенный идентификатор
   name: string //кличка
+  code?: string | null //код лошади
   description?: string | null //описание
   breed?: HorseBreedOutDto | null //порода
   coat_color?: HorseCoatColorOutDto | null //масть
@@ -74,7 +75,7 @@ export type HorseOutDto = ApiCreatedUpdatedAtType & {
   bdate_mode?: "y" | "ym" | "ymd" | "hide" //формат отображения даты рождения
   ddate_mode?: "y" | "ym" | "ymd" | "hide" //формат отображения даты смерти
   horse_owner?: HorseOwnerOutDto | null //владелец
-  photos?: PhotoOutDto[] //фотографии
+  photos?: PhotoOutShortDto[] //фотографии
   services?: HorseServiceOutDto[] //связанные услуги
   this_stable: boolean //базируется ли на этой конюшне
   bdate_formatted: string | null //форматированная для вывода дата рождения

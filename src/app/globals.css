@@ -21,6 +21,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+.text-bold {
+  font-weight: 700;
+}
+
+@media (max-width: 549px) {
+  .pedigree-card,
+  .pedigree-card * {
+    font-size: 10px !important;
+  }
+}
+
 html {
   overflow-x: hidden;
   max-width: 100vw;

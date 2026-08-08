@@ -8,7 +8,6 @@ import {
 import { HorseOutDto } from "@/types";
 import { Pedigree } from "./Pedigree";
 import { useEffect, useMemo, useState } from "react";
-import { services } from "../data/services";
 import HorseList from "./HorseList";
 
 type OneHorsePageProps = {
@@ -20,7 +19,7 @@ export const OneHorsePage = ({
 }: OneHorsePageProps) => {
 
     const horsePhotos = (horse.photos && horse.photos.length > 0)
-        ? horse.photos.map(photo => ({ src: photo.url, alt: photo.name }))
+        ? horse.photos.map(photo => ({ src: photo.url, alt: horse.name || "Изображение лошади" }))
         : [
             { src: "/images/horses/horse1.jpg", alt: "Изображение лошади" },
             { src: "/images/horses/horse2.jpg", alt: "Изображение лошади" },
@@ -36,15 +35,48 @@ export const OneHorsePage = ({
 
     const horseName = horse.name
 
+    const services = horse.services?.filter(service => service.name !== "Племенной состав")
+
+    const age = new Date().getFullYear() - (horse.bdate ? new Date(horse.bdate).getFullYear() : 0);
+
+    let sex;
+
+    switch (horse.sex) {
+        case "male": switch (age >= 3) {
+            case true: sex = "Жеребец"; break;
+            default: sex = "Жеребчик"; break;
+        }
+            break;
+        case "female": switch (age >= 3) {
+            case true: sex = "Кобыла"; break;
+            default: sex = "Кобылка"; break;
+        }
+            break;
+        case "geld": sex = "Мерин";
+            break;
+        default: sex = "";
+    }
+
     const horseInfoSection = (<div className="p-2">
-        <p><b>Пол:</b> {horse.sex}</p>
+        <p><b>Пол:</b> {sex}</p>
         {horse.breed?.name && <p><b>Порода:</b> {horse.breed?.name}</p>}
         {horse.coat_color?.name && <p><b>Масть:</b> {horse.coat_color?.name}</p>}
+        {horse.height && <p><b>Рост:</b> {horse.height} см</p>}
         {horse.bdate_formatted && <p><b>Дата рождения:</b> {horse.bdate_formatted}</p>}
-        {horse.ddate_formatted && <p><b>Дата смерти:</b> {horse.ddate_formatted}</p>}
+        {horse.ddate_formatted && horse.ddate_formatted && <p><b>Дата смерти:</b> {horse.ddate_formatted}</p>}
+
     </div>)
 
-    const horseDescription = (horse.description && <p className="p-2">{horse.description}</p>)
+    const description = [horse.description, ...(horse.services?.map(service => service.description) || [])]
+
+    const horseDescription =
+        description.length > 0 && (
+            <ul className="p-2 py-2">
+                {description.map((desc, index) => (
+                    <li key={index}>{desc}</li>
+                ))}
+            </ul>
+        )
 
     const horseOwnerSection = <div className="p-2">
         <p><b>Владелец: </b> {horse.horse_owner?.name}</p>
@@ -93,29 +125,32 @@ export const OneHorsePage = ({
                 <div className="mb-2 flex flex-col md:flex-row gap-4">
                     <div className="mx-auto w-full md:w-[50%] lg:w-[57%]">{horseGallerySection}</div>
                     <div className="w-full md:w-[50%] lg:w-[43%] bg-[#f8f2e4] border-y border-[#d3c6aa] p-2">
-                        <h2 className="mb-4">Информация</h2>
-                        <div className="md:block w-[55%] border-t border-[#2f3600]" />
-                        <div className="grow flex flex-col sm:flex-row md:flex-col">
+                        <h2 className="hidden">Информация</h2>
+                        <div className="grow flex flex-col md:flex-col">
                             <div className="grow">{horseInfoSection}</div>
-                            <div className="md:block w-[55%] border-t border-[#2f3600]" />
-                            {horseOwnerSection}
+                            <div className=" md:block w-[55%] border-t border-[#2f3600]" />
+                            <div className="grow">{horseDescription}</div>
                         </div>
                     </div>
                 </div>
-                {horseDescription} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam error nam ab ad? Tempora, inventore et dolor consequatur sed reprehenderit recusandae qui cupiditate tenetur aspernatur sunt facilis nulla similique ullam.
+                <div className="w-full flex justify-between gap-2 flex-col sm:flex-row">
+                    {services && services.length > 0 &&
+                        <ul className="flex gap-3 md:w-[50%] lg:w-[57%] ">
+                            {services && services.map((service) =>
+                            (
+                                <li key={service.id} className="p-3 grow flex flex-col gap-3 bg-[#f8f2e4] border border-[#d3c6aa] rounded-2xl">
+                                    <h3 className="">{service.name}</h3>
+                                    <div className="w-[35%] border-t border-[#2f3600]" />
+                                    <p className="">Цена: <b>{service.price} руб.</b></p>
+                                </li>)
+                            )}
+                        </ul>}
+                    {horse.horse_owner && <div className="grow">{horseOwnerSection}</div>}
+                </div>
+
             </div>
 
             <Breadcrumbs items={breadcrumbItems} className="ml-6" />
-
-            <ul className="flex flex-col gap-3 md:flex-row">
-                {services && services.map((service) =>
-                    <li key={service.id} className="p-3 flex flex-col gap-3 bg-[#f8f2e4] border border-[#d3c6aa] rounded-2xl">
-                        <h2 className="">{service.name}</h2>
-                        <p className="mb-2">{service.description}</p>
-                        <div className="w-[35%] border-t border-[#2f3600]" />
-                        <p className="">Цена: <b>{service.price} руб.</b></p>
-                    </li>)}
-            </ul>
 
             <div className="w-full p-2"><Pedigree horse={horse} /></div>
             {horse.pedigree?.foals && horse.pedigree.foals.length > 0 &&

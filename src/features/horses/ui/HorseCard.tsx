@@ -12,8 +12,20 @@ const HorseCard = ({
     const articleClasses =
         "rounded-3xl p-2 text-[#2f3600] border border-[#bcc76e] flex flex-col justify-stretch items-stretch w-full h-full mx-auto";
     const cardColor = horse.sex === "male" ? "bg-[#8d784f]/25" : "bg-[#f0e7cf]";
-    const content = horse.sex + ", " + horse.breed?.short_name + ", " + horse.coat_color?.short_name + ", " + horse.bdate_formatted;
-    const pedigree = horse.pedigree && horse.pedigree.sire?.name + " + " + horse.pedigree.dam?.name;
+    const sex = horse.sex === "male" ? "жер." : horse.sex === "female" ? "коб." : "";
+    const bd = horse.bdate_mode === "ymd" ? horse.bdate_formatted?.slice(6, 10) : horse.bdate_formatted;
+    const content = sex + ", " + horse.breed?.short_name + ", " + horse.coat_color?.short_name + ", " + bd;
+
+    const horseWithParents = horse as HorseOutDto & {
+        parents?: {
+            sire?: { name?: string | null } | null;
+            dam?: { name?: string | null } | null;
+        };
+    };
+
+    const sireName = horseWithParents.parents?.sire?.name ?? horse.pedigree?.sire?.name;
+    const damName = horseWithParents.parents?.dam?.name ?? horse.pedigree?.dam?.name;
+    const pedigree = [sireName, damName].filter((name): name is string => Boolean(name)).join(" + ");
     const media = horse.photos && horse.photos.length > 0
         ? (<MediaImage src={horse.photos[0].url} alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />)
         : <MediaImage src="/images/horses/horse1.jpg" alt={horse.name || "Horse image"} ratio="4/3" className="w-full" />;

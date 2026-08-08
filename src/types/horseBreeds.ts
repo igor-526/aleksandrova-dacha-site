@@ -19,8 +19,9 @@ export type HorseBreedDetailQueryParams = {
 export type HorseBreedOutDto = ApiCreatedUpdatedAtType & {
     id: UUID //UUID
     name: string //наименование
-    short_name: string | null //короткое наименование
+    short_name: string //короткое наименование
     slug: string //буквенный идентификатор
     description: string | null //описание
+    kind: "horse" | "pony" //тип породы
     page_data?: string //[ПРИ page_data=true] контент страницы в формате HTML
 }

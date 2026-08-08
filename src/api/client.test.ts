@@ -22,6 +22,15 @@ describe("resolveApiBaseUrl", () => {
     expect(resolveApiBaseUrl()).toBe("https://api.eqcms.ru/api");
   });
 
+  it("adds the OpenAPI /api prefix when only the host is configured", () => {
+    process.env = {
+      ...originalEnv,
+      NEXT_PUBLIC_API_BASE_URL: "https://api.eqcms.ru",
+    };
+
+    expect(resolveApiBaseUrl()).toBe("https://api.eqcms.ru/api");
+  });
+
   it("removes trailing slashes from the configured API URL", () => {
     process.env = {
       ...originalEnv,

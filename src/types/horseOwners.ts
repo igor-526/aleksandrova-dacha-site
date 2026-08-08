@@ -1,12 +1,14 @@
 import { UUID } from "crypto";
 import { ApiCreatedUpdatedAtType } from "./api";
 
-export type HorseOwnerListAvalableSortings = "name" | "description" | "export type" | "-name" | "-description" | "-export type"
+export type HorseOwnerType = "person" | "company";
+
+export type HorseOwnerListAvalableSortings = "name" | "description" | "type" | "-name" | "-description" | "-type"
 
 export type HorseOwnerListQueryParams = {
     name?: string | null //регистронезависимый фильтр по вхождению наименования
     description?: string | null //регистронезависимый фильтр по вхождению описания
-    type?: ("person" | "company")[] //фильтрация по типу (логика OR)
+    type?: HorseOwnerType[] | null //фильтрация по типу (логика OR)
     address?: string | null //регистронезависимый фильтр по вхождению адреса
     phone_numbers?: string | null //фильтрация по номеру телефона
     sort?: HorseOwnerListAvalableSortings[] //список полей сортировки по приоритету
@@ -18,7 +20,7 @@ export type HorseOwnerOutDto = ApiCreatedUpdatedAtType & {
     id: UUID //UUID
     name: string //наименование
     description: string | null //описание
-    type: "person" | "company" //тип
+    type: HorseOwnerType //тип
     address: string | null //адрес
     phone_numbers: string[] //номера телефонов в формате "+7 (999) 123-45-67
 }

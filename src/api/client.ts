@@ -35,39 +35,49 @@ export function addQueryParamsToUrl<T extends Record<string, unknown>>(
   return `${path}${queryPart}${hash}`;
 }
 
+function ensureApiSuffix(url: string) {
+  const trimmed = url.trim().replace(/\/+$/, "");
+
+  if (!trimmed) {
+    return "/api";
+  }
+
+  return trimmed.endsWith("/api") ? trimmed : `${trimmed}/api`;
+}
+
 export function resolveApiBaseUrl() {
   const explicitUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL ?? 
+    process.env.NEXT_PUBLIC_API_BASE_URL ??
     process.env.API_BASE_URL;
-  
+
   if (explicitUrl) {
     const trimmed = explicitUrl.trim();
-    
+
     if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
-      return trimmed.replace(/\/+$/, "");
+      return ensureApiSuffix(trimmed);
     }
-    
+
     if (trimmed.startsWith("//")) {
       if (typeof window !== "undefined") {
         const protocol = window.location.protocol;
-        return `${protocol}${trimmed.replace(/\/+$/, "")}`;
+        return ensureApiSuffix(`${protocol}${trimmed.replace(/\/+$/, "")}`);
       }
-      return `https:${trimmed.replace(/\/+$/, "")}`;
+      return ensureApiSuffix(`https:${trimmed.replace(/\/+$/, "")}`);
     }
-    
+
     if (trimmed.startsWith("/")) {
       if (typeof window !== "undefined") {
-        return `${window.location.origin}${trimmed.replace(/\/+$/, "")}`;
+        return ensureApiSuffix(`${window.location.origin}${trimmed.replace(/\/+$/, "")}`);
       }
-      return `http://localhost:8001${trimmed.replace(/\/+$/, "")}`;
+      return ensureApiSuffix(`http://localhost:8001${trimmed.replace(/\/+$/, "")}`);
     }
-    
+
     if (typeof window !== "undefined") {
       const protocol = window.location.protocol;
-      return `${protocol}//${trimmed.replace(/\/+$/, "")}`;
+      return ensureApiSuffix(`${protocol}//${trimmed.replace(/\/+$/, "")}`);
     }
-    
-    return `https://${trimmed.replace(/\/+$/, "")}`;
+
+    return ensureApiSuffix(`https://${trimmed.replace(/\/+$/, "")}`);
   }
 
   if (typeof window !== "undefined") {
@@ -83,14 +93,14 @@ export function resolveApiBaseUrl() {
 
     const normalizedPort =
       (protocol === "http:" && backendPort === "80") ||
-      (protocol === "https:" && backendPort === "443")
+        (protocol === "https:" && backendPort === "443")
         ? ""
         : `:${backendPort}`;
 
-    return `${protocol}//${hostname}${normalizedPort}/api`;
+    return ensureApiSuffix(`${protocol}//${hostname}${normalizedPort}`);
   }
 
-  return "http://localhost:8001/api";
+  return ensureApiSuffix("http://localhost:8001");
 }
 
 export function resolveEquestrianServiceKey() {

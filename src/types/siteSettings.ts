@@ -23,6 +23,7 @@ export enum SiteSettingType {
 export type SiteSettingListQueryParams = ApiPaginationType & {
   key?: string | string[];
   name?: string;
+  value?: string | null;
   description?: string;
   type?: SiteSettingType[];
   sort?: SiteSettingAvailableSorting[];

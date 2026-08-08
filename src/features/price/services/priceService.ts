@@ -1,7 +1,7 @@
 import { priceDetail, priceList } from "@/api/price";
 import { priceGroupDetail } from "@/api/priceGroups";
 import { ApiResult, ApiListPaginatedResponseType, PriceGroupOutDto } from "@/types";
-import { PriceListQueryParams, PriceOutDto } from "@/types/prices";
+import { PriceListQueryParams, PriceOutDto, PriceQueryParams } from "@/types/prices";
 import { UUID } from "crypto";
 
 export const fetchPriceGroup = async (priceGroupId: UUID): Promise<ApiResult<PriceGroupOutDto>> => {
@@ -18,9 +18,8 @@ export const fetchPriceList = async (pageName: string): Promise<ApiResult<ApiLis
 }
 
 export const fetchPriceDetail = async (slug: string): Promise<ApiResult<PriceOutDto>> => {
-    const params = {
+    const params: PriceQueryParams = {
         page_data: true,
-        tables: true,
     };
     return await priceDetail(slug, params);
 }
