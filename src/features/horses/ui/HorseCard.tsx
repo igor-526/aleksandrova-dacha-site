@@ -12,7 +12,7 @@ const HorseCard = ({
     const articleClasses =
         "rounded-3xl p-2 text-[#2f3600] border border-[#bcc76e] flex flex-col justify-stretch items-stretch w-full h-full mx-auto";
     const cardColor = horse.sex === "male" ? "bg-[#8d784f]/25" : "bg-[#f0e7cf]";
-    const sex = horse.sex === "male" ? "жер." : horse.sex === "female" ? "коб." : "";
+    const sex = horse.sex === "male" ? "ж" : horse.sex === "female" ? "к" : "";
     const bd = horse.bdate_mode === "ymd" ? horse.bdate_formatted?.slice(6, 10) : horse.bdate_formatted;
     const content = sex + ", " + horse.breed?.short_name + ", " + horse.coat_color?.short_name + ", " + bd;
 

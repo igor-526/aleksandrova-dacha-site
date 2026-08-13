@@ -15,6 +15,7 @@ export const fetchHorseList = async (
 ): Promise<ApiResult<ApiListPaginatedResponseType<HorseOutDto>>> => {
     const normalizedParams: HorseListQueryParams = {
         this_stable: true,
+        sort: ["-sex", "name"],
         pedigree: 1,
         limit: 10,
         offset: 0,

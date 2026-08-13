@@ -118,6 +118,17 @@ export const OneHorsePage = ({
         return [...trimmed, { name: horse.name }];
     }, [horse.name, storedBreadcrumbs]);
 
+    const foals = useMemo(() => {
+        const items = horse.pedigree?.foals ?? [];
+
+        return [...items].sort((a, b) => {
+            const yearA = a.bdate ? Number(a.bdate.slice(0, 4)) : 0;
+            const yearB = b.bdate ? Number(b.bdate.slice(0, 4)) : 0;
+
+            return yearB - yearA;
+        });
+    }, [horse.pedigree?.foals]);
+
     return (
         <Container className="space-y-20 bg-[#f6efe0] pb-20 text-[#2f3600]">
             <div className="w-full mb-3 p-3 bg-[#f0e7cf] border-y border-[#d3c6aa]">
@@ -153,10 +164,10 @@ export const OneHorsePage = ({
             <Breadcrumbs items={breadcrumbItems} className="ml-6" />
 
             <div className="w-full p-2"><Pedigree horse={horse} /></div>
-            {horse.pedigree?.foals && horse.pedigree.foals.length > 0 &&
+            {foals.length > 0 &&
                 <div className="p-4 bg-[#f0e7cf] border-y border-[#d3c6aa]">
-                    <h2 className="mb-4">Потомство ({horse.pedigree.foals.length})</h2>
-                    <HorseList items={horse.pedigree?.foals} columns={5} visibleRows={2} />
+                    <h2 className="mb-4">Потомство ({foals.length})</h2>
+                    <HorseList items={foals} columns={5} visibleRows={2} />
                 </div>}
 
         </Container>
