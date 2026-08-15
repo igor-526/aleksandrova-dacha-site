@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import type { HorseOutDto } from "@/types/horse";
+import { getPrivateBreedName } from "@/features/horses/data/horseService";
 import { cn } from "../utils/cn";
 
 const MAX_GENERATIONS = 3;
@@ -57,7 +58,7 @@ const PedigreeCard = ({
           {horse?.name ?? "РќРµРёР·РІРµСЃС‚РЅРѕ"}
         </h3>
         {horse?.breed?.name && (
-          <p className="text-xs text-[#4b4d2f]">РџРѕСЂРѕРґР°: {horse.breed.name}</p>
+          <p className="text-xs text-[#4b4d2f]">РџРѕСЂРѕРґР°: {getPrivateBreedName(horse.breed.name)}</p>
         )}
         {horse?.kind !== undefined && (
           <p className="text-xs text-[#4b4d2f]">

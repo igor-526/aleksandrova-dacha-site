@@ -8,6 +8,7 @@ export type PedigreeCardProps = {
     horse: {
         name?: string,
         id?: string,
+        breed?: string | null,
         color?: string | null,
         bdate?: string | null,
         bdate_mode?: "y" | "ym" | "ymd" | "hide",
@@ -98,9 +99,9 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         : <p style={textStyle} className={cn("text-center text-bold font-bold", textClass)}>{horse.name}</p>
                     }
                     <p style={textStyle} className={cn("text-center", textClass)}>
-                        {horse.color && horse.bdate && <span style={textStyle}>{horse.color}, {bd}</span>}
-                        {horse.color && !horse.bdate && <span style={textStyle}>{horse.color}</span>}
-                        {!horse.color && horse.bdate && <span style={textStyle}>{bd}</span>}
+                        {horse.breed && <span style={textStyle}>{horse.breed + ", "}</span>}
+                        {horse.color && horse.bdate && <span style={textStyle}>{horse.color + ", "}</span>}
+                        {horse.bdate && <span style={textStyle}>{bd}</span>}
                     </p>
                 </div>
             }
@@ -122,9 +123,9 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         : <p style={textStyle} className={cn("text-center text-bold font-bold", textClass)}>{horse.name}</p>
                     }
                     <p style={textStyle} className={cn("text-center", textClass)}>
-                        {horse.color && horse.bdate && <span style={textStyle}>{horse.color}, {bd}</span>}
-                        {horse.color && !horse.bdate && <span style={textStyle}>{horse.color}</span>}
-                        {!horse.color && horse.bdate && <span style={textStyle}>{bd}</span>}
+                        {horse.breed && <span style={textStyle}>{horse.breed + ", "}</span>}
+                        {horse.color && horse.bdate && <span style={textStyle}>{horse.color + ", "}</span>}
+                        {horse.bdate && <span style={textStyle}>{bd}</span>}
                     </p>
                 </div>
             }
@@ -137,7 +138,7 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                         ratio="4/3"
                         rounded="lg"
                     />}
-                    <div className="w-[60%] h-full flex flex-col items-center justify-center">
+                    <div className="w-full h-full flex flex-col items-center justify-center">
                         {horse.this_stable ?
                             <Link href={`/horses/${horse.id}`} style={textStyle} className={cn("text-center underline underline-offset-2 text-bold font-bold", textClass)}>
                                 {horse.name}
@@ -145,9 +146,9 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             : <p style={textStyle} className={cn("text-center text-bold font-bold", textClass)}>{horse.name}</p>
                         }
                         <p style={textStyle} className={cn("text-center", textClass)}>
-                            {horse.color && horse.bdate && <span style={textStyle}>{horse.color}, {bd}</span>}
-                            {horse.color && !horse.bdate && <span style={textStyle}>{horse.color}</span>}
-                            {!horse.color && horse.bdate && <span style={textStyle}>{bd}</span>}
+                            {horse.breed && <span style={textStyle}>{horse.breed + ", "}</span>}
+                            {horse.color && horse.bdate && <span style={textStyle}>{horse.color + ", "}</span>}
+                            {horse.bdate && <span style={textStyle}>{bd}</span>}
                         </p>
                     </div>
                 </div>
@@ -170,9 +171,9 @@ export const PedigreeCard = ({ horse, vertical = false, level, style, className 
                             : <p style={textStyle} className={cn("text-center text-bold font-bold", textClass)}>{horse.name}</p>
                         }
                         <p style={textStyle} className={cn("text-center", textClass)}>
-                            {horse.color && horse.bdate && <span style={textStyle}>{horse.color}, {bd}</span>}
-                            {horse.color && !horse.bdate && <span style={textStyle}>{horse.color}</span>}
-                            {!horse.color && horse.bdate && <span style={textStyle}>{bd}</span>}
+                            {horse.breed && <span style={textStyle}>{horse.breed + ", "}</span>}
+                            {horse.color && horse.bdate && <span style={textStyle}>{horse.color + ", "}</span>}
+                            {horse.bdate && <span style={textStyle}>{bd}</span>}
                         </p>
                     </div>
                 </div>

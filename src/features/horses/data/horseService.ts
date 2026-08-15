@@ -4,6 +4,37 @@ import { ApiResult, HorseOutDto, HorseListQueryParams, ApiListPaginatedResponseT
 
 export type HorseListColumns = 1 | 2 | 3 | 5;
 
+export const getBreedParts = (breedName?: string | null) => {
+    const trimmedName = breedName?.trim() ?? "";
+
+    if (!trimmedName) {
+        return { groupName: "", privateName: "" };
+    }
+
+    const parts = trimmedName
+        .split("|")
+        .map((part) => part.trim())
+        .filter(Boolean);
+
+    if (parts.length <= 1) {
+        return { groupName: trimmedName, privateName: trimmedName };
+    }
+
+    return {
+        groupName: parts[0],
+        privateName: parts[parts.length - 1],
+    };
+};
+
+export const getBreedGroupName = (breedName?: string | null) => getBreedParts(breedName).groupName;
+
+export const getPrivateBreedName = (breedName?: string | null) => {
+    const { privateName, groupName } = getBreedParts(breedName);
+    return privateName || groupName;
+};
+
+export const getBreedGroupKey = (breedName?: string | null) => getBreedGroupName(breedName).trim().toLocaleLowerCase();
+
 export const getHorseListPageSize = (columns: HorseListColumns, visibleRows: number) => {
     const maxColumns = columns === 1 ? 1 : columns === 2 ? 2 : columns === 3 ? 3 : 5;
     return Math.max(1, maxColumns * visibleRows);
@@ -54,13 +85,40 @@ export const fetchHorsesByBreeds = async (
     }
 
     const breeds = breedsResult.data.items;
-    const horsesByBreeds: HorsesByBreed[] = [];
+    const groupedBreeds = new Map<string, { breed: HorseBreedOutDto; breedIds: string[] }>();
 
     for (const breed of breeds) {
-        // Загружаем сразу большее количество лошадей, чтобы избежать проблем с pagination по breed_ids
+        const groupKey = getBreedGroupKey(breed.name);
+        const groupName = getBreedGroupName(breed.name);
+
+        if (!groupKey) {
+            continue;
+        }
+
+        const existingGroup = groupedBreeds.get(groupKey);
+        const normalizedBreed = {
+            ...breed,
+            name: groupName,
+            short_name: getPrivateBreedName(breed.short_name) || breed.short_name,
+        };
+
+        if (existingGroup) {
+            existingGroup.breedIds.push(breed.id);
+            continue;
+        }
+
+        groupedBreeds.set(groupKey, {
+            breed: normalizedBreed,
+            breedIds: [breed.id],
+        });
+    }
+
+    const horsesByBreeds: HorsesByBreed[] = [];
+
+    for (const entry of groupedBreeds.values()) {
         const horsesResult = await fetchHorseList(
             {
-                breed_ids: [breed.id],
+                breed_ids: entry.breedIds as HorseListQueryParams["breed_ids"],
                 kind: [kind],
                 limit: 100,
                 offset: 0,
@@ -70,8 +128,8 @@ export const fetchHorsesByBreeds = async (
 
         if (horsesResult.status === "ok" && horsesResult.data?.items) {
             horsesByBreeds.push({
-                breed,
-                horses: horsesResult.data.items, // Загружаем все доступные элементы сразу
+                breed: entry.breed,
+                horses: horsesResult.data.items,
                 total: horsesResult.data.total,
             });
         }

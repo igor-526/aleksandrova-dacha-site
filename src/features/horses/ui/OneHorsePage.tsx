@@ -6,6 +6,7 @@ import {
     GallerySection,
 } from "@/ui";
 import { HorseOutDto } from "@/types";
+import { getPrivateBreedName } from "../data/horseService";
 import { Pedigree } from "./Pedigree";
 import { useEffect, useMemo, useState } from "react";
 import HorseList from "./HorseList";
@@ -59,7 +60,7 @@ export const OneHorsePage = ({
 
     const horseInfoSection = (<div className="p-2">
         <p><b>Пол:</b> {sex}</p>
-        {horse.breed?.name && <p><b>Порода:</b> {horse.breed?.name}</p>}
+        {horse.breed?.name && <p><b>Порода:</b> {getPrivateBreedName(horse.breed?.name)}</p>}
         {horse.coat_color?.name && <p><b>Масть:</b> {horse.coat_color?.name}</p>}
         {horse.height && <p><b>Рост:</b> {horse.height} см</p>}
         {horse.bdate_formatted && <p><b>Дата рождения:</b> {horse.bdate_formatted}</p>}
