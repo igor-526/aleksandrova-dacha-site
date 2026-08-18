@@ -1,14 +1,14 @@
 "use client";
 
 import { fetchHorseList } from "../data/horseService";
-import { HorseListQueryParams, HorseOutDto, HorseBreedOutDto } from "@/types";
+import { HorseListQueryParams, HorseOutDto } from "@/types";
 import { Button, cn } from "@/ui";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HorseCard from "./HorseCard";
 
 export type HorsesByBreedItem = {
-    breed: HorseBreedOutDto;
+    breed: { id: string; name: string; slug: string };
     horses: HorseOutDto[];
     total: number;
 };
@@ -218,13 +218,13 @@ const HorseList = ({
 
                         return (
                             <div key={breedItem.breed.id} className="space-y-3">
-                                <div className="flex items-center justify-between px-6">
+                                <div className="px-6">
                                     <h3 className="text-lg font-semibold text-[#2f3600]">
                                         {breedItem.breed.name}
+                                        <span className="ml-2 text-lg font-semibold text-[#2f3600]">
+                                            ({(breedItem.horses || []).length})
+                                        </span>
                                     </h3>
-                                    <div className="text-sm text-[#2f3600]/70">
-                                        {`${(breedItem.horses || []).length} загружено`}
-                                    </div>
                                 </div>
                                 <div
                                     className={cn(

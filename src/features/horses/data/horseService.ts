@@ -65,11 +65,21 @@ export const fetchHorseDetail = async (name: string): Promise<ApiResult<HorseOut
 }
 
 export const fetchBreedList = async (kind?: "horse" | "pony", limit: number = 100) => {
-    return await horseBreedList({ kind, limit, offset: 0 });
+    return await horseBreedList({
+        kind: kind ? [kind] : undefined,
+        limit,
+        offset: 0,
+    });
 }
 
+export type HorseBreedGroupSummary = {
+    id: string;
+    name: string;
+    slug: string;
+};
+
 export type HorsesByBreed = {
-    breed: HorseBreedOutDto;
+    breed: HorseBreedGroupSummary;
     horses: HorseOutDto[];
     total: number;
 };
@@ -85,37 +95,43 @@ export const fetchHorsesByBreeds = async (
     }
 
     const breeds = breedsResult.data.items;
-    const groupedBreeds = new Map<string, { breed: HorseBreedOutDto; breedIds: string[] }>();
+    const groupedBreeds = new Map<string, { group: HorseBreedGroupSummary; breedIds: string[] }>();
 
     for (const breed of breeds) {
-        const groupKey = getBreedGroupKey(breed.name);
-        const groupName = getBreedGroupName(breed.name);
+        const group = breed.group ?? {
+            id: breed.id,
+            name: breed.name?.trim() || breed.name,
+            slug: breed.slug,
+        };
+
+        const groupKey = (group.id || group.slug || group.name || "").trim().toLocaleLowerCase();
 
         if (!groupKey) {
             continue;
         }
 
         const existingGroup = groupedBreeds.get(groupKey);
-        const normalizedBreed = {
-            ...breed,
-            name: groupName,
-            short_name: getPrivateBreedName(breed.short_name) || breed.short_name,
-        };
-
         if (existingGroup) {
             existingGroup.breedIds.push(breed.id);
             continue;
         }
 
         groupedBreeds.set(groupKey, {
-            breed: normalizedBreed,
+            group: {
+                ...group,
+                name: group.name?.trim() || group.name,
+            },
             breedIds: [breed.id],
         });
     }
 
+    const sortedGroups = Array.from(groupedBreeds.values()).sort((a, b) =>
+        (a.group.name ?? "").localeCompare(b.group.name ?? "", undefined, { sensitivity: "base" })
+    );
+
     const horsesByBreeds: HorsesByBreed[] = [];
 
-    for (const entry of groupedBreeds.values()) {
+    for (const entry of sortedGroups) {
         const horsesResult = await fetchHorseList(
             {
                 breed_ids: entry.breedIds as HorseListQueryParams["breed_ids"],
@@ -126,9 +142,9 @@ export const fetchHorsesByBreeds = async (
             serviceNames
         );
 
-        if (horsesResult.status === "ok" && horsesResult.data?.items) {
+        if (horsesResult.status === "ok" && horsesResult.data?.items && horsesResult.data.items.length > 0) {
             horsesByBreeds.push({
-                breed: entry.breed,
+                breed: entry.group,
                 horses: horsesResult.data.items,
                 total: horsesResult.data.total,
             });
