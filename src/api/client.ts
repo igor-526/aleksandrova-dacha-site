@@ -140,10 +140,23 @@ export default async function apiFetch<T>(
   const url = `${apiBaseUrl}${path}`;
 
   try {
-    const res = await fetch(url, {
+    const finalOptions: RequestInit = {
       ...options,
       headers: buildHeaders(options),
-    });
+    };
+
+    // On server side, prefer fresh data for GET requests to reflect CMS changes
+    if (typeof window === "undefined") {
+      const method = finalOptions.method ? String(finalOptions.method).toUpperCase() : "GET";
+      if (method === "GET") {
+        // don't override explicit cache option from caller
+        if ((finalOptions).cache == null) {
+          (finalOptions).cache = "no-store";
+        }
+      }
+    }
+
+    const res = await fetch(url, finalOptions);
 
     if (res.status === 204 || res.status === 205) {
       return { status: "ok", data: null as unknown as T };
