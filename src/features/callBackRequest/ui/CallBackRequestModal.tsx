@@ -6,8 +6,8 @@ import { sendCallBackRequest } from "../services/sendCallBackRequest";
 
 export type FeedbackFormValues = {
   name: string;
+  comment?: string;
   phone: string;
-  notes: string;
   agree: boolean;
 };
 
@@ -20,8 +20,8 @@ export type CallBackRequestModalProps = {
 
 const defaultValues: FeedbackFormValues = {
   name: "",
+  comment: "",
   phone: "",
-  notes: "",
   agree: false,
 };
 
@@ -58,8 +58,8 @@ export function CallBackRequestModal({
       try {
         await sendCallBackRequest({
           name: values.name,
+          comment: values.comment,
           phone: values.phone,
-          notes: values.notes,
         });
         setOpen(false);
         setSentOpen(true);
@@ -87,7 +87,6 @@ export function CallBackRequestModal({
         size="md"
         className="px-3 py-2 text-xs sm:px-4 sm:text-base"
         onClick={handleSubmit}
-        disabled={true}
       >
         Отправить заявку
       </Button>
@@ -136,8 +135,8 @@ export function CallBackRequestModal({
           <Textarea
             label="Комментарий"
             placeholder="Расскажите, что вас интересует"
-            value={values.notes}
-            onChange={(event) => update("notes", event.target.value)}
+            value={values.comment}
+            onChange={(event) => update("comment", event.target.value)}
             className="px-3 py-2 text-sm sm:px-4 sm:text-base"
           />
           <div className="space-y-2">
