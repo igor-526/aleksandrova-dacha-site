@@ -54,6 +54,11 @@ jobs:
           build-args: |
             NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
             EQUESTRIAN_SERVICE_KEY=${{ secrets.EQUESTRIAN_SERVICE_KEY }}
+            SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}
+            SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            SENTRY_ENVIRONMENT=${{ secrets.SENTRY_ENVIRONMENT }}
+            SENTRY_TRACES_SAMPLE_RATE=${{ secrets.SENTRY_TRACES_SAMPLE_RATE }}
+            SENTRY_RELEASE=${{ secrets.SENTRY_RELEASE }}
 
       - name: Set up kubeconfig
         run: |
