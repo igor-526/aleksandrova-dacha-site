@@ -1,5 +1,12 @@
 # Site for Russian equestrian
 
+## Observability
+
+Public consumer использует `@sentry/nextjs` для client/server/edge ошибок.
+Sentry выключен по умолчанию; browser-конфигурация встраивается при сборке.
+Переменные, sanitization, тестирование и rollback описаны в
+[`docs/operations/observability.md`](../../docs/operations/observability.md).
+
 ## Structure
 ```text
 /
