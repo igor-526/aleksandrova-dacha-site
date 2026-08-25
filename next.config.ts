@@ -3,6 +3,20 @@ import { withSentryConfig } from "@sentry/nextjs";
 import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    const apiProxyTarget = process.env.SITE_API_PROXY_TARGET?.trim().replace(/\/+$/, "");
+
+    if (!apiProxyTarget) {
+      return [];
+    }
+
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${apiProxyTarget}/:path*`,
+      },
+    ];
+  },
   env: {
     SENTRY_ENABLED: process.env.SENTRY_ENABLED ?? "false",
     SENTRY_DSN: process.env.SENTRY_DSN ?? "",

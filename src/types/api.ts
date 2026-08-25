@@ -27,6 +27,7 @@ export type ApiSuccess<T> = {
 export type ApiError = {
     status: "error";
     data: DetailResponse;
+    statusCode?: number;
 };
 
 export type ApiResult<T> = ApiSuccess<T> | ApiError;

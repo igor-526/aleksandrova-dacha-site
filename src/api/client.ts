@@ -173,7 +173,7 @@ export default async function apiFetch<T>(
       (parsed as DetailResponse | null)?.detail ||
       (raw?.trim() || res.statusText || "Request failed");
 
-    return { status: "error", data: { detail } };
+    return { status: "error", data: { detail }, statusCode: res.status };
   } catch {
     return { status: "error", data: { detail: "Network error or invalid JSON" } };
   }

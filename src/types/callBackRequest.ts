@@ -1,5 +1,5 @@
 export type CallBackRequestInDto = {
-    name?: string | null;
-    phone: string;
-    notes?: string | null;
+  name: string;
+  phone: string;
+  comment?: string | null;
 };
