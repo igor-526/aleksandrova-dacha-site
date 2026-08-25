@@ -39,27 +39,38 @@ describe("resolveApiBaseUrl", () => {
 
     expect(resolveApiBaseUrl()).toBe("https://api.eqcms.ru/api");
   });
+
+  it("keeps callback traffic on the absolute backend origin", () => {
+    process.env = {
+      ...originalEnv,
+      NEXT_PUBLIC_API_BASE_URL: "https://backend.example.test/api",
+    };
+
+    expect(`${resolveApiBaseUrl()}/callback_requests`).toBe(
+      "https://backend.example.test/api/callback_requests",
+    );
+  });
 });
 
 describe("resolveEquestrianServiceKey", () => {
-  it("uses EQUESTRIAN_SERVICE_KEY as the canonical service key", () => {
+  it("uses the explicit public selector in browser-compatible code", () => {
     process.env = {
       ...originalEnv,
-      EQUESTRIAN_SERVICE_KEY: " default-equestrian ",
-      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: "ignored-public-key",
+      EQUESTRIAN_SERVICE_KEY: "ignored-server-only-key",
+      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: " site-ad ",
     };
 
-    expect(resolveEquestrianServiceKey()).toBe("default-equestrian");
+    expect(resolveEquestrianServiceKey()).toBe("site-ad");
   });
 
-  it("does not use NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY as a fallback", () => {
+  it("does not hide missing public configuration behind a fallback", () => {
     process.env = {
       ...originalEnv,
-      EQUESTRIAN_SERVICE_KEY: "",
-      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: "ignored-public-key",
+      EQUESTRIAN_SERVICE_KEY: "default-equestrian",
+      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: "",
     };
 
-    expect(resolveEquestrianServiceKey()).toBe("default-equestrian");
+    expect(resolveEquestrianServiceKey()).toBe("");
   });
 });
 
@@ -67,7 +78,7 @@ describe("buildHeaders", () => {
   it("adds X-Equestrian-Service-Key for GET requests", () => {
     process.env = {
       ...originalEnv,
-      EQUESTRIAN_SERVICE_KEY: "default-equestrian",
+      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: "default-equestrian",
     };
 
     expect(buildHeaders().get("X-Equestrian-Service-Key")).toBe(
@@ -78,7 +89,7 @@ describe("buildHeaders", () => {
   it("does not add X-Equestrian-Service-Key for write requests", () => {
     process.env = {
       ...originalEnv,
-      EQUESTRIAN_SERVICE_KEY: "default-equestrian",
+      NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: "default-equestrian",
     };
 
     expect(

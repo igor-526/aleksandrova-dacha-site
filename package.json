@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "verify:public-selector-bundle": "node scripts/verify-public-selector-bundle.mjs",
     "start": "next start",
     "test": "vitest run --project unit",
     "lint": "next lint",

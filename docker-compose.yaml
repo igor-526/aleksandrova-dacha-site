@@ -7,14 +7,14 @@ services:
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
-        EQUESTRIAN_SERVICE_KEY: ${EQUESTRIAN_SERVICE_KEY}
+        NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY: ${NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY}
     container_name: ad-site
     ports:
       - "${PORT:-3000}:3000"
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
-      - EQUESTRIAN_SERVICE_KEY=${EQUESTRIAN_SERVICE_KEY}
+      - NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY=${NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY}
       - PORT=3000
       - NEXTJS_PORT=3001
     restart: unless-stopped

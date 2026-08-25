@@ -6,6 +6,8 @@ export const callBackRequestCreate = (
     data: CallBackRequestInDto,
     options?: RequestInit,
 ): Promise<ApiResult<void>> => {
+    const selector = resolveEquestrianServiceKey();
+
     return apiFetch<void>("/callback_requests", {
         ...options,
         method: "POST",
@@ -13,7 +15,7 @@ export const callBackRequestCreate = (
         headers: {
             "Content-Type": "application/json",
             ...options?.headers,
-            "X-Equestrian-Service-Key": resolveEquestrianServiceKey(),
+            ...(selector ? { "X-Equestrian-Service-Key": selector } : {}),
         },
     });
 };

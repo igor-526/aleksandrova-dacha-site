@@ -104,7 +104,7 @@ export function resolveApiBaseUrl() {
 }
 
 export function resolveEquestrianServiceKey() {
-  return (process.env.EQUESTRIAN_SERVICE_KEY || "default-equestrian").trim();
+  return (process.env.NEXT_PUBLIC_EQUESTRIAN_SERVICE_KEY ?? "").trim();
 }
 
 function isGetRequest(options?: RequestInit) {
