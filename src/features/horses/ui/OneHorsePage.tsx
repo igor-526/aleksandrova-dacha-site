@@ -19,8 +19,13 @@ export const OneHorsePage = ({
     horse
 }: OneHorsePageProps) => {
 
-    const horsePhotos = (horse.photos && horse.photos.length > 0)
-        ? horse.photos.map(photo => ({ src: photo.url, alt: horse.name || "Изображение лошади" }))
+    const photos = horse.photos?.sort((a, b) => {
+        if (a.is_main === b.is_main) return 0;
+        return a.is_main ? -1 : 1
+    })
+
+    const horsePhotos = (photos && photos.length > 0)
+        ? photos.map(photo => ({ src: photo.url, alt: horse.name || "Изображение лошади" }))
         : [
             { src: "/images/horses/horse1.jpg", alt: "Изображение лошади" },
             { src: "/images/horses/horse2.jpg", alt: "Изображение лошади" },

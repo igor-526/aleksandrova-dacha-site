@@ -1,6 +1,6 @@
 import { horseDetail, horseList } from "@/api/horse";
 import { horseBreedList } from "@/api/horseBreeds";
-import { ApiResult, HorseOutDto, HorseListQueryParams, ApiListPaginatedResponseType, HorseBreedOutDto } from "@/types";
+import { ApiResult, HorseOutDto, HorseListQueryParams, ApiListPaginatedResponseType } from "@/types";
 
 export type HorseListColumns = 1 | 2 | 3 | 5;
 

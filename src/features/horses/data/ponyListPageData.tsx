@@ -7,7 +7,7 @@ export const getPonyListPageData = async (): Promise<HorseListPageProps> => {
   const columns = 3;
   const visibleRows = 2;
 
-  const horsesByBreeds = await fetchHorsesByBreeds("pony", "Племенной состав");
+  const horsesByService = await fetchHorsesByBreeds("pony", "Племенной состав");
 
   const dataHero = {
     title: "Разведение и продажа",
@@ -29,10 +29,11 @@ export const getPonyListPageData = async (): Promise<HorseListPageProps> => {
   };
 
   const dataHorseList: HorseListProps = {
-    itemsByBreed: horsesByBreeds,
+    itemsByBreed: horsesByService,
     columns,
     visibleRows,
     fetchParams: { kind: ["pony"] },
+    withDetails: false,
   }
 
   return {

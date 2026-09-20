@@ -17,6 +17,7 @@ export type HorseListProps = {
     heading?: string;
     content?: ReactNode;
     items?: HorseOutDto[];
+    withDetails?: boolean;
     itemsByBreed?: HorsesByBreedItem[];
     columns?: 1 | 2 | 3 | 5;
     visibleRows?: number;
@@ -40,6 +41,7 @@ const HorseList = ({
     heading,
     content,
     items,
+    withDetails = false,
     itemsByBreed,
     columns = 3,
     visibleRows,
@@ -238,7 +240,7 @@ const HorseList = ({
                                 >
                                     {visibleHorses.map((horse, index) => (
                                         <Link key={index} href={`/horses/${horse.slug}`}>
-                                            <HorseCard horse={horse} className="h-full" />
+                                            <HorseCard horse={horse} withDetails={withDetails} className="h-full" />
                                         </Link>
                                     ))}
                                 </div>
