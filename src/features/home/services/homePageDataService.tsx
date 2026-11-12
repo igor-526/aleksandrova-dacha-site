@@ -2,7 +2,6 @@ import {
   HeroProps,
   MissionProps,
   QuickServicesProps,
-  ImageBlock,
   ContactsBlockProps,
 } from "@/ui";
 import { getSiteSettings } from "@/features/siteSettings";
@@ -25,7 +24,7 @@ export const getHomePageData = async () => {
       description:
         "Для любого возраста и уровня подготовки. Прогулки, обучение, спорт.",
       href: "/services/rides",
-      icon: <ImageBlock pathImage="/icons/ridding.ico" alt="Верховая езда" />,
+      // icon: <ImageBlock pathImage="/icons/ridding.ico" alt="Верховая езда" /> — отключено: задача 114.
     },
     {
       id: "farm",
@@ -33,9 +32,7 @@ export const getHomePageData = async () => {
       description:
         "Верблюд, северные олени, козочки, овечки и другие дружелюбные животные.",
       href: "/services/farm",
-      icon: (
-        <ImageBlock pathImage="/icons/farm.ico" alt="Контактная мини-ферма" />
-      ),
+      // icon: <ImageBlock pathImage="/icons/farm.ico" alt="Контактная мини-ферма" /> — отключено: задача 114.
     },
     {
       id: "rental",
@@ -43,12 +40,7 @@ export const getHomePageData = async () => {
       description:
         "На массовые мероприятия, праздники, свадьбу или для фотосессии.",
       href: "/services/rental",
-      icon: (
-        <ImageBlock
-          pathImage="/icons/rent.ico"
-          alt="Аренда экипажей и животных"
-        />
-      ),
+      // icon: <ImageBlock pathImage="/icons/rent.ico" alt="Аренда экипажей и животных" /> — отключено: задача 114.
     },
     {
       id: "breeding",
@@ -56,9 +48,7 @@ export const getHomePageData = async () => {
       description:
         "Племенное разведение. Продажа лошадей и пони. Жеребцы на случку. ",
       href: "/breeding",
-      icon: (
-        <ImageBlock pathImage="/icons/sale.ico" alt="Разведение и продажа" />
-      ),
+      // icon: <ImageBlock pathImage="/icons/sale.ico" alt="Разведение и продажа" /> — отключено: задача 114.
     },
   ];
 

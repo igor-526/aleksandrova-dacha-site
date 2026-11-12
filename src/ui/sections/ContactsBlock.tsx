@@ -78,12 +78,13 @@ export function ContactsBlock({
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c9b585] bg-[#f6efe0] text-[#2f3600] transition hover:border-[#2f3600] hover:text-[#1f2600]"
+                className={cn("flex h-10 w-10 items-center justify-center rounded-full border border-[#c9b585] bg-[#f6efe0] text-[#2f3600] transition hover:border-[#2f3600] hover:text-[#1f2600]", social.type === "vk" && "w-auto gap-1 px-3")}
                 aria-label={social.label}
               >
                 {social.type && (
-                  <Icon name={social.type} width={36} height={36} />
+                  <Icon name={social.type} width={social.type === "vk" ? 20 : 36} height={social.type === "vk" ? 20 : 36} aria-hidden={social.type === "vk" || social.type === "mail" ? true : undefined} />
                 )}
+                {social.type === "vk" && <span>VK</span>}
                 <span className="sr-only">{social.label}</span>
               </a>
             ))}

@@ -244,7 +244,7 @@ export function Footer({
                 <a
                   key={social.href}
                   href={social.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3d431c] text-[#f6efe0] transition hover:border-[#f6efe0] hover:text-white"
+                  className={cn("flex h-10 w-10 items-center justify-center rounded-full border border-[#3d431c] text-[#f6efe0] transition hover:border-[#f6efe0] hover:text-white", social.type === "vk" && "w-auto gap-1 px-3")}
                   target={
                     social.type === "vk" || social.type === "telegram"
                       ? "_blank"
@@ -258,9 +258,10 @@ export function Footer({
                   aria-label={social.label}
                 >
                   {social.type && (
-                    <Icon name={social.type} width={36} height={36} />
+                    <Icon name={social.type} width={social.type === "vk" ? 20 : 36} height={social.type === "vk" ? 20 : 36} aria-hidden={social.type === "vk" || social.type === "mail" ? true : undefined} />
                   )}
-                  <span className="sr-only">{social.label}</span>
+                  {social.type === "vk" && <span>VK</span>}
+                <span className="sr-only">{social.label}</span>
                 </a>
               ))}
             </div>
@@ -275,6 +276,7 @@ export function Footer({
       </Container>
       <div className="border-t border-[#3d431c] py-4 text-center text-xs text-[#c9b585]">
         © {new Date().getFullYear()} {displayName}. Все права защищены.
+        <a href="/third-party-notices.txt" className="ml-3 underline">Лицензии иконок</a>
       </div>
     </footer>
   );

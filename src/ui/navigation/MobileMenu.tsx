@@ -242,7 +242,8 @@ export function MobileMenu({
                   onClick={() => onOpenChange(false)}
                   className={cn(
                     "flex h-12 w-12 items-center justify-center rounded-full border transition",
-                    contactColors[contact.type]
+                    contactColors[contact.type],
+                    contact.type === "vk" && "w-auto gap-1 px-3"
                   )}
                   target={
                     contact.type === "telegram" || contact.type === "vk"
@@ -255,7 +256,8 @@ export function MobileMenu({
                       : "canonical"
                   }
                 >
-                  <Icon name={contact.type} width={30} height={30} />
+                  <Icon name={contact.type} width={30} height={30} aria-hidden={contact.type === "vk" || contact.type === "mail" ? true : undefined} />
+                  {contact.type === "vk" && <span>VK</span>}
                 </a>
               ))}
             </div>
