@@ -19,12 +19,15 @@ export const OneHorsePage = ({
     horse
 }: OneHorsePageProps) => {
 
-    const horsePhotos = (horse.photos && horse.photos.length > 0)
-        ? horse.photos.map(photo => ({ src: photo.url, alt: horse.name || "Изображение лошади" }))
+    const photos = horse.photos?.sort((a, b) => {
+        if (a.is_main === b.is_main) return 0;
+        return a.is_main ? -1 : 1
+    })
+
+    const horsePhotos = (photos && photos.length > 0)
+        ? photos.map(photo => ({ src: photo.url, alt: horse.name || "Изображение лошади" }))
         : [
             { src: "/images/horses/horse1.jpg", alt: "Изображение лошади" },
-            { src: "/images/horses/horse2.jpg", alt: "Изображение лошади" },
-            { src: "/images/horses/horse3.jpg", alt: "Изображение лошади" }
         ]
 
     const horseGallerySection = <GallerySection
@@ -69,15 +72,6 @@ export const OneHorsePage = ({
     </div>)
 
     const description = [horse.description, ...(horse.services?.map(service => service.description) || [])]
-
-    const horseDescription =
-        description.length > 0 && (
-            <ul className="p-2 py-2">
-                {description.map((desc, index) => (
-                    <li key={index}>{desc}</li>
-                ))}
-            </ul>
-        )
 
     const horseOwnerSection = <div className="p-2">
         <p><b>Владелец: </b> {horse.horse_owner?.name}</p>
@@ -141,7 +135,19 @@ export const OneHorsePage = ({
                         <div className="grow flex flex-col md:flex-col">
                             <div className="grow">{horseInfoSection}</div>
                             <div className=" md:block w-[55%] border-t border-[#2f3600]" />
-                            <div className="grow">{horseDescription}</div>
+                            <div className="grow">
+                                {description.length > 0 && (
+                                    <ul className="p-2 py-2">
+                                        {description.map((desc, index) => (
+                                            <li key={index}>{desc?.split("\n").map((line, index) => (
+                                                <p key={index} className="grow mb-2 whitespace-pre-wrap text-[#4b4d2f]">
+                                                    {line}
+                                                </p>))}
+                                            </li>)
+                                        )}
+                                    </ul>)
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

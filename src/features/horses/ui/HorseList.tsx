@@ -17,6 +17,8 @@ export type HorseListProps = {
     heading?: string;
     content?: ReactNode;
     items?: HorseOutDto[];
+    withDetails?: boolean;
+    withSalePrice?: boolean;
     itemsByBreed?: HorsesByBreedItem[];
     columns?: 1 | 2 | 3 | 5;
     visibleRows?: number;
@@ -40,6 +42,8 @@ const HorseList = ({
     heading,
     content,
     items,
+    withDetails = false,
+    withSalePrice = false,
     itemsByBreed,
     columns = 3,
     visibleRows,
@@ -48,6 +52,9 @@ const HorseList = ({
     pageSize,
     className,
 }: HorseListProps) => {
+
+    console.log("fetchParam: ", fetchParams)
+
     const [viewportWidth, setViewportWidth] = useState<number | null>(null);
     const [loadedItems, setLoadedItems] = useState<HorseOutDto[]>(() => items ?? []);
     const [loadedRows, setLoadedRows] = useState(() =>
@@ -238,7 +245,7 @@ const HorseList = ({
                                 >
                                     {visibleHorses.map((horse, index) => (
                                         <Link key={index} href={`/horses/${horse.slug}`}>
-                                            <HorseCard horse={horse} className="h-full" />
+                                            <HorseCard horse={horse} withDetails={withDetails} withSalePrice={withSalePrice} className="h-full" />
                                         </Link>
                                     ))}
                                 </div>
@@ -273,7 +280,7 @@ const HorseList = ({
                         )}
                     >
                         {visibleItems.map((item, index) => {
-                            return <Link key={index} href={`/horses/${item.slug}`}><HorseCard horse={item} className="h-full" /></Link>;
+                            return <Link key={index} href={`/horses/${item.slug}`}><HorseCard horse={item} withSalePrice={withSalePrice} className="h-full" /></Link>;
                         })}
                     </div>
                     {canShowMore && (

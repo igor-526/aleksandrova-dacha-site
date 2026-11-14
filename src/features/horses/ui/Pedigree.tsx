@@ -10,188 +10,41 @@ type PedigreeProps = {
 }
 
 export const Pedigree = ({ horse }: PedigreeProps) => {
+
+  const getHorseCardData = (horse: HorseOutDto | null) => {
+    return {
+      name: horse?.name,
+      id: horse?.id,
+      code: horse?.code,
+      sex: horse?.sex || "male",
+      breed: horse?.breed?.short_name,
+      color: horse?.coat_color?.short_name,
+      bdate_mode: horse?.bdate_mode,
+      bdate: horse?.bdate_formatted,
+      this_stable: horse?.this_stable,
+      photo: (horse?.photos && horse?.photos.length > 0) &&
+        horse?.photos?.sort((a, b) => {
+          if (a.is_main === b.is_main) return 0;
+          return a.is_main ? -1 : 1
+        }).map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
+    }
+  };
+
   const pedigree = {
-    s: {
-      name: horse.pedigree?.sire?.name,
-      id: horse.pedigree?.sire?.id,
-      code: horse.pedigree?.sire?.code,
-      sex: horse.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.sire?.photos && horse.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    d: {
-      name: horse.pedigree?.dam?.name,
-      id: horse.pedigree?.dam?.id,
-      code: horse.pedigree?.dam?.code,
-      sex: horse.pedigree?.dam?.sex,
-      breed: horse.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.dam?.photos && horse.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    ss: {
-      name: horse.pedigree?.sire?.pedigree?.sire?.name,
-      id: horse.pedigree?.sire?.pedigree?.sire?.id,
-      code: horse.pedigree?.sire?.pedigree?.sire?.code,
-      sex: horse.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.sire?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    sd: {
-      name: horse.pedigree?.sire?.pedigree?.dam?.name,
-      id: horse.pedigree?.sire?.pedigree?.dam?.id,
-      code: horse.pedigree?.sire?.pedigree?.dam?.code,
-      sex: horse.pedigree?.sire?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.sire?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    ds: {
-      name: horse.pedigree?.dam?.pedigree?.sire?.name,
-      id: horse.pedigree?.dam?.pedigree?.sire?.id,
-      code: horse.pedigree?.dam?.pedigree?.sire?.code,
-      sex: horse.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.dam?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    dd: {
-      name: horse.pedigree?.dam?.pedigree?.dam?.name,
-      id: horse.pedigree?.dam?.pedigree?.dam?.id,
-      code: horse.pedigree?.dam?.pedigree?.dam?.code,
-      sex: horse.pedigree?.dam?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.dam?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.dam?.this_stable,
-      photo: horse.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    sss: {
-      name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.name,
-      id: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.id,
-      code: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.code,
-      sex: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    ssd: {
-      name: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.name,
-      id: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.id,
-      code: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.code,
-      sex: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    sds: {
-      name: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.name,
-      id: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.id,
-      code: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.code,
-      sex: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    sdd: {
-      name: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.name,
-      id: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.id,
-      code: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.code,
-      sex: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos && horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    dss: {
-      name: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.name,
-      id: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.id,
-      code: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.code,
-      sex: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    dsd: {
-      name: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.name,
-      id: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.id,
-      code: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.code,
-      sex: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos && horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    dds: {
-      name: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.name,
-      id: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.id,
-      code: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.code,
-      sex: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.sex || "male",
-      breed: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.this_stable,
-      photo: (horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos && horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
-    ddd: {
-      name: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.name,
-      id: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.id,
-      code: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.code,
-      sex: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.sex,
-      breed: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.breed?.short_name,
-      color: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.coat_color?.short_name,
-      bdate_mode: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.bdate_mode,
-      bdate: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.bdate_formatted,
-      this_stable: horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.this_stable,
-      photo: (horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos && horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos.length > 0) &&
-        horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam?.photos?.map(item => ({ src: item.url, alt: "Изображение лошади" })) || [],
-    },
+    s: getHorseCardData(horse.pedigree?.sire || null),
+    d: getHorseCardData(horse.pedigree?.dam || null),
+    ss: getHorseCardData(horse.pedigree?.sire?.pedigree?.sire || null),
+    sd: getHorseCardData(horse.pedigree?.sire?.pedigree?.dam || null),
+    ds: getHorseCardData(horse.pedigree?.dam?.pedigree?.sire || null),
+    dd: getHorseCardData(horse.pedigree?.dam?.pedigree?.dam || null),
+    sss: getHorseCardData(horse.pedigree?.sire?.pedigree?.sire?.pedigree?.sire || null),
+    ssd: getHorseCardData(horse.pedigree?.sire?.pedigree?.sire?.pedigree?.dam || null),
+    sds: getHorseCardData(horse.pedigree?.sire?.pedigree?.dam?.pedigree?.sire || null),
+    sdd: getHorseCardData(horse.pedigree?.sire?.pedigree?.dam?.pedigree?.dam || null),
+    dss: getHorseCardData(horse.pedigree?.dam?.pedigree?.sire?.pedigree?.sire || null),
+    dsd: getHorseCardData(horse.pedigree?.dam?.pedigree?.sire?.pedigree?.dam || null),
+    dds: getHorseCardData(horse.pedigree?.dam?.pedigree?.dam?.pedigree?.sire || null),
+    ddd: getHorseCardData(horse.pedigree?.dam?.pedigree?.dam?.pedigree?.dam || null),
   }
 
   const Horizotal = {

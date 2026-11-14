@@ -1,25 +1,14 @@
-import { fetchHorseList, getHorseListPageSize } from "./horseService";
+import { fetchHorsesByBreeds } from "./horseService";
 import { HorseListPageProps } from "../ui/HorseListPage";
-import { BreadcrumbsProps, HeroProps } from "@/ui";
+import { BreadcrumbsProps } from "@/ui";
 import { HorseListProps } from "../ui/HorseList";
 
 export const getSaleListPageData = async (): Promise<HorseListPageProps> => {
-  const columns = 1;
+  const columns = 3;
   const visibleRows = 2;
-  const pageSize = getHorseListPageSize(columns, visibleRows);
-  const fetchParams = {
-    kind: ["horse"] as ("horse" | "pony")[],
-  };
+  const horsesByService = await fetchHorsesByBreeds("pony", "Продается", { sort: ["bdate"] });
 
-  const result = await fetchHorseList({
-    ...fetchParams,
-    limit: pageSize,
-    offset: 0,
-  });
-  const horses = result.status === "ok" && result.data ? result.data.items : [];
-  const totalItems = result.status === "ok" && result.data ? result.data.total : 0;
-
-  const dataHero: HeroProps = {
+  const dataHero = {
     title: "Разведение и продажа",
     subtitle: "Александрова дача",
     description: "Племенные лошади и пони, продажа жеребят и взрослых лошадей, жеребцы для случки",
@@ -32,19 +21,19 @@ export const getSaleListPageData = async (): Promise<HorseListPageProps> => {
   const dataBreadcrumbs: BreadcrumbsProps = {
     items: [
       { name: "Главная", href: "/" },
-      { name: "Разведение и продажа", href: "/breeding" },
+      { name: "Разведение", href: "/breeding" },
       { name: "Продажа лошадей и пони" },
     ],
     className: "-mt-9 px-6",
   };
 
   const dataHorseList: HorseListProps = {
-    items: horses,
+    itemsByBreed: horsesByService,
     columns,
     visibleRows,
-    fetchParams,
-    totalItems,
-    pageSize,
+    withSalePrice: true,
+    fetchParams: { kind: ["pony"], sort: ["bdate"] },
+    withDetails: false,
   }
 
   return {

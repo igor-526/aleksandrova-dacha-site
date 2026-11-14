@@ -1,6 +1,6 @@
 import { horseDetail, horseList } from "@/api/horse";
 import { horseBreedList } from "@/api/horseBreeds";
-import { ApiResult, HorseOutDto, HorseListQueryParams, ApiListPaginatedResponseType, HorseBreedOutDto } from "@/types";
+import { ApiResult, HorseOutDto, HorseListQueryParams, ApiListPaginatedResponseType } from "@/types";
 
 export type HorseListColumns = 1 | 2 | 3 | 5;
 
@@ -46,7 +46,6 @@ export const fetchHorseList = async (
 ): Promise<ApiResult<ApiListPaginatedResponseType<HorseOutDto>>> => {
     const normalizedParams: HorseListQueryParams = {
         this_stable: true,
-        sort: ["-sex", "name"],
         pedigree: 1,
         limit: 10,
         offset: 0,
@@ -86,7 +85,8 @@ export type HorsesByBreed = {
 
 export const fetchHorsesByBreeds = async (
     kind: "horse" | "pony",
-    serviceNames?: string | string[]
+    serviceNames?: string | string[],
+    params: HorseListQueryParams = {}
 ): Promise<HorsesByBreed[]> => {
     const breedsResult = await fetchBreedList(kind);
 
@@ -134,6 +134,7 @@ export const fetchHorsesByBreeds = async (
     for (const entry of sortedGroups) {
         const horsesResult = await fetchHorseList(
             {
+                ...params,
                 breed_ids: entry.breedIds as HorseListQueryParams["breed_ids"],
                 kind: [kind],
                 limit: 100,
