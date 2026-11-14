@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         hostname: "cloud.eqcms.ru",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "*.selstorage.ru",
+        pathname: "/**",
+      },
       new URL("https://mc.yandex.ru/watch/**"),
     ],
   },

@@ -53,8 +53,6 @@ const HorseList = ({
     className,
 }: HorseListProps) => {
 
-    console.log("fetchParam: ", fetchParams)
-
     const [viewportWidth, setViewportWidth] = useState<number | null>(null);
     const [loadedItems, setLoadedItems] = useState<HorseOutDto[]>(() => items ?? []);
     const [loadedRows, setLoadedRows] = useState(() =>
