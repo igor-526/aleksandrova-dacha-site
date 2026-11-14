@@ -80,7 +80,7 @@ export const getBreedingPageData = async (): Promise<BreedingPageProps> => {
                         <p>Консультации по содержанию и уходу за животными.</p>
                     </div>
                     <div>
-                        <Button variant="primary" href="/services/rental/photosessions" size="md" className="text-sm sm:px-6 sm:py-2.5 sm:text-base">Посмотреть животных</Button>
+                        <Button variant="primary" href="/breeding/sale" size="md" className="text-sm sm:px-6 sm:py-2.5 sm:text-base">Посмотреть животных</Button>
                     </div>
                 </div>
 

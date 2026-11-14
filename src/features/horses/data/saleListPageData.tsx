@@ -6,8 +6,7 @@ import { HorseListProps } from "../ui/HorseList";
 export const getSaleListPageData = async (): Promise<HorseListPageProps> => {
   const columns = 3;
   const visibleRows = 2;
-
-  const horsesByService = await fetchHorsesByBreeds("pony", "Продается");
+  const horsesByService = await fetchHorsesByBreeds("pony", "Продается", { sort: ["bdate"] });
 
   const dataHero = {
     title: "Разведение и продажа",
@@ -32,7 +31,8 @@ export const getSaleListPageData = async (): Promise<HorseListPageProps> => {
     itemsByBreed: horsesByService,
     columns,
     visibleRows,
-    fetchParams: { kind: ["pony"] },
+    withSalePrice: true,
+    fetchParams: { kind: ["pony"], sort: ["bdate"] },
     withDetails: false,
   }
 
